@@ -1,0 +1,69 @@
+
+<main>
+    <div id="Contenedor">
+
+        <section id="about" >
+            <h2>Sobre Nosotros</h2>
+            <p>Nuestra Universidad tiene como objetivo romper con la norma y transformar el estudio tradicional en algo más grande y más interactivo para los estudiantes. Sabemos que la educación no se trata solo de transmitir conocimiento, sino de involucrar a los estudiantes en su propio proceso de aprendizaje. Por eso, estamos comprometidos a ofrecer una experiencia educativa dinámica y participativa, que fomente la creatividad, la colaboración y la resolución de problemas. Juntos, podemos lograr un futuro más brillante para todos.</p>
+            <div class="container">
+                <div class="bubble bubble1"></div>
+                <div class="bubble bubble2"></div>
+                <div class="bubble bubble3"></div>
+              </div>
+        </section>
+        
+          <section id="programs" >
+            <h2>Programas</h2>
+            <p>Actualmente, nuestra Universidad está en la vanguardia de la educación y está ofreciendo carreras relacionadas con la tecnología y la Inteligencia Artificial. Estas áreas son cruciales en el mundo de hoy y están en constante evolución, por lo que es fundamental formar profesionales capacitados y preparados para enfrentar los desafíos del futuro. Con nuestro equipo de expertos en tecnología e Inteligencia Artificial, estamos ofreciendo programas de estudio que combinan teoría y práctica para brindar una formación completa y relevante a los estudiantes. Al elegir estudiar en nuestra Universidad, estarás preparándote para un futuro exitoso en el mundo digital.</p>
+              <div class="career-gallery">
+                <div class="career-card" *ngFor="let career of careers">
+                  <img [src]="career.imgUrl" alt="{{ career.name }}">
+                  <h3>{{ career.name }}</h3>
+                  <p>{{ career.description }}</p>
+                </div>
+              </div>
+        
+          </section>
+        
+        
+          <section id="faculties" >
+            <h2 >Facultades</h2>
+            <p>Nuestras facultades están diseñadas para abordar los desafíos más relevantes de la tecnología y la Inteligencia Artificial. Con un enfoque en el desarrollo de software y la IA, brindamos a los estudiantes las habilidades y conocimientos necesarios para contribuir al progreso de estas áreas. Además, tenemos una facultad de Desarrollo Empresarial en la Revolución de la IA, que se enfoca en brindar una formación integral en estrategias de negocios y tecnología para ayudar a los estudiantes a liderar proyectos innovadores en el mundo digital. Al elegir estudiar en nuestra Universidad, estarás preparándote para un futuro en el que la tecnología y la IA jueguen un papel cada vez más importante.</p>
+        
+        
+              <div class="carousel-container">
+                <div class="carousel-slide" *ngFor="let slide of slides; let i = index" [ngClass]="{'active': i === currentSlide}">
+                  <img [src]="slide.imgUrl" alt="Faculty Image">
+                </div>
+                <a class="carousel-prev" (click)="prevSlide()">&#10094;</a>
+                <a class="carousel-next" (click)="nextSlide()">&#10095;</a>
+              </div>
+          </section>
+          
+        
+          <section id="campus" [@scrollAnimation]="state">
+            <h2>Nuestro Campus</h2>
+            <div class="img-grid">
+              <img src="https://th.bing.com/th/id/R.f761e474116344515a6d61e7f95504f1?rik=mwQOJVtLpg7MFg&pid=ImgRaw&r=0" alt="Campus Image 1">
+              <img src="https://th.bing.com/th/id/OIP.P82nabQnb2aQem9RSsSlDgHaFj?pid=ImgDet&w=600&h=450&rs=1" alt="Campus Image 2">
+              <img src="https://th.bing.com/th/id/OIP.VbBu5DBpPiNlhE6JX3IYWwHaFj?pid=ImgDet&w=752&h=564&rs=1" alt="Campus Image 3">
+            </div>
+          </section>  
+        
+          <section id="contact" [@scrollAnimation]="state">
+            <h2>Contactanos</h2>
+            <p>Para mas informacion de la universidad, por favor contactanos en:</p>
+            <p>Universidad Anonima<br>
+            123 Calle Villanueva<br>
+            Guayaquil, 910291<br>
+            Celular: (593) 128-918-193<br>
+            Correo: University@anonimo.ec</p>
+          </section>
+
+    </div>
+  
+</main>
+
+
+
+

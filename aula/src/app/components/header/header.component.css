@@ -4,31 +4,130 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
+    /* background-color: #0F1A2C; */
+    color: #fff;    
     text-align: center;
   }
-  
-  header h1 {
+  .header{
+    background-color: #0F1A2C;
+    padding: 10px;
+    position: relative;
+  }
+  header h1 {    
     margin: 0;
   }
   
-  nav a {
-    color: #fff;
-    display: inline-block;
-    margin: 0 10px;
-    text-decoration: none;
+
+  ul,li{
+    list-style: none;
+  }  
+  nav li a:hover{
+    background-color: #20BCD1     
+  }      
+  .login a:hover{
+    background-color: #20BCD1     
+  }         
+
+  .contenedor-menu{    
+    background-color: #0F1A2C;
+    
+    display: flex;    
+    justify-content: space-between;
+    font-size: 1.5rem;    
+    height: 60px;
+  } 
+
+  hr{
+     width: 90%;
+    margin: auto;
   }
 
-  nav a:hover {
-    background-color: white; color:black; padding: 10px; font-weight: bold;
-  }
+  .activeLink{
+    position: relative;
+    padding-bottom: 20px;
+}
 
-  #ingresar{
-    background-color: white; color:black; padding: 10px; font-weight: bold;
-  }
+.activeLink:before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    border-bottom: #85e3f0 solid 2px;
+}
 
-  #ingresar:hover{
-    background-color: rgb(81, 255, 0); color:black; padding: 10px; font-weight: bold;
-  }
+
+
+/* nav:hover > ul { */
+  /* display: flex;
+  flex-direction: column;  
+  color: #fff;    
+  margin: 0 10px;
+  padding: 10px;   */
+/* } */
+
+
+.ul > li,.login nav ul > a{
+ float: left;
+}
+
+
+.ul li a, .login a{
+  background-color: #0F1A2C;
+  padding: 10px 15px;
+  display: block;
+  color: #fff;    
+  
+  text-decoration: none;  
+}
+
+.pages, .login{
+  margin-top: -20px;    
+}
+
+.login{
+  width: 50%;
+}
+
+.login nav{
+  margin-left: 65%;
+}
+
+.pages{
+  margin-left: 10px;
+}
+
+
+.no-estilo{
+  display: none;
+  padding: 15px;
+  position: absolute;
+  min-width: 300px;
+  margin-left: -15px;
+}
+
+.pages nav ul li:hover > ul{
+  display: block;
+}
+
+
+.li {
+  border-bottom: .5px solid white;    
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+  text-align: center;  
+}
+
+.login nav ul a:hover > ul{
+  display: block;
+}
+
+.no-estilo-2{
+  display: none;
+  padding: 15px;
+  position: absolute;
+  min-width: 300px;
+  margin-left: -130px;
+  margin-top: 10px;
+}

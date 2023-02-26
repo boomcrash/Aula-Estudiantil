@@ -7,22 +7,24 @@ import { HomeComponent } from './components/home/home.component';
 import { TeachersComponent } from './components/teachers/teachers.component';
 import { StudentsComponent } from './components/students/students.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-@NgModule({
+import { SharedModule } from './shared/shared.module';
+ 
+@NgModule({ 
   declarations: [
     AppComponent,
     HomeComponent,
     TeachersComponent,
     StudentsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

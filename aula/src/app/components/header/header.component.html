@@ -1,9 +1,61 @@
 <header>
-    <h1 style="padding: 0 0 20px 0;">Bienvenido a nuestra universidad</h1>
-    <nav>
-      <a routerLink="/home">Inicio</a>
-      <a routerLink="/teacher">Profesores</a>
-      <a routerLink="/student">Estudiantes</a>
-      <a id="ingresar" routerLink="/sesion">Ingresar</a>
-    </nav>
+  <div class="header">
+    <h1 style="padding: 0 0 0 0;">Centro de Formación Artesanal UG</h1>
+  </div>
+  <div class="header">
+    <hr>
+  </div>    
+    <div class="contenedor-menu">
+      <div class="pages">
+        <nav>
+          <ul class="ul">
+            <li><a routerLink="/home" routerLinkActive="activeLink">Inicio</a></li>
+            <li><a routerLink="/teacher" routerLinkActive="activeLink">Docentes</a>
+              <ul class="no-estilo">
+                <li><a href="#" class="li">Mi horario</a></li>
+                <li><a href="#" class="li">Mis cursos</a></li>
+                <li><a href="#" class="li">Acta de calificaciones</a></li>                                                
+              </ul>
+            </li>                    
+            
+            <li><a routerLink="/student" routerLinkActive="activeLink">Estudiantes</a>
+              <ul class="no-estilo">
+                <li><a href="#" class="li">Mi horario</a></li>
+                <li><a href="#" class="li">Mis cursos</a></li>
+                <li><a href="#" class="li">Acta de calificaciones</a></li>                                                
+                <li><a href="#" class="li">Evaluación docente</a></li>                                                
+              </ul>
+            </li>
+            <li><a routerLink="/calidad" routerLinkActive="activeLink">Calidad</a>
+              <ul class="no-estilo">
+                <li><a href="#" class="li">Dimensión</a></li>
+                <li><a href="#" class="li">Normas ISO</a></li>
+                <li><a href="#" class="li">Gestión</a></li>                                                
+                <li><a href="#" class="li">Aseguramiento</a></li>   
+                <li><a href="#" class="li">Herramientas</a></li>                                                
+              </ul>
+            </li>
+          </ul>          
+        </nav>
+      </div>
+      <div class="login">
+        <nav>       
+          <ul>
+            <a routerLink="/username" routerLinkActive="activeLink">Username
+              <i class="fa-solid fa-user-check"></i>
+              <img src="https://assets.stickpng.com/thumbs/585e4bf3cb11b227491c339a.png" alt="" width="25px" height="25px" style="position: relative; top: 3px;">
+              <ul class="no-estilo-2">
+                <li><a href="#" class="li">Mi cuenta</a></li>
+                <li><a href="#" class="li">Cerrar Sesion</a></li>                                                              
+              </ul>
+            </a>                      
+          </ul>
+        </nav>
+      </div>
+    </div>
+    
   </header>
+
+  <!-- <div (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" [ngClass]="{'highlight': isHover}">
+    Contenido del elemento
+  </div> -->

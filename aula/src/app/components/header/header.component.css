@@ -1,6 +1,7 @@
-header {
-    z-index: 1;
-    position: fixed;
+.header2 {
+  width: 100%;
+    z-index: 1;   
+    position: absolute; 
     top: 0;
     left: 0;
     right: 0;
@@ -10,10 +11,10 @@ header {
   }
   .header{
     background-color: #0F1A2C;
-    padding: 10px;
+    padding: 5px;
     position: relative;
   }
-  header h1 {    
+  .header2 h1 {    
     margin: 0;
   }
   
@@ -86,29 +87,20 @@ header {
   margin-top: -20px;    
 }
 
-.login{
-  width: 50%;
-}
 
-.login nav{
-  margin-left: 65%;
-}
-
-.pages{
-  margin-left: 10px;
-}
 
 
 .no-estilo{
   display: none;
   padding: 15px;
   position: absolute;
-  min-width: 300px;
+  min-width: 250px;
   margin-left: -15px;
 }
 
 .pages nav ul li:hover > ul{
   display: block;
+  z-index: 2;    
 }
 
 
@@ -121,13 +113,14 @@ header {
 
 .login nav ul a:hover > ul{
   display: block;
+  z-index: 2;    
 }
 
 .no-estilo-2{
   display: none;
   padding: 15px;
   position: absolute;
-  min-width: 300px;
-  margin-left: -130px;
+  min-width: 250px;
+  margin-left: -150px;
   margin-top: 10px;
 }

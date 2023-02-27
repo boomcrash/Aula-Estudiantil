@@ -155,69 +155,27 @@ a:not(hover) {
 
 .contenido-empresas {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-flow: wrap;
-  gap: 40px;
+  flex-direction: row;  
+  justify-content: space-between;    
+  width: 100%;
 }
 
-.empresa {
-  cursor: pointer;
-  display: flex;
-  background-color: #85e3f0;
-  height: 100%;
-  min-width: 200px;
-  max-width: 300px;
-  min-height: 300px;
-  max-height:300px;
-  --bg: #f7f7f8;
-  --hover-bg: #e5fffc;
-  --hover-text: #0067e5;
-  text-align: center;
-  background: var(--bg);
-  padding: 20px;
-  border-radius: 5px;
+.empresa {  
+  width: 500px;  
+  height: 300px;  
+  margin: auto;
+  padding: 20px;  
   position: relative;
-  overflow: hidden;
-  transition: .3s cubic-bezier(.6, .4, 0, 1), transform .15s ease;
+  overflow: hidden;    
+  height: 50%;
+  text-align: center;
 }
-
-.empresa img {
-  width: 100%;
-  border-radius: 5px;
+.empresa p{
+  text-align: justify;
 }
-
-.empresa> :not(span) {
-  transition: .3s cubic-bezier(.6, .4, 0, 1);
-}
-
-.empresa span {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--hover-text);
-  border-radius: 5px;
-  font-weight: bold;
-  top: 100%;
-  transition: all .3s cubic-bezier(.6, .4, 0, 1);
-}
-
-.empresa:hover span {
-  top: 0;
-  font-size: 1.2em;
-}
-
-.empresa:hover {
-  background: var(--hover-bg);
-}
-
-.empresa:hover>img {
-  opacity: 0;
+.contenido-empresas img{
+  width: 500px;
+  height: 300px;
 }
 
 

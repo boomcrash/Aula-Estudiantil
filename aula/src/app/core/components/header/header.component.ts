@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { AuthService } from './../../services/auth.service';
 
 
 @Component({
@@ -6,15 +7,17 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-  isHover: boolean = false;
+export class HeaderComponent implements OnInit {
+  constructor(private autentificar: AuthService){
 
-  onMouseEnter() {
-    this.isHover = true;
   }
 
-  onMouseLeave() {
-    this.isHover = false;
+  ngOnInit(): void {
+    let post: any;
+    this.autentificar.verificarUsuarioPassword().subscribe( resp =>{
+      console.log(resp);
+    })
   }
+  
 }
 

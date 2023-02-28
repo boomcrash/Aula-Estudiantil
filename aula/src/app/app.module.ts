@@ -3,26 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { TeachersComponent } from './components/teachers/teachers.component';
-import { StudentsComponent } from './components/students/students.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './core/components/home/home.component';
+import { HeaderComponent } from './core/components/header/header.component';
+import { FooterComponent } from './core/components/footer/footer.component'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-@NgModule({
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+ 
+@NgModule({ 
   declarations: [
     AppComponent,
-    HomeComponent,
-    TeachersComponent,
-    StudentsComponent,
+    HomeComponent,    
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

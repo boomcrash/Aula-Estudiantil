@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { MatRadioModule } from '@angular/material/radio';
 import { HorarioRoutingModule } from './horario-routing.module';
 import { HorarioComponent } from './horario.component';
 
@@ -11,7 +11,9 @@ import { HorarioComponent } from './horario.component';
   ],
   imports: [
     CommonModule,
-    HorarioRoutingModule
+    HorarioRoutingModule,
+    MatRadioModule,
+
   ]
 })
 export class HorarioModule { }

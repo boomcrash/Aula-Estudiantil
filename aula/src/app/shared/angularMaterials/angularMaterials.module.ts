@@ -25,10 +25,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 
+
 @NgModule({
   imports: [
     CommonModule,
-    
+  
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
@@ -38,6 +39,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     ReactiveFormsModule,
     MatInputModule,
     MatMenuModule,
+    
     
     MatBadgeModule,
     MatButtonToggleModule,
@@ -63,6 +65,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatCardModule,
     MatFormFieldModule,
     FormsModule,
+    MatTableModule,
     ReactiveFormsModule,
     MatInputModule,
     MatMenuModule,
@@ -79,7 +82,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatNativeDateModule,
     MatCheckboxModule,
     MatListModule,
-    MatStepperModule
+    MatStepperModule,
   ]
 })
 export class AngularMaterialsModule { }

@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import {Component} from '@angular/core';
+import { MatRadioButton } from '@angular/material/radio';
+
+
+
+
 
 @Component({
   selector: 'app-evaluacion-docente',
@@ -6,5 +12,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./evaluacion-docente.component.css']
 })
 export class EvaluacionDocenteComponent {
+  selected = '';
+
+
+  
+  
+
+
+
 
 }

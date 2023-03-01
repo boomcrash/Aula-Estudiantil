@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import { AuthService } from './../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from '../../services/login.service';
+import { LoginComponent } from '../autentificacion/login/login.component';
 
 
 @Component({
@@ -8,16 +10,22 @@ import { AuthService } from './../../services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private autentificar: AuthService){
+  active: boolean = this.loginService.getActive();
+  
+  constructor(private dialog: MatDialog,private loginService: LoginService){
 
   }
 
   ngOnInit(): void {
-    let post: any;
-    this.autentificar.verificarUsuarioPassword().subscribe( resp =>{
-      console.log(resp);
-    })
+    console.log(this.loginService.getActive());
   }
   
+  openDialogSesion(): void {
+    this.dialog.open(LoginComponent, { disableClose: true, width: '500px' });
+  }
+
+  logout() {
+    this.loginService.logout();
+  }
 }
 

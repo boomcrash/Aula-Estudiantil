@@ -32,7 +32,13 @@
                 <li><a href="/calidad/normas-iso" class="li">Normas ISO</a></li>
                 <li><a href="/calidad/gestion" class="li">Gestión</a></li>                                                
                 <li><a href="/calidad/aseguramiento" class="li">Aseguramiento</a></li>   
-                <li><a href="/calidad/aseguramiento">Herramientas</a></li>                                                
+                <li><a href="/calidad/herramientas">Herramientas</a></li>                                                
+              </ul>
+            </li>
+            <li><a routerLink="/administracion" routerLinkActive="activeLink">Administracion</a>
+              <ul class="no-estilo">
+                <li><a href="/administracion/estudiante-administracion" class="li">Estudiante</a></li>
+                <li><a href="/administracion/docente-administracion" class="li">Docente</a></li>                                                            
               </ul>
             </li>
           </ul>          
@@ -41,13 +47,17 @@
       <div class="login">
         <nav>       
           <ul>
-            <a routerLink="/username" routerLinkActive="activeLink">Username
+            <a *ngIf="active" routerLink="" routerLinkActive="activeLink">Ruben
               <i class="fa-solid fa-user-check"></i>
               <img src="./../../../assets/imagen/perfil.png" alt="" width="25px" height="25px" style="position: relative; top: 3px;">
               <ul class="no-estilo-2">
-                <li><a href="#" class="li">Mi cuenta</a></li>
+                <li><a  routerLink="/usuario/mi-cuenta" class="li">Mi cuenta</a></li>
                 <li><a href="#" class="li">Cerrar Sesion</a></li>                                                              
               </ul>
+            </a>    
+            <a *ngIf="!active" routerLink="" routerLinkActive="activeLink" (click)="openDialogSesion()">
+              <i class="fa-solid fa-user-check"></i>
+              <img src="./../../../assets/imagen/perfil.png" alt="" width="25px" height="25px" style="position: relative; top: 3px;">              
             </a>                      
           </ul>
         </nav>

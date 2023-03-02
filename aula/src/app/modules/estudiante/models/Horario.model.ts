@@ -1,7 +1,14 @@
 export interface Horario{
-    id: number;
-    id_Curso:number;
-    dia:string;
-    hora_inicio:string;
-    hora_fin:string;
+   materia: String;
+   modulo:String;
+    paralelo:string;
+   docente:string;
+    hora1:string;
+    hora2:string;
+    hora3:string;
+    hora4:string;
+    hora5:string;
+    hora6:string;
+    hora7:string;
+
 }

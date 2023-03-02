@@ -5,81 +5,71 @@
     <h1>MI HORARIO</h1>
     
     
-      <table class="mat-elevation-z8">
-        <thead>
-          <tr>
-            <th>Materia </th>
-            <th>Modulo</th>
-            <th>Paralelo</th>
-            <th>Docente</th>
-            <th>Lunes</th>
-            <th>Martes</th>
-            <th>Miércoles</th>
-            <th>Jueves</th>
-            <th>Viernes</th>
-            <th>Sábado</th>
-            <th>Domingo</th>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+      <ng-container matColumnDef="materia">
+        <th mat-header-cell *matHeaderCellDef>Materia</th>
+        <td mat-cell *matCellDef="let element"> {{element.materia}} </td>
+      </ng-container>
 
-          </tr>
-        </thead>
-        <tbody>
-    
-          
-          
-          <tr>
-            <td>Base de datos</td>
-            <td> 2</td>
-            <td> 2-2</td>
-            <td> Juana Maria Perez Lopez</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
+      <ng-container matColumnDef="modulo">
+        <th mat-header-cell *matHeaderCellDef>Modulo</th>
+        <td mat-cell *matCellDef="let element"> {{element.modulo}} </td>
+      </ng-container>
 
 
 
-          </tr>
-          <tr>
-            <td>Base de datos</td>
-            <td> 2</td>
-            <td> 2-2</td>
-            <td> Juana Maria Perez Lopez</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
-            <td> 2-2</td>
+      <ng-container matColumnDef="paralelo">
+        <th mat-header-cell *matHeaderCellDef>paralelo</th>
+        <td mat-cell *matCellDef="let element"> {{element.paralelo}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="docente">
+        <th mat-header-cell *matHeaderCellDef>docente</th>
+        <td mat-cell *matCellDef="let element"> {{element.docente}} </td>
+      </ng-container>
 
 
 
-            <tr>
-                <td>Base de datos</td>
-                <td> 2</td>
-                <td> 2-2</td>
-                <td> Juana Maria Perez Lopez</td>
-                <td> 2-2</td>
-                <td> 2-2</td>
-                <td> 2-2</td>
-                <td> 2-2</td>
-                <td> 2-2</td>
-                <td> 2-2</td>
-                <td> 2-2</td>
-    
-    
-    
-              </tr>
-             
-              <tr>
+      <ng-container matColumnDef="hora1">
+        <th mat-header-cell *matHeaderCellDef>Lunes</th>
+        <td mat-cell *matCellDef="let element"> {{element.hora1}} </td>
+      </ng-container>
 
-         
-           </tbody>
-      </table>
-    
+
+      <ng-container matColumnDef="hora2">
+        <th mat-header-cell *matHeaderCellDef>Martes</th>
+        <td mat-cell *matCellDef="let element"> {{element.hora2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hora3">
+        <th mat-header-cell *matHeaderCellDef>Miércoles</th>
+        <td mat-cell *matCellDef="let element"> {{element.hora3}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hora4">
+        <th mat-header-cell *matHeaderCellDef>Jueves</th>
+        <td mat-cell *matCellDef="let element"> {{element.hora4}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hora5">
+        <th mat-header-cell *matHeaderCellDef>Viernes</th>
+        <td mat-cell *matCellDef="let element"> {{element.hora5}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hora6">
+        <th mat-header-cell *matHeaderCellDef>Sábado</th>
+        <td mat-cell *matCellDef="let element"> {{element.hora6}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hora7">
+        <th mat-header-cell *matHeaderCellDef>Domingo</th>
+        <td mat-cell *matCellDef="let element"> {{element.hora7}} </td>
+      </ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 </div>
       
       

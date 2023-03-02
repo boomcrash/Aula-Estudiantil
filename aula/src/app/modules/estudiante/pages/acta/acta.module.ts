@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { ActaRoutingModule } from './acta-routing.module';
 import { ActaComponent } from './acta.component';
-
-
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
-    ActaComponent
   ],
   imports: [
     CommonModule,
-    ActaRoutingModule
+    ActaRoutingModule,
+    SharedModule,
+    MatTableModule,
   ]
 })
 export class ActaModule { }

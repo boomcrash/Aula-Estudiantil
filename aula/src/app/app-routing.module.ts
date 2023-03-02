@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'estudiante', loadChildren: () => import('./modules/estudiante/estudiante.module').then((m) => m.EstudianteModule), },
   { path: 'docente', loadChildren: () => import('./modules/docente/docente.module').then((m) => m.DocenteModule), },
-  { path: 'calidad', loadChildren: () => import('./modules/calidad/calidad.module').then((m) => m.CalidadModule), },
+  { path: 'calidad', loadChildren: () => import('./modules/calidad/calidad.module').then((m) => m.CalidadModule), }
 ];
 
 @NgModule({

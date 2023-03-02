@@ -3,6 +3,6 @@ urlBAse: "http://167.71.26.121:3000",
 pathUrl: {
     urlVerificarUsuarioPassword: "/api/v1/usuarios/verifyUserByUserAndPassword",    
     urlObtenerUsuariosPorUser: "/api/v1/usuarios/getUsersByUserName",    
-    
+    urlObtenerActaEstudiante: "/api/v1/actas/getActaEstudiante",
 }
 }

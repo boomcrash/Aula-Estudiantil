@@ -61,16 +61,18 @@ th {
     font-weight: bold;
     letter-spacing: 4px;
 }
-#resultado {
-    padding: 10px;
-    font-size: 16px;
+
+
+.aprobado {
+    background-color: #188754;
+    color: white;
   }
   
-  #resultado.aprobado {
-    background-color: green;
-    font-weight: bolder;
+  .reprobado {
+    background-color: #DC3645;
+    color: white;
   }
-  
-  #resultado.reprobado {
-    background-color: red;
+
+  table td, table th {
+    text-align: center;
   }

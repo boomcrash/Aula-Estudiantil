@@ -1,5 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { CookieService } from 'ngx-cookie-service';
+import { DatosUser } from '../../interfaces/datosSimplesUser.interface';
+import { AuthService } from '../../services/auth.service';
 import { LoginService } from '../../services/login.service';
 import { LoginComponent } from '../autentificacion/login/login.component';
 
@@ -10,14 +13,20 @@ import { LoginComponent } from '../autentificacion/login/login.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  active: boolean = this.loginService.getActive();
-  
-  constructor(private dialog: MatDialog,private loginService: LoginService){
+  active: boolean = this.loginService.getActive();  
+  user = this.cookie.get('username');
+  rol = this.cookie.get('rol');
+  nombre = '';  
+
+  constructor(private dialog: MatDialog,
+    private loginService: LoginService,
+    private cookie: CookieService,
+    private autentificar: AuthService){
 
   }
 
-  ngOnInit(): void {
-    console.log(this.loginService.getActive());
+  ngOnInit(): void {        
+    console.log(this.rol,'ooas')
   }
   
   openDialogSesion(): void {
@@ -27,5 +36,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.loginService.logout();
   }
+  
+
 }
 

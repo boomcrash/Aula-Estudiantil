@@ -10,10 +10,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  verificarUsuarioPassword(): Observable<any> {    
+  verificarUsuarioPassword(nombre_usuario: string,contrasena_usuario: string): Observable<any> {    
     const post = {
-      nombre_usuario: "admin777",
-      contrasena_usuario: "12345678"
+      nombre_usuario,
+      contrasena_usuario
     };
     const url = `${environment.urlBAse}${environment.pathUrl.urlVerificarUsuarioPassword}`;    
     const httpOptions = {
@@ -24,5 +24,10 @@ export class AuthService {
     }
     console.log(url, post);
     return this.http.post(url, post,httpOptions);
+  }
+
+  obtenerDatosSimplesUsuario(username : string): Observable<any> {        
+    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerUsuariosPorUser}`;        
+    return this.http.get(`${url}/${username}`);
   }
 }

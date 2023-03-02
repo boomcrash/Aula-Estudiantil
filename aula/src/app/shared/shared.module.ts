@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularMaterialsModule } from './angularMaterials/angularMaterials.module';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { AngularMaterialsModule } from './angularMaterials/angularMaterials.modu
   ],
   exports: [
     AngularMaterialsModule, CommonModule
-  ]
+  ],
+  providers: [CookieService]
 })
 export class SharedModule { }

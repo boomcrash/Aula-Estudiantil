@@ -1,5 +1,10 @@
 import { Component, OnInit} from '@angular/core';
-import { AuthService } from './../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CookieService } from 'ngx-cookie-service';
+import { DatosUser } from '../../interfaces/datosSimplesUser.interface';
+import { AuthService } from '../../services/auth.service';
+import { LoginService } from '../../services/login.service';
+import { LoginComponent } from '../autentificacion/login/login.component';
 
 
 @Component({
@@ -8,16 +13,30 @@ import { AuthService } from './../../services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private autentificar: AuthService){
+  active: boolean = this.loginService.getActive();  
+  user = this.cookie.get('username');
+  rol = this.cookie.get('rol');
+  nombre = '';  
+
+  constructor(private dialog: MatDialog,
+    private loginService: LoginService,
+    private cookie: CookieService,
+    private autentificar: AuthService){
 
   }
 
-  ngOnInit(): void {
-    let post: any;
-    this.autentificar.verificarUsuarioPassword().subscribe( resp =>{
-      console.log(resp);
-    })
+  ngOnInit(): void {        
+    console.log(this.rol,'ooas')
   }
   
+  openDialogSesion(): void {
+    this.dialog.open(LoginComponent, { disableClose: true, width: '500px' });
+  }
+
+  logout() {
+    this.loginService.logout();
+  }
+  
+
 }
 

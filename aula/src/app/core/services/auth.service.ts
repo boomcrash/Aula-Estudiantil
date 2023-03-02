@@ -25,4 +25,9 @@ export class AuthService {
     console.log(url, post);
     return this.http.post(url, post,httpOptions);
   }
+
+  obtenerDatosSimplesUsuario(username : string): Observable<any> {        
+    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerUsuariosPorUser}`;        
+    return this.http.get(`${url}/${username}`);
+  }
 }

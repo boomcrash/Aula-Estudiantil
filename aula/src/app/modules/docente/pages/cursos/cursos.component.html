@@ -1,1 +1,24 @@
-<p>cursos works!</p>
+<div class="d-flex container-fluid justify-content-center mt-5">
+  <div class="row row-cols-md-auto justify-content-center">
+
+    <div *ngFor="let curso of cursos">
+      <div class="card mb-4 box-shadow border-0 rounded-0 mx-2 px-0">
+        <div class="card-body contenedor">
+          <h1 class="card-title  centrado textoTarjeta">{{curso.nombre_materia}}</h1>
+          <h1 class="card-title  centrado mt-5 textoTarjeta">{{curso.nombre_paralelo}}</h1>
+        </div>
+        <div class="card-footer border-0 rounded-0 text-muted">
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+
+
+
+</div>

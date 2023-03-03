@@ -50,6 +50,9 @@ th {
     text-align: center;
     font-weight: 500;
 }
+td{
+  text-align: center
+}
 
 .contenido-encabezado h1 {
     font-size: 25pt;

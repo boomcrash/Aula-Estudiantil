@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { VerEstudianteAdministracionComponent } from '../ver-estudiante-administracion/ver-estudiante-administracion.component';
 
 export interface PeriodicElement {
   id: number;
@@ -37,4 +39,9 @@ export class EstudianteAdministracionComponent {
     'Opcion 2',
     'Opcion 3',
   ];
+  
+  constructor(private dialog: MatDialog) {}
+  mostrarDialogoVer() {
+    this.dialog.open(VerEstudianteAdministracionComponent);
+  }
 }

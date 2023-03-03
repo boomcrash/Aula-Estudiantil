@@ -1,0 +1,80 @@
+<div class="container">
+ 
+    <mat-dialog-content>
+  
+        <div class="contenidoDocente">
+            <div>
+                <h1>NOMBRES COMPLETOS DEL ESTUDIANTE</h1>
+            </div>
+        
+            <div class="vdc" >
+                <h1>VISTA ESTUDIANTE - CUENTA</h1>
+            </div>
+        
+            <div>
+              <p>PROMEDIO FINAL: 4,9</p>
+            </div>
+            <div class="vdh">
+                <mat-form-field appearance="fill" style="width: 100%;text-align: center; margin: auto;">
+                  <mat-label>MATERIAS</mat-label>
+                  <mat-select>
+                    <mat-option value="one">Opcion 1</mat-option>
+                    <mat-option value="two">Opcion 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <p>Ciclo: Anterior</p>
+
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                  </ng-container>
+          
+                   <!-- Symbol Column -->
+                   <ng-container matColumnDef="materia">
+                    <th mat-header-cell *matHeaderCellDef> Materia </th>
+                    <td mat-cell *matCellDef="let element"> {{element.materia}} </td>
+                  </ng-container>
+          
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="modulo">
+                      <th mat-header-cell *matHeaderCellDef> Modulo </th>
+                      <td mat-cell *matCellDef="let element"> {{element.modulo}} </td>
+                  </ng-container>
+          
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="actCumplidas">
+                    <th mat-header-cell *matHeaderCellDef> Actividades Cumplidas </th>
+                    <td mat-cell *matCellDef="let element">
+                      <mat-icon (click)="mostrarDialogoActC()" matTooltip="Ver" class="view" fontIcon="visibility"> </mat-icon>
+                    </td>
+                  </ng-container>
+                
+                  <ng-container matColumnDef="actNoCumplidas">
+                    <th mat-header-cell *matHeaderCellDef> Actividades No Cumplidas </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <mat-icon (click)="mostrarDialogoActNC()" matTooltip="Ver" class="view" fontIcon="visibility"> </mat-icon>
+                    </td>
+                  </ng-container>
+                
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+        
+             
+        
+              <div>
+        </div>
+      
+        
+      </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button style="background-color: #20BCD1; color: white;" mat-button (click)="cerrar()">CERRAR</button>
+    </mat-dialog-actions>
+</div>

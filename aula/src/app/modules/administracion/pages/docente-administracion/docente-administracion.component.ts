@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ContratoDocenteAdministracionComponent } from '../contrato-docente-administracion/contrato-docente-administracion.component';
+import { PagosDocenteAdministracionComponent } from '../pagos-docente-administracion/pagos-docente-administracion.component';
 
 export interface PeriodicElement {
   id: number;
@@ -38,5 +41,14 @@ export class DocenteAdministracionComponent {
     'Opcion 3',
   ];
 
+  constructor(private dialog: MatDialog) {}
+
+  mostrarDialogoPagos() {
+    this.dialog.open(PagosDocenteAdministracionComponent);
+  }
+
+  mostrarDialogoContrato() {
+    this.dialog.open(ContratoDocenteAdministracionComponent);
+  }
 }
 

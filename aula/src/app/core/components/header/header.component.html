@@ -10,35 +10,35 @@
         <nav>
           <ul class="ul">
             <li><a routerLink="/home" routerLinkActive="activeLink">Inicio</a></li>
-            <li><a routerLink="/docente" routerLinkActive="activeLink">Docentes</a>
+            <li><a (click)="irDocente()">Docentes</a>
               <ul *ngIf="rol === '2'" class="no-estilo">
-                <li><a href="/docente/horario" class="li">Mi horario</a></li>
-                <li><a href="/docente/cursos" class="li">Mis cursos</a></li>
-                <li><a href="/docente/acta-calificaciones" >Acta de calificaciones</a></li>                                                
+                <li><a (click)="irDocenteHorario()" class="li">Mi horario</a></li>
+                <li><a (click)="irDocenteCursos()" class="li">Mis cursos</a></li>
+                <li><a (click)="irDocenteActa()">Acta de calificaciones</a></li>                                                
               </ul>
             </li>                    
             
-            <li><a routerLink="/estudiante" routerLinkActive="activeLink">Estudiantes</a>
+            <li><a (click)="irEstudiante()" routerLinkActive="activeLink">Estudiantes</a>
               <ul *ngIf="rol === '1'" class="no-estilo">
-                <li><a href="/estudiante/horario" class="li">Mi horario</a></li>
-                <li><a href="/estudiante/cursos" class="li">Mis cursos</a></li>
-                <li><a href="/estudiante/acta-calificaciones" class="li">Acta de calificaciones</a></li>                                                
-                <li><a href="/estudiante/evaluacion-docente">Evaluación docente</a></li>                                                
+                <li><a (click)="irEstudianteHorario()" class="li">Mi horario</a></li>
+                <li><a (click)="irEstudianteCursos()" class="li">Mis cursos</a></li>
+                <li><a (click)="irEstudianteActa()" class="li">Acta de calificaciones</a></li>                                                
+                <li><a (click)="irEstudianteEvaluacionDocente()">Evaluación docente</a></li>                                                
               </ul>
             </li>
-            <li><a routerLink="/calidad" routerLinkActive="activeLink">Calidad</a>
+            <li><a (click)="irCalidad()" routerLinkActive="activeLink">Calidad</a>
               <ul class="no-estilo">
-                <li><a href="/calidad/dimension" class="li">Dimensión</a></li>
-                <li><a href="/calidad/normas-iso" class="li">Normas ISO</a></li>
-                <li><a href="/calidad/gestion" class="li">Gestión</a></li>                                                
-                <li><a href="/calidad/aseguramiento" class="li">Aseguramiento</a></li>   
-                <li><a href="/calidad/herramientas">Herramientas</a></li>                                                
+                <li><a (click)="irCalidadDimension()" class="li">Dimensión</a></li>
+                <li><a (click)="irCalidadNormas()" class="li">Normas ISO</a></li>
+                <li><a (click)="irCalidadGestion()" class="li">Gestión</a></li>                                                
+                <li><a (click)="irCalidadAseguramiento()" class="li">Aseguramiento</a></li>   
+                <li><a (click)="irCalidadherramientas()">Herramientas</a></li>                                                
               </ul>
             </li>
-            <li *ngIf="rol === '3'"><a routerLink="/administracion" routerLinkActive="activeLink">Administracion</a>
+            <li *ngIf="rol === '3'"><a (click)="irAdmin()">Administracion</a>
               <ul class="no-estilo">
-                <li><a href="/administracion/estudiante-administracion" class="li">Estudiante</a></li>
-                <li><a href="/administracion/docente-administracion" class="li">Docente</a></li>                                                            
+                <li><a (click)="irAdminEstudiante()" class="li">Estudiante</a></li>
+                <li><a (click)="irAdminDocente()" class="li">Docente</a></li>                                                            
               </ul>
             </li>
           </ul>          
@@ -62,8 +62,7 @@
           </ul>
         </nav>
       </div>
-    </div>    
-    
+    </div>        
   </div>
   
 

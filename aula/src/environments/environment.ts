@@ -6,6 +6,7 @@ export const environment = {
 
         urlDocetes: {
             obtenerCursos: "/api/v1/cursos/getCursosDocente",
+            obtenerActividades: "/api/v1/actividades/getActividadByCurso",
         },
     },
 

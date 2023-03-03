@@ -3,10 +3,10 @@
 }
 
 .card {
-    max-width: 480px;
-    min-width: 480px;
-    max-height: 280px;
-    min-height: 280px;
+    max-width: 450px;
+    min-width: 450px;
+    max-height: 260px;
+    min-height: 260px;
     background: #323D4F;
     
 
@@ -15,8 +15,8 @@
 .card-footer {
     background: #20BCD1;
     background-color: #20BCD1;
-    max-height: 10%;
-    min-height: 10%;
+    max-height: 20px;
+    min-height: 20px;
 }
 
 .container {
@@ -33,6 +33,15 @@
     color: #ffffff;
     font-size: 25px;
     font-weight: bold;
+    
+}
+
+.lineaTitulo {
+    font-weight: bold;
+    padding-bottom: value;
+    border-bottom-style: solid;
+    border-bottom-color: #20BCD1;
+    border-bottom-width: 5px;
 }
 
 

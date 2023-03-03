@@ -4,5 +4,7 @@ pathUrl: {
     urlVerificarUsuarioPassword: "/api/v1/usuarios/verifyUserByUserAndPassword",    
     urlObtenerUsuariosPorUser: "/api/v1/usuarios/getUsersByUserName",    
     urlObtenerActaEstudiante: "/api/v1/actas/getActaEstudiante",
+    urlObtenerItemMatricula: "/api/v1/matriculas/getItemMatriculasByEstudianteId",
+    urlObtenerOrdenPago: "/api/v1/ordenPagoMatriculas/getItemOrdenPagoMatriculasByMatriculaId",
 }
 }

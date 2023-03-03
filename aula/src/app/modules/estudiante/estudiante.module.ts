@@ -9,11 +9,13 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ActaComponent } from './pages/acta/acta.component';
+import { EperfilComponent } from './pages/eperfil/eperfil.component';
 @NgModule({
   declarations: [
     EstudianteComponent,
     EvaluacionDocenteComponent,
-    ActaComponent
+    ActaComponent,
+    EperfilComponent
   ],
   imports: [
     CommonModule,

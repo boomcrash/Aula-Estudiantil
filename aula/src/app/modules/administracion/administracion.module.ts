@@ -20,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
+import { VerDocenteAdministracionComponent } from './pages/ver-docente-administracion/ver-docente-administracion.component';
+import { EvaluacionDocenteAdministracionComponent } from './pages/evaluacion-docente-administracion/evaluacion-docente-administracion.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import {MatRadioModule} from '@angular/material/radio';
     EstudianteAdministracionComponent,
     DocenteAdministracionComponent,
     ContratoDocenteAdministracionComponent,
-    PagosDocenteAdministracionComponent
+    PagosDocenteAdministracionComponent,
+    VerDocenteAdministracionComponent,
+    EvaluacionDocenteAdministracionComponent
   ],
   imports: [
     CommonModule,

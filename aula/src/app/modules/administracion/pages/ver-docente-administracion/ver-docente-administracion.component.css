@@ -1,0 +1,27 @@
+th {
+    background-color: #192A51 !important;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+}
+.vdc{
+    background-color: #F0F0F0;
+    height: 150px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    text-align: center;
+}
+.vdh{
+    background-color: #F0F0F0;
+    height: 150px;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contenidoDocente{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

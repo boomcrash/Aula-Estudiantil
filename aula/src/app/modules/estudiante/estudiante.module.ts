@@ -7,11 +7,15 @@ import { EvaluacionDocenteComponent } from './pages/evaluacion-docente/evaluacio
 import { EvaluacionDocenteRoutingModule } from './pages/evaluacion-docente/evaluacion-docente-routing.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { ActaComponent } from './pages/acta/acta.component';
 import { EperfilComponent } from './pages/eperfil/eperfil.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
 import { MateriaComponent } from './pages/materia/materia.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HorarioComponent } from './pages/horario/horario.component';
+import { MatriculacionComponent } from './pages/matriculacion/matriculacion.component';
+
+
 @NgModule({
   declarations: [
     EstudianteComponent,
@@ -19,7 +23,9 @@ import { MateriaComponent } from './pages/materia/materia.component';
     ActaComponent,
     EperfilComponent,
     CursosComponent,
-    MateriaComponent
+    MateriaComponent,
+    HorarioComponent,
+    MatriculacionComponent
   ],
   imports: [
     CommonModule,

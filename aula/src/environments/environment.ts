@@ -11,5 +11,10 @@ pathUrl: {
     urlObtenerActividades: "/api/v1/actividades/getActividadByCurso",
     urlUpdateEntregas: "/api/v1/entregas/updateEntrega",
     urlObtenerEntregaActividad: "/api/v1/actividades/entregaActividad",
+    urlObtenerHorariosporId: "/api/v1/horarios/getHorarioEstudiante",    
+    urlObtenerHorariosmatricula:"/api/v1/horarios/getAllHorarios",
+    UrlObtenerCursos: "/api/v1/cursos/getCursos",
+    UrlObtenerParalelos:"/api/v1/paralelos/getParalelos",
+    UrlObtenerMaterias:"/api/v1/materias/getItemMaterias",
 }
 }

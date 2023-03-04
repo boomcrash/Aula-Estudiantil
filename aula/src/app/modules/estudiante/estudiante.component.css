@@ -145,6 +145,7 @@ h1 {
 }
 
 p.fant {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   color: black;
   font-size: 18px;
 }
@@ -181,9 +182,6 @@ p.fant {
 .contenido-empresas img{
   width: 500px;
   height: 300px;
-}
-.contenido-empresas p{
-  font-size: 18px;
 }
 .caja{
   background: transparent;

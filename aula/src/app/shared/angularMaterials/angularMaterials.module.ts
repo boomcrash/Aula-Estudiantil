@@ -24,14 +24,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatToolbarModule,
-    MatTooltipModule,
+  
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
@@ -41,7 +40,9 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     ReactiveFormsModule,
     MatInputModule,
     MatMenuModule,
-    MatExpansionModule,
+    MatProgressBarModule,
+    
+    
     MatBadgeModule,
     MatButtonToggleModule,
     MatTableModule,
@@ -67,6 +68,7 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     MatCardModule,
     MatFormFieldModule,
     FormsModule,
+    MatTableModule,
     ReactiveFormsModule,
     MatInputModule,
     MatMenuModule,
@@ -83,7 +85,8 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     MatNativeDateModule,
     MatCheckboxModule,
     MatListModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressBarModule
   ]
 })
 export class AngularMaterialsModule { }

@@ -7,6 +7,7 @@ import { EperfilComponent } from './pages/eperfil/eperfil.component';
 import { EvaluacionDocenteComponent } from './pages/evaluacion-docente/evaluacion-docente.component';
 import { HorarioComponent } from './pages/horario/horario.component';
 import { MateriaComponent } from './pages/materia/materia.component';
+import { MatriculacionComponent } from './pages/matriculacion/matriculacion.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,11 @@ const routes: Routes = [
     path: 'horario', 
     component: HorarioComponent
   },
+  { 
+    path: 'matriculacion', 
+    component: MatriculacionComponent
+  },
+ 
   
 ];
 

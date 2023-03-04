@@ -18,6 +18,19 @@ export class RegistroUsuarioComponent {
     conf: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)]),
   });
 
+  comprobarContrasenasIguales(campo1: string, campo2: string) {
+    return (formGroup: FormGroup) => {
+      const control1 = formGroup.controls[campo1];
+      const control2 = formGroup.controls[campo2];
+
+      if (control1.value !== control2.value) {
+        control2.setErrors({ noCoinciden: true });
+      } else {
+        control2.setErrors(null);
+      }
+    }
+  }
+
   secondFormGroup = this._formBuilder.group({
     ROLES: ['', Validators.required],
   });

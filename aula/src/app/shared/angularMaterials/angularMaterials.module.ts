@@ -79,7 +79,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatNativeDateModule,
     MatCheckboxModule,
     MatListModule,
-    MatStepperModule
+    MatStepperModule,
+    
   ]
 })
 export class AngularMaterialsModule { }

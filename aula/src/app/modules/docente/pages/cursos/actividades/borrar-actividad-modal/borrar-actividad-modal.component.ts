@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ActividadModel } from 'src/app/modules/docente/models/actividadModel';
 
 @Component({
   selector: 'app-borrar-actividad-modal',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./borrar-actividad-modal.component.css']
 })
 export class BorrarActividadModalComponent {
+  @Input() public actividad!: ActividadModel;
+
 
 }

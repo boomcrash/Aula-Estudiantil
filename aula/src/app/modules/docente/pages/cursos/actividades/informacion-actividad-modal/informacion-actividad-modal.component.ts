@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActividadModel } from '../../../models/actividadModel';
+import { ActividadModel } from 'src/app/modules/docente/models/actividadModel';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 

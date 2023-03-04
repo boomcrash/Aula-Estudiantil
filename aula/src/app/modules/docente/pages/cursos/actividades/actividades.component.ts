@@ -1,19 +1,19 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CursoModel } from '../../../models/cursoModel';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AgregarActividadModalComponent } from '../agregar-actividad-modal/agregar-actividad-modal.component';
-import { ModificarActividadModalComponent } from '../modificar-actividad-modal/modificar-actividad-modal.component';
-import { InformacionActividadModalComponent } from '../informacion-actividad-modal/informacion-actividad-modal.component';
-import { BorrarActividadModalComponent } from '../borrar-actividad-modal/borrar-actividad-modal.component';
+import { AgregarActividadModalComponent } from './agregar-actividad-modal/agregar-actividad-modal.component';
+import { ModificarActividadModalComponent } from './modificar-actividad-modal/modificar-actividad-modal.component';
+import { InformacionActividadModalComponent } from './informacion-actividad-modal/informacion-actividad-modal.component';
+import { BorrarActividadModalComponent } from './borrar-actividad-modal/borrar-actividad-modal.component';
 import { DocentesService } from '../../../services/docentes.service';
 import { ActividadModel } from '../../../models/actividadModel';
 
 @Component({
-  selector: 'app-curso',
-  templateUrl: './curso.component.html',
-  styleUrls: ['./curso.component.css']
+  selector: 'app-actividades',
+  templateUrl: './actividades.component.html',
+  styleUrls: ['./actividades.component.css']
 })
-export class CursoComponent implements OnInit {
+export class ActividadesComponent {
   curso!: CursoModel;
   actividades!: ActividadModel[];
   public mostrarContenido = false;
@@ -22,9 +22,17 @@ export class CursoComponent implements OnInit {
 
   ngOnInit(): void {
     this.curso=history.state.data;
-    this._docentesService.obtenerActividades(1).subscribe(data => {
+    this.obtenerActividades();
+    this._docentesService.getUpdate().subscribe((value: boolean) => {
+      if(value) {
+        this.obtenerActividades();
+      }
+    })
+  }
+
+  obtenerActividades() {
+    this._docentesService.obtenerActividades(this.curso.id_curso).subscribe(data => {
       this.actividades=data.data
-      console.log
     });
   }
 
@@ -49,7 +57,5 @@ export class CursoComponent implements OnInit {
     modalRef.componentInstance.actividad = actividad;
       
   }
-  
-
 
 }

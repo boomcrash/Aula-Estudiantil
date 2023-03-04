@@ -1,35 +1,40 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CursosComponent } from './cursos.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CursoComponent } from './curso/curso.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AgregarActividadModalComponent } from './agregar-actividad-modal/agregar-actividad-modal.component';
-import { ModificarActividadModalComponent } from './modificar-actividad-modal/modificar-actividad-modal.component';
-import { InformacionActividadModalComponent } from './informacion-actividad-modal/informacion-actividad-modal.component';
-import { BorrarActividadModalComponent } from './borrar-actividad-modal/borrar-actividad-modal.component';
+import { AgregarActividadModalComponent } from './actividades/agregar-actividad-modal/agregar-actividad-modal.component';
+import { ModificarActividadModalComponent } from './actividades/modificar-actividad-modal/modificar-actividad-modal.component';
+import { InformacionActividadModalComponent } from './actividades/informacion-actividad-modal/informacion-actividad-modal.component';
+import { BorrarActividadModalComponent } from './actividades/borrar-actividad-modal/borrar-actividad-modal.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ActividadesComponent } from './actividades/actividades.component';
 
 
 @NgModule({
   declarations: [
     CursosComponent,
-    CursoComponent,
     AgregarActividadModalComponent,
     ModificarActividadModalComponent,
     InformacionActividadModalComponent,
-    BorrarActividadModalComponent
+    BorrarActividadModalComponent,
+    ActividadesComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    SharedModule
+    SharedModule,
 
     
-  ]
+  ],
+  providers: [DatePipe],
 })
 export class CursosModule { }

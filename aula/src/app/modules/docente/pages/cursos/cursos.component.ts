@@ -12,6 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class CursosComponent implements OnInit {
   cursos!: CursoModel[];
+  docente!: any;
   id = parseInt(this.cookie.get('id'));
   usuarios: any;
   displayedColumns = ['id_curso,nombre_materia,modulo_materia,nombre_paralelo,docente_curso,dia_horario,hora_horario'];
@@ -19,13 +20,15 @@ export class CursosComponent implements OnInit {
   constructor(private _docentesService: DocentesService, private router: Router, private activatedRoute: ActivatedRoute, private cookie: CookieService) { }
 
   ngOnInit(): void {
+
+    this._docentesService.obtenerIdDocente(this.id).subscribe( docente => {
+      this._docentesService.obtenerCursos(docente.data[0].id_docente).subscribe( data => {
+        this.cursos = data.data;
+      })  
+    })
     
 
-    this._docentesService.obtenerCursos(this.id).subscribe( data => {
-      this.cursos = data.data;
-      console.log(this.id)
-      console.log(this.cursos)
-    })
+
 
     
   }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -9,11 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./registro-usuario.component.css']
 })
 export class RegistroUsuarioComponent {
-  firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+
+
+  firstFormGroup = new FormGroup({
+    usuario: new FormControl('', [Validators.required]),
+    contrasena: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)]),
+    conf: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)]),
   });
+
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    ROLES: ['', Validators.required],
   });
   isEditable = false;
 
@@ -23,5 +29,16 @@ volver() {
   this.router.navigate(['/home']);
 
 }
+
+estudiante(){
+  console.log("estudiante");
+}
+
+docente(){
+  console.log("docente"); 
+}
+
+
+
 
 }

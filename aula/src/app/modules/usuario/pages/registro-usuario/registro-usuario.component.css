@@ -69,6 +69,8 @@ img{
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
   margin-left: -40px;
+  border-bottom:  30px solid #20BCD1
+
   
 
 }
@@ -82,6 +84,8 @@ img{
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
   margin-left: 40px;
+  border-bottom:  30px solid #20BCD1
+
 
 
 }
@@ -137,3 +141,4 @@ img{
   text-align: center;
   width: 100%;
 }
+

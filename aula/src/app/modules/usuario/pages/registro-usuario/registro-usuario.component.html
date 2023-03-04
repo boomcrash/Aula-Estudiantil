@@ -3,7 +3,7 @@
 
   
     <mat-stepper linear #stepper>
-      <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Credenciales</ng-template>
           <br><br>
@@ -12,20 +12,32 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Usuario</mat-label>
-            <input matInput formControlName="firstCtrl" placeholder="Usuario" required>
+            <input matInput formControlName="usuario" placeholder="Usuario" required>
 
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill">
               <mat-label>Contraseña</mat-label>
-              <input matInput formControlName="firstCtrl" placeholder="Contraseña" required>
+              <input matInput formControlName="contrasena" type="password" placeholder="Contraseña" required >
+              <mat-error *ngIf="firstFormGroup.controls['contrasena'].hasError('required')">Contraseña es requerida.</mat-error>
+              <mat-error *ngIf="firstFormGroup.controls['contrasena'].hasError('minlength')">Contraseña debe tener minimo 8
+              </mat-error>
+              <mat-error *ngIf="firstFormGroup.controls['contrasena'].hasError('maxlength')">Contraseña debe tener máximo 10
+                caracteres.</mat-error>
+        
 
           </mat-form-field>
 
           <br>
           <mat-form-field appearance="fill">
               <mat-label>Confirmar Contraseña</mat-label>
-              <input matInput formControlName="firstCtrl" placeholder="Confirmarcontraseña" required>
+              <input matInput formControlName="conf" type="password" placeholder="Confirmarcontraseña" required>
+              <mat-error *ngIf="firstFormGroup.controls['conf'].hasError('required')">Contraseña es requerida.</mat-error>
+              <mat-error *ngIf="firstFormGroup.controls['conf'].hasError('minlength')">Contraseña debe tener minimo 8
+              </mat-error>
+              <mat-error *ngIf="firstFormGroup.controls['conf'].hasError('maxlength')">Contraseña debe tener máximo 10
+                caracteres.</mat-error>
+        
 
           </mat-form-field>
        
@@ -42,16 +54,16 @@
 
         </form>
       </mat-step>
-      <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+      <mat-step [stepControl]="secondFormGroup">
           <ng-template matStepLabel>Rol</ng-template>
 
 
           <div class="contenedor">
-               <div class="estudiante">
+               <div class="estudiante" (click)="estudiante() ">
                   <img src="./../../../../assets/imagen/estudiante-blanco.png" alt="Estudiante" width="230" height="250">
                   <p>Estudiante</p>
               </div>
-              <div class="docente">
+              <div class="docente" (click)="docente()">
                    <img src="./../../../../assets/imagen/docente-blanco.png" alt="Profesor" width="230" height="250">
                     <p>Docente</p>
               </div>
@@ -59,8 +71,8 @@
           </div>
 
           <div>
-            <button mat-button matStepperPrevious>Regresar</button>
-            <button mat-button matStepperNext>Continuar</button>
+            <button mat-button matStepperPrevious class="botones">Regresar</button>
+            <button mat-button matStepperNext class="botones">Continuar</button>
           </div>
       </mat-step>
       <mat-step>

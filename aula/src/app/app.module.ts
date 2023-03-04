@@ -26,7 +26,7 @@ import { LoginGuardian } from './core/components/autentificacion/login/loginGuar
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
-    AutenticacionModule
+    AutenticacionModule,
   ],
   providers: [CookieService, LoginService, LoginGuardian],
   bootstrap: [AppComponent]

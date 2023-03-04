@@ -16,7 +16,7 @@ export class MiCuentaComponent {
 
 
   cambiar(){
-    this.dialog.open(CambiarContrasenaComponent ,{ disableClose: true, width: '500px', height: '500px'});
+    this.dialog.open(CambiarContrasenaComponent ,{ disableClose: true, width: '600px', height: '500px'});
 
 
   }

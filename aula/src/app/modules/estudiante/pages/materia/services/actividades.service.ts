@@ -6,16 +6,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class ActividadesService {
 
   constructor(private http: HttpClient) { }
 
-  verificarUsuarioPassword(nombre_usuario: string,contrasena_usuario: string): Observable<any> {    
+  obtenerActividades(curso_actividad: number, id_actividad: number): Observable<any> {    
     const post = {
-      nombre_usuario,
-      contrasena_usuario
+      curso_actividad,
+      id_actividad
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlVerificarUsuarioPassword}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerActividades}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -26,9 +26,8 @@ export class AuthService {
     return this.http.post(url, post,httpOptions);
   }
 
-  obtenerDatosSimplesUsuario(username : string): Observable<any> {        
-    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerUsuariosPorUser}`;        
-    return this.http.get(`${url}/${username}`);
+  obtenerEntregas(): Observable<any> {    
+    const url = `${environment.urlBAse}/api/v1/entregas/getEntregas`;      
+    return this.http.get(url);
   }
-  
 }

@@ -6,16 +6,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class ActaService {
 
   constructor(private http: HttpClient) { }
 
-  verificarUsuarioPassword(nombre_usuario: string,contrasena_usuario: string): Observable<any> {    
+  obtenerEstudianteItemActa(estudiante_itemacta: number): Observable<any> {    
     const post = {
-      nombre_usuario,
-      contrasena_usuario
+      estudiante_itemacta
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlVerificarUsuarioPassword}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerActaEstudiante}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -25,10 +24,4 @@ export class AuthService {
     console.log(url, post);
     return this.http.post(url, post,httpOptions);
   }
-
-  obtenerDatosSimplesUsuario(username : string): Observable<any> {        
-    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerUsuariosPorUser}`;        
-    return this.http.get(`${url}/${username}`);
-  }
-  
 }

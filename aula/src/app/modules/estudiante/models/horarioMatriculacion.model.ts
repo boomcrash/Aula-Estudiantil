@@ -8,8 +8,7 @@ export interface horarioMatriculacion{
 
 export interface Horario_Ordenado{
 dia_horario: string;
-horaInicio_horario: string;
-horaFin_horario: string;
+hora:string;
 
 }
 

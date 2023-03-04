@@ -1,17 +1,17 @@
 
 
-<div class="container"  style="margin:0 20%;">
-    <div style="margin: 0 20%; text-align: center;">
+<div class="container"  >
+    <div style="margin: auto; text-align: center;">
       <h1> NUEVO CONTRATO </h1>
     </div>
 
-    <div style="font-size: 12px; margin: 0 20%; "> 
-      <mat-card style="margin: auto; ">
+    <div style="font-size: 14px;  "> 
+      <mat-card>
         <form class="formContrato" [formGroup]="formulario">
 
           <div style="width: 80%;text-align: center; margin: auto;">
               <mat-form-field class="campos-field">
-                <mat-label>NOMBRE COMPLETO DEL DOCENTE</mat-label>
+                <mat-label>NOMBRE DEL DOCENTE</mat-label>
                 <input matInput placeholder="nombre">
               </mat-form-field>
               <br>
@@ -26,6 +26,7 @@
                 <mat-radio-button style="margin-left: 16px;" value="1">Si</mat-radio-button>
                 <mat-radio-button style="margin-left: 16px;" value="2">No</mat-radio-button>
               </mat-radio-group>
+              <br>
 
               <mat-form-field appearance="fill" class="campos-field">
                 <mat-label>JORNADA:</mat-label>
@@ -40,7 +41,7 @@
                 <hr>
                 <input matInput value="TIEMPO COMPLETO">
               </mat-form-field>
-    
+              <br>
               <mat-form-field appearance="fill" class="campos-field">
                 <mat-label>TIPO:</mat-label>
                 <mat-select>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import{MatTableDataSource} from '@angular/material/table';
 import{Horario} from '../../models/Horario.model';
-import { evaluacionService } from './services/evaluacion.service';
+import { horarioService } from './services/horario.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Horario2 } from '../../models/Horario2.model';
 
@@ -19,12 +19,12 @@ export class HorarioComponent {
   id = parseInt(this.cookie.get('id'));
 
 
-  constructor(private evaluacionService: evaluacionService, private cookie: CookieService ) { }
+  constructor(private horarioService: horarioService, private cookie: CookieService ) { }
   
 
    ngOnInit() {
   let nombre_materia= ["s"]
-     this.evaluacionService.obtenerHorarios(this.id).subscribe(data=>{
+     this.horarioService.obtenerHorarios(this.id).subscribe(data=>{
       this.horario = data.data;
       nombre_materia=[]
       for (let i = 0; i < this.horario.length; i++) { 

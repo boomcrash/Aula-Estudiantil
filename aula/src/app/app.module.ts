@@ -13,14 +13,13 @@ import { AutenticacionModule } from './core/components/autentificacion/autentica
 import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from './core/services/login.service';
 import { LoginGuardian } from './core/components/autentificacion/login/loginGuardian';
- 
 @NgModule({ 
   declarations: [
     AppComponent,
     HomeComponent,    
     HeaderComponent,
-    FooterComponent
-  ],
+    FooterComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

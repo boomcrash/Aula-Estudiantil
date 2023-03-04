@@ -5,6 +5,7 @@ import { ActaComponent } from './pages/acta/acta.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
 import { EvaluacionDocenteComponent } from './pages/evaluacion-docente/evaluacion-docente.component';
 import { HorarioComponent } from './pages/horario/horario.component';
+import { MatriculacionComponent } from './pages/matriculacion/matriculacion.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,11 @@ const routes: Routes = [
     path: 'horario', 
     component: HorarioComponent
   },
+  { 
+    path: 'matriculacion', 
+    component: MatriculacionComponent
+  },
+ 
   
 ];
 

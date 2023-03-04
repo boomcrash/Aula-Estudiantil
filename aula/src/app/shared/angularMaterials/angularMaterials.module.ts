@@ -24,6 +24,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -37,6 +40,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     ReactiveFormsModule,
     MatInputModule,
     MatMenuModule,
+    MatProgressBarModule,
     
     
     MatBadgeModule,
@@ -81,6 +85,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatCheckboxModule,
     MatListModule,
     MatStepperModule,
+    MatProgressBarModule
   ]
 })
 export class AngularMaterialsModule { }

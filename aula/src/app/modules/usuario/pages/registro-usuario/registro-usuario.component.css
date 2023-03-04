@@ -26,20 +26,11 @@ h1:before {
   border-bottom: #85e3f0 solid 5px;
 }
 
-.Registro{
-  margin-top: 40px;
-  background-color: #F0F0F0;
-  padding: 20px;
-  width: 400px;
-  text-align: center;
-  margin-left: 200px;
-  
-}
-
   button{
   margin-top: 30px;
   margin-bottom: 20px;
   margin-right: 20px;
+  margin-inline: 20px;
   width: 100px;
   height: 50px;
   font-size: 20px;
@@ -94,5 +85,21 @@ img{
   margin-top: 50px;
   margin-bottom: 50px;
   margin-right: 90px;
+  padding: 20px;
+  text-align: center;
+
+
 }
+
+
+.Registro{
+  margin-top: 40px;
+  background-color: #F0F0F0;
+  padding: 20px;
+  width: 400px;
+  text-align: center;
+  margin-left: 200px;
+  
+}
+
 

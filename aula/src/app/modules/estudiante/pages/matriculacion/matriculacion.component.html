@@ -36,12 +36,8 @@
     <br>
     <div *ngIf="horarioMatriculacion.length != 0">
       <table mat-table [dataSource]="horarioMatriculacion" class="mat-elevation-z8" >     
-        <ng-container matColumnDef="accion">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td ><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-          </td>
-        </ng-container>
-           
+       
+        
         <ng-container matColumnDef="paralelo_curso">
           <th mat-header-cell *matHeaderCellDef>Paralelo</th>
           <td mat-cell *matCellDef="let element"> {{element.paralelo_curso}} </td>

@@ -7,7 +7,7 @@ import { CursoHorario } from '../../models/cursoHorario.model';
 import{Curso} from '../../models/curso.model';
 import { paralelo } from '../../models/paralelo.model';
 import{Materias} from '../../models/materias.model';
-
+import{MatTableDataSource} from '@angular/material/table';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class MatriculacionComponent implements OnChanges{
   
 
 
-  displayedColumns = ['accion','paralelo_curso','curso_cupo','dia_horario1','dia_horario2','dia_horario3','dia_horario4','dia_horario5'];
+  displayedColumns = ['paralelo_curso','curso_cupo','dia_horario1','dia_horario2','dia_horario3','dia_horario4','dia_horario5'];
   dataSource: any = []; 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -75,6 +75,8 @@ export class MatriculacionComponent implements OnChanges{
       });
       this.asignaturas = arregloSinRepetidos;
     });
+
+    console.log(this.asignaturas);
   }    
 
   onSelectMateria(event: any){
@@ -148,7 +150,9 @@ export class MatriculacionComponent implements OnChanges{
       }        
     }
     
-  console.log(this.horarioMatriculacion)   
+  console.log("hola",this.horarioMatriculacion)  
+  this.dataSource = new MatTableDataSource<horarioMatriculacion>(this.horarioMatriculacion); 
+ 
       
   }      
 }

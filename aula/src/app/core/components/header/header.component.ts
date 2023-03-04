@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/estudiante/acta-calificaciones']);
   }
   irEstudianteEvaluacionDocente() {
-    this.router.navigate(['/estudiante/acta-calificaciones']);
+    this.router.navigate(['/estudiante/evaluacion-docente']);
   }
 
   //Administracion

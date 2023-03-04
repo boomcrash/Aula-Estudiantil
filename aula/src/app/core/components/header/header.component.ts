@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { DatosUser } from '../../interfaces/datosSimplesUser.interface';
 import { AuthService } from '../../services/auth.service';
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit {
   constructor(private dialog: MatDialog,
     private loginService: LoginService,
     private cookie: CookieService,
-    private autentificar: AuthService){
+    private router:Router){
 
   }
 
@@ -34,8 +35,80 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.loginService.logout();
+    this.loginService.logout();    
   }
+  
+  //Docente
+
+  irDocente() {
+    this.router.navigate(['/docente']);
+  }
+  irDocenteHorario() {
+    this.router.navigate(['/docente/horario']);
+  }
+  irDocenteCursos() {
+    this.router.navigate(['/docente/cursos']);
+  }
+  irDocenteActa() {
+    this.router.navigate(['/docente/acta-calificaciones']);
+  }
+
+  //Alumnos
+  irEstudiante() {
+    this.router.navigate(['/estudiante']);
+  }
+  irEstudianteHorario() {
+    this.router.navigate(['/estudiante/horario']);
+  }
+  irEstudianteCursos() {
+    this.router.navigate(['/estudiante/cursos']);
+  }
+  irEstudianteActa() {
+    this.router.navigate(['/estudiante/acta-calificaciones']);
+  }
+  irEstudianteEvaluacionDocente() {
+    this.router.navigate(['/estudiante/acta-calificaciones']);
+  }
+
+  //Administracion
+  irAdmin() {
+    this.router.navigate(['/administracion']);
+  }
+  irAdminEstudiante() {
+    this.router.navigate(['/administracion/estudiante-administracion']);
+  }
+  irAdminDocente() {
+    this.router.navigate(['/administracion/docente-administracion']);
+  }
+
+  //Usuario
+  irUsuario(){
+    this.router.navigate(['/usuario']);
+  } 
+  irUsuarioCuenta(){
+    this.router.navigate(['/usuario/mi-cuenta']);
+  } 
+
+  //calidad
+  irCalidad(){
+    this.router.navigate(['/calidad']);
+  }
+  irCalidadDimension(){
+    this.router.navigate(['/calidad/dimension']);    
+  }
+  irCalidadNormas(){
+    this.router.navigate(['/calidad/normas-iso']);    
+  }
+  irCalidadGestion(){
+    this.router.navigate(['/calidad/gestion']);    
+  }
+  irCalidadAseguramiento(){
+    this.router.navigate(['/calidad/aseguramiento']);
+  }
+  irCalidadherramientas(){
+    this.router.navigate(['/calidad/herramientas']);
+  }
+
   
 
 }

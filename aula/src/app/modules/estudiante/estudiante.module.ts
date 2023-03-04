@@ -10,12 +10,16 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ActaComponent } from './pages/acta/acta.component';
 import { EperfilComponent } from './pages/eperfil/eperfil.component';
+import { CursosComponent } from './pages/cursos/cursos.component';
+import { MateriaComponent } from './pages/materia/materia.component';
 @NgModule({
   declarations: [
     EstudianteComponent,
     EvaluacionDocenteComponent,
     ActaComponent,
-    EperfilComponent
+    EperfilComponent,
+    CursosComponent,
+    MateriaComponent
   ],
   imports: [
     CommonModule,

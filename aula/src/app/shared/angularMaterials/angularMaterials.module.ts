@@ -26,7 +26,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
-
 @NgModule({
   imports: [
     CommonModule,

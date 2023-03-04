@@ -1,3 +1,77 @@
 <section class="cuerpo-empresas">
-    <h1>REGISTRO DE USUARIO</h1>    
+  <h1>REGISTRO DE USUARIO</h1>    
+
+  
+    <mat-stepper linear #stepper>
+      <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Credenciales</ng-template>
+          <br><br>
+
+          <div class="Registro">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="firstCtrl" placeholder="Usuario" required>
+
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+              <mat-label>Contraseña</mat-label>
+              <input matInput formControlName="firstCtrl" placeholder="Contraseña" required>
+
+          </mat-form-field>
+
+          <br>
+          <mat-form-field appearance="fill">
+              <mat-label>Confirmar Contraseña</mat-label>
+              <input matInput formControlName="firstCtrl" placeholder="Confirmarcontraseña" required>
+
+          </mat-form-field>
+       
+
+
+
+          
+          <div>
+            <button mat-button matStepperNext>Continuar</button>
+            <button mat-button (click)="volver()">Cancelar</button>
+
+          </div>
+        </div>
+
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+          <ng-template matStepLabel>Rol</ng-template>
+
+
+          <div class="contenedor">
+               <div class="estudiante">
+                  <img src="./../../../../assets/imagen/estudiante-blanco.png" alt="Estudiante" width="230" height="250">
+                  <p>Estudiante</p>
+              </div>
+              <div class="docente">
+                   <img src="./../../../../assets/imagen/docente-blanco.png" alt="Profesor" width="230" height="250">
+                    <p>Docente</p>
+              </div>
+
+          </div>
+
+          <div>
+            <button mat-button matStepperPrevious>Regresar</button>
+            <button mat-button matStepperNext>Continuar</button>
+          </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Datos Personales</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+
+    
 </section>

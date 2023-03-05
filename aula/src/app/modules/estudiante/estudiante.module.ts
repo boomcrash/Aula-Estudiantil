@@ -34,6 +34,10 @@ import { MatriculacionComponent } from './pages/matriculacion/matriculacion.comp
     MatExpansionModule,
     MatTableModule,
     SharedModule,
-  ]
+  ],
+
+  exports:[
+    EperfilComponent
+  ],
 })
 export class EstudianteModule { }

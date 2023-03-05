@@ -19,6 +19,7 @@ import { LoginGuardian } from './core/components/autentificacion/login/loginGuar
     HomeComponent,    
     HeaderComponent,
     FooterComponent,
+
     ],
   imports: [
     BrowserModule,

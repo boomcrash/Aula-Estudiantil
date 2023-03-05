@@ -1,8 +1,12 @@
+
+<div class="container-fluid d-flex justify-content-center">    
+
 <section class="cuerpo-empresas">
+  <br><br><br>
   <h1>REGISTRO DE USUARIO</h1>
+   
 
-
-  <mat-stepper linear #stepper>
+  <mat-stepper  [linear]="false" #stepper >
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Credenciales</ng-template>
@@ -19,14 +23,10 @@
           <mat-form-field appearance="fill">
             <mat-label>Contraseña</mat-label>
             <input matInput formControlName="contrasena" type="password" placeholder="Contraseña" required>
-            <mat-error *ngIf="firstFormGroup.controls['contrasena'].hasError('required')">Contraseña es
-              requerida.</mat-error>
-            <mat-error *ngIf="firstFormGroup.controls['contrasena'].hasError('minlength')">Contraseña debe tener minimo
-              8
+            <mat-error *ngIf="firstFormGroup.controls['contrasena'].hasError('required')">Contraseña es requerida.</mat-error>
+            <mat-error *ngIf="firstFormGroup.controls['contrasena'].hasError('minlength')">Contraseña debe tener minimo 8
             </mat-error>
-            <mat-error *ngIf="firstFormGroup.controls['contrasena'].hasError('maxlength')">Contraseña debe tener máximo
-              10
-              caracteres.</mat-error>
+            <mat-error *ngIf="firstFormGroup.controls['contrasena'].hasError('maxlength')">Contraseña debe tener máximo 10 caracteres.</mat-error>
 
 
           </mat-form-field>
@@ -44,12 +44,15 @@
 
           </mat-form-field>
 
+          <mat-error *ngIf="arePasswordsEqual() && this.firstFormGroup.value.conf !='' && this.firstFormGroup.value.contrasena !='' ">Las contraseñas no coinciden.</mat-error>
+
+
 
 
 
         
         <div>
-          <button mat-button matStepperNext>Continuar</button>
+          <button mat-button matStepperNext  [disabled]="!firstFormGroup.valid || arePasswordsEqual()">Continuar</button>
           <button mat-button (click)="volver()">Cancelar</button>
 
         </div>
@@ -57,11 +60,17 @@
 
       </form>
     </mat-step>
+
+
     <mat-step [stepControl]="secondFormGroup">
+
+      <div class="container-fluid d-flex justify-content-center">    
+
       <ng-template matStepLabel>Rol</ng-template>
+      
+      
 
-
-      <div class="contenedor">
+      <div class="contenedor" style="margin:auto ; margin-left: 50px;">
         <div class="estudiante" (click)="estudiante() ">
           <img src="./../../../../assets/imagen/estudiante-blanco.png" alt="Estudiante" width="230" height="250">
           <p>Estudiante</p>
@@ -73,7 +82,9 @@
 
       </div>
 
-      <div>
+      </div>  
+
+      <div class="container-fluid d-flex justify-content-center">    
         <button mat-button matStepperPrevious class="botones">Regresar</button>
         <button mat-button matStepperNext class="botones">Continuar</button>
       </div>
@@ -90,3 +101,4 @@
 
 
 </section>
+</div>

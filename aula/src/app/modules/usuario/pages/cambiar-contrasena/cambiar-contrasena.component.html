@@ -37,9 +37,11 @@
       <mat-error *ngIf="cambiar.controls['vcontraseña'].hasError('maxlength')">Contraseña debe tener máximo 10
         caracteres.</mat-error>
     </mat-form-field>
+    <mat-error *ngIf="arePasswordsEqual()">Las contraseñas no coinciden.</mat-error>
+
 
     <div class="acciones">
-      <button class="btnEnviar" mat-raised-button color="accent" [disabled]="!cambiar.valid" (click)="changePassword()">Aceptar</button>
+      <button mat-button   [disabled]="!cambiar.valid || arePasswordsEqual()">Aceptar</button>
       <button mat-raised-button (click)="cancelar()">Cancelar</button>
     </div>
     </form>

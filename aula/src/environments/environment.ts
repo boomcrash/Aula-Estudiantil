@@ -4,7 +4,7 @@ export const environment = {
         urlVerificarUsuarioPassword: "/api/v1/usuarios/verifyUserByUserAndPassword",
         urlObtenerUsuariosPorUser: "/api/v1/usuarios/getUsersByUserName",
 
-        urlDocetes: {
+        urlDocentes: {
             obtenerCursos: "/api/v1/cursos/getCursosDocente",
             obtenerActividades: "/api/v1/actividades/getActividadByCurso",
             obtenerIdDocente: "/api/v1/usuarios/getUsersCompleteData/",

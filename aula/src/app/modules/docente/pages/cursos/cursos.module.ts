@@ -15,16 +15,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ActividadesComponent } from './actividades/actividades.component';
+import { CalificacionesComponent } from './calificaciones/calificaciones.component';
+import { CursoComponent } from './curso/curso.component';
+import { CursosRoutingModule } from './cursos-routing.module';
 
 
 @NgModule({
   declarations: [
-    CursosComponent,
     AgregarActividadModalComponent,
     ModificarActividadModalComponent,
     InformacionActividadModalComponent,
     BorrarActividadModalComponent,
-    ActividadesComponent
+    ActividadesComponent,
+    CalificacionesComponent,
+    CursoComponent,
+    CursosComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +37,8 @@ import { ActividadesComponent } from './actividades/actividades.component';
     ReactiveFormsModule,
     RouterModule,
     SharedModule,
+    CursosRoutingModule
+
 
     
   ],

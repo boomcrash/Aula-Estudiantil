@@ -25,7 +25,7 @@ export class DocentesService {
     const post = {
       docente_curso: id
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocetes.obtenerCursos}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerCursos}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -40,7 +40,7 @@ export class DocentesService {
     const post = {
       curso_actividad: id
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocetes.obtenerActividades}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerActividades}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -52,7 +52,7 @@ export class DocentesService {
   }
 
   obtenerIdDocente(id : number): Observable<any> {    
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocetes.obtenerIdDocente}` + id;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerIdDocente}` + id;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -73,7 +73,7 @@ export class DocentesService {
       archivosPermitidos_actividad: actividad.archivosPermitidos_actividad,
       tipo_actividad: actividad.tipo_actividad
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocetes.modificarActividad}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.modificarActividad}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -93,7 +93,7 @@ export class DocentesService {
       archivosPermitidos_actividad: actividad.archivosPermitidos_actividad,
       tipo_actividad: actividad.tipo_actividad
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocetes.agregarActividad}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.agregarActividad}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        

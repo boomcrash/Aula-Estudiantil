@@ -34,7 +34,7 @@ export class CursosComponent implements OnInit {
   }
 
   goCurso(indice: number){
-    this.router.navigate([this.cursos[indice].nombre_materia], {relativeTo: this.activatedRoute, state: {data:this.cursos[indice]}}); 
+    this.router.navigate([this.cursos[indice].nombre_materia.toString().toLowerCase().replaceAll(" ", "-")], {relativeTo: this.activatedRoute, state: {data:this.cursos[indice]}}); 
   }
 
 }

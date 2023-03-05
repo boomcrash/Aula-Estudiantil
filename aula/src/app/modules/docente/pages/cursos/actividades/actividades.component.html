@@ -1,99 +1,61 @@
-<div class="container-fluid px-5 pt-4 ">
-    <h4>Mis Cursos / {{curso.nombre_materia}} - {{curso.nombre_paralelo}} / Actividades</h4>
-
-    <div class="d-flex justify-content-between">
-        <div><h1 class="texto-negrita">{{curso.nombre_materia}} - {{curso.nombre_paralelo}}</h1></div>
-
-            <mat-icon class="icon-display" type="button" (click)="mostrarContenido = !mostrarContenido">arrow_drop_down</mat-icon>
-
-
-        
+<div class="d-flex container">
+    <div class="pt-5 text-center align.items.justify-content-center mx-auto text-center ">
+        <h1 class="lineaTitulo texto-negrita" style="width: fit-content;">ACTIVIDADES</h1>
     </div>
+</div>
+
+<div class="d-flex row justify-content-start pb-3">
 
 
-
-    <div class="px-5">
-        <button 
-            class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom justify-content-end"
-            
-            style="width: 100%; cursor: default;"
-             ></button>
-        <div class="contenido mt-0 pt-0" [class.desplegado]="mostrarContenido">
-            <button type="button"
-                class="btn btn-light btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start texto-negrita"
-                style="width: 100%;"><span>Actividades</span></button>
-            <button type="button"
-                class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
-                style="width: 100%;"><span>Asistencias</span></button>
-            <button type="button"
-                class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
-                style="width: 100%;"><span>Calificaciones</span></button>
-            <button type="button"
-                class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
-                style="width: 100%;"><span>Participantes</span></button>
-
-        </div>
-    </div>
-
-    <div class="d-flex container">
-        <div class="pt-5 text-center align.items.justify-content-center mx-auto text-center ">
-            <h1 class="lineaTitulo texto-negrita" style="width: fit-content;">ACTIVIDADES</h1>
-        </div>
-    </div>
-
-    <div class="d-flex row justify-content-start pb-3">
-
-
-        <div class="col-auto">
-            <button class="btn btn-primary text-white btn-outline-secondary rounded-0 border-0" id="botonActividad"  (click)="openAgregar()" type="button">Nueva Actividad</button>
-
-        </div>
-
+    <div class="col-auto">
+        <button class="btn btn-primary text-white btn-outline-secondary rounded-0 border-0" id="botonActividad"
+            (click)="openAgregar()" type="button">Nueva Actividad</button>
 
     </div>
 
 
-    <div class="table-responsive pb-5">
-        <table class="table table-hover table-bordered mx-auto">
-            <thead class="table-dark">
+</div>
+
+
+<div class="table-responsive pb-5">
+    <table class="table table-hover table-bordered mx-auto">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" class="col-sm-1"></th>
+                <th scope="col" class="col-14">Actividad</th>
+                <th scope="col" class="col-1">Envios</th>
+                <th scope="col" class="col-1">Vencimiento</th>
+                <th scope="col" class="col-2">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let actividad of actividades; let indice = index">
                 <tr>
-                    <th scope="col" class="col-sm-1"></th>
-                    <th scope="col" class="col-14">Actividad</th>
-                    <th scope="col" class="col-1">Envios</th>
-                    <th scope="col" class="col-1">Vencimiento</th>
-                    <th scope="col" class="col-2">Acciones</th>
+                    <td scope="row">{{indice+1}}</td>
+                    <td>{{actividad.nombre_actividad}}</td>
+                    <td>{{actividad.envios}}</td>
+                    <td>{{actividad.fechaVencimiento_actividad}}</td>
+                    <td>
+
+                        <a type="button" (click)="openInformacion(actividad)" class="mx-2">
+                            <mat-icon>remove_red_eye</mat-icon>
+                        </a>
+
+                        <a type="button" class="mx-2">
+                            <mat-icon>check_box</mat-icon>
+                        </a>
+
+                        <a type="button" (click)="openModificar(actividad)" class="mx-2">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+
+                        <a type="button" (click)="openBorrar(actividad)" class="mx-2">
+                            <mat-icon>delete</mat-icon>
+                        </a>
+
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <ng-container *ngFor="let actividad of actividades; let indice = index">
-                    <tr>
-                        <td scope="row">{{indice+1}}</td>
-                        <td>{{actividad.nombre_actividad}}</td>
-                        <td>{{actividad.envios}}</td>
-                        <td>{{actividad.fechaVencimiento_actividad}}</td>
-                        <td>
-
-                                <a type="button" (click)="openInformacion(actividad)" class="mx-2">
-                                    <mat-icon>remove_red_eye</mat-icon>
-                                </a>
-
-                                <a type="button" class="mx-2">
-                                    <mat-icon>check_box</mat-icon>
-                                </a>
-
-                                <a type="button" (click)="openModificar(actividad)" class="mx-2">
-                                    <mat-icon>edit</mat-icon>
-                                </a>
-
-                                <a type="button" (click)="openBorrar(actividad)" class="mx-2">
-                                    <mat-icon>delete</mat-icon>
-                                </a>
-                         
-                        </td>
-                    </tr>
-                </ng-container>
-            </tbody>
-        </table>
-    </div>
-
+            </ng-container>
+        </tbody>
+    </table>
 </div>

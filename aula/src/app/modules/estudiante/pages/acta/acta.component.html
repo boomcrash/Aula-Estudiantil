@@ -1,1 +1,38 @@
-<p>acta works!</p>
+<div class="container">
+  <div class="container rounded bg-white mt-2 mb-2">
+    <div class="contenido-encabezado">
+      <section class="cuerpo-titulo">
+        <h1>ACTA DE CALIFICACIONES</h1>
+      </section>
+    </div>
+    <br><br>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+      <th></th>
+      <ng-container matColumnDef="materia">
+        <th mat-header-cell *matHeaderCellDef>Materia</th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre_materia}} </td>
+      </ng-container>
+      <ng-container matColumnDef="modulo">
+        <th mat-header-cell *matHeaderCellDef>Modulo</th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre_paralelo}} </td>
+      </ng-container>
+      <ng-container matColumnDef="paralelo">
+        <th mat-header-cell *matHeaderCellDef>Paralelo</th>
+        <td mat-cell *matCellDef="let element"> {{element.modulo_materia}} </td>
+      </ng-container>
+      <ng-container matColumnDef="pcalificaciones">
+        <th mat-header-cell *matHeaderCellDef>Promedio de calificaciones</th>
+        <td mat-cell *matCellDef="let element"> {{element.promedioCalificaciones_itemActa}} </td>
+      </ng-container>
+      <ng-container matColumnDef="pasistencias">
+        <th mat-header-cell *matHeaderCellDef>Promedio de asistencias</th>
+        <td mat-cell *matCellDef="let element"> {{element.promedioAsistencias_itemActa}} </td>
+      </ng-container>
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef>Estado</th>
+        <td class="estados" mat-cell *matCellDef="let element of dataSource" [ngClass]="{'aprobado': element.estado_itemActa === 'APROBADO', 'reprobado': element.estado_itemActa === 'REPROBADO'}">{{element.estado_itemActa}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+<br><br><br>

@@ -8,6 +8,10 @@ export const environment = {
             obtenerCursos: "/api/v1/cursos/getCursosDocente",
             obtenerActividades: "/api/v1/actividades/getActividadByCurso",
         },
+
+        urlDocenteAdmin: {
+            obtenerDocentes: "/api/v1/docentes/getTeachers",
+        },
     },
 
 }

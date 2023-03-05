@@ -3,15 +3,35 @@
     <div
       class="pt-5 text-center align.items.justify-content-center mx-auto text-center"
     >
-      <h1 style="width: fit-content">TIPO DE ACTIVIDAD</h1>
+      <h1 style="width: fit-content" *ngFor="let actividad of presentarActividad">{{actividad.tipo_actividad}}</h1>
       <br />
     </div>
   </div>
-  <h2>NOMBRE DE LA ACTIVIDAD</h2>
-  <h3>Publicado</h3>
-  <h3>Vencimiento</h3>
-  <hr />
-  <h3>Descripción</h3>
+  <table class="table table-hover table-bordered px-auto">
+        
+        <tbody>
+          <ng-container *ngFor="let actividad of presentarActividad">
+            <tr>
+              <td><h2>{{actividad.nombre_actividad}}</h2></td>
+            </tr>
+            <tr>
+              <td><b>Publicación:</b> {{actividad.fechaPublicacion_actividad}}</td>
+            </tr>
+            <tr>
+              <td><b>Vencimiento:</b> {{actividad.fechaVencimiento_actividad}}</td>
+            </tr>
+            <hr />
+            <tr>
+              <td>{{actividad.descripcion_actividad}}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+  
+  
+  
+  
+  
   <hr />
   <div class="container-fluid">
     <div class="row">
@@ -22,29 +42,35 @@
           </tr>
         </thead>
         <tbody>
-          <ng-container>
+          <ng-container *ngFor="let actividad of presentarActividad">
             <tr>
-              <td>Estado</td>
-              <td>actividad.estado</td>
+              <td><b>Estado</b></td>
+              <td [ngClass]="{
+                NoEnviada: actividad.estado_entrega === 'No enviada',
+                Enviada: actividad.estado_entrega === 'Enviada',
+                Pendiente: actividad.estado_entrega === 'Pendiente',
+                Calificada: actividad.estado_entrega === 'Calificada'
+              }">{{actividad.estado_entrega}}</td>
             </tr>
             <tr>
-              <td>Calificación</td>
-              <td>actividad.calificación</td>
+              <td><b>Calificación</b></td>
+              <td>{{actividad.calificacion_entrega}}</td>
             </tr>
             <tr>
-              <td>Archivo</td>
-              <td>actividad.archivo</td>
+              <td><b>Archivo</b></td>
+              <td>{{actividad.archivo_entrega}}</td>
             </tr>
             <tr>
-              <td>Ultima modificación</td>
-              <td>actividad.ultimaModificacion</td>
+              <td><b>Ultima modificación</b></td>
+              <td>{{actividad.fechaModificacion_entrega}}</td>
             </tr>
           </ng-container>
         </tbody>
       </table>
     </div>
     <div class="container-fluid d-flex justify-content-center">
-      <button>Editar Entrega</button>
+      <button onclick="regresar()">Regresar</button>
+      <button style="margin-left: 10px;">Editar Entrega</button>
     </div>
   </div>
 </div>

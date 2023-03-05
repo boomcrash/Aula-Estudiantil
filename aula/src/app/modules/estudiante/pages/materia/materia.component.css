@@ -105,3 +105,7 @@ tbody tr:nth-of-type(odd) {
 .NoEnviada, .Enviada, .Pendiente {
     width: 1% !important; 
   }
+
+.add {
+    cursor: pointer;
+  }

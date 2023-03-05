@@ -26,6 +26,7 @@ export class MateriaComponent {
 
   public aparecerComponente = 1;
 
+  idActividad = 0;
   constructor(
     private http: HttpClient,
     private actividadService: ActividadesService,
@@ -33,6 +34,7 @@ export class MateriaComponent {
   ) {}
 
   ngOnInit(): void {
+    
     this.curso = history.state.data;
     console.log(this.curso);
     this.id_curso = this.curso.id_curso;
@@ -68,7 +70,9 @@ export class MateriaComponent {
   }
 
   verActividad(actividades: any){
-    this.router.navigate(['/vista-actividad']);
+    console.log(actividades);
+    //this.router.navigate(['/estudiante/vista-actividad'], { queryParams: { id: actividades } });
+    this.idActividad = Number(actividades);
   }
   
 }

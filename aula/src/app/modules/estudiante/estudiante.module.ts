@@ -16,6 +16,7 @@ import { HorarioComponent } from './pages/horario/horario.component';
 import { MatriculacionComponent } from './pages/matriculacion/matriculacion.component';
 import { AsistenciasComponent } from './pages/asistencias/asistencias.component';
 import { ParticipantesComponent } from './pages/participantes/participantes.component';
+import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ParticipantesComponent } from './pages/participantes/participantes.comp
     HorarioComponent,
     MatriculacionComponent,
     AsistenciasComponent,
-    ParticipantesComponent
+    ParticipantesComponent,
+    VistaActividadComponent
   ],
   imports: [
     CommonModule,

@@ -5,109 +5,120 @@
 
 }
 
-    h1 {
-        text-align: center;
-        font-weight: bold;
-        font-size: 25pt;
-        margin-bottom: 5px;
-        position: relative;
-        padding-bottom: 20px;
-        margin-top: 40px;
-      }
-      
-      h1:before {
-        content: "";
-        position: absolute;
-        width: 14%;
-        bottom: 0;
-        left: 42%;
-        right: 42%;
-        border-bottom: #85e3f0 solid 5px;
-      }
-       
-    .select2{
-      width: 100%;
-      height: 50px;
-      font-size: 20px;
-      margin-bottom: 50px;
-      padding: 5px; 
-      font-family: 'Times New Roman', Times, serif;
-      text-align: left;
-      background-color: F0F0F0 !important;
-      margin-top: -130px;
-      margin-left: 500px;
+h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25pt;
+  margin-bottom: 5px;
+  position: relative;
+  padding-bottom: 20px;
+  margin-top: 40px;
+}
 
+h1:before {
+  content: "";
+  position: absolute;
+  width: 14%;
+  bottom: 0;
+  left: 42%;
+  right: 42%;
+  border-bottom: #85e3f0 solid 5px;
+}
+
+.select2 {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  margin-bottom: 50px;
+  padding: 5px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: left;
+  background-color: F0F0F0 !important;
+  margin-top: -130px;
+  margin-left: 500px;
+
+
+}
+
+
+
+.select {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  margin-bottom: 50px;
+  padding: 5px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: left;
+  background-color: F0F0F0 !important;
+  margin-top: 50px;
+
+
+}
+
+
+th {
+  background-color: #192A51 !important;
+  color: white;
+  text-align: center;
+}
+
+tr {
+  text-align: center;
+}
+
+tr:nth-child(even) td {
+  background-color: #f2f2f2;
   
-    }
+  /* Color de fondo gris */
+}
+
+.mat-elevation-z8 {  
+  flex-direction: column;  
+  border-right: 1px solid currentColor;
+  border-left: 1px solid currentColor;
+  text-align: center;
+}
+
+.mat-elevation-z9 {  
+  flex-direction: column;  
+  border-right: 1px solid currentColor;
+  border-left: 1px solid currentColor;
+  text-align: center;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+button {
+
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  background-color: #20BCD1 !important;
+  color: white !important;
+}
 
 
-  
-    .select{
-      width: 100%;
-      height: 50px;
-      font-size: 20px;
-      margin-bottom: 50px;
-      padding: 5px; 
-      font-family: 'Times New Roman', Times, serif;
-      text-align: left;
-      background-color: F0F0F0 !important;
-      margin-top: 50px;
-  
-
-    }
-    
-    
-    th{
-      background-color: #192A51 !important;
-      color: white;
-      text-align: center;
-    
-    
-    }
-    
-    tr:nth-child(even) td {
-        background-color: #f2f2f2; /* Color de fondo gris */
-      }
-    
-    .mat-elevation-z8 {
-      width: 1000px;
-      flex-direction: column;
-      height: 1050px;
-        border-right: 1px solid currentColor;
-        border-left: 1px solid currentColor;
-        text-align: center;
-
-    
-      }
-      
-      .mat-mdc-row .mat-mdc-cell {
-        border-bottom: 1px solid transparent;
-        border-top: 1px solid transparent;
-        cursor: pointer;
-      }
-      
-      .mat-mdc-row:hover .mat-mdc-cell {
-        border-color: currentColor;
-      }
-      
-      .demo-row-is-clicked {
-        font-weight: bold;
-      }
-       button{
-      
-        margin-top: 30px;
-        margin-left: 10px;
-        margin-bottom: 20px;
-        margin-right: 20px;
-        width: 100px;
-        height: 50px;
-        font-size: 20px;
-        font-family: 'Times New Roman', Times, serif;
-        text-align: center;
-        background-color: #20BCD1 !important;
-        color: white!important;
-      }
-     
-       
-      
-      
+.add {
+  color: rgb(6, 6, 132);
+  background-color: white;
+  border: 1px solid black;
+}

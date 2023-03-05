@@ -30,4 +30,9 @@ export class AuthService {
     const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerUsuariosPorUser}`;        
     return this.http.get(`${url}/${username}`);
   }
+
+  obtenerDatosCompletos(username : string): Observable<any> {        
+    const url = `${environment.urlBAse}${environment.pathUrl.UrlObtenerDatosCompletos}`;         
+    return this.http.get(`${url}/${username}`);
+  }
 }

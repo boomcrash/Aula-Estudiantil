@@ -8,6 +8,7 @@ import { EvaluacionDocenteComponent } from './pages/evaluacion-docente/evaluacio
 import { HorarioComponent } from './pages/horario/horario.component';
 import { MateriaComponent } from './pages/materia/materia.component';
 import { MatriculacionComponent } from './pages/matriculacion/matriculacion.component';
+import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
   { 
     path: 'evaluacion-docente', 
     component: EvaluacionDocenteComponent
+  },
+  { 
+    path: 'vista-actividad', 
+    component: VistaActividadComponent
   },
   { 
     path: 'horario', 

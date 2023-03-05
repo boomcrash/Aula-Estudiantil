@@ -31,23 +31,23 @@
         type="button"
         class="btn btn-light btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start texto-negrita"
         style="width: 100%"
-        (click)="onSelectActividad(1)"
+        (click)="onSelectAccion(1)"
       >
         <span>Actividades</span>
       </button>
       <button
         type="button"
-        class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
+        class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start texto-negrita"
         style="width: 100%"
-        (click)="onSelectActividad(2)"
+        (click)="onSelectAccion(2)"
       >
         <span>Asistencias</span>
       </button>
       <button
         type="button"
-        class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
+        class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start texto-negrita"
         style="width: 100%"
-        (click)="onSelectActividad(3)"
+        (click)="onSelectAccion(3)"
       >
         <span>Participantes</span>
       </button>
@@ -65,42 +65,58 @@
         <br />
       </div>
     </div>
-
-    <table
-      mat-table
-      [dataSource]="presentarActividadesModel"
-      class="mat-elevation-z8"
-    >
-      <ng-container matColumnDef="nombre_actividad">
-        <th mat-header-cell *matHeaderCellDef>Actividad</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.nombre_actividad }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="estado_entrega">
-        <th mat-header-cell *matHeaderCellDef>Estado de entrega</th>
-        <td mat-cell *matCellDef="let element">{{ element.estado_entrega }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="vencimiento">
-        <th mat-header-cell *matHeaderCellDef>Vencimiento</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.fechaVencimiento_actividad }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="calificacion">
-        <th mat-header-cell *matHeaderCellDef>Calificación</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.calificacion_entrega }}
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      
-    </table>
+    <div class="container">
+      <div class="row">
+        <table class="table table-hover table-bordered px-auto">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col" class="col-md-2">Actividad</th>
+              <th scope="col" class="col-md-2">Estado</th>
+              <th scope="col" class="col-md-2">Vencimiento</th>
+              <th scope="col" class="col-md-2">Calificación</th>
+              <th scope="col" class="col-md-2" style="width: 4%">Ver</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let actividades of presentarActividadesModel">
+              <tr>
+                <td>{{ actividades.nombre_actividad }}</td>
+                <td
+                  [ngClass]="{
+                    NoEnviada: actividades.estado_entrega === 'No enviada',
+                    Enviada: actividades.estado_entrega === 'Enviada',
+                    Pendiente: actividades.estado_entrega === 'Pendiente'
+                  }"
+                >
+                  {{ actividades.estado_entrega }}
+                </td>
+                <td>{{ actividades.fechaVencimiento_actividad }}</td>
+                <td>{{ actividades.calificacion_entrega }}</td>
+                <td>
+                  <p (click)="verActividad(actividades)">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-eye"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
+                      />
+                      <path
+                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
+                      />
+                    </svg>
+                  </p>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <br />
   </div>
 
@@ -116,4 +132,17 @@
     <app-asistencias></app-asistencias>
     <br />
   </div>
+</div>
+
+<div *ngIf="presentarActividadesModel.length != 0 && aparecerComponente == 3">
+  <div class="d-flex container">
+    <div
+      class="pt-5 text-center align.items.justify-content-center mx-auto text-center"
+    >
+      <h1 style="width: fit-content">PARTICIPANTES</h1>
+      <br />
+    </div>
+  </div>
+  <app-participantes></app-participantes>
+  <br />
 </div>

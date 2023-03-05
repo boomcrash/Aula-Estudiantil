@@ -14,8 +14,8 @@ import { MateriaComponent } from './pages/materia/materia.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HorarioComponent } from './pages/horario/horario.component';
 import { MatriculacionComponent } from './pages/matriculacion/matriculacion.component';
-import { ActividadesComponent } from './pages/actividades/actividades.component';
 import { AsistenciasComponent } from './pages/asistencias/asistencias.component';
+import { ParticipantesComponent } from './pages/participantes/participantes.component';
 
 
 @NgModule({
@@ -28,8 +28,8 @@ import { AsistenciasComponent } from './pages/asistencias/asistencias.component'
     MateriaComponent,
     HorarioComponent,
     MatriculacionComponent,
-    ActividadesComponent,
-    AsistenciasComponent
+    AsistenciasComponent,
+    ParticipantesComponent
   ],
   imports: [
     CommonModule,

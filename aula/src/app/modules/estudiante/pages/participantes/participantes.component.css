@@ -1,0 +1,34 @@
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+h1,
+p,
+a {
+    line-height: normal;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25pt;
+    margin-bottom: 5px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+h1:before {
+    content: "";
+    position: absolute;
+    width: 36%;
+    bottom: 0;
+    left: 32%;
+    right: 32%;
+    border-bottom: #85e3f0 solid 5px;
+}

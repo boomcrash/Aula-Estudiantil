@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CursoModel } from '../../models/cursoModel';
 import { ActividadesService } from './services/actividades.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CursosService } from '../cursos/services/cursos.service';
 import { ActividadesModel } from '../../models/actividadesModel';
 import { HttpClient } from '@angular/common/http';
@@ -26,11 +26,10 @@ export class MateriaComponent {
 
   public aparecerComponente = 1;
 
-
-  displayedColumns = ['nombre_actividad', 'estado_entrega', 'vencimiento', 'calificacion']
   constructor(
     private http: HttpClient,
-    private actividadService: ActividadesService
+    private actividadService: ActividadesService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +48,7 @@ export class MateriaComponent {
               this.dataSourceActividades[j].id_actividad
             ) {
               const entregaActividad: presentarActividadesModel = {
+                id_actividad: this.dataSourceActividades[j].id_actividad,
                 nombre_actividad: this.dataSourceActividades[j].nombre_actividad,
                 estado_entrega: this.obtenerEntregas[i].estado_entrega,
                 fechaVencimiento_actividad: this.dataSourceActividades[j].fechaVencimiento_actividad,
@@ -63,9 +63,12 @@ export class MateriaComponent {
     });
   }
 
-  onSelectActividad(event: number){
+  onSelectAccion(event: number){
     this.aparecerComponente = event;
   }
 
-
+  verActividad(actividades: any){
+    this.router.navigate(['/vista-actividad']);
+  }
+  
 }

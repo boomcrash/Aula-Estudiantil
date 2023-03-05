@@ -1,0 +1,24 @@
+
+<div class="d-flex"> 
+  <div class="table-responsive pb-5 row">
+      <div class="col-2"> 
+          <table class="table table-hover table-bordered px-auto">
+          <thead class="table-dark">
+              <tr>
+                  <th scope="col" class="col-sm-1">Fecha</th>
+                  <th scope="col" class="col-14">Estado</th>
+              </tr>
+          </thead>
+          <tbody>
+              <ng-container *ngFor="let asistencias of dataSource; let indice = index">
+                  <tr>
+                      <td>{{ asistencias.fecha_asistencia }}</td>
+                      <td>{{ asistencias.estado_asistencia }}</td>
+                        
+                  </tr>
+              </ng-container>
+          </tbody>
+      </table></div>
+      
+  </div>
+</div>

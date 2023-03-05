@@ -84,3 +84,10 @@ th{
     height: 40px;
     width: 40px;
 }
+.mat-elevation-z8 {  
+    flex-direction: column;  
+    border-right: 1px solid currentColor;
+    border-left: 1px solid currentColor;
+    text-align: center;
+    width: 500px;
+  }

@@ -15,40 +15,57 @@ import { presentarActividadesModel } from '../../models/presentarActividadesMode
   styleUrls: ['./materia.component.css'],
 })
 export class MateriaComponent {
+  selected = '';
   curso!: CursoModel;
   dataSourceActividades!: ActividadesModel[];
   obtenerEntregas!: EntregaModel[];
-  actividades!: presentarActividadesModel[];
+  presentarActividadesModel: presentarActividadesModel[] = [];
+  id_curso: number = 0;
   public entregasActividades: any;
-
   public mostrarContenido = false;
 
+  public aparecerComponente = 1;
+
+
+  displayedColumns = ['nombre_actividad', 'estado_entrega', 'vencimiento', 'calificacion']
   constructor(
     private http: HttpClient,
-    private actividadService: ActividadesService,
+    private actividadService: ActividadesService
   ) {}
 
   ngOnInit(): void {
     this.curso = history.state.data;
-
-    this.actividadService.obtenerEntregas().subscribe(data => {
-    this.obtenerEntregas=data.data;
-    console.log(this.obtenerEntregas);
-      this.actividadService.obtenerActividades(1,2).subscribe(data => {
-        this.actividades=data.data;
-        console.log(this.actividades);
-        const entregaActividad: presentarActividadesModel = {
-          nombre_actividad: '',
-          estado_entrega: '',
-          fechaVencimiento_actividad: '',
-          calificacion_entrega: 0,
-        };
-        //this.presentarActividadesModel.push(entregaActividad);
-        console.log(entregaActividad)
-        
-        this.entregasActividades = entregaActividad;
+    console.log(this.curso);
+    this.id_curso = this.curso.id_curso;
+    this.actividadService.obtenerEntregas().subscribe((data) => {
+      this.obtenerEntregas = data.data;
+      console.log(this.curso.id_curso);
+      this.actividadService.obtenerActividades(this.curso.id_curso).subscribe((data) => {
+        this.dataSourceActividades = data.data;
+        for (let i = 0; i < this.obtenerEntregas.length; i++) {
+          for (let j = 0; j < this.dataSourceActividades.length; j++) {
+            if (
+              this.obtenerEntregas[i].id_entrega ==
+              this.dataSourceActividades[j].id_actividad
+            ) {
+              const entregaActividad: presentarActividadesModel = {
+                nombre_actividad: this.dataSourceActividades[j].nombre_actividad,
+                estado_entrega: this.obtenerEntregas[i].estado_entrega,
+                fechaVencimiento_actividad: this.dataSourceActividades[j].fechaVencimiento_actividad,
+                calificacion_entrega: Number(this.obtenerEntregas[i].calificacion_entrega),
+              };
+              this.presentarActividadesModel.push(entregaActividad);
+            }
+          }
+        }
+        console.log(this.presentarActividadesModel);
       });
     });
   }
-}
 
+  onSelectActividad(event: number){
+    this.aparecerComponente = event;
+  }
+
+
+}

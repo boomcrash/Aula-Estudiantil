@@ -3,7 +3,7 @@ export interface EstudiantePerfil {
     nombre_usuario: string;
     contrasena_usuario: string;
     rol_usuario: number;
-    usuario_estudiante: number;
+    id_estudiante: number;
     nombres_estudiante: string;
     apellidos_estudiante: string;
     cedula_estudiante: string;

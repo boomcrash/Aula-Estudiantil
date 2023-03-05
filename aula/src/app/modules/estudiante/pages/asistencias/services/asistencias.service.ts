@@ -6,15 +6,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ActividadesService {
+export class AsistenciasService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerActividades(curso_actividad: number): Observable<any> {    
+  obtenerAsistencias(estudiante_asistencia: number): Observable<any> {    
     const post = {
-      curso_actividad
+      estudiante_asistencia
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerActividades}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerAsistenciasByIdEstudiante}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -24,9 +24,8 @@ export class ActividadesService {
     console.log(url, post);
     return this.http.post(url, post,httpOptions);
   }
-
-  obtenerEntregas(): Observable<any> {    
-    const url = `${environment.urlBAse}/api/v1/entregas/getEntregas`;      
+  obtenerDatosEstudiante(id: number): Observable<any> {    
+    const url = `${environment.urlBAse}/api/v1/usuarios/getUsersCompleteData/${id}`;      
     return this.http.get(url);
   }
 }

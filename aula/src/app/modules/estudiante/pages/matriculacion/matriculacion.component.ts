@@ -1,4 +1,4 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component, OnChanges, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { matriculacionService } from './services/matriculacion.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -9,6 +9,8 @@ import { Curso } from '../../models/curso.model';
 import { paralelo } from '../../models/paralelo.model';
 import { Materias } from '../../models/materias.model';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { ActaCalificacion } from '../../models/actacalificacion.model';
+import { MatTable } from '@angular/material/table';
 
 
 
@@ -18,6 +20,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./matriculacion.component.css']
 })
 export class MatriculacionComponent implements OnChanges {
+  @ViewChild(MatTable) table!: MatTable<any>;
   selected = '';
   horarioMatriculacion: horarioMatriculacion[] = [];
   horarioMatriculado: horarioMatriculacion[] = [];
@@ -31,9 +34,16 @@ export class MatriculacionComponent implements OnChanges {
   asignaturas: any[] = [];
   asignaturaSeleccionada: string = '';
   id = this.cookie.get('id');
-  datosCompletos: EstudiantePerfil | null = null;
-
-
+  datosCompletos: EstudiantePerfil | any = null;
+  datosActaCalifiacion: ActaCalificacion = {
+    id: 0,
+    nombre_materia: '',
+    modulo_materia: 0,
+    nombre_paralelo: 0,
+    promedioCalificaciones_itemActa: 0,
+    promedioAsistencias_itemActa: 0,
+    estado_itemActa: ''
+  }
 
   displayedColumns = ['accion', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5'];
   displayedColumns2 = ['accion', 'materia', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5'];
@@ -54,7 +64,16 @@ export class MatriculacionComponent implements OnChanges {
 
   ngOnInit() {
     this.autentificar.obtenerDatosCompletos(this.id).toPromise().then( resp =>{
-      this.datosCompletos = resp.data;      
+      this.datosCompletos = resp.data;        
+      this.matriculacionService.obtenerActaEstudiante(this.datosCompletos[0].id_estudiante).toPromise().then( respuesta =>{
+        this.datosActaCalifiacion = respuesta.data[0];
+        console.log(this.datosActaCalifiacion)
+      }).catch(
+          err => {
+            console.error(err);
+            return false;
+          }
+        ); 
     }).catch(
       err => {
         console.error(err);
@@ -101,9 +120,17 @@ export class MatriculacionComponent implements OnChanges {
   onSelectMateria(event: any) {
     this.horarioMatriculacion = []
     let cursoHorarioProvicional: CursoHorario[] = [];
-    this.asignaturaSeleccionada = event.value;
-    const findElementId = this.materias.find(item => item.nombre_materia === this.asignaturaSeleccionada);
-
+    let findElementId
+    if(event.value){
+      this.asignaturaSeleccionada = event.value;
+      findElementId = this.materias.find(item => item.nombre_materia === this.asignaturaSeleccionada);
+    }else{
+      this.asignaturaSeleccionada = event.materia;
+      console.log(this.asignaturaSeleccionada)
+      findElementId = this.materias.find(item => item.nombre_materia === this.asignaturaSeleccionada);
+    }
+    
+    console.log(findElementId)
     for (let i = 0; i < this.curso.length; i++) {
       if (this.curso[i].materia_curso == findElementId?.id_materia) {
         for (let j = 0; j < this.cursoHorario.length; j++) {
@@ -172,7 +199,7 @@ export class MatriculacionComponent implements OnChanges {
     }
   }
 
-  add(event: any) {
+  add(event: any) {        
     console.log(event)
     const horarioMatriculacion: horarioMatriculacion = {
       materia: event.materia,
@@ -202,6 +229,28 @@ export class MatriculacionComponent implements OnChanges {
       ]
     };    
     this.horarioMatriculado = [...this.horarioMatriculado, horarioMatriculacion];
-    console.log(this.horarioMatriculado)
+    for(let i = 0; i<this.horarioMatriculado.length;i++){
+      for(let j = 0; j < this.asignaturas.length;j++){
+        if(this.horarioMatriculado[i].materia == this.asignaturas[j]){
+          this.asignaturas.splice(j,1);
+        }
+      }
+    }
+    console.log(this.asignaturas);
+    this.horarioMatriculacion = []
+  }
+
+
+  delete(event: any) { 
+    let materia = event;
+    console.log(materia)
+    for(let i = 0; i<this.horarioMatriculado.length;i++){      
+      if(this.horarioMatriculado[i].materia == materia.materia){       
+        this.asignaturas.push(materia.materia);
+        this.onSelectMateria(this.horarioMatriculado[i]);
+        this.horarioMatriculado.splice(i,1);        
+        this.horarioMatriculado = [...this.horarioMatriculado]; // create a new array reference to trigger change detection        
+      }      
+    }     
   }
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="presentar">
   <div class="d-flex container">
     <div
       class="pt-5 text-center align.items.justify-content-center mx-auto text-center"
@@ -86,7 +86,7 @@
   </div>
 </div>
 <br> <br>
-<div *ngIf="!presentarEdicion">
+<div *ngIf="!presentar">
   <h2><b>EDITAR ENTREGA</b></h2>
   <form>
     <div class="form-group">
@@ -94,7 +94,7 @@
       <input type="file" class="form-control" id="exampleFormControlFile1"/>
     </div>
     <div>
-      <button onclick="cancelar()">Regresar</button>
+      <button (click)="cancelarAccion()">Regresar</button>
       <button onclick="guardar()">Guardar</button>
     </div>
   </form>

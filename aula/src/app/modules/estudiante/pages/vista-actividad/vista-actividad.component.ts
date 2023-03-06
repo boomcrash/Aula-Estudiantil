@@ -23,6 +23,7 @@ export class VistaActividadComponent implements OnInit {
   public presentarEdicion: boolean = true;
   id_curso: number = 0;
 
+  public presentar: boolean = true;
 
   constructor(private router: Router, private actividadService: ActividadesService, private location: Location) { }
 
@@ -75,6 +76,11 @@ export class VistaActividadComponent implements OnInit {
   }
   editarEntrega(){
     this.actividadService.presentarEdicion = false;
+    this.presentar = this.actividadService.presentarEdicion; 
   }
-  
+  cancelarAccion(){
+    this.actividadService.presentarEdicion = true;
+    this.presentar = this.actividadService.presentarEdicion; 
+
+  }
 }

@@ -17,5 +17,11 @@ pathUrl: {
     UrlObtenerParalelos:"/api/v1/paralelos/getParalelos",
     UrlObtenerMaterias:"/api/v1/materias/getItemMaterias",
     urlObtenerAsistenciasByIdEstudiante: "/api/v1/asistencias/getAsistenciasByIdEstudiante",
-}
+        urlDocentes: {
+            obtenerCursos: "/api/v1/cursos/getCursosDocente",
+            obtenerActividades: "/api/v1/actividades/getActividadByCurso",
+            obtenerIdDocente: "/api/v1/usuarios/getUsersCompleteData/",
+            modificarActividad: "/api/v1/actividades/updateActividad",
+            agregarActividad: "/api/v1/actividades/addActividad"
+        },
 }

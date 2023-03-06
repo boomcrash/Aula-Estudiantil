@@ -13,6 +13,8 @@ import { AutenticacionModule } from './core/components/autentificacion/autentica
 import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from './core/services/login.service';
 import { LoginGuardian } from './core/components/autentificacion/login/loginGuardian';
+import { DatePipe } from '@angular/common';
+ 
 @NgModule({ 
   declarations: [
     AppComponent,
@@ -28,7 +30,7 @@ import { LoginGuardian } from './core/components/autentificacion/login/loginGuar
     HttpClientModule,
     AutenticacionModule,
   ],
-  providers: [CookieService, LoginService, LoginGuardian],
+  providers: [CookieService, LoginService, LoginGuardian, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

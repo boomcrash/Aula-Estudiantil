@@ -38,8 +38,8 @@ export class CambiarContrasenaComponent {
   
       return true; // Si los campos no son iguales, no son iguales
     }
-  
     return false;
+
   }
   
 

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContratoDocenteAdministracionComponent } from '../contrato-docente-administracion/contrato-docente-administracion.component';
 import { PagosDocenteAdministracionComponent } from '../pagos-docente-administracion/pagos-docente-administracion.component';
 import { VerDocenteAdministracionComponent } from '../ver-docente-administracion/ver-docente-administracion.component';
+import { Docente } from '../../models/docenteModel';
+import { DocenteAdministracionService } from '../../services/docente-administracion.service';
 
 export interface PeriodicElement {
   id: number;
@@ -13,20 +15,16 @@ export interface PeriodicElement {
   contrato: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 1, cedula: '0978656755', nombreCompleto: 'Ana Maria Velez Mite', ciclo: 'actual', estado: 'activo', contrato: 'Titular'},
-  {id: 2, cedula: '0987654321', nombreCompleto: 'Juana Lola Andrade Peña', ciclo: 'anterior', estado: 'activo', contrato: 'Titular'},
-  {id: 3, cedula: '0912345678', nombreCompleto: 'Jose Juanito Tomala Perez', ciclo: 'actual', estado: 'activo', contrato: 'Titular'},
-];
-
 @Component({
   selector: 'app-docente-administracion',
   templateUrl: './docente-administracion.component.html',
   styleUrls: ['./docente-administracion.component.css']
 })
-export class DocenteAdministracionComponent {
+export class DocenteAdministracionComponent implements OnInit {
+  datosDocentes: Docente[] = [];
+
   displayedColumns: string[] = ['id', 'cedula', 'nombreCompleto', 'ciclo', 'estado', 'contrato','acciones'];
-  dataSource = ELEMENT_DATA;
+  
   
   filtro: string[] = [
     'Cedula',
@@ -42,8 +40,17 @@ export class DocenteAdministracionComponent {
     'Opcion 3',
   ];
 
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private docenteService:DocenteAdministracionService) {}
 
+  ngOnInit(): void {
+    this.docenteService.obtenerDocentes().subscribe(respuesta =>{
+      this.datosDocentes=respuesta.data;
+      console.log(this.datosDocentes)
+
+    });
+  }
   mostrarDialogoPagos() {
     this.dialog.open(PagosDocenteAdministracionComponent);
   }

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { PagoDocente } from '../../models/pagoDocentesModel';
+import { DocenteAdministracionService } from '../../services/docente-administracion.service';
 
 export interface PeriodicElement {
   fecha: string;
@@ -10,21 +12,16 @@ export interface PeriodicElement {
   cedula: string;
   nombreCompleto: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  {fecha: '01/01/2000', sueldo: 400, faltas: 3, descuento: 10, total: 2, cedula: '0978656755', nombreCompleto: 'Ana Maria Velez Mite'},
-  {fecha: '01/02/2000', sueldo: 400, faltas: 2, descuento: 20, total: 3, cedula: '0978222755', nombreCompleto: 'Juana Lola Andrade Peña'},
-  {fecha: '01/03/2000', sueldo: 400, faltas: 4, descuento: 30, total: 4, cedula: '0978656655', nombreCompleto: 'Jose Juanito Tomala Perez'},
-
-];
 
 @Component({
   selector: 'app-pagos-docente-administracion',
   templateUrl: './pagos-docente-administracion.component.html',
   styleUrls: ['./pagos-docente-administracion.component.css']
 })
-export class PagosDocenteAdministracionComponent {
+export class PagosDocenteAdministracionComponent implements OnInit {
+  datosPagoDocentes: PagoDocente[] = [];
+
   displayedColumns: string[] = ['fecha', 'sueldo', 'faltas', 'descuento', 'total', 'cedula', 'nombreCompleto'];
-  dataSource = ELEMENT_DATA;
   
   filtro: string[] = [
     'Cedula',
@@ -38,8 +35,17 @@ export class PagosDocenteAdministracionComponent {
     'Opcion 3',
   ];
 
-  constructor(private dialogRef: MatDialogRef<PagosDocenteAdministracionComponent>) {}
+  constructor(
+    private dialogRef: MatDialogRef<PagosDocenteAdministracionComponent>,
+    private docenteService:DocenteAdministracionService) {}
 
+  ngOnInit(): void {
+    this.docenteService.obtenerPagoDocentes().subscribe(respuesta =>{
+      this.datosPagoDocentes=respuesta.data;
+      console.log(this.datosPagoDocentes)
+
+    });
+  }
   cerrar() {
     this.dialogRef.close();
   }

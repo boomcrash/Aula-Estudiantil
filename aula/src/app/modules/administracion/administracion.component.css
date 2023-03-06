@@ -75,6 +75,7 @@ mat-grid-tile {
 
 .central-izq{
    width: 30%;
+   height: 100%;
    background-color: #20BCD1;
    margin: 15px;
    color: white;
@@ -98,12 +99,11 @@ mat-grid-tile {
  }
 
 .central-der-up, .central-der-dwn{
-    margin: 20px;
+    
     padding: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-  
   

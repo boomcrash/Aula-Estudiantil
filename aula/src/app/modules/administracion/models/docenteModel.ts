@@ -1,4 +1,4 @@
-export interface CursoModel {
+export interface Docente {
     id_docente: number,
     usuario_docente: string,
     nombres_docente: string,

@@ -27,6 +27,10 @@ urlBAse: "http://167.71.26.121:3000",
 
         urlDocenteAdmin: {
             obtenerDocentes: "/api/v1/docentes/getTeachers",
+            obtenerPagoDocentes: "/api/v1/pagoDocentes/getPagoDocentes",
+        },
+        urlEstudianteAdmin: {
+            obtenerEstudiantes: "/api/v1/estudiantes/getStudents",
         },
         
     }

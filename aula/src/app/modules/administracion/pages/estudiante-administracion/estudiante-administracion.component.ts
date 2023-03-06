@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Estudiante } from '../../models/estudianteModel';
+import { EstudianteAdministracionService } from '../../services/estudiante-administracion.service';
 import { VerEstudianteAdministracionComponent } from '../ver-estudiante-administracion/ver-estudiante-administracion.component';
 
 export interface PeriodicElement {
@@ -11,20 +13,15 @@ export interface PeriodicElement {
   medioDifusion: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 1, cedula: '0978656755', nombreCompleto: 'Ana Maria Velez Mite', nivel: 3, ciclo: 'actual', medioDifusion: 'tv'},
-  {id: 2, cedula: '0987654321', nombreCompleto: 'Juana Lola Andrade Peña', nivel: 2, ciclo: 'anterior', medioDifusion: 'redes sociales'},
-  {id: 3, cedula: '0912345678', nombreCompleto: 'Jose Juanito Tomala Perez', nivel: 1, ciclo: 'actual', medioDifusion: 'radio'},
-];
-
 @Component({
   selector: 'app-estudiante-administracion',
   templateUrl: './estudiante-administracion.component.html',
   styleUrls: ['./estudiante-administracion.component.css']
 })
-export class EstudianteAdministracionComponent {
+export class EstudianteAdministracionComponent implements OnInit{
+  datosEstudiantes: Estudiante[] = [];
+
   displayedColumns: string[] = ['id', 'cedula', 'nombreCompleto', 'nivel', 'ciclo', 'medioDifusion','acciones'];
-  dataSource = ELEMENT_DATA;
 
   filtro: string[] = [
     'Cedula',
@@ -40,7 +37,18 @@ export class EstudianteAdministracionComponent {
     'Opcion 3',
   ];
   
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private estudianteService:EstudianteAdministracionService) {}
+  
+    ngOnInit(): void {
+      this.estudianteService.obtenerEstudiantes().subscribe(respuesta =>{
+        this.datosEstudiantes=respuesta.data;
+        console.log(this.datosEstudiantes)
+  
+      });
+    }
+
   mostrarDialogoVer() {
     this.dialog.open(VerEstudianteAdministracionComponent);
   }

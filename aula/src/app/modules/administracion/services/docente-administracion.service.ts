@@ -10,10 +10,7 @@ export class DocenteAdministracionService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerDocentes(id : number): Observable<any> {    
-    const post = {
-      docente: id
-    };
+  obtenerDocentes(): Observable<any> {    
     const url = `${environment.urlBAse}${environment.pathUrl.urlDocenteAdmin.obtenerDocentes}`;    
     const httpOptions = {
       headers: new HttpHeaders({
@@ -21,7 +18,19 @@ export class DocenteAdministracionService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    console.log(url, post);
-    return this.http.post(url, post,httpOptions);
+    console.log(url);
+    return this.http.get(url, httpOptions);
+  }
+
+  obtenerPagoDocentes(): Observable<any> {    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocenteAdmin.obtenerPagoDocentes}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(url);
+    return this.http.get(url, httpOptions);
   }
 }

@@ -6,6 +6,7 @@ import { EntregaModel } from '../../models/EntregaModel';
 import { PresentarActividad } from '../../models/presentarActividad';
 import { presentarActividadesModel } from '../../models/presentarActividadesModel';
 import { ActividadesService } from '../materia/services/actividades.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-vista-actividad',
@@ -22,7 +23,7 @@ export class VistaActividadComponent implements OnInit {
   id_curso: number = 0;
 
 
-  constructor(private router: Router, private actividadService: ActividadesService,) { }
+  constructor(private router: Router, private actividadService: ActividadesService, private location: Location) { }
 
   ngOnInit() {
     console.log(this.idActividad);
@@ -66,6 +67,9 @@ export class VistaActividadComponent implements OnInit {
   }
 
   regresar(){
-    this.router.navigate(['/estudiante/cursos']);
+    this.location.back();
+  }
+  editarEntrega(actividad: any){
+    this.idActividad
   }
 }

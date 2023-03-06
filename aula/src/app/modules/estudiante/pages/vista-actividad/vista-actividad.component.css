@@ -58,12 +58,7 @@ button{
     font-weight: bolder;
 }
 
-.Calificada{
-    background-color: #47EC29;
-    color: white;
-    font-weight: bolder;
-}
 
-.NoEnviada, .Enviada, .Pendiente, .Calificada{
+.NoEnviada, .Enviada, .Pendiente{
     border: black !important;
   }

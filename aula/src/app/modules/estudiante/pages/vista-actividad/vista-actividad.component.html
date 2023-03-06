@@ -48,8 +48,7 @@
               <td [ngClass]="{
                 NoEnviada: actividad.estado_entrega === 'No enviada',
                 Enviada: actividad.estado_entrega === 'Enviada',
-                Pendiente: actividad.estado_entrega === 'Pendiente',
-                Calificada: actividad.estado_entrega === 'Calificada'
+                Pendiente: actividad.estado_entrega === 'Pendiente'
               }">{{actividad.estado_entrega}}</td>
             </tr>
             <tr>
@@ -69,7 +68,7 @@
       </table>
     </div>
     <div class="container-fluid d-flex justify-content-center">
-      <button onclick="regresar()">Regresar</button>
+      <button (click)="regresar()">Regresar</button>
       <button style="margin-left: 10px;">Editar Entrega</button>
     </div>
   </div>

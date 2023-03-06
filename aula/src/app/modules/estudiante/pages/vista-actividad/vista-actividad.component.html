@@ -85,18 +85,40 @@
     </div>
   </div>
 </div>
-<br> <br>
+<br />
+<br />
 <div *ngIf="!presentar">
-  <h2><b>EDITAR ENTREGA</b></h2>
-  <form>
-    <div class="form-group">
-      <label for="exampleFormControlFile1" class="nombreC">Tamaño máximo de archivos 5MB</label><br> <br>
-      <input type="file" class="form-control" id="exampleFormControlFile1"/>
+  <div class="container-fluid">
+    <div
+      class="pt-5 text-center align.items.justify-content-left mx-auto text-center"
+    >
+      <h2><b>EDITAR ENTREGA</b></h2>
     </div>
-    <div>
-      <button (click)="cancelarAccion()">Regresar</button>
-      <button onclick="guardar()">Guardar</button>
-    </div>
-  </form>
+    <form>
+      <div class="form-group">
+        <label for="exampleFormControlFile1"
+          >Tamaño máximo de archivos 5MB</label
+        ><br />
+        <br />
+        <input
+          type="file"
+          class="form-control pt-5 text-center align.items.justify-content-left mx-auto text-center"
+          id="exampleFormControlFile1"
+          style="width: 60%"
+        />
+      </div>
+      <br />
+      <div
+        class="pt-5 text-center align.items.justify-content-left mx-auto text-center"
+      >
+        <button (click)="guardar()" style="margin-right: 5px">Guardar</button>
+        <button (click)="cancelarAccion()" style="margin-left: 5px">
+          Regresar
+        </button>
 
-<br /><br />
+        <br />
+      </div>
+    </form>
+  </div>
+  <br /><br />
+</div>

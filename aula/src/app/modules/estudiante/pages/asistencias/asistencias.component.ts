@@ -18,7 +18,7 @@ export class AsistenciasComponent {
   id = parseInt(this.cookie.get('id'));
   //opciones para jacer el filtrado en la tabla
   filterValue = '';
-  selectedState = '';
+  selectedState = 'Presente';
   selected = '0';
 
   estados = [

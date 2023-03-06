@@ -21,8 +21,10 @@ export class MateriaComponent {
   obtenerEntregas!: EntregaModel[];
   presentarActividadesModel: presentarActividadesModel[] = [];
   id_curso: number = 0;
+  
   public entregasActividades: any;
   public mostrarContenido = false;
+  opcionSeleccionada = 1;
 
   public aparecerComponente = 1;
 
@@ -36,6 +38,9 @@ export class MateriaComponent {
   ) {}
 
   ngOnInit(): void {
+    this.mostrarMaterias();
+  }
+  mostrarMaterias(){
     console.log(this.actividadService.presentarEdicion);
 
     this.curso = history.state.data;
@@ -67,7 +72,9 @@ export class MateriaComponent {
       });
     });
   }
-
+  seleccionarOpcion(opcion: number) {
+    this.opcionSeleccionada = opcion;
+  }
   onSelectAccion(event: number){
     this.aparecerComponente = event;
   }

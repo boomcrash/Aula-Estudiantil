@@ -28,6 +28,12 @@ export class VistaActividadComponent implements OnInit {
   constructor(private router: Router, private actividadService: ActividadesService, private location: Location) { }
 
   ngOnInit() {
+    
+    this.mostrarActividades();
+    
+  }
+  
+  mostrarActividades(){
     console.log(this.actividadService.presentarEdicion);
     console.log(this.idActividad);
     this.curso = history.state.data;
@@ -67,11 +73,7 @@ export class VistaActividadComponent implements OnInit {
         console.log(this.presentarActividad);
       });
     });
-
-    
   }
-  
-
   regresar(){
     this.location.back();
   }

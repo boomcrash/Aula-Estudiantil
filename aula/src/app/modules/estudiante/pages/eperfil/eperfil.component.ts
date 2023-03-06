@@ -14,27 +14,28 @@ import { combineLatest } from 'rxjs';
 })
 export class EperfilComponent {
   panelOpenState = false;
+  id = parseInt(this.cookie.get('id'));
+  dataSource!: any;
+  dataSourceItemMatricula!: ItemMatricula[];
+  dataSoruceOrdenPago!: OrdenPago[];
+  dataSourceOrdenMatricula: any;
   constructor(
     private cookie:CookieService, private estudianteuser: EPerfilService
   ){
   }
-
-
-
-  id = parseInt(this.cookie.get('id'));
-  dataSource: any;
-  dataSourceItemMatricula!: ItemMatricula[];
-  dataSoruceOrdenPago!: OrdenPago[];
-  dataSourceOrdenMatricula: any;
   
-  displayedColumns = ['no', 'fecha', 'item', 'cantidad', 'subtotal', 'desc', 'total'];
-
+  
+  
   ngOnInit(): void {
-    this.id = parseInt(this.cookie.get('id'));
+    this.obtenerDatosPerfil();
+  }
+
+
+  obtenerDatosPerfil(){
     this.estudianteuser.obtenerDatosEstudiante(this.id).subscribe(data => {
       const estudiante: EstudiantePerfil = {
         id_usuario: data.data[0].id_usuario,
-        nombre_usuario: data.data[0].nombre_usuario,
+        nombre_usuario: data.data[0]?.nombre_usuario,
         contrasena_usuario: data.data[0].contrasena_usuario,
         rol_usuario: data.data[0].rol_usuario,
         id_estudiante: data.data[0].id_estudiante,
@@ -51,23 +52,26 @@ export class EperfilComponent {
         medio_estudiante: data.data[0].medio_estudiante,
         estado_estudiante: data.data[0].estado_estudiante
       };
-      console.log(estudiante);
       this.dataSource = estudiante;
     });
-      
+      this.obtenerOrdenPago();
+  }
+
+  obtenerOrdenPago(){
+    
     this.estudianteuser.obtenerItemMatricula(this.id).subscribe(data=>{
       this.dataSourceItemMatricula=data.data;
       
-      // Usar el id_matricula obtenido para llamar a la función obtenerOrdenPago
+      // Usa el id_matricula obtenido para llamar a la función obtenerOrdenPago
       const id_matricula = this.dataSourceItemMatricula[0].id_matricula;
       this.estudianteuser.obtenerOrdenPago(id_matricula).subscribe(data=>{
         this.dataSoruceOrdenPago=data.data;
         
-        // Crear objeto combinando los datos de dataSourceItemMatricula y dataSoruceOrdenPago
+        // Crea objeto combinando los datos de dataSourceItemMatricula y dataSoruceOrdenPago
         const itemmat: ItemMatricula = {
           id_matricula: this.dataSourceItemMatricula[0].id_matricula,
           estudiante_matricula: this.dataSourceItemMatricula[0].estudiante_matricula,
-          fecha_matricula: this.dataSourceItemMatricula[0].fecha_matricula,
+          fecha_matricula: this.dataSourceItemMatricula[0]?.fecha_matricula,
           ciclo_matricula: this.dataSourceItemMatricula[0].ciclo_matricula,
           id_itemMatricula: this.dataSoruceOrdenPago[0].id_itemMatricula,
           matricula_pagoMatricula: this.dataSoruceOrdenPago[0].matricula_pagoMatricula,
@@ -77,8 +81,6 @@ export class EperfilComponent {
           descuento_pagoMatricula: this.dataSoruceOrdenPago[0].descuento_pagoMatricula,
           total_pagoMatricula: this.dataSoruceOrdenPago[0].total_pagoMatricula,
         };
-        
-        console.log(itemmat);
         this.dataSourceOrdenMatricula = itemmat;
       });
     });

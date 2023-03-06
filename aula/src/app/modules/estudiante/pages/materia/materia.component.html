@@ -31,23 +31,35 @@
         type="button"
         class="btn btn-light btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
         style="width: 100%"
-        (click)="onSelectAccion(1)"
+        [ngClass]="{
+          'texto-negrita': opcionSeleccionada === 1,
+          'btn-light': opcionSeleccionada === 1
+        }"
+        (click)="seleccionarOpcion(1); onSelectAccion(1)"
       >
         <span>Actividades</span>
       </button>
       <button
         type="button"
-        class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start texto-negrita"
+        class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
         style="width: 100%"
-        (click)="onSelectAccion(2)"
+        [ngClass]="{
+          'texto-negrita': opcionSeleccionada === 2,
+          'btn-light': opcionSeleccionada === 2
+        }"
+        (click)="seleccionarOpcion(2); onSelectAccion(2)"
       >
         <span>Asistencias</span>
       </button>
       <button
         type="button"
-        class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start texto-negrita"
+        class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
         style="width: 100%"
-        (click)="onSelectAccion(3)"
+        [ngClass]="{
+          'texto-negrita': opcionSeleccionada === 3,
+          'btn-light': opcionSeleccionada === 3
+        }"
+        (click)="seleccionarOpcion(3); onSelectAccion(3)"
       >
         <span>Participantes</span>
       </button>

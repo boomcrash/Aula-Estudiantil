@@ -69,6 +69,9 @@ th{
   
   }
   
+  tr:nth-child(even) td {
+      background-color: #f2f2f2; /* Color de fondo gris */
+    }
     table td, table th {
         text-align: center;
       }
@@ -81,31 +84,37 @@ th{
     height: 40px;
     width: 40px;
 }
-
-tbody tr:nth-of-type(odd) {
-    background-color: #fff;
+.mat-elevation-z8 {  
+    flex-direction: column;  
+    border-right: 1px solid currentColor;
+    border-left: 1px solid currentColor;
+    text-align: center;
+    width: 500px;
+  }
+  .cuerpo-empresas {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+  
+  .contenido-empresas {
+    display: flex;
+    flex-direction: row;  
+    justify-content: space-between;    
+    width: 100%;
+  }
+  .empresa {  
+    width: 500px;  
+    height: 300px;  
+    margin: auto;
+    padding: 20px;  
+    position: relative;
+    overflow: hidden;    
+    height: 50%;
+    text-align: center;
   }
 
-.Enviada{
-    background-color: #188754;
-    color: white;
+.falta{
+    color: red;
     font-weight: bolder;
 }
-.NoEnviada{
-    background-color: #373737;
-    color: white;
-    font-weight: bolder;
-}
-.Pendiente{
-    background-color: yellow;
-    color: white;
-    font-weight: bolder;
-}
-
-.NoEnviada, .Enviada, .Pendiente {
-    width: 1% !important; 
-  }
-
-.add {
-    cursor: pointer;
-  }

@@ -37,7 +37,7 @@ export class EperfilComponent {
         nombre_usuario: data.data[0].nombre_usuario,
         contrasena_usuario: data.data[0].contrasena_usuario,
         rol_usuario: data.data[0].rol_usuario,
-        usuario_estudiante: data.data[0].usuario_estudiante,
+        id_estudiante: data.data[0].id_estudiante,
         nombres_estudiante: data.data[0].nombres_estudiante,
         apellidos_estudiante: data.data[0].apellidos_estudiante,
         cedula_estudiante: data.data[0].cedula_estudiante,

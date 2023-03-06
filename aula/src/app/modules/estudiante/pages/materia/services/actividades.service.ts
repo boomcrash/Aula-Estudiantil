@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ActividadesService {
-
+  public presentarEdicion: boolean = true; 
   constructor(private http: HttpClient) { }
 
   obtenerActividades(curso_actividad: number): Observable<any> {    
@@ -29,4 +29,6 @@ export class ActividadesService {
     const url = `${environment.urlBAse}/api/v1/entregas/getEntregas`;      
     return this.http.get(url);
   }
+
+  
 }

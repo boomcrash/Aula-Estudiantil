@@ -19,13 +19,15 @@ export class VistaActividadComponent implements OnInit {
   dataSourceActividades!: ActividadesModel[];
   obtenerEntregas!: EntregaModel[];
   presentarActividad: PresentarActividad[] = [];
-
+  public presentarEditar = 5;
+  public presentarEdicion: boolean = true;
   id_curso: number = 0;
 
 
   constructor(private router: Router, private actividadService: ActividadesService, private location: Location) { }
 
   ngOnInit() {
+    console.log(this.actividadService.presentarEdicion);
     console.log(this.idActividad);
     this.curso = history.state.data;
     console.log(this.curso);
@@ -64,12 +66,15 @@ export class VistaActividadComponent implements OnInit {
         console.log(this.presentarActividad);
       });
     });
+
+    
   }
 
   regresar(){
     this.location.back();
   }
-  editarEntrega(actividad: any){
-    this.idActividad
+  editarEntrega(){
+    this.actividadService.presentarEdicion = false;
   }
+  
 }

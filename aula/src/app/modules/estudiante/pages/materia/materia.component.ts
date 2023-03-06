@@ -27,6 +27,8 @@ export class MateriaComponent {
   public aparecerComponente = 1;
 
   idActividad = 0;
+
+  public presentarEdicion: boolean = this.actividadService.presentarEdicion;
   constructor(
     private http: HttpClient,
     private actividadService: ActividadesService,
@@ -34,7 +36,8 @@ export class MateriaComponent {
   ) {}
 
   ngOnInit(): void {
-    
+    console.log(this.actividadService.presentarEdicion);
+
     this.curso = history.state.data;
     console.log(this.curso);
     this.id_curso = this.curso.id_curso;

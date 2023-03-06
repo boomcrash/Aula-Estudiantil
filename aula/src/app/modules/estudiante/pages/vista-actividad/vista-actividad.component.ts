@@ -70,6 +70,7 @@ export class VistaActividadComponent implements OnInit {
 
     
   }
+  
 
   regresar(){
     this.location.back();
@@ -81,6 +82,11 @@ export class VistaActividadComponent implements OnInit {
   cancelarAccion(){
     this.actividadService.presentarEdicion = true;
     this.presentar = this.actividadService.presentarEdicion; 
+
+  }
+  guardar(){
+    this.actividadService.presentarEdicion = true;
+    this.presentar = this.actividadService.presentarEdicion;
 
   }
 }

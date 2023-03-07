@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { HorarioDocente } from '../../interfaces/horarioDocente.interface';
 import { HorarioDocenteTabla } from '../../interfaces/horarioDocenteTabla.interface';
 import { horarioServiceDocente } from './services/horario.service';
@@ -10,7 +11,7 @@ import { horarioServiceDocente } from './services/horario.service';
   templateUrl: './horario.component.html',
   styleUrls: ['./horario.component.css']
 })
-export class HorarioComponent implements OnInit{
+export class HorarioComponent implements OnInit {
   id = parseInt(this.cookie.get('id'));
   horarioDocente: HorarioDocente[] = [];
   horarioDocenteTabla: HorarioDocenteTabla[] = [];
@@ -18,30 +19,34 @@ export class HorarioComponent implements OnInit{
   dataSource: any = [];
   constructor(
     private horarioService: horarioServiceDocente,
-    private cookie: CookieService,){
+    private cookie: CookieService,
+    private autentificar: AuthService) {
 
   }
 
   ngOnInit(): void {
     let id_curso = [0]
-    this.horarioService.obtenerHorarios(this.id).toPromise().then(resp => {
-      console.log(resp)
-      this.horarioDocente = resp.data;
-      id_curso = []
+    let id_docente: number = 0;
+    this.autentificar.obtenerDatosCompletos(this.id.toString()).subscribe(resp => {
+      id_docente = resp.data[0].id_docente;
+      this.horarioService.obtenerHorarios(id_docente).toPromise().then(resp => {
+        console.log(resp)
+        this.horarioDocente = resp.data;
+        id_curso = []
         for (let i = 0; i < this.horarioDocente.length; i++) {
           id_curso.push(this.horarioDocente[i].id_curso);
         }
         let arregloSinRepetidos = id_curso.filter((valor, indice) => {
           return id_curso.indexOf(valor) === indice;
-        });  
-        console.log(arregloSinRepetidos)    
+        });
+        console.log(arregloSinRepetidos)
 
-        for(let i = 0;i<arregloSinRepetidos.length;i++){
+        for (let i = 0; i < arregloSinRepetidos.length; i++) {
           const Horario_Ordenado: HorarioDocenteTabla = {
             id_curso: arregloSinRepetidos[i],
             modulo_materia: 0,
             nombre_materia: '',
-            nombre_paralelo: '',            
+            nombre_paralelo: '',
             horario_ordenado: [
               {
                 dia_horario: "",
@@ -116,10 +121,13 @@ export class HorarioComponent implements OnInit{
         }
         console.log(this.horarioDocenteTabla)
         this.dataSource = new MatTableDataSource<HorarioDocenteTabla>(this.horarioDocenteTabla);
-    }).catch(
-      err => {
-        console.error(err);        
-      }
-    );
+      }).catch(
+        err => {
+          console.error(err);
+        }
+      );
+
+    });
+
   }
 }

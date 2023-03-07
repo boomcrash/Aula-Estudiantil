@@ -20,6 +20,7 @@ export const environment = {
     UrlObtenerMaterias: '/api/v1/materias/getItemMaterias',
     urlObtenerAsistenciasByIdEstudiante:
       '/api/v1/asistencias/getAsistenciasByIdEstudiante',
+    urlModificarEntrega: '/api/v1/entregas/updateEntrega',
     urlDocentes: {
       obtenerCursos: '/api/v1/cursos/getCursosDocente',
       obtenerActividades: '/api/v1/actividades/getActividadByCurso',
@@ -28,6 +29,7 @@ export const environment = {
       agregarActividad: '/api/v1/actividades/addActividad',
       obtenerContratoDocente: '/api/v1/contratos/getContratosByIdDocente',
       obtenerDocente: '/api/v1/docentes/getTeachers',
+      obtenerPagoDocenteByDocenteId: '/api/v1/pagoDocentes/getPagoDocenteByDocenteId',
     },
   },
 };

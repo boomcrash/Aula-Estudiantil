@@ -1,4 +1,5 @@
 export interface DocenteModel{
+    id_docente: number;
     usuario_docente: number;
     nombres_docente: string;
     apellidos_docente: string;

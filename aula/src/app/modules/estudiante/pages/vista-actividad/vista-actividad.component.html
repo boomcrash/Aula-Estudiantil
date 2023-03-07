@@ -5,7 +5,7 @@
     >
       <h1
         style="width: fit-content"
-        *ngFor="let actividad of presentarActividad"
+        *ngFor="let actividad of presentarActividad "
       >
         {{ actividad.tipo_actividad }}
       </h1>
@@ -94,7 +94,7 @@
     >
       <h2><b>EDITAR ENTREGA</b></h2>
     </div>
-    <form>
+    <form [formGroup]="entregaForm" (ngSubmit)="guardar()" novalidate>
       <div class="form-group">
         <label for="exampleFormControlFile1"
           >Tamaño máximo de archivos 5MB</label
@@ -111,7 +111,7 @@
       <div
         class="pt-5 text-center align.items.justify-content-left mx-auto text-center"
       >
-        <button (click)="guardar()" style="margin-right: 5px">Guardar</button>
+        <button style="margin-right: 5px">Guardar</button>
         <button (click)="cancelarAccion()" style="margin-left: 5px">
           Regresar
         </button>

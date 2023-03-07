@@ -155,6 +155,6 @@
   <br />
 </div>
 
-<div *ngIf="idActividad != 0 && presentarEdicion">
+<div *ngIf="presentarActividadesModel.length != 0 && aparecerComponente == 1 && idActividad != 0 && presentarEdicion">
   <app-vista-actividad [idActividad]="idActividad"></app-vista-actividad>
 </div>

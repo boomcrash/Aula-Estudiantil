@@ -88,6 +88,20 @@ export class DocentesService {
     return this.http.post(url, post,httpOptions);
   }
 
+  obtenerPagoDocente(docente_pagoDocente: number): Observable<any> {    
+    const post = {
+      docente_pagoDocente
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerPagoDocenteByDocenteId}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(url, post);
+    return this.http.post(url, post,httpOptions);
+  }
 
   modificarActividad(actividad : ActividadModel): Observable<any> {    
     const body = {

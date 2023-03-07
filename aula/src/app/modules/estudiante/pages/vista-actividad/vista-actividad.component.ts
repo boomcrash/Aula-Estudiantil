@@ -4,9 +4,10 @@ import { ActividadesModel } from '../../models/actividadesModel';
 import { CursoModel } from '../../models/cursoModel';
 import { EntregaModel } from '../../models/EntregaModel';
 import { PresentarActividad } from '../../models/presentarActividad';
-import { presentarActividadesModel } from '../../models/presentarActividadesModel';
 import { ActividadesService } from '../materia/services/actividades.service';
-import { Location } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { UpdateEntregaModel } from '../../models/updateEntrega';
 
 @Component({
   selector: 'app-vista-actividad',
@@ -15,21 +16,35 @@ import { Location } from '@angular/common';
 })
 export class VistaActividadComponent implements OnInit {
   @Input() idActividad!: number;
+  entregaForm!: FormGroup;
+
   curso!: CursoModel;
   dataSourceActividades!: ActividadesModel[];
   obtenerEntregas!: EntregaModel[];
   presentarActividad: PresentarActividad[] = [];
-  public presentarEditar = 5;
-  public presentarEdicion: boolean = true;
+  
   id_curso: number = 0;
+  public id_entrega: number = 0;
+  nuevoArchivo!: "nuevo.com";
+
 
   public presentar: boolean = true;
+  public presentarEditar = 5;
+  public presentarEdicion: boolean = true;
+
 
   constructor(
     private router: Router,
-    private actividadService: ActividadesService,
+    private actividadService: ActividadesService,private formBuilder: FormBuilder,  private datePipe: DatePipe,
     private location: Location
-  ) {}
+  ) {
+    this.entregaForm = this.formBuilder.group({
+      fechaEnvio_entrega: [''],
+      fechaModificacion_entrega: [''],
+      archivo_entrega: [''],
+      estado_entrega: [''],
+    })
+  }
 
   ngOnInit() {
     this.mostrarActividades();
@@ -75,23 +90,50 @@ export class VistaActividadComponent implements OnInit {
                   estado_entrega: this.obtenerEntregas[i].estado_entrega,
                 };
                 this.presentarActividad.push(presentarLaActividad);
+
+
+                this.id_entrega = this.obtenerEntregas[i].id_entrega;
               }
             }
           }
         });
     });
   }
+
   regresar() {
     this.location.back();
   }
+
   editarEntrega() {
     this.actividadService.presentarEdicion = false;
     this.presentar = this.actividadService.presentarEdicion;
   }
+
   cancelarAccion() {
     this.actividadService.presentarEdicion = true;
     this.presentar = this.actividadService.presentarEdicion;
   }
+  
   guardar() {
+    const entrega: UpdateEntregaModel = {
+      id_entrega: this.id_entrega,
+      fechaEnvio_entrega: this.presentarActividad[0].fechaEnvio_entrega, // utilizar el valor existente
+      fechaModificacion_entrega: this.convertirFecha(new Date().toISOString()), // utilizar el valor actualizado
+      archivo_entrega: this.nuevoArchivo || this.presentarActividad[0].archivo_entrega, // utilizar el valor nuevo o existente
+      estado_entrega: this.entregaForm.value.estado_entrega, // utilizar el valor existente
+      
+    }
+    console.log(entrega)
+    this.actividadService.modificarEntrega(entrega).subscribe(data => {
+      this.actividadService.sendUpdate(true);
+      console.log(data);
+    });
+    this.actividadService.presentarEdicion = true;
+    this.presentar = this.actividadService.presentarEdicion;
+  }
+  
+  convertirFecha(fecha: string): string {
+    var fechaConvertida = this.datePipe.transform(fecha, 'yyyy-MM-dd')!;
+    return fechaConvertida!;
   }
 }

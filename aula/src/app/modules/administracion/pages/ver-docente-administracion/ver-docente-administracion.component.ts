@@ -4,13 +4,6 @@ import { Docente } from '../../models/docenteModel';
 import { MateriaDocente } from '../../models/materiaDocenteModel';
 import { DocenteAdministracionService } from '../../services/docente-administracion.service';
 
-export interface PeriodicElement {
-  id: number;
-  materia: string;
-  paralelo: string;
-  modulo: number;
-  calificacion: number;
-}
 
 @Component({
   selector: 'app-ver-docente-administracion',
@@ -21,7 +14,7 @@ export class VerDocenteAdministracionComponent implements OnInit {
   docente!: Docente;
   datosMateriasDocente: MateriaDocente[] = [];
 
-  displayedColumns: string[] = ['id', 'materia', 'paralelo', 'modulo', 'calificacion'];
+  displayedColumns: string[] = ['id', 'materia', 'paralelo', 'evaluo', 'calificacion'];
 
 
   constructor(
@@ -31,7 +24,7 @@ export class VerDocenteAdministracionComponent implements OnInit {
 
   ngOnInit(): void {
     this.docente=history.state.data;
-    this.docenteService.obtenerMateriasDocentes(1).subscribe(data => {
+    this.docenteService.obtenerEvaluacionesDocentes(1).subscribe(data => {
       this.datosMateriasDocente=data.data
       console.log
     });

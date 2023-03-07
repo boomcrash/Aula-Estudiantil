@@ -5,15 +5,8 @@ import { PagosDocenteAdministracionComponent } from '../pagos-docente-administra
 import { VerDocenteAdministracionComponent } from '../ver-docente-administracion/ver-docente-administracion.component';
 import { Docente } from '../../models/docenteModel';
 import { DocenteAdministracionService } from '../../services/docente-administracion.service';
+import { Router } from '@angular/router';
 
-export interface PeriodicElement {
-  id: number;
-  cedula: string;
-  nombreCompleto: string;
-  ciclo: string;
-  estado: string;
-  contrato: string;
-}
 
 @Component({
   selector: 'app-docente-administracion',
@@ -41,6 +34,7 @@ export class DocenteAdministracionComponent implements OnInit {
   ];
 
   constructor(
+    private router: Router,
     private dialog: MatDialog,
     private docenteService:DocenteAdministracionService) {}
 
@@ -51,8 +45,8 @@ export class DocenteAdministracionComponent implements OnInit {
 
     });
   }
-  mostrarDialogoPagos() {
-    this.dialog.open(PagosDocenteAdministracionComponent);
+  mostrarPagos() {
+    this.router.navigate(['/administracion/pagos-docente-administracion']);
   }
 
   mostrarDialogoContrato() {

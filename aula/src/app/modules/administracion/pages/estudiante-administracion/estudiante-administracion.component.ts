@@ -4,14 +4,6 @@ import { Estudiante } from '../../models/estudianteModel';
 import { EstudianteAdministracionService } from '../../services/estudiante-administracion.service';
 import { VerEstudianteAdministracionComponent } from '../ver-estudiante-administracion/ver-estudiante-administracion.component';
 
-export interface PeriodicElement {
-  id: number;
-  cedula: string;
-  nombreCompleto: string;
-  nivel: number;
-  ciclo: string;
-  medioDifusion: string;
-}
 
 @Component({
   selector: 'app-estudiante-administracion',
@@ -21,7 +13,7 @@ export interface PeriodicElement {
 export class EstudianteAdministracionComponent implements OnInit{
   datosEstudiantes: Estudiante[] = [];
 
-  displayedColumns: string[] = ['id', 'cedula', 'nombreCompleto', 'nivel', 'ciclo', 'medioDifusion','acciones'];
+  displayedColumns: string[] = ['id', 'cedula', 'nombreCompleto', 'ciclo', 'medioDifusion','acciones'];
 
   filtro: string[] = [
     'Cedula',

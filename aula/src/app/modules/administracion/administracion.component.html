@@ -10,40 +10,40 @@
         <div class="contenido-central">
             
                 <div class="central-izq">
-                    <div class="central-izq-up">
+                    <div (click)="irDocentes()" class="central-izq-up">
                         <div>
-                            <h1>14</h1>
+                            <h2>14</h2>
                             <h3>DOCENTES</h3>
                             <p>CICLO ACTUAL</p>
                         </div>
                         <div>
-                            <img width="80px" height="80px" src="./../../../assets/imagen/docente-blanco.png" alt="iconoDocente">
+                            <img width="80px"  src="./../../../assets/imagen/docente-blanco.png" alt="iconoDocente">
                         </div>
                     </div>
-                    <div class="central-izq-dwn">
+                    <div (click)="irEstudiantes()" class="central-izq-dwn">
                         <div>
-                            <h1>567</h1>
+                            <h2>567</h2>
                             <h3>ESTUDIANTES</h3>
                             <p>CICLO ACTUAL</p>
                         </div>
                         <div>
-                            <img width="80px" height="80px" src="./../../../assets/imagen/estudiante-blanco.png" alt="iconoEstudiante">
+                            <img width="80px"  src="./../../../assets/imagen/estudiante-blanco.png" alt="iconoEstudiante">
                         </div>
                     </div>
                 </div>
-                <div class="central-der" style="background-color: #F0F0F0;">
-                    <div class="central-der-up">
-                        <div>
-                            <h1> {{docente.ciclo_contrato}} </h1>
-                            <h4> {{docente.nombres_docente}} </h4>
-                            <h4> {{docente.apellidos_docente}} </h4>
+                <div class="central-der">
+                    <div class="central-der-up" >
+                        <div class="item" *ngFor="let element of datosDocentes">
+                            <h2 style="color:black"> {{element.promedio_docente}} </h2>
+                            <h4 style="color:black"> {{element.nombrescompletos_docente}} </h4>
+                            
                         </div>
                     </div>
-                    <div class="central-der-dwn">
-                        <div>
-                            <h1> {{estudiante.ciclo_matricula}} </h1>
-                            <h4> {{estudiante.nombres_estudiante}} </h4>
-                            <h4> {{estudiante.apellidos_estudiante}} </h4>
+                    <div class="central-der-dwn" >
+                        <div class="item" *ngFor="let element of datosEstudiantes">
+                            <h2 style="color:black"> {{element.promedio_estudiante}} </h2>
+                            <h4 style="color:black"> {{element.nombrescompletos_estudiante}}  </h4>
+                            
                         </div>
                     </div>
                 </div>

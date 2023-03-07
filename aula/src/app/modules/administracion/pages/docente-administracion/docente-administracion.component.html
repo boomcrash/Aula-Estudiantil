@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="contenido-tabla">
-    <button (click)="mostrarDialogoPagos()" class="pagos" style="background-color: #20BCD1;" mat-raised-button>PAGOS</button>
+    <button (click)="mostrarPagos()" class="pagos" style="background-color: #20BCD1;" mat-raised-button>PAGOS</button>
 
     <mat-form-field appearance="fill">
         <mat-label>Filtrar por:</mat-label>
@@ -44,13 +44,13 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="nombreCompleto">
           <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
-          <td mat-cell *matCellDef="let element"> {{element.nombres_docente}} {{element.apellidos_docente}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.nombresCompletos_docente}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
         <ng-container matColumnDef="ciclo">
           <th mat-header-cell *matHeaderCellDef> Ciclo </th>
-          <td mat-cell *matCellDef="let element"> *Ciclo Docente </td>
+          <td mat-cell *matCellDef="let element"> {{element.ciclo_contrato}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
@@ -62,7 +62,7 @@
         <!-- Symbol Column -->
         <ng-container matColumnDef="contrato">
             <th mat-header-cell *matHeaderCellDef> Contrato </th>
-            <td style="cursor: pointer;" (click)="mostrarDialogoContrato()" mat-cell *matCellDef="let element"> *Contrato Docente </td>
+            <td style="cursor: pointer;" (click)="mostrarDialogoContrato()" mat-cell *matCellDef="let element"> {{element.tipo_contrato}} </td>
         </ng-container>
 
         <ng-container matColumnDef="acciones">

@@ -21,7 +21,6 @@ export class DocenteAdministracionService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    console.log(url);
     return this.http.post(url, post,httpOptions);
   }
 
@@ -49,11 +48,11 @@ export class DocenteAdministracionService {
     return this.http.get(url, httpOptions);
   }
 
-  obtenerMateriasDocentes(id : number): Observable<any> {   
+  obtenerEvaluacionesDocentes(id : number): Observable<any> {   
     const post = {
       docente_curso: id
     }; 
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocenteAdmin.obtenerMateriasDocente}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocenteAdmin.obtenerEvaluacionesDocente}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        

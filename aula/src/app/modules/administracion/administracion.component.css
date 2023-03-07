@@ -76,32 +76,44 @@ mat-grid-tile {
 .central-izq{
    width: 30%;
    height: 100%;
-   background-color: #20BCD1;
    margin: 15px;
    color: white;
-   cursor: pointer;
+   display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 .central-izq-up, .central-izq-dwn{
-    margin-bottom: 20px;
     padding: 20px;
     background-color: #192A51;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 30px;
+    min-height: 178px;
 }
 
 .central-der{
-    width: 70%;
+    width: 90%;
     height: 100%;
     margin: 15px;
-    border: 2px solid black;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
  }
 
 .central-der-up, .central-der-dwn{
     
     padding: 20px;
-    
+    min-height: 178px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    /*overflow-x: scroll;*/
+    background-color: #f0f0f0;
 }
-
-  
+h2 {
+    font-size: 25pt;
+}
+  .item{
+    width: 500px;
+  }

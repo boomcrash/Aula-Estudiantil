@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdministracionComponent } from './administracion.component';
 import { DocenteAdministracionComponent } from './pages/docente-administracion/docente-administracion.component';
 import { EstudianteAdministracionComponent } from './pages/estudiante-administracion/estudiante-administracion.component';
+import { PagosDocenteAdministracionComponent } from './pages/pagos-docente-administracion/pagos-docente-administracion.component';
 
 
 const routes: Routes = [
@@ -23,8 +24,12 @@ const routes: Routes = [
     path: 'estudiante-administracion', 
     component: EstudianteAdministracionComponent,
     // canActivate: [LoginGuardian]
+  },
+  { 
+    path: 'pagos-docente-administracion', 
+    component: PagosDocenteAdministracionComponent,
   }
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

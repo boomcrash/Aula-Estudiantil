@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,7 @@ export class EstudianteAdministracionService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerTopEstudiantes(id : number): Observable<any> {  
+  obtenerTopEstudiantes(id : string): Observable<any> {  
     const post = {
       ciclo_matricula: id
     }; 
@@ -21,7 +22,6 @@ export class EstudianteAdministracionService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    console.log(url);
     return this.http.post(url, post,httpOptions);
   }
   

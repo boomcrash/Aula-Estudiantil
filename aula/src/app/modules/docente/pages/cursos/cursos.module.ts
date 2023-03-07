@@ -19,6 +19,7 @@ import { CalificacionesComponent } from './calificaciones/calificaciones.compone
 import { CursoComponent } from './curso/curso.component';
 import { CursosRoutingModule } from './cursos-routing.module';
 import { AsistenciasComponent } from './asistencias/asistencias.component';
+import { RegistrarModalComponent } from './asistencias/registrar-modal/registrar-modal.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AsistenciasComponent } from './asistencias/asistencias.component';
     CalificacionesComponent,
     CursoComponent,
     CursosComponent,
-    AsistenciasComponent
+    AsistenciasComponent,
+    RegistrarModalComponent
   ],
   imports: [
     CommonModule,

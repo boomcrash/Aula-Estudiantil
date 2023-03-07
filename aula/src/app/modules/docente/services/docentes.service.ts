@@ -112,10 +112,21 @@ export class DocentesService {
     return this.http.post(url, body, httpOptions);
   }
 
-  obtenerEntregas(curso: number, actividad: number): Observable<any> {
+  borrarActividad(id: number): Observable<any> {
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.borrarActividad}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+    const body = { "id_actividad": id };
+    return this.http.delete(url, { ...httpOptions, body });
+  }
+
+  obtenerEntregas(curso: number): Observable<any> {
     const post = {
       curso_actividad: curso,
-      id_actividad: actividad
     };
     const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerEntrega}`;
     const httpOptions = {

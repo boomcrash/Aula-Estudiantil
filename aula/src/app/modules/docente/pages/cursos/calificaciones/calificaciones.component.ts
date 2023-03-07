@@ -9,6 +9,8 @@ import { DocentesService } from '../../../services/docentes.service';
 import { ActividadModel } from '../../../models/actividadModel';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { EntregaModel } from '../../../models/entregaModel';
+import { ParticipanteModel } from '../../../models/participanteModel';
 
 
 @Component({
@@ -19,14 +21,19 @@ import { Subscription } from 'rxjs';
 export class CalificacionesComponent implements OnInit, OnDestroy {
   curso!: CursoModel;
   actividades!: ActividadModel[];
+  entregas!: EntregaModel[];
+  participantes!: ParticipanteModel[];
   editar = false;
   editarIndex: number | null = null;
   isOpen = false;
+
+  isOpen2 = false;
   selectedOption = "Actividad";
+
+  selectedOption2 = "Seleccionar";
   inputPlaceholder = "Nombre de la actividad";
   actividad!: ActividadModel;
   private subscription!: Subscription;
-  filtro: string = '';
 
 
 
@@ -47,7 +54,7 @@ export class CalificacionesComponent implements OnInit, OnDestroy {
     this.obtenerActividades();
 
     if (this.actividad) {
-      this.filtro = this.actividad.nombre_actividad
+      this.selectedOption2 = this.actividad.nombre_actividad
     }
 
     this._docentesService.getUpdate().subscribe((value: boolean) => {
@@ -64,32 +71,38 @@ export class CalificacionesComponent implements OnInit, OnDestroy {
     }
   }
 
-  filtrar() {
-    const valor = this.filtro.toLowerCase();
-    return this.actividades.filter(calificacion =>
-      calificacion.nombre_actividad.toLowerCase().includes(valor)
-    );
+  getActividad(idActividad: number): ActividadModel {
+    return this.actividades.find(a => a.id_actividad === idActividad)!;
   }
 
-  async obtenerActividades() {
-    const data = await this._docentesService.obtenerActividades(this.curso.id_curso).toPromise();
-    this.actividades = data.data;
-  
-    // Array de promesas para almacenar las solicitudes de las entregas
-    const promesasEntregas: any[] = [];
-  
-    // Para cada actividad, agregamos una promesa de obtener las entregas
-    this.actividades.forEach((actividad) => {
-      if (actividad.id_actividad) {
-        promesasEntregas.push(this._docentesService.obtenerEntregas(this.curso.id_curso, actividad.id_actividad).toPromise());
-      }
+  getEstudiante(idEstudiante: number): ParticipanteModel {
+    return this.participantes.find(a => a.id_participante === idEstudiante)!;
+  }
+
+  filtrar() {
+    if (this.selectedOption == "Actividad"){
+      return this.entregas.filter(a =>  this.getActividad(a.actividad_entrega).nombre_actividad === this.selectedOption2);
+    } else {
+      return this.entregas.filter(a =>  this.getEstudiante(a.estudiante_entrega).nombrescompletos_participante === this.selectedOption2);
+    }
+  }
+
+  obtenerActividades() {
+    this._docentesService.obtenerActividades(this.curso.id_curso).subscribe(data => {
+      this.actividades = data.data
+      console.log(this.curso = data.data)
     });
-  
-    // Esperamos a que se resuelvan todas las promesas de obtener las entregas
-    const entregas = await Promise.all(promesasEntregas);
-  
-    // Asociamos las entregas con las actividades
-    console.log(entregas)
+
+    this._docentesService.obtenerEntregas(this.curso.id_curso).subscribe(data => {
+      this.entregas = data.data
+      console.log(this.entregas)
+    });
+
+    this._docentesService.obtenerParticipantes(this.curso.id_curso).subscribe(data => {
+      this.participantes = data.data
+      console.log(this.participantes)
+    });
+
   }
 
   cambiarEditar() {
@@ -100,14 +113,20 @@ export class CalificacionesComponent implements OnInit, OnDestroy {
     this.isOpen = !this.isOpen;
   }
 
+  toggleSelect2() {
+    this.isOpen2 = !this.isOpen2;
+  }
+
   selectOption(option: any) {
     this.selectedOption = option.label;
     this.isOpen = false;
-    if (this.selectedOption === 'Actividad') {
-      this.inputPlaceholder = 'Nombre de la actividad';
-    } else if (this.selectedOption === 'Estudiante') {
-      this.inputPlaceholder = 'Nombre del estudiante';
-    }
+    this.selectedOption2 = "Seleccionar"
+  }
+
+  selectOption2(actividad: string) {
+    this.selectedOption2 = actividad;
+    this.isOpen2 = false;
+
   }
 
 

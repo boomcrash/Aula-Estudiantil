@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CursoComponent } from './pages/cursos/curso/curso.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
+import { ActaModule } from './pages/acta/acta.module';
 
 
 @NgModule({

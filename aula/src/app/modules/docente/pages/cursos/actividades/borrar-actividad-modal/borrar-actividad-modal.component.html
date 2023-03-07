@@ -17,9 +17,9 @@
 
         <div class="d-flex justify-content-center pt-4 pb-4">
             
-            <button type="submit" id="botonGuardar" class="btn btn-primary mx-1 rounded-0" type="submit"
-                form="addUserForm">Guardar</button>
-            <button type="submit" id="botonCancelar" class="btn btn-outline-primary mx-1  rounded-0" type="submit"
+            <button type="submit" id="botonGuardar" class="btn btn-primary mx-1 rounded-0" type="submit" (click)="borrarActividad()"
+                form="addUserForm">Borrar</button>
+            <button type="submit" id="botonCancelar" class="btn btn-outline-primary mx-1  rounded-0" type="submit" (click)="activeModal.close()"
                 form="addUserForm">Cancelar</button>
         </div>
     </div>

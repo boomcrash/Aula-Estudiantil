@@ -25,9 +25,28 @@
         </div>
     </div>
     <div class="col-9">
-        <div class="custom-input mb-3">
-            <span class="input-label">{{ selectedOption+':' }}</span>
-            <input type="text" class="input-field input-label-style" [placeholder]="inputPlaceholder" [(ngModel)]="filtro"  (keyup)="filtrar()">
+        <div class="custom-select mb-3">
+            <div class="select-header" (click)="toggleSelect2()">
+                <div class="header-left">
+                    <span class="input-label filtrar-por">Filtrar por:</span>
+                </div>
+                <div class="header-right">
+                    <span>{{ selectedOption2 }}</span>
+                    <i class="arrow-icon" [ngClass]="{'up': isOpen2, 'down': !isOpen2}"></i>
+                </div>
+            </div>
+            <div class="options" *ngIf="isOpen2">
+                <ng-container *ngIf="selectedOption=='Actividad'; else participantesOption">
+                  <div class="option" *ngFor="let actividad of actividades" (click)="selectOption2(actividad.nombre_actividad)">
+                    {{ actividad.nombre_actividad }}
+                  </div>
+                </ng-container>
+                <ng-template #participantesOption>
+                  <div class="option" *ngFor="let participante of participantes" (click)="selectOption2(participante.nombrescompletos_participante)">
+                    {{ participante.nombrescompletos_participante }}
+                  </div>
+                </ng-template>
+              </div>
         </div>
     </div>
 </div>
@@ -48,17 +67,17 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let calificacion of (actividades ? filtrar() : []); let indice = index">
+            <ng-container *ngFor="let entrega of (entregas ? filtrar() : []); let indice = index">
                 <tr>
                     <td scope="row" class="text-center align-middle">{{indice+1}}</td>
-                    <td class="align-middle">{{calificacion.nombre_actividad}}</td>
-                    <td class="align-middle text-center">nombre</td>
+                    <td class="align-middle">{{getActividad(entrega.actividad_entrega).nombre_actividad}}</td>
+                    <td class="align-middle text-center">{{getEstudiante(entrega.estudiante_entrega).nombrescompletos_participante}}</td>
                     <td class="align-middle text-center"><span
-                            class="badge bg-secondary badge-lg rounded-0">Secondary</span></td>
+                            class="badge bg-secondary badge-lg rounded-0">{{entrega.estado_entrega}}</span></td>
                     <td class="text-center align-middle"><i class="fa fa-download" style="font-size:24px"></i></td>
                     <td class="text-center align-middle">
-                        <p *ngIf="editarIndex !== indice">-</p>
-                        <input *ngIf="editarIndex === indice" type="text" class="form-control text-center" id="usr">
+                        <p *ngIf="editarIndex !== indice">{{entrega.calificacion_entrega}}</p>
+                        <input *ngIf="editarIndex === indice" type="text" class="form-control text-center" id="usr" value="{{entrega.calificacion_entrega}}">
                     </td>
                     <td class="text-center align-middle">
                         <a type="button" class="mx-2" *ngIf="editarIndex !== indice"

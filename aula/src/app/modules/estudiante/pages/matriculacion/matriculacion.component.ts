@@ -8,6 +8,7 @@ import{Curso} from '../../models/curso.model';
 import { paralelo } from '../../models/paralelo.model';
 import{Materias} from '../../models/materias.model';
 import{MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -44,7 +45,7 @@ export class MatriculacionComponent implements OnChanges{
   });
   isEditable = true;
 
-  constructor(private _formBuilder: FormBuilder, private matriculacionService: matriculacionService, private cookie: CookieService) {}
+  constructor(private _formBuilder: FormBuilder, private matriculacionService: matriculacionService, private cookie: CookieService, private router: Router) {}
 
   ngOnInit() {    
     this.matriculacionService.obtenerHorariosmatricula(1).subscribe(data=>{
@@ -159,5 +160,9 @@ export class MatriculacionComponent implements OnChanges{
   this.dataSource = new MatTableDataSource<horarioMatriculacion>(this.horarioMatriculacion); 
  
       
-  }      
+  }     
+  
+  volver(){
+    this.router.navigate(['/estudiante']);
+  }
 }

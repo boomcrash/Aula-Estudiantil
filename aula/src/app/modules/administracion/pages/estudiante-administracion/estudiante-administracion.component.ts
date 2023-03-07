@@ -45,7 +45,7 @@ export class EstudianteAdministracionComponent implements OnInit{
       this.estudianteService.obtenerEstudiantes().subscribe(respuesta =>{
         this.datosEstudiantes=respuesta.data;
         console.log(this.datosEstudiantes)
-  
+
       });
     }
 

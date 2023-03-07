@@ -1,27 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ActividadCumplida } from '../../models/actividadesCumplidasModel';
+import { EstudianteAdministracionService } from '../../services/estudiante-administracion.service';
 
 export interface PeriodicElement {
   id: number;
   actividad: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 1, actividad: 'Nombre de la Actividad'},
-  {id: 2, actividad: 'Nombre de la Actividad'},
-  {id: 3, actividad: 'Nombre de la Actividad'},
-
-];
 
 @Component({
   selector: 'app-act-c-estudiante-administracion',
   templateUrl: './act-c-estudiante-administracion.component.html',
   styleUrls: ['./act-c-estudiante-administracion.component.css']
 })
-export class ActCEstudianteAdministracionComponent {
+export class ActCEstudianteAdministracionComponent implements OnInit {
+  datosActividadCumplida: ActividadCumplida[] = [];
+
   displayedColumns: string[] = ['id', 'actividad'];
-  dataSource = ELEMENT_DATA;
   
-  constructor(private dialogRef: MatDialogRef<ActCEstudianteAdministracionComponent>) {}
+  
+  constructor(
+    private dialogRef: MatDialogRef<ActCEstudianteAdministracionComponent>,
+    private estudianteService:EstudianteAdministracionService) {}
+
+  ngOnInit(): void {
+    this.estudianteService.obtenerActividadesCEstudiantes().subscribe(respuesta =>{
+      this.datosActividadCumplida=respuesta.data;
+      console.log(this.datosActividadCumplida)
+
+    });
+  }
 
   cerrar() {
     this.dialogRef.close();

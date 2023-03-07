@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Docente } from './models/docenteModel';
+import { Estudiante } from './models/estudianteModel';
+import { DocenteAdministracionService } from './services/docente-administracion.service';
 
 
 @Component({
@@ -7,12 +10,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./administracion.component.css']
 })
 export class AdministracionComponent implements OnInit{
-  
+  datosDocentes: Docente[] = [];
+  datosEstudiantes: Estudiante[] = [];
 
-  constructor(){
+  displayedColumns: string[] = ['id', 'nombreCompleto'];
 
-  }
+
+  constructor(private docenteService:DocenteAdministracionService) {}
+
   ngOnInit(): void {
-    
+    this.docenteService.obtenerTopDocentes().subscribe(respuesta =>{
+      this.datosDocentes=respuesta.data;
+      console.log(this.datosDocentes)
+
+    });
   }
 }

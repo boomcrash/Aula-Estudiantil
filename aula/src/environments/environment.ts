@@ -28,9 +28,15 @@ urlBAse: "http://167.71.26.121:3000",
         urlDocenteAdmin: {
             obtenerDocentes: "/api/v1/docentes/getTeachers",
             obtenerPagoDocentes: "/api/v1/pagoDocentes/getPagoDocentes",
+            obtenerMaterias: "/api/v1/materias/getItemMaterias",
+            obtenerContratoDocentes: "/api/v1/contratos/getContratos",
+            obtenerTopDocentes:"/api/v1/docentes/getTop5Teacher",
         },
         urlEstudianteAdmin: {
             obtenerEstudiantes: "/api/v1/estudiantes/getStudents",
+            obtenerCicloEstudiante: "/api/v1/matriculas/getItemMatriculas",
+            obtenerMedioEstudiante: "/api/v1/medios/getMedios",
+            obtenerTopEstudiantes: "/api/v1/estudiantes/getTop5Estudiantes",
         },
         
     }

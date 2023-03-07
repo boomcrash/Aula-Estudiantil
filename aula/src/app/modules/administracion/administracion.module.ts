@@ -21,7 +21,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { VerDocenteAdministracionComponent } from './pages/ver-docente-administracion/ver-docente-administracion.component';
-import { EvaluacionDocenteAdministracionComponent } from './pages/evaluacion-docente-administracion/evaluacion-docente-administracion.component';
 import { VerEstudianteAdministracionComponent } from './pages/ver-estudiante-administracion/ver-estudiante-administracion.component';
 import { ActCEstudianteAdministracionComponent } from './pages/act-c-estudiante-administracion/act-c-estudiante-administracion.component';
 import { ActNcEstudianteAdministracionComponent } from './pages/act-nc-estudiante-administracion/act-nc-estudiante-administracion.component';
@@ -35,7 +34,6 @@ import { ActNcEstudianteAdministracionComponent } from './pages/act-nc-estudiant
     ContratoDocenteAdministracionComponent,
     PagosDocenteAdministracionComponent,
     VerDocenteAdministracionComponent,
-    EvaluacionDocenteAdministracionComponent,
     VerEstudianteAdministracionComponent,
     ActCEstudianteAdministracionComponent,
     ActNcEstudianteAdministracionComponent

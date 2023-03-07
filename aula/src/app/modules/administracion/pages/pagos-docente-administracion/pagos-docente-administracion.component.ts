@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Docente } from '../../models/docenteModel';
 import { PagoDocente } from '../../models/pagoDocentesModel';
 import { DocenteAdministracionService } from '../../services/docente-administracion.service';
 
@@ -20,6 +21,7 @@ export interface PeriodicElement {
 })
 export class PagosDocenteAdministracionComponent implements OnInit {
   datosPagoDocentes: PagoDocente[] = [];
+  datosDocentes: Docente[] = [];
 
   displayedColumns: string[] = ['fecha', 'sueldo', 'faltas', 'descuento', 'total', 'cedula', 'nombreCompleto'];
   
@@ -43,6 +45,11 @@ export class PagosDocenteAdministracionComponent implements OnInit {
     this.docenteService.obtenerPagoDocentes().subscribe(respuesta =>{
       this.datosPagoDocentes=respuesta.data;
       console.log(this.datosPagoDocentes)
+
+      this.docenteService.obtenerDocentes().subscribe(respuesta =>{
+        this.datosDocentes=respuesta.data;
+        console.log(this.datosDocentes)
+      });
 
     });
   }

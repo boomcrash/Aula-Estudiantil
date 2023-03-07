@@ -37,7 +37,7 @@ export class MatriculacionComponent implements OnChanges{
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  isEditable = false;
+  isEditable = true;
 
   constructor(private _formBuilder: FormBuilder, private matriculacionService: matriculacionService, private cookie: CookieService) {}
 

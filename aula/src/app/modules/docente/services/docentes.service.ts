@@ -59,9 +59,35 @@ export class DocentesService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-
+    
     return this.http.get(url,httpOptions);
   }
+
+
+  obtenerDatosDocente(id: number): Observable<any> {    
+    const url = `${environment.urlBAse}/api/v1/usuarios/getUsersCompleteData/${id}`;      
+    return this.http.get(url);
+  }
+  obtenerDocente(): Observable<any> {    
+    const url = `${environment.urlBAse}/api/v1/docentes/getTeachers`;      
+    return this.http.get(url);
+  }
+
+  obtenerContratoDocente(docente_contrato: number): Observable<any> {    
+    const post = {
+      docente_contrato
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerContratoDocente}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(url, post);
+    return this.http.post(url, post,httpOptions);
+  }
+
 
   modificarActividad(actividad : ActividadModel): Observable<any> {    
     const body = {

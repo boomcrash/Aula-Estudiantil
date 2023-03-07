@@ -7,3 +7,5 @@ export interface OrdenPago{
     descuento_pagoMatricula: number;
     total_pagoMatricula: number;
   }
+
+  

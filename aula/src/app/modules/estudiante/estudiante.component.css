@@ -174,10 +174,6 @@ p.fant {
   position: relative;
   overflow: hidden;    
   height: 50%;
-  text-align: center;
-}
-.empresa p{
-  text-align: justify;
 }
 .contenido-empresas img{
   width: 500px;

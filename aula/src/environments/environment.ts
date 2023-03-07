@@ -26,6 +26,8 @@ export const environment = {
       obtenerIdDocente: '/api/v1/usuarios/getUsersCompleteData/',
       modificarActividad: '/api/v1/actividades/updateActividad',
       agregarActividad: '/api/v1/actividades/addActividad',
+      obtenerContratoDocente: '/api/v1/contratos/getContratosByIdDocente',
+      obtenerDocente: '/api/v1/docentes/getTeachers',
     },
   },
 };

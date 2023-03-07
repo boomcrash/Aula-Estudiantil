@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ActividadesModel } from '../../../models/actividadesModel';
+import { UpdateEntregaModel } from '../../../models/updateEntrega';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActividadesService {
   public presentarEdicion: boolean = true; 
+  private update: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient) { }
 
   obtenerActividades(curso_actividad: number): Observable<any> {    
@@ -30,5 +33,25 @@ export class ActividadesService {
     return this.http.get(url);
   }
 
-  
+  modificarEntrega(entrega : UpdateEntregaModel): Observable<any> {    
+    const body = {
+      id_entrega: entrega.id_entrega,
+      fechaEnvio_entrega: entrega.fechaEnvio_entrega,
+      fechaModificacion_entrega: entrega.fechaModificacion_entrega,
+      archivo_entrega: entrega.archivo_entrega,
+      estado_entrega: entrega.estado_entrega,
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlModificarEntrega}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    return this.http.post(url, body, httpOptions);
+  }
+
+  public sendUpdate(value: boolean): void {
+    this.update.next(value);
+  }
 }

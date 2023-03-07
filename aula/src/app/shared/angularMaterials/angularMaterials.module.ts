@@ -26,6 +26,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -86,7 +87,8 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     MatCheckboxModule,
     MatListModule,
     MatStepperModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatExpansionModule
   ]
 })
 export class AngularMaterialsModule { }

@@ -21,8 +21,10 @@ export class MateriaComponent {
   obtenerEntregas!: EntregaModel[];
   presentarActividadesModel: presentarActividadesModel[] = [];
   id_curso: number = 0;
+  
   public entregasActividades: any;
   public mostrarContenido = false;
+  opcionSeleccionada = 1;
 
   public aparecerComponente = 1;
 
@@ -36,14 +38,13 @@ export class MateriaComponent {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.actividadService.presentarEdicion);
-
+    this.mostrarMaterias();
+  }
+  mostrarMaterias(){
     this.curso = history.state.data;
-    console.log(this.curso);
     this.id_curso = this.curso.id_curso;
     this.actividadService.obtenerEntregas().subscribe((data) => {
       this.obtenerEntregas = data.data;
-      console.log(this.curso.id_curso);
       this.actividadService.obtenerActividades(this.curso.id_curso).subscribe((data) => {
         this.dataSourceActividades = data.data;
         for (let i = 0; i < this.obtenerEntregas.length; i++) {
@@ -63,17 +64,17 @@ export class MateriaComponent {
             }
           }
         }
-        console.log(this.presentarActividadesModel);
       });
     });
   }
-
+  seleccionarOpcion(opcion: number) {
+    this.opcionSeleccionada = opcion;
+  }
   onSelectAccion(event: number){
     this.aparecerComponente = event;
   }
 
   verActividad(actividades: any){
-    console.log(actividades);
     //this.router.navigate(['/estudiante/vista-actividad'], { queryParams: { id: actividades } });
     this.idActividad = Number(actividades);
   }

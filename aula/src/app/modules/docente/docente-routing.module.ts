@@ -1,29 +1,58 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EperfilComponent } from '../estudiante/pages/eperfil/eperfil.component';
 import { DocenteComponent } from './docente.component';
 import { ActaComponent } from './pages/acta/acta.component';
+import { ActividadesComponent } from './pages/cursos/actividades/actividades.component';
+import { CalificacionesComponent } from './pages/cursos/calificaciones/calificaciones.component';
+import { CursoComponent } from './pages/cursos/curso/curso.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
+import { CursosModule } from './pages/cursos/cursos.module';
+import { DperfilComponent } from './pages/dperfil/dperfil.component';
 import { HorarioComponent } from './pages/horario/horario.component';
 
 
 const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     component: DocenteComponent
   },
-  { 
-    path: 'acta-calificaciones', 
+  {
+    path: 'acta-calificaciones',
     component: ActaComponent
   },
-  { 
-    path: 'cursos', 
-    component: CursosComponent
-  },  
-  { 
-    path: 'horario', 
-    component: HorarioComponent
+  {
+    path: 'perfilDocente',
+    component: DperfilComponent
   },
-  
+  {
+    path: 'cursos',
+    children: [
+      {
+        path: '',
+        component: CursosComponent
+      },
+      
+      {
+        path: ':curso',
+        component: CursoComponent,
+        children: [
+          {
+            path: 'actividades',
+            component: ActividadesComponent
+          },
+          {
+            path: 'calificaciones',
+            component: CalificacionesComponent
+          }
+        ]
+      }
+    ]
+  },
+  {
+    path: 'horario',
+    component: HorarioComponent
+  }
 ];
 
 @NgModule({

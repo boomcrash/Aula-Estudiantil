@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EstudianteRoutingModule } from './estudiante-routing.module';
@@ -40,6 +40,10 @@ import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad
     MatExpansionModule,
     MatTableModule,
     SharedModule,
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
   ],
 
   exports:[

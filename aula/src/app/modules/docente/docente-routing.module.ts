@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DocenteComponent } from './docente.component';
 import { ActaComponent } from './pages/acta/acta.component';
 import { ActividadesComponent } from './pages/cursos/actividades/actividades.component';
+import { AsistenciasComponent } from './pages/cursos/asistencias/asistencias.component';
 import { CalificacionesComponent } from './pages/cursos/calificaciones/calificaciones.component';
 import { CursoComponent } from './pages/cursos/curso/curso.component';
 import { CursosComponent } from './pages/cursos/cursos.component';
@@ -37,7 +38,12 @@ const routes: Routes = [
           {
             path: 'calificaciones',
             component: CalificacionesComponent
+          },
+          {
+            path: 'asistencias',
+            component: AsistenciasComponent
           }
+          
         ]
       }
     ]

@@ -1,61 +1,79 @@
+<div class="d-flex container">
+    <div class="pt-5 text-center align.items.justify-content-center mx-auto text-center pb-5">
+        <h1 class="lineaTitulo texto-negrita" style="width: fit-content;">CALIFICACIONES</h1>
+    </div>
+</div>
 
-    <div class="d-flex container">
-        <div class="pt-5 text-center align.items.justify-content-center mx-auto text-center ">
-            <h1 class="lineaTitulo texto-negrita" style="width: fit-content;">CALIFICACIONES</h1>
+
+<div class="row d-flex justify-content-between">
+    <div class="col-3">
+        <div class="custom-select mb-3">
+            <div class="select-header" (click)="toggleSelect()">
+                <div class="header-left">
+                    <span class="input-label filtrar-por">Filtrar por:</span>
+                </div>
+                <div class="header-right">
+                    <span>{{ selectedOption }}</span>
+                    <i class="arrow-icon" [ngClass]="{'up': isOpen, 'down': !isOpen}"></i>
+                </div>
+            </div>
+            <div class="options" *ngIf="isOpen">
+                <div class="option" *ngFor="let option of options" (click)="selectOption(option)">
+                    {{ option.label }}
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="d-flex row justify-content-start pb-3">
-
-
-        <div class="col-auto">
-            <button class="btn btn-primary text-white btn-outline-secondary rounded-0 border-0" id="botonActividad"  (click)="openAgregar()" type="button">Nueva Actividad</button>
-
+    <div class="col-9">
+        <div class="custom-input mb-3">
+            <span class="input-label">{{ selectedOption+':' }}</span>
+            <input type="text" class="input-field input-label-style" [placeholder]="inputPlaceholder" [(ngModel)]="filtro"  (keyup)="filtrar()">
         </div>
-
-
     </div>
+</div>
 
 
-    <div class="table-responsive pb-5">
-        <table class="table table-hover table-bordered mx-auto">
-            <thead class="table-dark">
+
+<div class="table-responsive pb-5">
+    <table class="table table-hover table-bordered mx-auto">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" class="col-1 text-center align-middle">#</th>
+                <th scope="col" class="col-5 align-middle">Actividad</th>
+                <th scope="col" class="col-2 text-center align-middle">Estudiante</th>
+                <th scope="col" class="col-1 text-center align-middle">Estado</th>
+                <th scope="col" class="col-1 text-center align-middle">Entrega</th>
+                <th scope="col" class="col-1 text-center align-middle">Calificación</th>
+                <th scope="col" class="col-1 text-center align-middle">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let calificacion of (actividades ? filtrar() : []); let indice = index">
                 <tr>
-                    <th scope="col" class="col-sm-1"></th>
-                    <th scope="col" class="col-14">Actividad</th>
-                    <th scope="col" class="col-1">Envios</th>
-                    <th scope="col" class="col-1">Vencimiento</th>
-                    <th scope="col" class="col-2">Acciones</th>
+                    <td scope="row" class="text-center align-middle">{{indice+1}}</td>
+                    <td class="align-middle">{{calificacion.nombre_actividad}}</td>
+                    <td class="align-middle text-center">nombre</td>
+                    <td class="align-middle text-center"><span
+                            class="badge bg-secondary badge-lg rounded-0">Secondary</span></td>
+                    <td class="text-center align-middle"><i class="fa fa-download" style="font-size:24px"></i></td>
+                    <td class="text-center align-middle">
+                        <p *ngIf="editarIndex !== indice">-</p>
+                        <input *ngIf="editarIndex === indice" type="text" class="form-control text-center" id="usr">
+                    </td>
+                    <td class="text-center align-middle">
+                        <a type="button" class="mx-2" *ngIf="editarIndex !== indice"
+                            (click)="cambiarEditarIndex(indice)">
+                            <mat-icon>edit</mat-icon>
+                        </a>
+                        <a type="button" class="mx-2" *ngIf="editarIndex === indice">
+                            <mat-icon>check</mat-icon>
+                        </a>
+                        <a type="button" class="mx-2" *ngIf="editarIndex === indice" (click)="cambiarEditarIndex(null)">
+                            <mat-icon>close</mat-icon>
+                        </a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <ng-container *ngFor="let actividad of actividades; let indice = index">
-                    <tr>
-                        <td scope="row">{{indice+1}}</td>
-                        <td>{{actividad.nombre_actividad}}</td>
-                        <td>{{actividad.envios}}</td>
-                        <td>{{actividad.fechaVencimiento_actividad}}</td>
-                        <td>
-
-                                <a type="button" (click)="openInformacion(actividad)" class="mx-2">
-                                    <mat-icon>remove_red_eye</mat-icon>
-                                </a>
-
-                                <a type="button" class="mx-2">
-                                    <mat-icon>check_box</mat-icon>
-                                </a>
-
-                                <a type="button" (click)="openModificar(actividad)" class="mx-2">
-                                    <mat-icon>edit</mat-icon>
-                                </a>
-
-                                <a type="button" (click)="openBorrar(actividad)" class="mx-2">
-                                    <mat-icon>delete</mat-icon>
-                                </a>
-                         
-                        </td>
-                    </tr>
-                </ng-container>
-            </tbody>
-        </table>
-    </div>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

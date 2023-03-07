@@ -18,6 +18,7 @@ import { ActividadesComponent } from './actividades/actividades.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
 import { CursoComponent } from './curso/curso.component';
 import { CursosRoutingModule } from './cursos-routing.module';
+import { AsistenciasComponent } from './asistencias/asistencias.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CursosRoutingModule } from './cursos-routing.module';
     ActividadesComponent,
     CalificacionesComponent,
     CursoComponent,
-    CursosComponent
+    CursosComponent,
+    AsistenciasComponent
   ],
   imports: [
     CommonModule,

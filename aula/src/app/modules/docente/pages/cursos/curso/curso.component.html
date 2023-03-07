@@ -30,7 +30,7 @@
                 class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
                 style="width: 100%;"
                 [ngClass]="{'texto-negrita': opcionSeleccionada === 'asistencias', 'btn-light': opcionSeleccionada === 'asistencias'}"
-                (click)="seleccionarOpcion('asistencias')">
+                (click)="seleccionarOpcion('asistencias'); goAsistencias()">
                 <span>Asistencias</span>
             </button>
             <button type="button"

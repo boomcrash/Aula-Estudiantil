@@ -9,7 +9,9 @@ export const environment = {
             obtenerActividades: "/api/v1/actividades/getActividadByCurso",
             obtenerIdDocente: "/api/v1/usuarios/getUsersCompleteData/",
             modificarActividad: "/api/v1/actividades/updateActividad",
-            agregarActividad: "/api/v1/actividades/addActividad"
+            agregarActividad: "/api/v1/actividades/addActividad",
+            obtenerEntrega: "/api/v1/actividades/entregaActividad",
+            obtenerParticipantes: "/api/v1/cursos/getParticipantesCurso"
         },
     },
 

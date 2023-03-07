@@ -1,0 +1,65 @@
+.banner {
+    background-image: url('/assets/imagen/fondo.png');
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    position: relative;
+}
+
+.banner::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+h1 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: normal;
+
+}
+
+h4 {
+    font-size: 20px;
+
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 50%;
+    height: 4px;
+    background-color: #20BCD1;
+    transform: translateX(-50%);
+}
+
+#botonGuardar {
+    border: 2px solid #20BCD1;
+    background-color: #20BCD1;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    height: 50px;
+}

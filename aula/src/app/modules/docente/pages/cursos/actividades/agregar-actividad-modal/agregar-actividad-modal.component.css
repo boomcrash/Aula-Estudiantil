@@ -95,6 +95,11 @@ h1::after {
     padding-bottom: 0px;
 }
 
-::ng-deep .mat-mdc-form-field-subscript-wrapper, .mat-mdc-form-field-bottom-align::before {
+::ng-deep .mat-mdc-form-field-subscript-wrapper,
+.mat-mdc-form-field-bottom-align::before {
     display: none;
+}
+
+::ng-deep .is-invalid .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    border: 2px solid #f00;
 }

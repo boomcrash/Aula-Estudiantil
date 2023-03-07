@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, Output, EventEmitter  } from '@angular/core';
 import { CursoModel } from '../../../models/cursoModel';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AgregarActividadModalComponent } from './agregar-actividad-modal/agregar-actividad-modal.component';
@@ -8,6 +8,22 @@ import { BorrarActividadModalComponent } from './borrar-actividad-modal/borrar-a
 import { DocentesService } from '../../../services/docentes.service';
 import { ActividadModel } from '../../../models/actividadModel';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Pipe, PipeTransform } from '@angular/core';
+
+
+@Pipe({
+  name: 'filter'
+})
+export class FilterPipe implements PipeTransform {
+
+  transform(items: any[], filtro: string): any[] {
+    if (!items || !filtro) {
+      return items;
+    }
+    return items.filter(item => item.nombre_actividad.toLowerCase().includes(filtro.toLowerCase()));
+  }
+
+}
 
 @Component({
   selector: 'app-actividades',
@@ -19,6 +35,9 @@ export class ActividadesComponent implements OnInit {
   public mostrarContenido = false;
   public curso!: CursoModel;
   public actividades!: ActividadModel[];
+  public filtroActividad: string = '';
+  
+
 
   constructor(
     private modalService: NgbModal,
@@ -29,12 +48,24 @@ export class ActividadesComponent implements OnInit {
 
   ngOnInit(): void {
     this.curso = history.state.curso;
+    console.log(this.curso)
     this.obtenerActividades();
     this._docentesService.getUpdate().subscribe((value: boolean) => {
       if(value) {
         this.obtenerActividades();
       }
     })
+  }
+
+  navigateToCalificaciones(actividad: ActividadModel): void {
+    this._docentesService.updateMenu(true);
+    this.router.navigate(['../calificaciones'], { 
+      relativeTo: this.route, 
+      state: { 
+        actividad: actividad,
+        curso: this.curso
+      } 
+    });
   }
 
   obtenerActividades(): void {

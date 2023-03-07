@@ -10,7 +10,10 @@ export class DocenteAdministracionService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerTopDocentes(): Observable<any> {    
+  obtenerTopDocentes(id : string): Observable<any> {  
+    const post = {
+      ciclo_contrato: id
+    }; 
     const url = `${environment.urlBAse}${environment.pathUrl.urlDocenteAdmin.obtenerTopDocentes}`;    
     const httpOptions = {
       headers: new HttpHeaders({
@@ -19,7 +22,7 @@ export class DocenteAdministracionService {
       })
     }
     console.log(url);
-    return this.http.get(url, httpOptions);
+    return this.http.post(url, post,httpOptions);
   }
 
   obtenerDocentes(): Observable<any> {    
@@ -46,8 +49,11 @@ export class DocenteAdministracionService {
     return this.http.get(url, httpOptions);
   }
 
-  obtenerMateriasDocentes(): Observable<any> {    
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocenteAdmin.obtenerMaterias}`;    
+  obtenerMateriasDocentes(id : number): Observable<any> {   
+    const post = {
+      docente_curso: id
+    }; 
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocenteAdmin.obtenerMateriasDocente}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -55,20 +61,7 @@ export class DocenteAdministracionService {
       })
     }
     console.log(url);
-    return this.http.get(url, httpOptions);
+    return this.http.post(url, post,httpOptions);
   }
-
-  obtenerEvaluacionDocentes(): Observable<any> {    
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocenteAdmin.obtenerMaterias}`;    
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',        
-        'Access-Control-Allow-Origin': '*'
-      })
-    }
-    console.log(url);
-    return this.http.get(url, httpOptions);
-  }
-
   
 }

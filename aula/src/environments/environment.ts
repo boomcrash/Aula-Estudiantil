@@ -26,17 +26,17 @@ urlBAse: "http://167.71.26.121:3000",
         },
 
         urlDocenteAdmin: {
+            obtenerTopDocentes:"/api/v1/docentes/getTop5Teacher",
             obtenerDocentes: "/api/v1/docentes/getTeachers",
             obtenerPagoDocentes: "/api/v1/pagoDocentes/getPagoDocentes",
-            obtenerMaterias: "/api/v1/materias/getItemMaterias",
-            obtenerContratoDocentes: "/api/v1/contratos/getContratos",
-            obtenerTopDocentes:"/api/v1/docentes/getTop5Teacher",
+            obtenerMateriasDocente: "/api/v1/cursos/getCursosDocente",            
         },
         urlEstudianteAdmin: {
-            obtenerEstudiantes: "/api/v1/estudiantes/getStudents",
-            obtenerCicloEstudiante: "/api/v1/matriculas/getItemMatriculas",
-            obtenerMedioEstudiante: "/api/v1/medios/getMedios",
             obtenerTopEstudiantes: "/api/v1/estudiantes/getTop5Estudiantes",
+            obtenerEstudiantes: "/api/v1/estudiantes/getStudents",
+            obtenerMateriasEstudiantes: "/api/v1/cursos/getCursosEstudiante",
+            obtenerActividadesCumplidasEstudiantes: "",
+            obtenerActividadesNoCumplidasEstudiantes: "",
         },
         
     }

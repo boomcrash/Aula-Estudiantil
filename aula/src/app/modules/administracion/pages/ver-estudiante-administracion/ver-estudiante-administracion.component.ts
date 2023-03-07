@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Estudiante } from '../../models/estudianteModel';
 import { MateriaEstudiante } from '../../models/materiaEstudianteModel';
 import { EstudianteAdministracionService } from '../../services/estudiante-administracion.service';
 import { ActCEstudianteAdministracionComponent } from '../act-c-estudiante-administracion/act-c-estudiante-administracion.component';
@@ -8,7 +9,7 @@ import { ActNcEstudianteAdministracionComponent } from '../act-nc-estudiante-adm
 export interface PeriodicElement {
   id: number;
   materia: string;
-  modulo: number;
+  paralelo: number;
 }
 
 @Component({
@@ -17,22 +18,23 @@ export interface PeriodicElement {
   styleUrls: ['./ver-estudiante-administracion.component.css']
 })
 export class VerEstudianteAdministracionComponent implements OnInit {
+  estudiante!: Estudiante;
   datosMateriasEstudiante: MateriaEstudiante[] = [];
 
-  displayedColumns: string[] = ['id', 'materia', 'modulo', 'actCumplidas', 'actNoCumplidas'];
+  displayedColumns: string[] = ['id', 'materia', 'paralelo', 'actCumplidas', 'actNoCumplidas'];
 
   constructor(
     private dialog: MatDialog, 
     private dialogRef: MatDialogRef<VerEstudianteAdministracionComponent>,
     private estudianteService:EstudianteAdministracionService) {}
 
-  ngOnInit(): void {
-    this.estudianteService.obtenerMateriasEstudiantes().subscribe(respuesta =>{
-      this.datosMateriasEstudiante=respuesta.data;
-      console.log(this.datosMateriasEstudiante)
-
-    });
-  }
+    ngOnInit(): void {
+      this.estudiante=history.state.data;
+      this.estudianteService.obtenerMateriasEstudiantes(1).subscribe(data => {
+        this.datosMateriasEstudiante=data.data
+        console.log
+      });
+    }
   cerrar(){
     this.dialogRef.close();
   }

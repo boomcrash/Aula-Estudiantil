@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Docente } from '../../models/docenteModel';
 import { MateriaDocente } from '../../models/materiaDocenteModel';
 import { DocenteAdministracionService } from '../../services/docente-administracion.service';
 
@@ -17,6 +18,7 @@ export interface PeriodicElement {
   styleUrls: ['./ver-docente-administracion.component.css']
 })
 export class VerDocenteAdministracionComponent implements OnInit {
+  docente!: Docente;
   datosMateriasDocente: MateriaDocente[] = [];
 
   displayedColumns: string[] = ['id', 'materia', 'paralelo', 'modulo', 'calificacion'];
@@ -28,10 +30,10 @@ export class VerDocenteAdministracionComponent implements OnInit {
     private docenteService:DocenteAdministracionService) {}
 
   ngOnInit(): void {
-    this.docenteService.obtenerMateriasDocentes().subscribe(respuesta =>{
-      this.datosMateriasDocente=respuesta.data;
-      console.log(this.datosMateriasDocente)
-
+    this.docente=history.state.data;
+    this.docenteService.obtenerMateriasDocentes(1).subscribe(data => {
+      this.datosMateriasDocente=data.data
+      console.log
     });
   }
 

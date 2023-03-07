@@ -10,7 +10,10 @@ export class EstudianteAdministracionService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerTopEstudiantes(): Observable<any> {    
+  obtenerTopEstudiantes(id : number): Observable<any> {  
+    const post = {
+      ciclo_matricula: id
+    }; 
     const url = `${environment.urlBAse}${environment.pathUrl.urlEstudianteAdmin.obtenerTopEstudiantes}`;    
     const httpOptions = {
       headers: new HttpHeaders({
@@ -19,7 +22,7 @@ export class EstudianteAdministracionService {
       })
     }
     console.log(url);
-    return this.http.get(url, httpOptions);
+    return this.http.post(url, post,httpOptions);
   }
   
   obtenerEstudiantes(): Observable<any> {    
@@ -34,8 +37,11 @@ export class EstudianteAdministracionService {
     return this.http.get(url, httpOptions);
   }
   
-  obtenerMateriasEstudiantes(): Observable<any> {    
-    const url = `${environment.urlBAse}${environment.pathUrl.urlEstudianteAdmin.obtenerMedioEstudiante}`;    
+  obtenerMateriasEstudiantes(id : number): Observable<any> {   
+    const post = {
+      estudiante_matricula: id
+    }; 
+    const url = `${environment.urlBAse}${environment.pathUrl.urlEstudianteAdmin.obtenerMateriasEstudiantes}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -43,10 +49,11 @@ export class EstudianteAdministracionService {
       })
     }
     console.log(url);
-    return this.http.get(url, httpOptions);
+    return this.http.post(url, post,httpOptions);
   }
+
   obtenerActividadesCEstudiantes(): Observable<any> {    
-    const url = `${environment.urlBAse}${environment.pathUrl.urlEstudianteAdmin.obtenerMedioEstudiante}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlEstudianteAdmin.obtenerActividadesCumplidasEstudiantes}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -58,7 +65,7 @@ export class EstudianteAdministracionService {
   }
 
   obtenerActividadesNCEstudiantes(): Observable<any> {    
-    const url = `${environment.urlBAse}${environment.pathUrl.urlEstudianteAdmin.obtenerMedioEstudiante}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlEstudianteAdmin.obtenerActividadesNoCumplidasEstudiantes}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        

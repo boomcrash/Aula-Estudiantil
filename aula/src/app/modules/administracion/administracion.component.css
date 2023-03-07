@@ -101,9 +101,7 @@ mat-grid-tile {
 .central-der-up, .central-der-dwn{
     
     padding: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    
 }
 
   

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ActividadNoCumplida } from '../../models/actividadesNoCumplidasModel';
+import { Actividad } from '../../models/actividadModel';
 import { EstudianteAdministracionService } from '../../services/estudiante-administracion.service';
-import { ActCEstudianteAdministracionComponent } from '../act-c-estudiante-administracion/act-c-estudiante-administracion.component';
 
 export interface PeriodicElement {
   id: number;
@@ -15,7 +14,7 @@ export interface PeriodicElement {
   styleUrls: ['./act-nc-estudiante-administracion.component.css']
 })
 export class ActNcEstudianteAdministracionComponent implements OnInit {
-  datosActividadesNoCumplidas: ActividadNoCumplida[] = [];
+  datosActividades: Actividad[] = [];
 
   displayedColumns: string[] = ['id', 'actividad'];
   
@@ -26,8 +25,8 @@ export class ActNcEstudianteAdministracionComponent implements OnInit {
 
   ngOnInit(): void {
     this.estudianteService.obtenerActividadesNCEstudiantes().subscribe(respuesta =>{
-      this.datosActividadesNoCumplidas=respuesta.data;
-      console.log(this.datosActividadesNoCumplidas)
+      this.datosActividades=respuesta.data;
+      console.log(this.datosActividades)
 
     });
   }

@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   user = this.cookie.get('username');
   rol = this.cookie.get('rol');
   nombre = '';  
+  estudianteMatriculado = this.cookie.get('alumno');
 
   constructor(private dialog: MatDialog,
     private loginService: LoginService,
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {        
-    console.log(this.rol,'ooas')
+    console.log(this.rol,this.estudianteMatriculado)    
+    
   }
   
   openDialogSesion(): void {

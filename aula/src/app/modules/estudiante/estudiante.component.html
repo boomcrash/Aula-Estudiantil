@@ -5,7 +5,8 @@
     <h1>ESTUDIANTES</h1>
     <p>Asegura tu futuro en nuestro Centro de Formación!</p>
     <p></p>
-    <a class="button" routerLink="/estudiante/matriculacion" class="button">Matricularme</a>
+      <a *ngIf="validarMatricula" class="button" routerLink="/estudiante/matriculacion"  class="button">Matricularme</a>        
+      <a *ngIf="!validarMatricula"  class="button" routerLink="/estudiante" style="background-color: rgb(97, 94, 92);" class="button">Matricularme</a>    
   </div>
 </section>
 
@@ -97,7 +98,7 @@
       ¡Inscríbete ahora en nuestra academia y comienza tu camino hacia el éxito!
     </h4>
 
-    <a class="button" aling="right" routerLink="/matricularme" class="button"
+    <a class="button" aling="right" routerLink="/matricularme" class="button" [ariaDisabled]="false"
       >Matricularme</a
     >
   </div>

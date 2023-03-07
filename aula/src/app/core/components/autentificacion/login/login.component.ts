@@ -43,7 +43,7 @@ export class LoginComponent {
     if (await this.loginService.login(txtemail, txtcontrasena)) {      
       
       this.dialogRef.close();      
-      window.open('/usuario', '_self');
+      window.open('/home', '_self');
     } else {      
       this.snackbar.open('Usuario o contraseña incorrecta.', 'OK', { duration: 5000 });
     }

@@ -19,7 +19,7 @@
             </li>                    
             
             <li><a (click)="irEstudiante()" routerLinkActive="activeLink">Estudiantes</a>
-              <ul *ngIf="rol === '1'" class="no-estilo">
+              <ul *ngIf="rol === '1' && estudianteMatriculado == 'true'" class="no-estilo">
                 <li><a (click)="irEstudianteHorario()" class="li">Mi horario</a></li>
                 <li><a (click)="irEstudianteCursos()" class="li">Mis cursos</a></li>
                 <li><a (click)="irEstudianteActa()" class="li">Acta de calificaciones</a></li>                                                

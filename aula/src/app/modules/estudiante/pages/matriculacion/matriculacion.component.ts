@@ -11,6 +11,7 @@ import { Materias } from '../../models/materias.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ActaCalificacion } from '../../models/actacalificacion.model';
 import { MatTable } from '@angular/material/table';
+import { ActaService } from '../acta/services/acta.service';
 
 
 
@@ -25,7 +26,7 @@ export class MatriculacionComponent implements OnChanges {
   horarioMatriculacion: horarioMatriculacion[] = [];
   horarioMatriculado: horarioMatriculacion[] = [];
   horarioMatriculado2: horarioMatriculacion[] = [];
-  cursoHorario: CursoHorario[] = [];
+  cursoHorario: CursoHorario[] = [];  
   curso: Curso[] = [];
   paralelo: paralelo[] = [];
   materias: Materias[] = [];
@@ -35,18 +36,14 @@ export class MatriculacionComponent implements OnChanges {
   asignaturaSeleccionada: string = '';
   id = this.cookie.get('id');
   datosCompletos: EstudiantePerfil | any = null;
-  datosActaCalifiacion: ActaCalificacion = {
-    id: 0,
-    nombre_materia: '',
-    modulo_materia: 0,
-    nombre_paralelo: 0,
-    promedioCalificaciones_itemActa: 0,
-    promedioAsistencias_itemActa: 0,
-    estado_itemActa: ''
-  }
+  datosActaCalifiacion: ActaCalificacion[] = [];
+  materiasReprobadas: any[] = [];
+  materiasAprobadas: any[] = [];
+  mostrarHorario: boolean = true;
+  mostrarHorario2: boolean = true;
 
-  displayedColumns = ['accion', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5'];
-  displayedColumns2 = ['accion', 'materia', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5'];
+  displayedColumns = ['accion', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5', 'dia_horario6', 'dia_horario7'];
+  displayedColumns2 = ['accion', 'materia', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5', 'dia_horario6', 'dia_horario7'];
   dataSource: any = [];
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -60,28 +57,38 @@ export class MatriculacionComponent implements OnChanges {
     private _formBuilder: FormBuilder, 
     private matriculacionService: matriculacionService, 
     private cookie: CookieService,
-    private autentificar: AuthService) { }
+    private autentificar: AuthService,
+    private acta:ActaService) { }
 
   ngOnInit() {
     this.autentificar.obtenerDatosCompletos(this.id).toPromise().then( resp =>{
       this.datosCompletos = resp.data;        
-      this.matriculacionService.obtenerActaEstudiante(this.datosCompletos[0].id_estudiante).toPromise().then( respuesta =>{
-        this.datosActaCalifiacion = respuesta.data[0];
-        console.log(this.datosActaCalifiacion)
+      this.acta.obtenerEstudianteItemActa(this.datosCompletos[0].id_estudiante).toPromise().then( respuesta =>{
+        console.log(this.datosCompletos[0].id_estudiante)
+        this.datosActaCalifiacion = respuesta.data;
+        for(let i=0;i<this.datosActaCalifiacion.length;i++){
+          if(this.datosActaCalifiacion[i].estado_itemActa != 'APROBADO'){
+            this.materiasReprobadas.push(this.datosActaCalifiacion[i].nombre_materia);            
+          }
+          if(this.datosActaCalifiacion[i].estado_itemActa != 'REPROBADO'){
+            this.materiasAprobadas.push(this.datosActaCalifiacion[i].nombre_materia);            
+          }
+        }
+        console.log(this.materiasReprobadas);
+        console.log(this.datosActaCalifiacion);
       }).catch(
           err => {
             console.error(err);
             return false;
           }
-        ); 
+        );       
+
     }).catch(
       err => {
         console.error(err);
         return false;
       }
     ); 
-
-
     this.matriculacionService.obtenerHorariosmatricula(2).subscribe(data => {
       this.cursoHorario = data.data;
       this.matriculacionService.obtenercurso().subscribe(data => {
@@ -99,6 +106,8 @@ export class MatriculacionComponent implements OnChanges {
 
 
   onSelect(event: any) {
+    this.mostrarHorario = true;   
+    this.mostrarHorario2 = true;         
     this.seleccionado = Number(event.value);
     console.log(this.seleccionado);
     let nombre_materia = ["s"]
@@ -109,15 +118,48 @@ export class MatriculacionComponent implements OnChanges {
         if (this.materias[i].modulo_materia == this.seleccionado) {
           nombre_materia.push(this.materias[i].nombre_materia);
         }
-      }
+      }      
       let arregloSinRepetidos = nombre_materia.filter((valor, indice) => {
-        return nombre_materia.indexOf(valor) === indice;
+      return nombre_materia.indexOf(valor) === indice;
       });
-      this.asignaturas = arregloSinRepetidos;
+      let arreglo2 = arregloSinRepetidos;
+      if(this.seleccionado == 1){
+        for(let i = 0; i < this.materiasReprobadas.length; i++){
+          for(let j = 0; j < arregloSinRepetidos.length; j++){
+            if(this.materiasReprobadas[i] != arregloSinRepetidos[j]){
+              arregloSinRepetidos.splice(j, 1); // Elimina la materia en el índice j
+              j--; // Disminuye j para que no se salte la materia siguiente
+            }            
+          }          
+        }
+        for(let i = 0; i < this.materiasAprobadas.length; i++){
+          for(let j = 0; j < arregloSinRepetidos.length; j++){
+            if(this.materiasAprobadas[i] == arregloSinRepetidos[j]){
+              console.log(this.materiasAprobadas[i] )
+              arregloSinRepetidos.splice(j, 1); // Elimina la materia en el índice j
+              j--; // Disminuye j para que no se salte la materia siguiente
+            }            
+          }          
+          this.asignaturas = arregloSinRepetidos;
+        }
+      }else if(this.seleccionado == 2){                        
+        if(this.materiasAprobadas.length == 5){
+          this.mostrarHorario2 = true;              
+          this.asignaturas = arreglo2;       
+        }else{
+          this.mostrarHorario2 = false;             
+        }
+      }            
+      if(this.asignaturas.length == 0 && this.seleccionado == 1){
+        this.asignaturas = arregloSinRepetidos;                
+        this.mostrarHorario = false;        
+      }            
     });
   }
 
   onSelectMateria(event: any) {
+    this.mostrarHorario = true;   
+    this.mostrarHorario2 = true;      
     this.horarioMatriculacion = []
     let cursoHorarioProvicional: CursoHorario[] = [];
     let findElementId
@@ -145,6 +187,14 @@ export class MatriculacionComponent implements OnChanges {
               paralelo_curso: this.paralelo[j].nombre_paralelo,
               cupo_curso: 40 - this.curso[i].estudiantes_curso,
               horario_ordenado: [
+                {
+                  dia_horario: '',
+                  hora: '',
+                },
+                {
+                  dia_horario: '',
+                  hora: '',
+                },
                 {
                   dia_horario: '',
                   hora: '',
@@ -195,6 +245,14 @@ export class MatriculacionComponent implements OnChanges {
           this.horarioMatriculacion[j].horario_ordenado[4].dia_horario = cursoHorarioProvicional[k].dia_horario;
           this.horarioMatriculacion[j].horario_ordenado[4].hora = cursoHorarioProvicional[k].horaInicio_horario + " - " + cursoHorarioProvicional[k].horaFin_horario;
         }
+        if (cursoHorarioProvicional[k].dia_horario == "Sabado") {
+          this.horarioMatriculacion[j].horario_ordenado[5].dia_horario = cursoHorarioProvicional[k].dia_horario;
+          this.horarioMatriculacion[j].horario_ordenado[5].hora = cursoHorarioProvicional[k].horaInicio_horario + " - " + cursoHorarioProvicional[k].horaFin_horario;
+        }
+        if (cursoHorarioProvicional[k].dia_horario == "Domingo") {
+          this.horarioMatriculacion[j].horario_ordenado[6].dia_horario = cursoHorarioProvicional[k].dia_horario;
+          this.horarioMatriculacion[j].horario_ordenado[6].hora = cursoHorarioProvicional[k].horaInicio_horario + " - " + cursoHorarioProvicional[k].horaFin_horario;
+        }
       }
     }
   }
@@ -225,6 +283,14 @@ export class MatriculacionComponent implements OnChanges {
         {
           dia_horario: event.horario_ordenado[4].dia_horario,
           hora: event.horario_ordenado[4].hora,
+        },
+        {
+          dia_horario: event.horario_ordenado[5].dia_horario,
+          hora: event.horario_ordenado[5].hora,
+        },
+        {
+          dia_horario: event.horario_ordenado[6].dia_horario,
+          hora: event.horario_ordenado[6].hora,
         }
       ]
     };    

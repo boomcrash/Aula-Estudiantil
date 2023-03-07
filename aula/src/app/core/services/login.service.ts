@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { ItemMatricula } from 'src/app/modules/estudiante/models/itemmatricula.model';
+import { EPerfilService } from 'src/app/modules/estudiante/pages/eperfil/services/eperfil.service';
 import { DatosUser } from '../interfaces/datosSimplesUser.interface';
 import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginService {  
   usuario = 'User';
   datosUsuario: DatosUser[] = [];
-  constructor(private cookie: CookieService,private autentificar: AuthService) { }
+  matricula: ItemMatricula[] = [];
+  constructor(private cookie: CookieService,
+    private autentificar: AuthService,
+    private ePerfil: EPerfilService,) { }
   
   getActive(): boolean {
     return this.cookie.get('active') === 'true';
@@ -35,10 +40,30 @@ export class LoginService {
         console.log(user);
         this.cookie.set('active', 'true');
         this.cookie.set('username', user);    
-        await this.autentificar.obtenerDatosSimplesUsuario(user).toPromise().then( resp =>{
+        await this.autentificar.obtenerDatosSimplesUsuario(user).toPromise().then( async resp =>{
           this.datosUsuario = resp.data;                 
           this.cookie.set('rol', this.datosUsuario[0].rol_usuario.toString());
-          this.cookie.set('id', this.datosUsuario[0].id_usuario.toString());
+          this.cookie.set('id', this.datosUsuario[0].id_usuario.toString());                    
+          if(this.datosUsuario[0].rol_usuario == 1){
+            console.log('es un estudente')
+            await this.autentificar.obtenerDatosCompletos(this.datosUsuario[0].id_usuario.toString()).toPromise().then( async resp =>{
+              await this.ePerfil.obtenerItemMatricula(resp.data[0].id_estudiante).toPromise().then( data =>{
+                this.matricula = data.data;
+                console.log(this.matricula)
+                if(this.matricula.length>0){
+                  this.cookie.set('alumno','true');                       
+                }else{                  
+                  this.cookie.set('alumno','false');                       
+                }
+                
+                }).catch(err =>{
+                  console.error(err);
+                });
+              }).catch(err =>{
+                console.error(err);
+              });
+            
+          }
           console.log(this.cookie.get('rol'))
         });        
         existeComprobar = true;        

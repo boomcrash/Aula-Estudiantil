@@ -34,7 +34,7 @@
     
     </div>
     <br>
-    <div *ngIf="horarioMatriculacion.length != 0">
+    <div *ngIf="horarioMatriculacion.length != 0 && mostrarHorario && mostrarHorario2">
       <h1>Horarios Disponibles</h1>
       <table mat-table [dataSource]="horarioMatriculacion" class="mat-elevation-z8" >     
        
@@ -84,13 +84,25 @@
           <th mat-header-cell *matHeaderCellDef>Viernes</th>
           <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[4].hora}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="dia_horario6">
+          <th mat-header-cell *matHeaderCellDef>Sabado</th>
+          <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[5].hora}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="dia_horario7">
+          <th mat-header-cell *matHeaderCellDef>Domingo</th>
+          <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[6].hora}} </td>
+        </ng-container>
   
   
         
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    </div>
+  </div>
+  <div *ngIf="!mostrarHorario">Usuario ya ha aprobado todo el modulo 1</div>
+  <div *ngIf="!mostrarHorario2">Usuario no ha completado el modulo 1</div>
 
     <!-- TABLA 2 -->
     <br>
@@ -149,6 +161,16 @@
         <ng-container matColumnDef="dia_horario5">
           <th mat-header-cell *matHeaderCellDef>Viernes</th>
           <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[4].hora}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dia_horario6">
+          <th mat-header-cell *matHeaderCellDef>Sabado</th>
+          <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[5].hora}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="dia_horario7">
+          <th mat-header-cell *matHeaderCellDef>Domingo</th>
+          <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[6].hora}} </td>
         </ng-container>
   
   

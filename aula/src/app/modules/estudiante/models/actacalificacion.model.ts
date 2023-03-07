@@ -1,5 +1,5 @@
 export interface ActaCalificacion {
-    id: number;
+    id?: number;
     nombre_materia: string;
     modulo_materia: number;
     nombre_paralelo: number;

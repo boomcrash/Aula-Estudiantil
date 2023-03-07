@@ -206,6 +206,17 @@ tfoot tr:last-child td {
   text-align: center;
 
 }
+
+.orden_pago{
+
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 30px;
+  width: 300px;
+  align-items: center;
+  text-align: center;
+}
        
       
       

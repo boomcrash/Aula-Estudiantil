@@ -1,5 +1,5 @@
 import { Component,OnChanges} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, Validators,FormGroup, FormControl} from '@angular/forms';
 import{matriculacionService} from './services/matriculacion.service';
 import { CookieService } from 'ngx-cookie-service';
 import { horarioMatriculacion } from '../../models/horarioMatriculacion.model';
@@ -33,9 +33,14 @@ export class MatriculacionComponent implements OnChanges{
   dataSource: any = []; 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
-  });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    
+});
+     tarjetaForm = new FormGroup({
+    secondCtrl: new FormControl ('', [Validators.required]),
+    numero_tarjeta:new FormControl ('', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]),
+    nombre_titular:new FormControl ('', [Validators.required, Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]*$')]),
+    fecha:new FormControl ('',[Validators.required]),
+    cvv:new FormControl ('', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern('^[0-9]*$')])
   });
   isEditable = true;
 

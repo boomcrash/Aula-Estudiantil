@@ -91,3 +91,30 @@ th{
     text-align: center;
     width: 500px;
   }
+  .cuerpo-empresas {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+  
+  .contenido-empresas {
+    display: flex;
+    flex-direction: row;  
+    justify-content: space-between;    
+    width: 100%;
+  }
+  .empresa {  
+    width: 500px;  
+    height: 300px;  
+    margin: auto;
+    padding: 20px;  
+    position: relative;
+    overflow: hidden;    
+    height: 50%;
+    text-align: center;
+  }
+
+.falta{
+    color: red;
+    font-weight: bolder;
+}

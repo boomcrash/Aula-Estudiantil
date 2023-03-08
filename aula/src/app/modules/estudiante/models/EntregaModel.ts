@@ -5,6 +5,6 @@ export interface EntregaModel{
     fechaEnvio_entrega: string;
     fechaModificacion_entrega: string;
     archivo_entrega: string;
-    calificacion_entrega: string;
+    calificacion_entrega: number;
     estado_entrega: string;
 }

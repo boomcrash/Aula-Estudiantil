@@ -29,14 +29,6 @@
     border: 0px;
 }
 
-#botonActividad {
-    background-color: #20BCD1;
-}
-
-#botonActividad:hover {
-    background-color: #1c9cad;
-}
-
 a {
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -57,3 +49,6 @@ th {
     height: 40px;
     width: 40px;
 }
+.btn:hover {
+    background-color: rgba(128, 128, 128, 0.507);
+  }

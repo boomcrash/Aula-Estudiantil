@@ -8,9 +8,9 @@
 
   <div class="d-flex justify-content-between">
     <div>
-      <h1 class="texto-negrita">
+      <h2 class="texto-negrita">
         {{ curso.nombre_materia }} - {{ curso.nombre_paralelo }}
-      </h1>
+      </h2>
     </div>
 
     <mat-icon
@@ -29,9 +29,13 @@
     <div class="contenido mt-0 pt-0" [class.desplegado]="mostrarContenido">
       <button
         type="button"
-        class="btn btn-light btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start texto-negrita"
+        class="btn btn-light btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
         style="width: 100%"
-        (click)="onSelectActividad(1)"
+        [ngClass]="{
+          'texto-negrita': opcionSeleccionada === 1,
+          'btn-light': opcionSeleccionada === 1
+        }"
+        (click)="seleccionarOpcion(1); onSelectAccion(1)"
       >
         <span>Actividades</span>
       </button>
@@ -39,7 +43,11 @@
         type="button"
         class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
         style="width: 100%"
-        (click)="onSelectActividad(2)"
+        [ngClass]="{
+          'texto-negrita': opcionSeleccionada === 2,
+          'btn-light': opcionSeleccionada === 2
+        }"
+        (click)="seleccionarOpcion(2); onSelectAccion(2)"
       >
         <span>Asistencias</span>
       </button>
@@ -47,7 +55,11 @@
         type="button"
         class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
         style="width: 100%"
-        (click)="onSelectActividad(3)"
+        [ngClass]="{
+          'texto-negrita': opcionSeleccionada === 3,
+          'btn-light': opcionSeleccionada === 3
+        }"
+        (click)="seleccionarOpcion(3); onSelectAccion(3)"
       >
         <span>Participantes</span>
       </button>
@@ -56,7 +68,13 @@
 
   <div class="d-flex row justify-content-start pb-3"></div>
 
-  <div *ngIf="presentarActividadesModel.length != 0 && aparecerComponente == 1">
+  <div
+    *ngIf="
+      presentarActividadesModel.length != 0 &&
+      aparecerComponente == 1 &&
+      idActividad == 0
+    "
+  >
     <div class="d-flex container">
       <div
         class="pt-5 text-center align.items.justify-content-center mx-auto text-center"
@@ -65,42 +83,48 @@
         <br />
       </div>
     </div>
-
-    <table
-      mat-table
-      [dataSource]="presentarActividadesModel"
-      class="mat-elevation-z8"
-    >
-      <ng-container matColumnDef="nombre_actividad">
-        <th mat-header-cell *matHeaderCellDef>Actividad</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.nombre_actividad }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="estado_entrega">
-        <th mat-header-cell *matHeaderCellDef>Estado de entrega</th>
-        <td mat-cell *matCellDef="let element">{{ element.estado_entrega }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="vencimiento">
-        <th mat-header-cell *matHeaderCellDef>Vencimiento</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.fechaVencimiento_actividad }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="calificacion">
-        <th mat-header-cell *matHeaderCellDef>Calificación</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.calificacion_entrega }}
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      
-    </table>
+    <div class="container">
+      <div class="row">
+        <table class="table table-hover table-bordered px-auto">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col" class="col-md-2">Actividad</th>
+              <th scope="col" class="col-md-2">Estado</th>
+              <th scope="col" class="col-md-2">Vencimiento</th>
+              <th scope="col" class="col-md-2">Calificación</th>
+              <th scope="col" class="col-md-2" style="width: 4%">Ver</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let actividades of presentarActividadesModel">
+              <tr>
+                <td class="align-middle">{{ actividades.nombre_actividad }}</td>
+                <td class="align-middle"
+                  [ngClass]="{
+                    NoEnviada: actividades.estado_entrega === 'No Enviada',
+                    Enviada: actividades.estado_entrega === 'Enviada',
+                    Pendiente: actividades.estado_entrega === 'Pendiente'
+                  }"
+                >
+                  {{ actividades.estado_entrega }}
+                </td>
+                <td class="align-middle">{{ actividades.fechaVencimiento_actividad }}</td>
+                <td class="align-middle">{{ actividades.calificacion_entrega }}</td>
+                <td class="align-middle">
+                  <button
+                    mat-icon-button
+                    (click)="verActividad(actividades.id_actividad)"
+                    style="background-color: transparent !important"
+                  >
+                    <mat-icon class="add">remove_red_eye</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <br />
   </div>
 
@@ -116,4 +140,21 @@
     <app-asistencias></app-asistencias>
     <br />
   </div>
+</div>
+
+<div *ngIf="presentarActividadesModel.length != 0 && aparecerComponente == 3">
+  <div class="d-flex container">
+    <div
+      class="pt-5 text-center align.items.justify-content-center mx-auto text-center"
+    >
+      <h1 style="width: fit-content">PARTICIPANTES</h1>
+      <br />
+    </div>
+  </div>
+  <app-participantes></app-participantes>
+  <br />
+</div>
+
+<div *ngIf="presentarActividadesModel.length != 0 && aparecerComponente == 1 && idActividad != 0 && presentarEdicion">
+  <app-vista-actividad [idActividad]="idActividad"></app-vista-actividad>
 </div>

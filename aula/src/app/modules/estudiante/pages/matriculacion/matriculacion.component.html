@@ -34,7 +34,7 @@
     
     </div>
     <br>
-    <div *ngIf="horarioMatriculacion.length != 0">
+    <div *ngIf="horarioMatriculacion.length != 0 && mostrarHorario && mostrarHorario2">
       <h1>Horarios Disponibles</h1>
       <table mat-table [dataSource]="horarioMatriculacion" class="mat-elevation-z8" >     
        
@@ -84,13 +84,25 @@
           <th mat-header-cell *matHeaderCellDef>Viernes</th>
           <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[4].hora}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="dia_horario6">
+          <th mat-header-cell *matHeaderCellDef>Sabado</th>
+          <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[5].hora}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="dia_horario7">
+          <th mat-header-cell *matHeaderCellDef>Domingo</th>
+          <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[6].hora}} </td>
+        </ng-container>
   
   
         
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    </div>
+  </div>
+  <div *ngIf="!mostrarHorario">Usuario ya ha aprobado todo el modulo 1</div>
+  <div *ngIf="!mostrarHorario2">Usuario no ha completado el modulo 1</div>
 
     <!-- TABLA 2 -->
     <br>
@@ -150,6 +162,16 @@
           <th mat-header-cell *matHeaderCellDef>Viernes</th>
           <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[4].hora}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="dia_horario6">
+          <th mat-header-cell *matHeaderCellDef>Sabado</th>
+          <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[5].hora}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="dia_horario7">
+          <th mat-header-cell *matHeaderCellDef>Domingo</th>
+          <td mat-cell *matCellDef="let element"> {{element.horario_ordenado[6].hora}} </td>
+        </ng-container>
   
   
         
@@ -162,26 +184,147 @@
             <button mat-stroked-button matStepperNext color="primary">Siguiente</button>
         </div>
       </form> 
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-      <form [formGroup]="secondFormGroup">
+    </mat-step>          
+    <mat-step [stepControl]="tarjetaForm" [editable]="isEditable">
+      <form [formGroup]="tarjetaForm">
         <ng-template matStepLabel>Pago</ng-template>
-        <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
-        </mat-form-field>
+        <div class="pago">
+          <form class="formulario" [formGroup]="tarjetaForm">
+            <p class="title">DATOS DE TARJETA</p>
+            <label for="card-type">Tipo de tarjeta:</label>
+            <select  formControlName="secondCtrl" id="card-type" name="card-type">
+              <option value=""></option>
+              <option value="debito">Débito</option>
+              <option value="credito">Crédito</option>
+            </select>
+          
+            <label for="card-number">Número de tarjeta:</label>
+            <input formControlName="numero_tarjeta" type="text" id="card-number" name="card-number" placeholder="XXXX-XXXX-XXXX-XXXX">
+           
+            <mat-error *ngIf="tarjetaForm.controls['numero_tarjeta'].hasError('required')">El número de tarjeta es obligatorio.
+            </mat-error>
+            <mat-error *ngIf="tarjetaForm.controls['numero_tarjeta'].hasError('pattern')"> Solo se permiten números en el número de tarjeta. caracteres.
+            </mat-error>
+            <mat-error *ngIf="tarjetaForm.controls['numero_tarjeta'].hasError('maxlength')">El número de tarjeta debe tener 16 dígitos. </mat-error>
+           
+            
+            <label for="card-name">Nombre del titular:</label>
+            <input formControlName="nombre_titular" type="text" id="card-name" name="card-name" placeholder="Nombre completo">
+             <mat-error *ngIf="tarjetaForm.controls['nombre_titular'].hasError('required')">El nombre del titular es obligatorio. 
+            </mat-error>
+            <mat-error *ngIf="tarjetaForm.controls['nombre_titular'].hasError('pattern')"> Solo se permiten letras en el nombre del titular.  
+            </mat-error>
+
+
+            <label for="card-expiry">Fecha de vencimiento:</label>
+            <input formControlName="fecha" type="month" id="card-expiry" name="card-expiry">
+
+            <mat-error *ngIf="tarjetaForm.controls['fecha'].hasError('required')">La fecha de vencimiento es obligatoria.
+            </mat-error>
+
+            
+            <label for="card-cvv">CVV:</label>
+            <input formControlName="cvv" type="text" id="card-cvv" name="card-cvv" placeholder="XXX">
+            
+            <mat-error *ngIf="tarjetaForm.controls['cvv'].hasError('required')">El CVV es obligatorio.
+            </mat-error>
+            <mat-error *ngIf="tarjetaForm.controls['cvv'].hasError('pattern')"> Solo se permiten números en el CVV.
+            </mat-error>
+            <mat-error *ngIf="tarjetaForm.controls['cvv'].hasError('maxlength')"> Solo se permiten 3 dígitos en el CVV.
+            </mat-error>
+          
+          
+          </form>
+
+
+          <div class="orden">
+            <h2 class="title">Orden de pago</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Cantidad</th>
+                  <th>Precio </th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Producto 1</td>
+                  <td>2</td>
+                  <td>$10.00</td>
+                  <td>$20.00</td>
+                </tr>
+               </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3">Subtotal:</td>
+                  <td>$59.00</td>
+                </tr>
+                <tr>
+                  <td colspan="3">Descuento%:</td>
+                  <td>$5.31</td>
+                </tr>
+                <tr>
+                  <td colspan="3">Total:</td>
+                  <td>$64.31</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+                       
         <div>
-            <button mat-stroked-button >Cancelar</button>
+            <button mat-stroked-button (click)="volver()" >Cancelar</button>
             <button mat-stroked-button matStepperNext color="primary">Siguiente</button>
         </div>
       </form>
+      
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Confirmacion</ng-template>
-      <p>You are now done.</p>
+      <p class="title">TU HORARIO</p>
+
+      <p class="title">ORDEN DE PAGO</p>
+
+      <div class="orden_pago">
+        <table style="margin-left: 900px;">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Cantidad</th>
+              <th>Precio </th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Producto 1</td>
+              <td>2</td>
+              <td>$10.00</td>
+              <td>$20.00</td>
+            </tr>
+           </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">Subtotal:</td>
+              <td>$59.00</td>
+            </tr>
+            <tr>
+              <td colspan="3">Descuento%:</td>
+              <td>$5.31</td>
+            </tr>
+            <tr>
+              <td colspan="3">Total:</td>
+              <td>$64.31</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    
+
       <div>
-        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperPrevious>Atrás</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>

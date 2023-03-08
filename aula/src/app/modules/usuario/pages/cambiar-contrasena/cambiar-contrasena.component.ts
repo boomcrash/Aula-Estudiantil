@@ -11,11 +11,8 @@ import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dial
 })
 export class CambiarContrasenaComponent {
 
-  firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
-  });
 
-  constructor(private _formBuilder: FormBuilder, private dialogRef: MatDialogRef<CambiarContrasenaComponent>) {}
+  constructor( private dialogRef: MatDialogRef<CambiarContrasenaComponent>) {}
 
   cambiar = new FormGroup({
     contraseña: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)]),
@@ -28,32 +25,22 @@ export class CambiarContrasenaComponent {
     this.dialogRef.close();
   }
 
-  changePassword() {
 
-  /*  if (this.cambiar.value.contraseña === this.data.usuario.password) {
-      if (this.cambiar.value.ncontraseña == this.cambiar.value.vcontraseña) {
-        this.dataUsuarios.changePassword(this.cambiar.value.ncontraseña ?? '', this.data.usuario.id);
-        console.log(this.dataUsuarios.getlistaUsuarios());
-        this.dialogRef.close();
-        this.snackBar.open('Cambió su contraseña!', 'Cerrar', {
-          duration: 2000,
-        });
 
-      } else {
-        this.snackBar.open('Las contraseñas deben ser iguales!', 'Cerrar', {
-          duration: 2000,
-        });
-      }
-
-    } else {
-
-      this.snackBar.open('Contraseña actual incorrecta', 'Cerrar', {
-        duration: 2000,
-      });
-
-    }*/
-
+  arePasswordsEqual(): boolean {
+    const password = this.cambiar.value.ncontraseña;
+    const confirm = this.cambiar.value.vcontraseña;
+  
+    // Se validan los valores de password y confirm antes de compararlos
+    if (password === null || confirm === null) {
+      return true; // Si uno de los campos es null, los campos no son iguales
+    } else if (password != confirm) {
+  
+      return true; // Si los campos no son iguales, no son iguales
+    }
+    return false;
 
   }
+  
 
 }

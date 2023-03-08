@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdministracionComponent } from './administracion.component';
+import { AdminPerfilComponent } from './pages/admin-perfil/admin-perfil.component';
 import { DocenteAdministracionComponent } from './pages/docente-administracion/docente-administracion.component';
 import { EstudianteAdministracionComponent } from './pages/estudiante-administracion/estudiante-administracion.component';
 import { PagosDocenteAdministracionComponent } from './pages/pagos-docente-administracion/pagos-docente-administracion.component';
@@ -38,6 +39,10 @@ const routes: Routes = [
   { 
     path: 'ver-estudiante-administracion', 
     component: VerEstudianteAdministracionComponent,
+  },
+  { 
+    path: 'perfil', 
+    component: AdminPerfilComponent,
   }
 ];
 

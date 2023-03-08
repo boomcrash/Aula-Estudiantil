@@ -24,6 +24,8 @@ import { VerDocenteAdministracionComponent } from './pages/ver-docente-administr
 import { VerEstudianteAdministracionComponent } from './pages/ver-estudiante-administracion/ver-estudiante-administracion.component';
 import { ActCEstudianteAdministracionComponent } from './pages/act-c-estudiante-administracion/act-c-estudiante-administracion.component';
 import { ActNcEstudianteAdministracionComponent } from './pages/act-nc-estudiante-administracion/act-nc-estudiante-administracion.component';
+import { AdminPerfilComponent } from './pages/admin-perfil/admin-perfil.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { ActNcEstudianteAdministracionComponent } from './pages/act-nc-estudiant
     VerDocenteAdministracionComponent,
     VerEstudianteAdministracionComponent,
     ActCEstudianteAdministracionComponent,
-    ActNcEstudianteAdministracionComponent
+    ActNcEstudianteAdministracionComponent,
+    AdminPerfilComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +55,9 @@ import { ActNcEstudianteAdministracionComponent } from './pages/act-nc-estudiant
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    MatExpansionModule,
+    MatTableModule
   ]
 })
 export class AdministracionModule { }

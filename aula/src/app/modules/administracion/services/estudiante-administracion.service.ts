@@ -68,4 +68,16 @@ export class EstudianteAdministracionService {
     console.log(url);
     return this.http.post(url, post,httpOptions);
   }
+
+  obtenerUsuario(): Observable<any> {    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerUsuarios}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(url);
+    return this.http.get(url, httpOptions);
+  }
 }

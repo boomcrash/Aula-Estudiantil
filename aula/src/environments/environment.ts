@@ -38,6 +38,7 @@ urlBAse: "http://167.71.26.121:3000",
         },        
         urlObtenerEstudiantes: "/api/v1/estudiantes/getEstudiantes",
         urlModificarEntrega: "/api/v1/entregas/updateEntrega",
+        urlObtenerUsuarios: "/api/v1/usuarios/getUsers",
 
         urlDocenteAdmin: {
             obtenerTopDocentes:"/api/v1/docentes/getTop5Teacher",

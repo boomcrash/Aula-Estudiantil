@@ -1,6 +1,7 @@
 export const environment = {
     urlBAse: "http://167.71.26.121:3000",
     pathUrl: {
+        urlVerificarUsuario: "/api/v1/usuarios/verifyUserByUser",
         urlVerificarUsuarioPassword: "/api/v1/usuarios/verifyUserByUserAndPassword",
         urlObtenerUsuariosPorUser: "/api/v1/usuarios/getUsersByUserName",
         urlObtenerHorariosporId: "/api/v1/horarios/getHorarioEstudiante",
@@ -25,7 +26,7 @@ export const environment = {
         urlDocentes: {
             obtenerCursos: "/api/v1/cursos/getCursosDocente",
             obtenerActividades: "/api/v1/actividades/getActividadByCurso",
-            obtenerIdDocente: "/api/v1/docentes/getTeacherIdByUserId/",
+            obtenerIdDocente: "/api/v1/usuarios/getUsersCompleteData/",
             obtenerContratoDocente: "/api/v1/contratos/getContratoDocente",
             obtenerDocente: "/api/v1/docentes/getTeachers",
             obtenerDatosDocente: "/api/v1/usuarios/getUsersCompleteData/",
@@ -37,9 +38,13 @@ export const environment = {
             borrarActividad: "/api/v1/actividades/deleteActividad",
             calificarEntrega: "/api/v1/entregas/addCalificacion"
         },
+
         urlObtenerParticipantes: "/api/v1/participantes/getParticipantesByActividadId",
         urlObtenerEstudiantes: "/api/v1/estudiantes/getEstudiantes",
         urlModificarEntrega: "/api/v1/entregas/updateEntrega",
+
+        urlAgregarDocente: "/api/v1/docentes/addUserAndTeachers",
+        urlAgregarEstudiante: "/api/v1/estudiantes/addUserAndStudents",
 
     }
 

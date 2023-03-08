@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Actividad } from '../../models/actividadModel';
 import { EstudianteAdministracionService } from '../../services/estudiante-administracion.service';
 
@@ -18,16 +18,15 @@ export class ActCEstudianteAdministracionComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'actividad'];
   
-  
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { id_estudiante: number, id_curso: number },
     private dialogRef: MatDialogRef<ActCEstudianteAdministracionComponent>,
     private estudianteService:EstudianteAdministracionService) {}
 
   ngOnInit(): void {
-    this.estudianteService.obtenerActividadesCEstudiantes().subscribe(respuesta =>{
-      this.datosActividad=respuesta.data;
-      console.log(this.datosActividad)
-
+      this.estudianteService.obtenerEntregasEstudiantes('Enviada',this.data.id_estudiante, this.data.id_curso).subscribe(data => {
+      this.datosActividad=data.data;
+      console.log(this.datosActividad);
     });
   }
 

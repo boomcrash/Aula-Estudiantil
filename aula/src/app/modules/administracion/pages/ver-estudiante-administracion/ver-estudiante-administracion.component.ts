@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { Estudiante } from '../../models/estudianteModel';
 import { MateriaEstudiante } from '../../models/materiaEstudianteModel';
 import { EstudianteAdministracionService } from '../../services/estudiante-administracion.service';
@@ -23,23 +24,37 @@ export class VerEstudianteAdministracionComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'materia', 'paralelo', 'actCumplidas', 'actNoCumplidas'];
 
+  id: number=0;
+
   constructor(
     private dialog: MatDialog, 
+    private route: ActivatedRoute,
     private estudianteService:EstudianteAdministracionService) {}
 
     ngOnInit(): void {
+
+      this.id = Number(this.route.snapshot.queryParamMap.get('id_estudiante'));
+
       this.estudiante=history.state.data;
-      this.estudianteService.obtenerMateriasEstudiantes(1).subscribe(data => {
+      this.estudianteService.obtenerMateriasEstudiantes(this.id).subscribe(data => {
         this.datosMateriasEstudiante=data.data
-        console.log
       });
+
     }
 
-  mostrarDialogoActC() {
-    this.dialog.open(ActCEstudianteAdministracionComponent);
+  mostrarDialogoActC(id_curso: number) {
+    this.dialog.open(ActCEstudianteAdministracionComponent, {
+        data: { id_estudiante: this.id, id_curso: id_curso},
+        width: '700px'
+      });
+    }
+  
+  mostrarDialogoActNC(id_curso: number) {
+    this.dialog.open(ActNcEstudianteAdministracionComponent, {
+      data: { id_estudiante: this.id, id_curso: id_curso},
+      width: '700px'
+    });
   }
-  mostrarDialogoActNC() {
-    this.dialog.open(ActNcEstudianteAdministracionComponent);
-  }
-
 }
+
+

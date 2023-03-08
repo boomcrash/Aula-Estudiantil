@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ContratoDocenteAdministracionComponent } from '../contrato-docente-administracion/contrato-docente-administracion.component';
 import { Docente } from '../../models/docenteModel';
 import { DocenteAdministracionService } from '../../services/docente-administracion.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -33,6 +33,7 @@ export class DocenteAdministracionComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private dialog: MatDialog,
     private docenteService:DocenteAdministracionService) {}
 
@@ -51,8 +52,10 @@ export class DocenteAdministracionComponent implements OnInit {
     this.dialog.open(ContratoDocenteAdministracionComponent);
   }
 
-  verMateriasDocente() {
-    this.router.navigate(['/administracion/ver-docente-administracion']);
+  verMateriasDocente(id: number) {
+    this.router.navigate(['/administracion/ver-docente-administracion'],
+    { relativeTo:  this.route, queryParams: {id_docente:id} });
   }
 }
+
 

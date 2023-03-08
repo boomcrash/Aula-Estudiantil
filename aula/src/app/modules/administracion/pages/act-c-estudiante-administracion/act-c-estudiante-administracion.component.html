@@ -21,6 +21,12 @@
         
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <tr *matNoDataRow>
+            <td style="padding: 20px;" class="td-notFound" [attr.colspan]="displayedColumns.length">
+              No se encontraron resultados.
+            </td>
+          </tr>
       </table>
       </div>
       

@@ -35,8 +35,7 @@ urlBAse: "http://167.71.26.121:3000",
             obtenerTopEstudiantes: "/api/v1/estudiantes/getTop5Estudiantes",
             obtenerEstudiantes: "/api/v1/estudiantes/getAdminEstudiantes",
             obtenerMateriasEstudiantes: "/api/v1/cursos/getCursosEstudiante",
-            obtenerActividadesCumplidasEstudiantes: "",
-            obtenerActividadesNoCumplidasEstudiantes: "",
+            obtenerEntregasEstudiantes: "/api/v1/entregas/GetEntregasAdmin",
         },
         
     }

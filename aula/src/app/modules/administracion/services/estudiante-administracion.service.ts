@@ -52,8 +52,13 @@ export class EstudianteAdministracionService {
     return this.http.post(url, post,httpOptions);
   }
 
-  obtenerActividadesCEstudiantes(): Observable<any> {    
-    const url = `${environment.urlBAse}${environment.pathUrl.urlEstudianteAdmin.obtenerActividadesCumplidasEstudiantes}`;    
+  obtenerEntregasEstudiantes(estado : string, curso: number, estudiante: number): Observable<any> {   
+    const post = {
+      curso_actividad: curso,
+      estudiante_entrega: estudiante,
+      estado_entrega: estado
+    }; 
+    const url = `${environment.urlBAse}${environment.pathUrl.urlEstudianteAdmin.obtenerEntregasEstudiantes}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -61,18 +66,6 @@ export class EstudianteAdministracionService {
       })
     }
     console.log(url);
-    return this.http.get(url, httpOptions);
-  }
-
-  obtenerActividadesNCEstudiantes(): Observable<any> {    
-    const url = `${environment.urlBAse}${environment.pathUrl.urlEstudianteAdmin.obtenerActividadesNoCumplidasEstudiantes}`;    
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',        
-        'Access-Control-Allow-Origin': '*'
-      })
-    }
-    console.log(url);
-    return this.http.get(url, httpOptions);
+    return this.http.post(url, post,httpOptions);
   }
 }

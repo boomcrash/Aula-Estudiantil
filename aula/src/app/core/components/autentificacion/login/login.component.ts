@@ -1,3 +1,4 @@
+import { LocalizedString } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -31,6 +32,7 @@ export class LoginComponent {
   formLogin = new FormGroup({
     email: new FormControl('', [Validators.required,Validators.maxLength(100)]),
     contrasena: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)])
+
   });
 
 

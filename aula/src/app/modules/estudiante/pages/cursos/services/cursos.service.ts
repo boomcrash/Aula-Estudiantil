@@ -24,4 +24,8 @@ export class CursosService {
     console.log(url, post);
     return this.http.post(url, post,httpOptions);
   }
+  obtenerDatosEstudiante(id: number): Observable<any> {    
+    const url = `${environment.urlBAse}/api/v1/usuarios/getUsersCompleteData/${id}`;      
+    return this.http.get(url);
+  }
 }

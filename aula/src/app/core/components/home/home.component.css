@@ -32,6 +32,7 @@ h1 {
   padding-bottom: 20px;
 }
 
+
 h1:before {
   content: "";
   position: absolute;
@@ -161,7 +162,7 @@ a:not(hover) {
 }
 
 .empresa {  
-  width: 500px;  
+  width: 300px;  
   height: 300px;  
   margin: auto;
   padding: 20px;  
@@ -169,6 +170,11 @@ a:not(hover) {
   overflow: hidden;    
   height: 50%;
   text-align: center;
+}
+
+.modulotitle{
+  font-size: larger;
+  font-weight: bolder;
 }
 .empresa p{
   text-align: justify;
@@ -283,6 +289,7 @@ a:not(hover) {
       font-size: 30pt;
   }
 
+
   #encabezado p {
       font-size: 17pt;
   }
@@ -311,5 +318,37 @@ a:not(hover) {
       font-size: 12pt;
   }
 }
+.contenedor-precios{
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  margin-top: 40px;
+  width: 100%;
+  padding: 40px;
+  text-align: justify;
+}
+.precio1{
+
+  background-color: #F0F0F0;
+  width: 100%;
+  height: 350px;
+  padding: 50px;
+  margin: auto;
 
 
+}
+
+.raya{
+  border-bottom: #85e3f0 solid 5px;
+
+}
+
+.precios-empresa{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+}

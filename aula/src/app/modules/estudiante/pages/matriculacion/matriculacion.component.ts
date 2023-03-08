@@ -1,6 +1,6 @@
 import { Component, OnChanges, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { matriculacionService } from './services/matriculacion.service';
+import {FormBuilder, Validators,FormGroup, FormControl} from '@angular/forms';
+import{matriculacionService} from './services/matriculacion.service';
 import { CookieService } from 'ngx-cookie-service';
 import { horarioMatriculacion } from '../../models/horarioMatriculacion.model';
 import { CursoHorario } from '../../models/cursoHorario.model';
@@ -9,11 +9,11 @@ import { Curso } from '../../models/curso.model';
 import { paralelo } from '../../models/paralelo.model';
 import { Materias } from '../../models/materias.model';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { ActaCalificacion } from '../../models/actacalificacion.model';
 import { MatTable } from '@angular/material/table';
 import { ActaService } from '../acta/services/acta.service';
-
-
+import{MatTableDataSource} from '@angular/material/table';
+import { ActaCalificacion } from '../../models/actacalificacion.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-matriculacion',
@@ -47,18 +47,26 @@ export class MatriculacionComponent implements OnChanges {
   dataSource: any = [];
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
+    
+});
+     tarjetaForm = new FormGroup({
+    secondCtrl: new FormControl ('', [Validators.required]),
+    numero_tarjeta:new FormControl ('', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]),
+    nombre_titular:new FormControl ('', [Validators.required, Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]*$')]),
+    fecha:new FormControl ('',[Validators.required]),
+    cvv:new FormControl ('', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern('^[0-9]*$')])
   });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
-  isEditable = false;
+  isEditable = true;
 
   constructor(
     private _formBuilder: FormBuilder, 
     private matriculacionService: matriculacionService, 
     private cookie: CookieService,
     private autentificar: AuthService,
-    private acta:ActaService) { }
+    private acta:ActaService,
+    private router: Router
+    ) { }
+  
 
   ngOnInit() {
     this.autentificar.obtenerDatosCompletos(this.id).toPromise().then( resp =>{
@@ -318,5 +326,14 @@ export class MatriculacionComponent implements OnChanges {
         this.horarioMatriculado = [...this.horarioMatriculado]; // create a new array reference to trigger change detection        
       }      
     }     
+    
+  console.log("hola",this.horarioMatriculacion)  
+  this.dataSource = new MatTableDataSource<horarioMatriculacion>(this.horarioMatriculacion); 
+ 
+      
+  }     
+  
+  volver(){
+    this.router.navigate(['/estudiante']);
   }
 }

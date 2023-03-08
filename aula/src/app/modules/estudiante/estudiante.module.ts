@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EstudianteRoutingModule } from './estudiante-routing.module';
@@ -14,8 +14,9 @@ import { MateriaComponent } from './pages/materia/materia.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HorarioComponent } from './pages/horario/horario.component';
 import { MatriculacionComponent } from './pages/matriculacion/matriculacion.component';
-import { ActividadesComponent } from './pages/actividades/actividades.component';
 import { AsistenciasComponent } from './pages/asistencias/asistencias.component';
+import { ParticipantesComponent } from './pages/participantes/participantes.component';
+import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad.component';
 
 
 @NgModule({
@@ -28,8 +29,10 @@ import { AsistenciasComponent } from './pages/asistencias/asistencias.component'
     MateriaComponent,
     HorarioComponent,
     MatriculacionComponent,
-    ActividadesComponent,
-    AsistenciasComponent
+    AsistenciasComponent,
+    ParticipantesComponent,
+    VistaActividadComponent,
+  
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,8 @@ import { AsistenciasComponent } from './pages/asistencias/asistencias.component'
     MatExpansionModule,
     MatTableModule,
     SharedModule,
-  ]
+  ],
+  
+
 })
 export class EstudianteModule { }

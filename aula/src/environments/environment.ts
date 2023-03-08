@@ -17,5 +17,20 @@ pathUrl: {
     UrlObtenerParalelos:"/api/v1/paralelos/getParalelos",
     UrlObtenerMaterias:"/api/v1/materias/getItemMaterias",
     urlObtenerAsistenciasByIdEstudiante: "/api/v1/asistencias/getAsistenciasByIdEstudiante",
+    urlDocentes: {
+        obtenerCursos: "/api/v1/cursos/getCursosDocente",
+        obtenerActividades: "/api/v1/actividades/getActividadByCurso",
+        obtenerIdDocente: "/api/v1/docentes/getTeacherIdByUserId/",
+        obtenerContratoDocente: "/api/v1/contratos/getContratoDocente",
+        obtenerDocente: "/api/v1/docentes/getTeachers",
+        obtenerDatosDocente: "/api/v1/usuarios/getUsersCompleteData/",
+        modificarActividad: "/api/v1/actividades/updateActividad",  
+        agregarActividad: "/api/v1/actividades/addActividad",
+        obtenerPagoDocenteByDocenteId: "/api/v1/pagos/getPagoDocenteByDocenteId"
+
+    },
+    urlObtenerParticipantes: "/api/v1/participantes/getParticipantesByActividadId",
+    urlObtenerEstudiantes: "/api/v1/estudiantes/getEstudiantes",
+   urlModificarEntrega: "/api/v1/entregas/updateEntrega",
 }
 }

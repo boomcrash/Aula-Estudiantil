@@ -31,7 +31,8 @@ import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad
     MatriculacionComponent,
     AsistenciasComponent,
     ParticipantesComponent,
-    VistaActividadComponent
+    VistaActividadComponent,
+  
   ],
   imports: [
     CommonModule,
@@ -41,13 +42,7 @@ import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad
     MatTableModule,
     SharedModule,
   ],
-  schemas: [
-    NO_ERRORS_SCHEMA
-  ]
-  ],
+  
 
-  exports:[
-    EperfilComponent
-  ],
 })
 export class EstudianteModule { }

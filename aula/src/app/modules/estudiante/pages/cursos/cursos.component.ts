@@ -31,12 +31,10 @@ export class CursosComponent implements OnInit {
   ngOnInit(): void {
     this.id = parseInt(this.cookie.get('id'));
     this.cursosService.obtenerDatosEstudiante(this.id).subscribe((data) => {
-      console.log(data.data[0].id_estudiante);
       this.cursosService
         .obtenerCurso(data.data[0].id_estudiante)
         .subscribe((dato) => {
           this.cursos = dato.data;
-          console.log(this.cursos);
         });
     });
   }

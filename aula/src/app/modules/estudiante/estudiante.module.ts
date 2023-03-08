@@ -40,9 +40,6 @@ import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad
     MatExpansionModule,
     MatTableModule,
     SharedModule,
-  ],
-  schemas: [
-    NO_ERRORS_SCHEMA
   ]
 })
 export class EstudianteModule { }

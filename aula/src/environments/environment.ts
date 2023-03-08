@@ -12,7 +12,8 @@ export const environment = {
             agregarActividad: "/api/v1/actividades/addActividad",
             obtenerEntrega: "/api/v1/actividades/entregaActividad",
             obtenerParticipantes: "/api/v1/cursos/getParticipantesCurso",
-            borrarActividad: "/api/v1/actividades/deleteActividad"
+            borrarActividad: "/api/v1/actividades/deleteActividad",
+            calificarEntrega: "/api/v1/entregas/addCalificacion"
         },
     },
 

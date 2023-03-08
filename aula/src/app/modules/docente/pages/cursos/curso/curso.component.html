@@ -16,7 +16,7 @@
 
 
     <div class="px-5">
-        <button class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom justify-content-end"
+        <button class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom justify-content-end" (click)="mostrarContenido = !mostrarContenido"
             style="width: 100%; cursor: default;"></button>
         <div class="contenido mt-0 pt-0" [class.desplegado]="mostrarContenido">
             <button type="button"

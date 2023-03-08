@@ -156,5 +156,21 @@ export class DocentesService {
 
   }
 
+  calificarEntrega(actividad: number, estudiante: number, calificacion: number): Observable<any> {
+    const body = {
+      actividad_entrega: actividad,
+      estudiante_entrega: estudiante,
+      calificacion_entrega: calificacion
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.calificarEntrega}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    return this.http.put(url, body, httpOptions);
+  }
+
 
 }

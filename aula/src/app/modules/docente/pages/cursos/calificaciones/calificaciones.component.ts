@@ -25,6 +25,7 @@ export class CalificacionesComponent implements OnInit, OnDestroy {
   participantes!: ParticipanteModel[];
   editar = false;
   editarIndex: number | null = null;
+  calificacion!: number;
   isOpen = false;
 
   isOpen2 = false;
@@ -59,8 +60,10 @@ export class CalificacionesComponent implements OnInit, OnDestroy {
 
     this._docentesService.getUpdate().subscribe((value: boolean) => {
       if (value) {
-        this.obtenerActividades();
-
+        this._docentesService.obtenerEntregas(this.curso.id_curso).subscribe(data => {
+          this.entregas = data.data
+          console.log(this.entregas)
+        });
       }
     })
   }
@@ -90,17 +93,14 @@ export class CalificacionesComponent implements OnInit, OnDestroy {
   obtenerActividades() {
     this._docentesService.obtenerActividades(this.curso.id_curso).subscribe(data => {
       this.actividades = data.data
-      console.log(this.curso = data.data)
     });
 
     this._docentesService.obtenerEntregas(this.curso.id_curso).subscribe(data => {
       this.entregas = data.data
-      console.log(this.entregas)
     });
 
     this._docentesService.obtenerParticipantes(this.curso.id_curso).subscribe(data => {
       this.participantes = data.data
-      console.log(this.participantes)
     });
 
   }
@@ -154,6 +154,15 @@ export class CalificacionesComponent implements OnInit, OnDestroy {
     const modalRef = this.modalService.open(BorrarActividadModalComponent, { centered: true, size: 'md' });
     modalRef.componentInstance.actividad = actividad;
 
+  }
+
+  calificarEntrega(actividad: number, estudiante: number, calificacion: number){
+    this._docentesService.calificarEntrega(actividad, estudiante, calificacion).subscribe(data => {
+      console.log(actividad, estudiante, calificacion)
+      this.editarIndex = null;
+      this._docentesService.sendUpdate(true)
+
+    })
   }
 
 }

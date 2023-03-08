@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ActividadModel } from 'src/app/modules/docente/models/actividadModel';
 import { DocentesService } from 'src/app/modules/docente/services/docentes.service';
@@ -18,7 +18,8 @@ import { DatePipe } from '@angular/common';
 })
 
 export class ModificarActividadModalComponent implements OnInit {
-  actividaForm!: FormGroup;
+  actividadForm!: FormGroup;
+  submitted = false;
   @Input() public actividad!: ActividadModel;
 
 
@@ -32,28 +33,32 @@ export class ModificarActividadModalComponent implements OnInit {
     date.setDate(date.getDate() + 1);
     const fecha = date.toISOString().slice(0, 10);
 
-    this.actividaForm = this.formBuilder.group({
-      fechaVencimiento_actividad: [fecha],
+    this.actividadForm = this.formBuilder.group({
+      fechaVencimiento_actividad: [fecha, [Validators.required, validarFechaVencimiento]],
       fechaPublicacion_actividad: [this.actividad.fechaPublicacion_actividad],
-      nombre_actividad: [this.actividad.nombre_actividad],
-      descripcion_actividad: [this.actividad.descripcion_actividad],
-      archivosPermitidos_actividad: [this.actividad.archivosPermitidos_actividad],
-      tipo_actividad: [this.actividad.tipo_actividad],
+      nombre_actividad: [this.actividad.nombre_actividad, [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+      descripcion_actividad: [this.actividad.descripcion_actividad, Validators.required],
+      archivosPermitidos_actividad: [this.actividad.archivosPermitidos_actividad, Validators.required],
+      tipo_actividad: [this.actividad.tipo_actividad, Validators.required],
     }
     );
   }
 
   onSubmit() {
+    this.submitted = true;
+    if (this.actividadForm.invalid) {
+      return;
+    }
 
     var actividad = {
       id_actividad: this.actividad.id_actividad,
       curso_actividad: this.actividad.curso_actividad,
       fechaPublicacion_actividad: this.actividad.fechaPublicacion_actividad,
-      fechaVencimiento_actividad: this.convertirFecha(this.actividaForm.controls["fechaVencimiento_actividad"].value),
-      nombre_actividad: this.actividaForm.controls["nombre_actividad"].value,
-      descripcion_actividad: this.actividaForm.controls["descripcion_actividad"].value,
-      archivosPermitidos_actividad: this.actividaForm.controls["archivosPermitidos_actividad"].value,
-      tipo_actividad: this.actividaForm.controls["tipo_actividad"].value,
+      fechaVencimiento_actividad: this.convertirFecha(this.actividadForm.controls["fechaVencimiento_actividad"].value),
+      nombre_actividad: this.actividadForm.controls["nombre_actividad"].value,
+      descripcion_actividad: this.actividadForm.controls["descripcion_actividad"].value,
+      archivosPermitidos_actividad: this.actividadForm.controls["archivosPermitidos_actividad"].value,
+      tipo_actividad: this.actividadForm.controls["tipo_actividad"].value,
       envios: this.actividad.envios
     }
 
@@ -71,5 +76,17 @@ export class ModificarActividadModalComponent implements OnInit {
     return fechaConvertida!;
   }
 
+  get f() { return this.actividadForm.controls; }
 
+
+
+}
+
+function validarFechaVencimiento(control: AbstractControl): {[key: string]: any} | null {
+  const fechaVencimiento = new Date(control.value);
+  const fechaActual = new Date();
+  if (fechaVencimiento <= fechaActual) {
+    return { fechaInvalida: true };
+  }
+  return null;
 }

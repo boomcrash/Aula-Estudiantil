@@ -1,71 +1,90 @@
-<div class="header2">
-  <div class="header">
-    <h1 style="padding: 0 0 0 0;">Centro de Formación Artesanal UG</h1>
+<div class="fondoNavBar">
+  <div class="navbar border-bottom">
+    <a class="navbar-brand my-3" href="#">Centro de Formación Artesanal UG</a>
   </div>
-  <div class="header">
-    <hr>
-  </div>    
-    <div class="contenedor-menu">
-      <div class="pages">
-        <nav>
-          <ul class="ul">
-            <li><a routerLink="/home" routerLinkActive="activeLink">Inicio</a></li>
-            <li><a (click)="irDocente()">Docentes</a>
-              <ul *ngIf="rol === '2'" class="no-estilo">
-                <li><a (click)="irDocenteHorario()" class="li">Mi horario</a></li>
-                <li><a (click)="irDocenteCursos()" class="li">Mis cursos</a></li>
-                <li><a (click)="irDocenteActa()">Acta de calificaciones</a></li>                                                
-              </ul>
-            </li>                    
-            
-            <li><a (click)="irEstudiante()" routerLinkActive="activeLink">Estudiantes</a>
-              <ul *ngIf="rol === '1' && estudianteMatriculado == 'true'" class="no-estilo">
-                <li><a (click)="irEstudianteHorario()" class="li">Mi horario</a></li>
-                <li><a (click)="irEstudianteCursos()" class="li">Mis cursos</a></li>
-                <li><a (click)="irEstudianteActa()" class="li">Acta de calificaciones</a></li>                                                
-                <li><a (click)="irEstudianteEvaluacionDocente()">Evaluación docente</a></li>                                                
-              </ul>
-            </li>
-            <li><a (click)="irCalidad()" routerLinkActive="activeLink">Calidad</a>
-              <ul class="no-estilo">
-                <li><a (click)="irCalidadDimension()" class="li">Dimensión</a></li>
-                <li><a (click)="irCalidadNormas()" class="li">Normas ISO</a></li>
-                <li><a (click)="irCalidadGestion()" class="li">Gestión</a></li>                                                
-                <li><a (click)="irCalidadAseguramiento()" class="li">Aseguramiento</a></li>   
-                <li><a (click)="irCalidadherramientas()">Herramientas</a></li>                                                
-              </ul>
-            </li>
-            <li *ngIf="rol === '3'"><a (click)="irAdmin()">Administracion</a>
-              <ul class="no-estilo">
-                <li><a (click)="irAdminEstudiante()" class="li">Estudiante</a></li>
-                <li><a (click)="irAdminDocente()" class="li">Docente</a></li>                                                            
-              </ul>
-            </li>
-          </ul>          
-        </nav>
-      </div>
-      <div class="login">
-        <nav>       
-          <ul>
-            <a *ngIf="active" routerLink="#" routerLinkActive="activeLink">{{user}}
-              <i class="fa-solid fa-user-check"></i>
-              <img src="./../../../assets/imagen/perfil.png" alt="" width="25px" height="25px" style="position: relative; top: 3px;">
-              <ul class="no-estilo-2">
-                <li><a  routerLink="/usuario/mi-cuenta" class="li">Mi cuenta</a></li>
-                <li><a href="#" class="li" (click)="logout()">Cerrar Sesion</a></li>                                                              
-              </ul>
-            </a>               
-            <a *ngIf="!active" routerLink="" routerLinkActive="activeLink" (click)="openDialogSesion()">
-              <i class="fa-solid fa-user-check"></i>
-              <img src="./../../../assets/imagen/perfil.png" alt="" width="25px" height="25px" style="position: relative; top: 3px;">              
-            </a>                      
-          </ul>
-        </nav>
-      </div>
-    </div>        
-  </div>
-  
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark">
 
-  <!-- <div (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" [ngClass]="{'highlight': isHover}">
-    Contenido del elemento
-  </div> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse  justify-content-between mx-3" id="navbarNav">
+    <div>
+      <ul class="navbar-nav">
+
+        <li class="nav-item p-2 px-3">
+          <a class="nav-link" routerLink="/home" routerLinkActive="activeLink">Inicio</a>
+        </li>
+        <li class="nav-item dropdown p-2 px-3" *ngIf="rol === '2'">
+          <a class="nav-link dropdown-toggle" (click)="irDocente()" id="docentesDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Docentes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="docentesDropdown">
+            <a class="dropdown-item bordeMenu" (click)="irDocenteHorario()">Mi horario</a>
+            <a class="dropdown-item bordeMenu" (click)="irDocenteCursos()">Mis cursos</a>
+            <a class="dropdown-item" (click)="irDocenteActa()">Acta de calificaciones</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown p-2 px-3" *ngIf="rol === '1'">
+          <a class="nav-link dropdown-toggle" (click)="irEstudiante()" id="estudiantesDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Estudiantes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="estudiantesDropdown">
+            <a class="dropdown-item bordeMenu" (click)="irEstudianteHorario()">Mi horario</a>
+            <a class="dropdown-item bordeMenu" (click)="irEstudianteCursos()">Mis cursos</a>
+            <a class="dropdown-item bordeMenu" (click)="irEstudianteActa()">Acta de calificaciones</a>
+            <a class="dropdown-item" (click)="irEstudianteEvaluacionDocente()">Evaluación docente</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown p-2 px-3">
+          <a class="nav-link dropdown-toggle" (click)="irCalidad()" id="calidadDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Calidad
+          </a>
+          <div class="dropdown-menu " aria-labelledby="calidadDropdown">
+            <a class="dropdown-item bordeMenu" (click)="irCalidadDimension()">Dimensión</a>
+            <a class="dropdown-item bordeMenu" (click)="irCalidadNormas()">Normas ISO</a>
+            <a class="dropdown-item bordeMenu" (click)="irCalidadGestion()">Gestión</a>
+            <a class="dropdown-item bordeMenu" (click)="irCalidadAseguramiento()">Aseguramiento</a>
+            <a class="dropdown-item" (click)="irCalidadherramientas()">Herramientas</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown p-2 px-3" *ngIf="rol === '3'">
+          <a class="nav-link dropdown-toggle" (click)="irAdmin()" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Administración
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item bordeMenu" (click)="irAdminEstudiante()">Estudiante</a>
+            <a class="dropdown-item" (click)="irAdminDocente()">Docente</a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+    <div>
+      <ul class="navbar-nav">
+        <li *ngIf="!active" class="nav-item p-2">
+          <a routerLink="" routerLinkActive="activeLink" (click)="openDialogSesion()" class="nav-link" style="display: flex; align-items: center;">
+            <img src="./../../../assets/imagen/perfil.png" alt="" width="25px" height="25px">
+          </a>
+        </li>
+        <li *ngIf="active" class="nav-item dropdown p-2">
+          <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: flex; align-items: center;">
+            <span class="mx-2">{{user}}</span>
+            <img src="./../../../assets/imagen/perfil.png" alt="" width="25px" height="25px" *ngIf="active">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right dropdown-menu-left" aria-labelledby="usuarioDropdown">
+            <li><a routerLink="/usuario/mi-cuenta" class="dropdown-item">Mi cuenta</a></li>
+            <li><a href="#" class="dropdown-item" (click)="logout()">Cerrar Sesion</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>

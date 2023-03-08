@@ -31,8 +31,11 @@ export const environment = {
             obtenerDatosDocente: "/api/v1/usuarios/getUsersCompleteData/",
             modificarActividad: "/api/v1/actividades/updateActividad",
             agregarActividad: "/api/v1/actividades/addActividad",
-            obtenerPagoDocenteByDocenteId: "/api/v1/pagos/getPagoDocenteByDocenteId"
-
+            obtenerPagoDocenteByDocenteId: "/api/v1/pagos/getPagoDocenteByDocenteId",
+            obtenerEntrega: "/api/v1/actividades/entregaActividad",
+            obtenerParticipantes: "/api/v1/cursos/getParticipantesCurso",
+            borrarActividad: "/api/v1/actividades/deleteActividad",
+            calificarEntrega: "/api/v1/entregas/addCalificacion"
         },
         urlObtenerParticipantes: "/api/v1/participantes/getParticipantesByActividadId",
         urlObtenerEstudiantes: "/api/v1/estudiantes/getEstudiantes",

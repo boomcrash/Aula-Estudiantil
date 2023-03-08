@@ -21,41 +21,49 @@ export class DocentesService {
     this.update.next(value);
   }
 
-  obtenerCursos(id : number): Observable<any> {    
+  public getMenu(): Observable<boolean> {
+    return this.update.asObservable();
+  }
+
+  public updateMenu(value: boolean): void {
+    this.update.next(value);
+  }
+
+  obtenerCursos(id: number): Observable<any> {
     const post = {
       docente_curso: id
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerCursos}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerCursos}`;
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',        
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       })
     }
 
-    return this.http.post(url, post,httpOptions);
+    return this.http.post(url, post, httpOptions);
   }
 
-  obtenerActividades(id : number): Observable<any> {    
+  obtenerActividades(id: number): Observable<any> {
     const post = {
       curso_actividad: id
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerActividades}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerActividades}`;
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',        
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       })
     }
 
-    return this.http.post(url, post,httpOptions);
+    return this.http.post(url, post, httpOptions);
   }
 
-  obtenerIdDocente(id : number): Observable<any> {    
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerIdDocente}` + id;    
+  obtenerIdDocente(id: number): Observable<any> {
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerIdDocente}` + id;
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',        
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       })
     }
@@ -101,9 +109,9 @@ export class DocentesService {
     }
     console.log(url, post);
     return this.http.post(url, post,httpOptions);
-  }
+  }  
 
-  modificarActividad(actividad : ActividadModel): Observable<any> {    
+  modificarActividad(actividad: ActividadModel): Observable<any> {
     const body = {
       id_actividad: actividad.id_actividad,
       fechaVencimiento_actividad: actividad.fechaVencimiento_actividad,
@@ -113,17 +121,17 @@ export class DocentesService {
       archivosPermitidos_actividad: actividad.archivosPermitidos_actividad,
       tipo_actividad: actividad.tipo_actividad
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.modificarActividad}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.modificarActividad}`;
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',        
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       })
     }
     return this.http.put(url, body, httpOptions);
   }
 
-  agregarActividad(actividad : ActividadModel): Observable<any> {    
+  agregarActividad(actividad: ActividadModel): Observable<any> {
     const body = {
       curso_actividad: actividad.curso_actividad,
       fechaVencimiento_actividad: actividad.fechaVencimiento_actividad,
@@ -133,15 +141,76 @@ export class DocentesService {
       archivosPermitidos_actividad: actividad.archivosPermitidos_actividad,
       tipo_actividad: actividad.tipo_actividad
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.agregarActividad}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.agregarActividad}`;
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',        
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       })
     }
     console.log(actividad)
     return this.http.post(url, body, httpOptions);
   }
+
+  borrarActividad(id: number): Observable<any> {
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.borrarActividad}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+    const body = { "id_actividad": id };
+    return this.http.delete(url, { ...httpOptions, body });
+  }
+
+  obtenerEntregas(curso: number): Observable<any> {
+    const post = {
+      curso_actividad: curso,
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerEntrega}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+
+    return this.http.post(url, post, httpOptions);
+
+  }
+
+  obtenerParticipantes(id: number): Observable<any> {
+    const post = {
+      id_curso: id,
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerParticipantes}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+
+    return this.http.post(url, post, httpOptions);
+
+  }
+
+  calificarEntrega(actividad: number, estudiante: number, calificacion: number): Observable<any> {
+    const body = {
+      actividad_entrega: actividad,
+      estudiante_entrega: estudiante,
+      calificacion_entrega: calificacion
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.calificarEntrega}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    return this.http.put(url, body, httpOptions);
+  }
+
 
 }

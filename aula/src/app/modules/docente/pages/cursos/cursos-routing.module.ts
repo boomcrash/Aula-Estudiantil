@@ -5,6 +5,7 @@ import { CursosComponent } from './cursos.component';
 import { CursoComponent } from './curso/curso.component';
 import { ActividadesComponent } from './actividades/actividades.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
+import { AsistenciasComponent } from './asistencias/asistencias.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'calificaciones',
         component: CalificacionesComponent,
+      },
+      {
+        path: 'asistencias',
+        component: AsistenciasComponent
       }
     ]
   }

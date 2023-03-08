@@ -46,10 +46,10 @@ export class MatriculacionComponent implements OnChanges {
   displayedColumns2 = ['accion', 'materia', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5', 'dia_horario6', 'dia_horario7'];
   dataSource: any = [];
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
     select : ['', Validators.required],
     select2 : ['', Validators.required],
-    tabla: ['', Validators.required]
+
+    
     
 });
      tarjetaForm = new FormGroup({

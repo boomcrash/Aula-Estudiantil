@@ -11,6 +11,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { DperfilComponent } from './pages/dperfil/dperfil.component';
 import { DocenteRegistroComponent } from './pages/docente-registro/docente-registro.component';
+import { ActaModule } from './pages/acta/acta.module';
+import { CursosModule } from './pages/cursos/cursos.module';
+
 
 
 
@@ -28,8 +31,9 @@ import { DocenteRegistroComponent } from './pages/docente-registro/docente-regis
     SharedModule,
     HorarioModule,
     MatExpansionModule,
-    MatTableModule,
-    
-  ]
+    MatTableModule,  
+    ActaModule,
+    CursosModule,
+  ],
 })
 export class DocenteModule { }

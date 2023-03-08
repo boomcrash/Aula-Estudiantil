@@ -26,7 +26,7 @@ export class AdminPerfilComponent {
         const usuario:usuarioModel={ 
           id_usuario:usuario_admin.id_usuario,
           nombre_usuario: usuario_admin.nombre_usuario,
-          contrasena_usuario: usuario_admin.contrasena_usuario,
+          contrasena_usuario: "********", //usuario_admin.contrasena_usuario
           rol_usuario: usuario_admin.rol_usuario,
         }
         this.dataSource=usuario;

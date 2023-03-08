@@ -96,3 +96,132 @@ h1::after {
     height: 220px;
     padding: auto;
   }
+
+@media only screen and (min-width:431px ) and (max-width: 768px) {
+        .banner {
+          height: 300px;
+        }
+        .banner-text {
+          top: 40%;
+        }
+        .cuerpo-empresas {
+          flex-direction: column;
+          margin-bottom: 20px;
+        }
+        .contenido-empresas {
+          flex-direction: column;
+        }
+        .empresa {
+          width: 100%;
+          margin: 0;
+          text-align: center;
+        }
+        .jumbotron {
+          padding: 50px;
+        }
+        h1 {
+          margin-top: 30px;
+          position: relative;
+          display: inline-block;
+          font-weight: bold;
+          font-size: 15px;
+      }
+      
+      h2 {
+          font-size: 15px;
+          font-weight: normal;
+      
+      }
+      
+      h4 {
+          font-size: 14px;
+      
+      }
+      
+      h1::after {
+          content: "";
+          position: absolute;
+          left: 51%;
+          bottom: 0;
+          width: 51%;
+          height: 4px;
+          background-color: #20BCD1;
+          transform: translateX(-50%);
+      }
+      .contenido-empresas img{
+        width: 100%;
+        height: 150px;
+        padding: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      }
+      @media only screen and (max-width: 430px) {
+        .banner {
+          height: 300px;
+        }
+        .banner-text {
+          top: 40%;
+        }
+        .cuerpo-empresas {
+          flex-direction: column;
+          margin-bottom: 20px;
+        }
+        .contenido-empresas {
+          flex-direction: column;
+        }
+        .empresa {
+          width: 100%;
+          margin: 0;
+          text-align: center;
+        }
+        .jumbotron {
+          padding: 50px;
+        }
+        h1 {
+          margin-top: 30px;
+          position: relative;
+          display: inline-block;
+          font-weight: bold;
+          font-size: 15px;
+      }
+      
+      h2 {
+          font-size: 15px;
+          font-weight: normal;
+      
+      }
+      
+      h4 {
+          font-size: 14px;
+      
+      }
+      
+      h1::after {
+          content: "";
+          position: absolute;
+          left: 51%;
+          bottom: 0;
+          width: 51%;
+          height: 4px;
+          background-color: #20BCD1;
+          transform: translateX(-50%);
+      }
+      .contenido-empresas img{
+        width: 100%;
+        height: 150px;
+        padding: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+        #botonGuardar {
+          border: 2px solid #20BCD1;
+          background-color: #20BCD1;
+          color: rgb(255, 255, 255);
+          font-size: 10px;
+          height: 30px;
+      }
+      }

@@ -1,38 +1,58 @@
+<br>
+<div class="container rounded bg-white mt-2 mb-2">
+  <div class="contenido-encabezado">
+    <section class="cuerpo-titulo">
+      <h1>ACTA DE CALIFICACIONES</h1>
+    </section>
+  </div>
+  <br /><br />
+</div>
 <div class="container">
-  <div class="container rounded bg-white mt-2 mb-2">
-    <div class="contenido-encabezado">
-      <section class="cuerpo-titulo">
-        <h1>ACTA DE CALIFICACIONES</h1>
-      </section>
-    </div>
-    <br><br>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
-      <th></th>
-      <ng-container matColumnDef="materia">
-        <th mat-header-cell *matHeaderCellDef>Materia</th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre_materia}} </td>
-      </ng-container>
-      <ng-container matColumnDef="modulo">
-        <th mat-header-cell *matHeaderCellDef>Modulo</th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre_paralelo}} </td>
-      </ng-container>
-      <ng-container matColumnDef="paralelo">
-        <th mat-header-cell *matHeaderCellDef>Paralelo</th>
-        <td mat-cell *matCellDef="let element"> {{element.modulo_materia}} </td>
-      </ng-container>
-      <ng-container matColumnDef="pcalificaciones">
-        <th mat-header-cell *matHeaderCellDef>Promedio de calificaciones</th>
-        <td mat-cell *matCellDef="let element"> {{element.promedioCalificaciones_itemActa}} </td>
-      </ng-container>
-      <ng-container matColumnDef="pasistencias">
-        <th mat-header-cell *matHeaderCellDef>Promedio de asistencias</th>
-        <td mat-cell *matCellDef="let element"> {{element.promedioAsistencias_itemActa}} </td>
-      </ng-container>
-      <ng-container matColumnDef="estado">
-        <th mat-header-cell *matHeaderCellDef>Estado</th>
-        <td class="estados" mat-cell *matCellDef="let element of dataSource" [ngClass]="{'aprobado': element.estado_itemActa === 'APROBADO', 'reprobado': element.estado_itemActa === 'REPROBADO'}">{{element.estado_itemActa}}</td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" class="col-md-2">Materia</th>
+          <th scope="col" class="col-md-2">Paralelo</th>
+          <th scope="col" class="col-md-2">Modulo</th>
+          <th scope="col" class="col-md-2">Promedio de calificaciones</th>
+          <th scope="col" class="col-md-2">Promedio de asistencias</th>
+          <th scope="col" class="col-md-2" style="width: 4%">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="dataSource.length > 0; else noData">
+          <ng-container *ngFor="let actividades of dataSource">
+            <tr>
+              <td class="align-middle">{{ actividades.nombre_materia }}</td>
+              <td class="align-middle">{{ actividades.nombre_paralelo }}</td>
+              <td class="align-middle">{{ actividades.modulo_materia }}</td>
+              <td class="align-middle">
+                {{ actividades.promedioCalificaciones_itemActa }}
+              </td>
+              <td class="align-middle">
+                {{ actividades.promedioAsistencias_itemActa }}
+              </td>
+              <td
+                class="align-middle"
+                [ngClass]="{
+                  aprobado: actividades.estado_itemActa === 'APROBADO',
+                  reprobado: actividades.estado_itemActa === 'REPROBADO'
+                }"
+              >
+                {{ actividades.estado_itemActa }}
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+        <ng-template #noData>
+          <tr>
+            <td colspan="6" class="text-center">
+              No se encontraron resultados
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
     </table>
-<br><br><br>
+  </div>
+</div>

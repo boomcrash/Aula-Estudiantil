@@ -36,7 +36,7 @@ export class DperfilComponent implements OnInit {
       const docente: DocentePerfilModel = {
         id_usuario: data.data[0].id_usuario,
         nombre_usuario: data.data[0].nombre_usuario,
-        contrasena_usuario: data.data[0].contrasena_usuario,
+        contrasena_usuario: "********",
         rol_usuario: data.data[0].rol_usuario,
         id_docente: data.data[0].id_docente,
         nombres_docente: data.data[0].nombres_docente,

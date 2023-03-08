@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContratoDocenteAdministracionComponent } from '../contrato-docente-administracion/contrato-docente-administracion.component';
-import { PagosDocenteAdministracionComponent } from '../pagos-docente-administracion/pagos-docente-administracion.component';
-import { VerDocenteAdministracionComponent } from '../ver-docente-administracion/ver-docente-administracion.component';
 import { Docente } from '../../models/docenteModel';
 import { DocenteAdministracionService } from '../../services/docente-administracion.service';
 import { Router } from '@angular/router';
@@ -53,8 +51,8 @@ export class DocenteAdministracionComponent implements OnInit {
     this.dialog.open(ContratoDocenteAdministracionComponent);
   }
 
-  mostrarDialogoVer() {
-    this.dialog.open(VerDocenteAdministracionComponent);
+  verMateriasDocente() {
+    this.router.navigate(['/administracion/ver-docente-administracion']);
   }
 }
 

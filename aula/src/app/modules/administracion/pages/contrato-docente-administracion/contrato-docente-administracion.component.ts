@@ -27,13 +27,11 @@ export class ContratoDocenteAdministracionComponent implements OnInit{
     this.dialogRef.close();
   }
   filtro: string[] = [
-    'Matutina',
-    'Vespertina',
-    'Nocturna',
+    'Medio Tiempo',
+    'Tiempo Completo',
   ];
   tipo: string[] = [
-    'Automatico 1',
-    'Automatico 2',
-    'Automatico 3',
+    'Docente Titular',
+    'Técnico Docente',
   ];
 }

@@ -23,8 +23,9 @@ td{
     text-align: center;
 }
 
-.contenidoDocente{
+.contenidoEstudiante{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 40px;
 }

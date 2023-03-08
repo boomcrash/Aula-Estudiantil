@@ -2,7 +2,7 @@
 
 <div class="container"  >
     <div style="margin: auto; text-align: center;">
-      <h1> NUEVO CONTRATO </h1>
+      <h1 style="font-weight: bold;"> NUEVO CONTRATO </h1>
     </div>
 
     <div style="font-size: 14px;  "> 
@@ -10,18 +10,17 @@
         <form class="formContrato" [formGroup]="formulario">
 
           <div style="width: 80%;text-align: center; margin: auto;">
-              <mat-form-field class="campos-field">
-                <mat-label>NOMBRE DEL DOCENTE</mat-label>
-                <input matInput placeholder="nombre">
-              </mat-form-field>
+              <h2>NOMBRE DEL DOCENTE</h2>
               <br>
               <label> NOMBRAMIENTO </label>
+              <br>
               <mat-radio-group aria-label="Select an option">
                 <mat-radio-button style="margin-left: 16px;" value="1">Si</mat-radio-button>
                 <mat-radio-button style="margin-left: 16px;" value="2">No</mat-radio-button>
               </mat-radio-group>
               <br>
               <label> ESPECIALIDAD A FIN </label>
+              <br>
               <mat-radio-group aria-label="Select an option">
                 <mat-radio-button style="margin-left: 16px;" value="1">Si</mat-radio-button>
                 <mat-radio-button style="margin-left: 16px;" value="2">No</mat-radio-button>
@@ -36,11 +35,6 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field class="campos-field">
-                <input matInput value="MEDIO TIEMPO">
-                <hr>
-                <input matInput value="TIEMPO COMPLETO">
-              </mat-form-field>
               <br>
               <mat-form-field appearance="fill" class="campos-field">
                 <mat-label>TIPO:</mat-label>
@@ -50,11 +44,6 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field class="campos-field">
-                <input matInput value="DOCENTE TITULAR">
-                <hr>
-                <input matInput value="TÉCNICO DOCENTE">
-              </mat-form-field>
           </div>
           <mat-dialog-actions style="justify-content: center;">
             <button style="background-color: #20BCD1; color: white;" mat-raised-button (click)="enviar()">GUARDAR</button>

@@ -25,7 +25,6 @@ export class VerEstudianteAdministracionComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog, 
-    private dialogRef: MatDialogRef<VerEstudianteAdministracionComponent>,
     private estudianteService:EstudianteAdministracionService) {}
 
     ngOnInit(): void {
@@ -35,9 +34,7 @@ export class VerEstudianteAdministracionComponent implements OnInit {
         console.log
       });
     }
-  cerrar(){
-    this.dialogRef.close();
-  }
+
   mostrarDialogoActC() {
     this.dialog.open(ActCEstudianteAdministracionComponent);
   }

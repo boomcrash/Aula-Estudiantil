@@ -11,6 +11,7 @@ import { DocenteAdministracionService } from '../../services/docente-administrac
   styleUrls: ['./ver-docente-administracion.component.css']
 })
 export class VerDocenteAdministracionComponent implements OnInit {
+  datosDocentes: Docente[] = [];
   docente!: Docente;
   datosMateriasDocente: MateriaDocente[] = [];
 
@@ -18,8 +19,7 @@ export class VerDocenteAdministracionComponent implements OnInit {
 
 
   constructor(
-    private dialog: MatDialog, 
-    private dialogRef: MatDialogRef<VerDocenteAdministracionComponent>,
+    
     private docenteService:DocenteAdministracionService) {}
 
   ngOnInit(): void {
@@ -28,9 +28,11 @@ export class VerDocenteAdministracionComponent implements OnInit {
       this.datosMateriasDocente=data.data
       console.log
     });
+    this.docenteService.obtenerDocentes().subscribe(data => {
+      this.datosDocentes=data.data;
+      console.log(this.datosDocentes);
+    });
   }
 
-  cerrar(){
-    this.dialogRef.close();
-  }
+  
 }

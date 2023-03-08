@@ -38,7 +38,6 @@ export class PagosDocenteAdministracionComponent implements OnInit {
   ];
 
   constructor(
-    private dialogRef: MatDialogRef<PagosDocenteAdministracionComponent>,
     private docenteService:DocenteAdministracionService) {}
 
   ngOnInit(): void {
@@ -52,8 +51,5 @@ export class PagosDocenteAdministracionComponent implements OnInit {
       });
 
     });
-  }
-  cerrar() {
-    this.dialogRef.close();
   }
 }

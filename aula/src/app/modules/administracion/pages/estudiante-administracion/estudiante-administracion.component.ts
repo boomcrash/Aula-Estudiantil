@@ -1,5 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Estudiante } from '../../models/estudianteModel';
 import { EstudianteAdministracionService } from '../../services/estudiante-administracion.service';
 import { VerEstudianteAdministracionComponent } from '../ver-estudiante-administracion/ver-estudiante-administracion.component';
@@ -31,6 +32,7 @@ export class EstudianteAdministracionComponent implements OnInit{
   
   constructor(
     private dialog: MatDialog,
+    private router: Router,
     private estudianteService:EstudianteAdministracionService) {}
   
     ngOnInit(): void {
@@ -41,7 +43,7 @@ export class EstudianteAdministracionComponent implements OnInit{
       });
     }
 
-  mostrarDialogoVer() {
-    this.dialog.open(VerEstudianteAdministracionComponent);
+    verMateriasEstudiante() {
+      this.router.navigate(['/administracion/ver-estudiante-administracion']);
   }
 }

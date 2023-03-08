@@ -2,9 +2,9 @@
  
     <mat-dialog-content>
   
-        <div class="contenidoDocente">
-            <div>
-                <h1>NOMBRES COMPLETOS DEL DOCENTE</h1>
+        <div class="contenidoDocente" >
+            <div  > <!--*ngFor="let element of datosDocentes"-->
+                <h2 style="color:black"> <!--{{element.nombresCompletos_docente}}--> LLAMAR NOMBRE DE DOCENTE </h2>
             </div>
         
             <div class="vdc" >
@@ -64,7 +64,5 @@
       </div>
 
     </mat-dialog-content>
-    <mat-dialog-actions>
-      <button style="background-color: #20BCD1; color: white;" mat-button (click)="cerrar()">CERRAR</button>
-    </mat-dialog-actions>
+
 </div>

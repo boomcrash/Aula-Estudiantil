@@ -4,6 +4,8 @@ import { AdministracionComponent } from './administracion.component';
 import { DocenteAdministracionComponent } from './pages/docente-administracion/docente-administracion.component';
 import { EstudianteAdministracionComponent } from './pages/estudiante-administracion/estudiante-administracion.component';
 import { PagosDocenteAdministracionComponent } from './pages/pagos-docente-administracion/pagos-docente-administracion.component';
+import { VerDocenteAdministracionComponent } from './pages/ver-docente-administracion/ver-docente-administracion.component';
+import { VerEstudianteAdministracionComponent } from './pages/ver-estudiante-administracion/ver-estudiante-administracion.component';
 
 
 const routes: Routes = [
@@ -28,6 +30,14 @@ const routes: Routes = [
   { 
     path: 'pagos-docente-administracion', 
     component: PagosDocenteAdministracionComponent,
+  },
+  { 
+    path: 'ver-docente-administracion', 
+    component: VerDocenteAdministracionComponent,
+  },
+  { 
+    path: 'ver-estudiante-administracion', 
+    component: VerEstudianteAdministracionComponent,
   }
 ];
 

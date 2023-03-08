@@ -14,6 +14,9 @@ import { ActaService } from '../acta/services/acta.service';
 import{MatTableDataSource} from '@angular/material/table';
 import { ActaCalificacion } from '../../models/actacalificacion.model';
 import { Router } from '@angular/router';
+import { map, Observable } from 'rxjs';
+import { StepperOrientation } from '@angular/cdk/stepper';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-matriculacion',
@@ -60,6 +63,7 @@ export class MatriculacionComponent implements OnChanges {
     cvv:new FormControl ('', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern('^[0-9]*$')])
   });
   isEditable = false;
+  stepperOrientation: Observable<StepperOrientation>;
 
   constructor(
     private _formBuilder: FormBuilder, 
@@ -67,8 +71,18 @@ export class MatriculacionComponent implements OnChanges {
     private cookie: CookieService,
     private autentificar: AuthService,
     private acta:ActaService,
-    private router: Router
-    ) { }
+    private router: Router,
+   breakpointObserver: BreakpointObserver
+    
+    
+    ) { 
+
+      this.stepperOrientation = breakpointObserver
+      .observe('(min-width: 800px)')
+      .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
+
+      
+    }
   
 
   ngOnInit() {

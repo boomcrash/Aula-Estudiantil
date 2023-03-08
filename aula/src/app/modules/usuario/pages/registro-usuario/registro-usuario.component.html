@@ -6,7 +6,7 @@
   <h1>REGISTRO DE USUARIO</h1>
    
 
-  <mat-stepper  [linear]="false" #stepper >
+  <mat-stepper [linear]="true" #stepper  [orientation]="(stepperOrientation | async)!">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Credenciales</ng-template>

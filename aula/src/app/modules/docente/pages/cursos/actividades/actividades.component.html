@@ -31,10 +31,10 @@
         <tbody>
             <ng-container *ngFor="let actividad of actividades; let indice = index">
                 <tr>
-                    <td scope="row">{{indice+1}}</td>
-                    <td>{{actividad.nombre_actividad}}</td>
-                    <td>{{actividad.envios}}</td>
-                    <td>{{actividad.fechaVencimiento_actividad}}</td>
+                    <td class="align-middle" scope="row">{{indice+1}}</td>
+                    <td class="align-middle">{{actividad.nombre_actividad}}</td>
+                    <td class="align-middle">{{actividad.envios}}</td>
+                    <td class="align-middle">{{actividad.fechaVencimiento_actividad}}</td>
                     <td>
 
                         <a type="button" (click)="openInformacion(actividad)" class="mx-2">

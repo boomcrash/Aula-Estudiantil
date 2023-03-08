@@ -98,8 +98,8 @@
           <tbody>
             <ng-container *ngFor="let actividades of presentarActividadesModel">
               <tr>
-                <td>{{ actividades.nombre_actividad }}</td>
-                <td
+                <td class="align-middle">{{ actividades.nombre_actividad }}</td>
+                <td class="align-middle"
                   [ngClass]="{
                     NoEnviada: actividades.estado_entrega === 'No Enviada',
                     Enviada: actividades.estado_entrega === 'Enviada',
@@ -108,9 +108,9 @@
                 >
                   {{ actividades.estado_entrega }}
                 </td>
-                <td>{{ actividades.fechaVencimiento_actividad }}</td>
-                <td>{{ actividades.calificacion_entrega }}</td>
-                <td>
+                <td class="align-middle">{{ actividades.fechaVencimiento_actividad }}</td>
+                <td class="align-middle">{{ actividades.calificacion_entrega }}</td>
+                <td class="align-middle">
                   <button
                     mat-icon-button
                     (click)="verActividad(actividades.id_actividad)"

@@ -1,14 +1,25 @@
-<!-- ENCABEZADO -->
-<section id="encabezado">
-  <div class="imagen-encabezado"></div>
-  <div class="contenido-encabezado">
-    <h1>ESTUDIANTES</h1>
-    <p>Asegura tu futuro en nuestro Centro de Formación!</p>
+<div class="banner">
+  <div class="banner-text">
+    <h1 class="mb-4">ESTUDIANTES</h1>
+    <h2 class="mb-4">Asegura tu futuro en nuestro Centro de Formación!</h2>
     <p></p>
-      <a *ngIf="validarMatricula" class="button" routerLink="/estudiante/matriculacion"  class="button">Matricularme</a>        
-      <a *ngIf="!validarMatricula"  class="button" routerLink="/estudiante" style="background-color: rgb(97, 94, 92);" class="button">Matricularme</a>    
+    <a
+      *ngIf="validarMatricula"
+      class="button"
+      routerLink="/estudiante/matriculacion"
+      class="button"
+      >Matricularme</a
+    >
+    <a
+      *ngIf="!validarMatricula"
+      class="button"
+      routerLink="/estudiante"
+      style="background-color: rgb(97, 94, 92)"
+      class="button"
+      >Matricularme</a
+    >
   </div>
-</section>
+</div>
 
 <div class="contenedor">
   <div class="container"></div>

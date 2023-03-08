@@ -43,19 +43,32 @@ h1:before {
   color: white;
 }
 
-.imagen-encabezado {
-  height: calc(100vh - 49px);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+.banner {
   background-image: url(../../../assets/imagen/estudiantes/Portada.png);
-  width: 100%;
-  opacity: 0.18;
-  transition: opacity 2s ease-in-out;
-  position: relative;
+  background-size: cover;
+    background-position: center;
+    height: 600px;
+    position: relative;
+}
+.banner::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
 
 .contenido-encabezado {
   display: flex;

@@ -11,6 +11,10 @@ import { ParticipantesService } from './servicios/services/participantes.service
 export class ParticipantesComponent implements OnInit {
   displayedColumns = ['no', 'nombres', 'email', 'rol'];
   listaParticipantes: Participantes[] = [];
+  searchTerm: string = '';
+  filteredParticipantes = this.listaParticipantes;
+
+
 
   constructor(private participantes: ParticipantesService) { }
   selected = '0';
@@ -29,5 +33,12 @@ export class ParticipantesComponent implements OnInit {
     )
     
   }
+  filterParticipantes() {
+    this.filteredParticipantes = this.listaParticipantes.filter((participante) =>
+      participante.nombrescompletos_participante.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+  
+  
   
 }

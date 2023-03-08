@@ -47,6 +47,9 @@ export class MatriculacionComponent implements OnChanges {
   dataSource: any = [];
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
+    select : ['', Validators.required],
+    select2 : ['', Validators.required],
+    tabla: ['', Validators.required]
     
 });
      tarjetaForm = new FormGroup({
@@ -56,7 +59,7 @@ export class MatriculacionComponent implements OnChanges {
     fecha:new FormControl ('',[Validators.required]),
     cvv:new FormControl ('', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern('^[0-9]*$')])
   });
-  isEditable = true;
+  isEditable = false;
 
   constructor(
     private _formBuilder: FormBuilder, 

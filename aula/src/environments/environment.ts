@@ -36,8 +36,7 @@ export const environment = {
             obtenerParticipantes: "/api/v1/cursos/getParticipantesCurso",
             borrarActividad: "/api/v1/actividades/deleteActividad",
             calificarEntrega: "/api/v1/entregas/addCalificacion"
-        },
-        urlObtenerParticipantes: "/api/v1/participantes/getParticipantesByActividadId",
+        },        
         urlObtenerEstudiantes: "/api/v1/estudiantes/getEstudiantes",
         urlModificarEntrega: "/api/v1/entregas/updateEntrega",
 

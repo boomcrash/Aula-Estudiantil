@@ -14,7 +14,7 @@ export class ParticipantesService {
     const post = {
       id_curso
         };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerParticipantes}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerParticipantes}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        

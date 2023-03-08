@@ -311,7 +311,8 @@ export class MatriculacionComponent implements OnChanges {
       }
     }
     console.log(this.asignaturas);
-    this.horarioMatriculacion = []
+    this.horarioMatriculacion = [];
+    console.log(this.horarioMatriculado);
   }
 
 

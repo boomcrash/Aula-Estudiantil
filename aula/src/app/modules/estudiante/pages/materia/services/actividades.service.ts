@@ -15,7 +15,7 @@ export class ActividadesService {
 
   obtenerActividades(curso_actividad: number): Observable<any> {    
     const post = {
-      curso_actividad
+      curso_actividad: curso_actividad
     };
     const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerActividades}`;    
     const httpOptions = {
@@ -26,6 +26,11 @@ export class ActividadesService {
     }
     console.log(url, post);
     return this.http.post(url, post,httpOptions);
+  }
+
+  obtenerDatosEstudiante(id: number): Observable<any> {    
+    const url = `${environment.urlBAse}/api/v1/usuarios/getUsersCompleteData/${id}`;      
+    return this.http.get(url);
   }
 
   obtenerEntregas(): Observable<any> {    

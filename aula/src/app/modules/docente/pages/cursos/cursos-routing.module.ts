@@ -6,6 +6,7 @@ import { CursoComponent } from './curso/curso.component';
 import { ActividadesComponent } from './actividades/actividades.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
 import { AsistenciasComponent } from './asistencias/asistencias.component';
+import { ParticipantesComponent } from 'src/app/modules/estudiante/pages/participantes/participantes.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'asistencias',
         component: AsistenciasComponent
+      },
+      {
+        path: 'participantes',
+        component: ParticipantesComponent
       }
     ]
   }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { CursoModel } from '../../models/cursoModel';
 import { Participantes } from '../../models/participantes.model';
 import { ParticipantesService } from './servicios/services/participantes.service';
 
@@ -9,11 +10,11 @@ import { ParticipantesService } from './servicios/services/participantes.service
   styleUrls: ['./participantes.component.css']
 })
 export class ParticipantesComponent implements OnInit {
+  @Input() public curso!: CursoModel;
   displayedColumns = ['no', 'nombres', 'email', 'rol'];
   listaParticipantes: Participantes[] = [];
   searchTerm: string = '';
-  filteredParticipantes = this.listaParticipantes;
-
+  filtro: string = '';
 
 
   constructor(private participantes: ParticipantesService) { }
@@ -21,7 +22,10 @@ export class ParticipantesComponent implements OnInit {
 
 
   ngOnInit() {
-    this.participantes.ObtenerParticipantes(1).subscribe((data) => {
+    if (!this.curso) {
+      this.curso = history.state.curso;
+    }
+    this.participantes.ObtenerParticipantes(this.curso.id_curso).subscribe((data) => {
       console.log(data);
       this.listaParticipantes = data.data;
       console.log(this.listaParticipantes);
@@ -33,11 +37,14 @@ export class ParticipantesComponent implements OnInit {
     )
     
   }
-  filterParticipantes() {
-    this.filteredParticipantes = this.listaParticipantes.filter((participante) =>
-      participante.nombrescompletos_participante.toLowerCase().includes(this.searchTerm.toLowerCase())
+
+  filtrar() {
+    const valor = this.filtro.toLowerCase();
+    return this.listaParticipantes.filter(participante =>
+      participante.nombrescompletos_participante.toLowerCase().includes(valor)
     );
   }
+
   
   
   

@@ -28,7 +28,7 @@ export class MatriculacionComponent implements OnChanges {
   @ViewChild(MatTable) table!: MatTable<any>;
   selected = '';
   horarioMatriculacion: horarioMatriculacion[] = [];
-  horarioMatriculado: horarioMatriculacion[] = [];  
+  horarioMatriculado: horarioMatriculacion[] = [];
   cursoHorario: CursoHorario[] = [];
   curso: Curso[] = [];
   paralelo: paralelo[] = [];
@@ -44,15 +44,23 @@ export class MatriculacionComponent implements OnChanges {
   materiasAprobadas: any[] = [];
   mostrarHorario: boolean = true;
   mostrarHorario2: boolean = true;
+  costoUnitario: number = 86;
+  costoTotal: number = 0;
+  descuento: number = 0;
+  promedio: number = 0;
+  totalDescuento: number = 0;
+  nombreModulo: string = '';
+
 
   displayedColumns = ['accion', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5', 'dia_horario6', 'dia_horario7'];
   displayedColumns2 = ['accion', 'materia', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5', 'dia_horario6', 'dia_horario7'];
+  displayedColumns3 = ['materia', 'paralelo_curso', 'modulo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5', 'dia_horario6', 'dia_horario7'];
   dataSource: any = [];
   firstFormGroup = this._formBuilder.group({
-    select : ['', Validators.required],
-    select2 : ['', Validators.required],        
-});
-  
+    select: ['', Validators.required],
+    select2: ['', Validators.required],
+  });
+
   tarjetaForm = new FormGroup({
     secondCtrl: new FormControl('', [Validators.required]),
     numero_tarjeta: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]),
@@ -61,7 +69,7 @@ export class MatriculacionComponent implements OnChanges {
     cvv: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3), Validators.pattern('^[0-9]*$')])
   });
   isEditable = true;
-  promedio: number = 0;
+  
   stepperOrientation: Observable<StepperOrientation>;
 
   constructor(
@@ -72,13 +80,13 @@ export class MatriculacionComponent implements OnChanges {
     private acta: ActaService,
     private router: Router,
     breakpointObserver: BreakpointObserver
-    
-    
-    ) { 
-      this.stepperOrientation = breakpointObserver
+
+
+  ) {
+    this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
-      .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));      
-    }
+      .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
+  }
 
 
   ngOnInit() {
@@ -187,7 +195,7 @@ export class MatriculacionComponent implements OnChanges {
     });
   }
 
-  onSelectMateria(event: any) {    
+  onSelectMateria(event: any) {
     this.mostrarHorario = true;
     this.mostrarHorario2 = true;
     this.horarioMatriculacion = []
@@ -212,7 +220,7 @@ export class MatriculacionComponent implements OnChanges {
 
       }
     }
-    let idHorarios: number[] = [];    
+    let idHorarios: number[] = [];
     for (let i = 0; i < cursoHorarioProvicional.length; i++) {
       idHorarios.push(cursoHorarioProvicional[i].curso_horario);
     }
@@ -221,9 +229,9 @@ export class MatriculacionComponent implements OnChanges {
     });
     let cursos: number[] = [];
     idHorarios = [];
-    for(let i = 0;i<this.curso.length;i++){
-      for(let j = 0;j<cursoHorarioProvicional.length;j++){
-        if(this.curso[i].id_curso == arregloSinRepetidos[j]){          
+    for (let i = 0; i < this.curso.length; i++) {
+      for (let j = 0; j < cursoHorarioProvicional.length; j++) {
+        if (this.curso[i].id_curso == arregloSinRepetidos[j]) {
           cursos.push(this.curso[i].estudiantes_curso);
         }
       }
@@ -269,14 +277,14 @@ export class MatriculacionComponent implements OnChanges {
       };
       this.horarioMatriculacion.push(horarioMatriculacion);
     }
-            
-    
+
+
     console.log(this.horarioMatriculacion);
     console.log(cursoHorarioProvicional);
 
     for (let j = 0; j < this.horarioMatriculacion.length; j++) {
-      for (let k = 0; k < cursoHorarioProvicional.length; k++) {     
-        if(this.horarioMatriculacion[j].id_curso == cursoHorarioProvicional[k].curso_horario){
+      for (let k = 0; k < cursoHorarioProvicional.length; k++) {
+        if (this.horarioMatriculacion[j].id_curso == cursoHorarioProvicional[k].curso_horario) {
           if (cursoHorarioProvicional[k].dia_horario == "Lunes") {
             this.horarioMatriculacion[j].horario_ordenado[0].dia_horario = cursoHorarioProvicional[k].dia_horario;
             this.horarioMatriculacion[j].horario_ordenado[0].hora = cursoHorarioProvicional[k].horaInicio_horario + " - " + cursoHorarioProvicional[k].horaFin_horario;
@@ -305,10 +313,10 @@ export class MatriculacionComponent implements OnChanges {
             this.horarioMatriculacion[j].horario_ordenado[6].dia_horario = cursoHorarioProvicional[k].dia_horario;
             this.horarioMatriculacion[j].horario_ordenado[6].hora = cursoHorarioProvicional[k].horaInicio_horario + " - " + cursoHorarioProvicional[k].horaFin_horario;
           }
-        }        
+        }
       }
-    }        
-    
+    }
+
   }
 
   add(event: any) {
@@ -355,10 +363,34 @@ export class MatriculacionComponent implements OnChanges {
           this.asignaturas.splice(j, 1);
         }
       }
-    }
-    console.log(this.asignaturas);
+    }    
     this.horarioMatriculacion = [];
-    console.log(this.horarioMatriculado);
+
+    if(this.selected == '1'){
+      this.nombreModulo = 'Módulo 1';
+    }else{
+      this.nombreModulo = 'Módulo 2';
+    }
+
+    if(this.promedio < 9){
+      this.descuento = 0;
+    }else if(this.promedio >= 9 && this.promedio < 9.5){
+      this.descuento = 0.10;
+    }else if(this.promedio >= 9.5 && this.promedio < 10){
+      this.descuento = 0.20;
+    }else if(this.promedio == 10){
+      this.descuento = 0.30;
+    }
+
+    if(this.horarioMatriculado.length == 5 && this.selected == '1'){
+      this.costoTotal = 300;        
+    }else if(this.horarioMatriculado.length == 5 && this.selected == '2'){      
+      this.costoTotal = 400;      
+    }else if(this.horarioMatriculado.length != 5){      
+      this.costoTotal = this.costoUnitario*this.horarioMatriculado.length;      
+    } 
+    this.totalDescuento = this.costoTotal-(this.costoTotal*this.descuento);   
+    this.descuento = this.descuento * 100;
   }
 
 
@@ -382,5 +414,9 @@ export class MatriculacionComponent implements OnChanges {
 
   volver() {
     this.router.navigate(['/estudiante']);
+  }
+
+  finalizar(){
+
   }
 }

@@ -35,5 +35,8 @@ import { CursosModule } from './pages/cursos/cursos.module';
     ActaModule,
     CursosModule,
   ],
+  exports: [
+    DperfilComponent
+  ]
 })
 export class DocenteModule { }

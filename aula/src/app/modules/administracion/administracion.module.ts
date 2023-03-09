@@ -62,6 +62,9 @@ import { DialogExitoComponent } from './components/dialog-exito/dialog-exito.com
     MatExpansionModule,
     MatTableModule,
     SharedModule
+  ],
+  exports: [
+    AdminPerfilComponent
   ]
 })
 export class AdministracionModule { }

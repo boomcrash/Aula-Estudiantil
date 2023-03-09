@@ -37,8 +37,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.active = false;
     }
-
-    console.log(this.estudianteMatriculado)
   }
 
 

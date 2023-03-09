@@ -8,6 +8,8 @@ import { CambiarContrasenaComponent } from './pages/cambiar-contrasena/cambiar-c
 import { EstudianteModule } from '../estudiante/estudiante.module';
 import { RegistrarEstudianteComponent } from './pages/registrar-estudiante/registrar-estudiante.component';
 import { RegistrarDocenteComponent } from './pages/registrar-docente/registrar-docente.component';
+import { DocenteModule } from '../docente/docente.module';
+import { AdministracionModule } from '../administracion/administracion.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { RegistrarDocenteComponent } from './pages/registrar-docente/registrar-d
     CommonModule,
     UsuarioRoutingModule,
     AngularMaterialsModule,
-    EstudianteModule
+    EstudianteModule,
+    DocenteModule,
+    AdministracionModule
   
   ],
 })

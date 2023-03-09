@@ -1,15 +1,13 @@
 <div class="contenedor">
 
-<h1> MI CUENTA  </h1>    
-<div class="container-fluid d-flex justify-content-center">    
-
-<section class="cuerpo">
-</section>
-
-<app-eperfil></app-eperfil>
-
-<button mat-button (click)="cambiar()">Cambiar Contraseña</button>
+    <h1> MI CUENTA </h1>
 
 
-</div>
+    <app-eperfil *ngIf="usuario.rol_usuario === 1"></app-eperfil>
+    <app-dperfil *ngIf="usuario.rol_usuario === 2"></app-dperfil>
+    <app-admin-perfil *ngIf="usuario.rol_usuario === 3"></app-admin-perfil>
+
+    <button mat-button (click)="cambiar()">Cambiar Contraseña</button>
+
+
 </div>

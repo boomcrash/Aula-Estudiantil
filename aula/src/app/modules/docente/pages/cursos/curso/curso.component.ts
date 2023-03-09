@@ -52,5 +52,10 @@ export class CursoComponent {
     this.router.navigate(['calificaciones'], { relativeTo: this.route, state: { curso: this.curso } });
   }
 
+  goParticipantes() {
+    this.router.navigate(['participantes'], { relativeTo: this.route, state: { curso: this.curso } });
+  }
+
+
 
 }

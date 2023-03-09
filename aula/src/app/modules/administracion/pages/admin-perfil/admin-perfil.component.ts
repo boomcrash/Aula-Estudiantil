@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { usuarioModel } from '../../models/usuarioPerfil';
 import { EstudianteAdministracionService } from '../../services/estudiante-administracion.service';
 
@@ -10,11 +9,11 @@ import { EstudianteAdministracionService } from '../../services/estudiante-admin
 })
 export class AdminPerfilComponent {
   panelOpenState = false;
-  id = parseInt(this.cookie.get('id'));
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
   dataSource!: any;
   dataSoureUsuario!:usuarioModel[];
 
-  constructor(private cookie:CookieService, private datosUser:EstudianteAdministracionService){}
+  constructor(private datosUser:EstudianteAdministracionService){}
 
   ngOnInit():void{
     this.datosUser.obtenerUsuario().subscribe((data)=>{

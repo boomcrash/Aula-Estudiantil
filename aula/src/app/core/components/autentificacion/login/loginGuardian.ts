@@ -12,7 +12,7 @@ export class LoginGuardian implements CanActivate {
 
     canActivate() {
 
-        if (this.loginService.getActive()) {
+        if (localStorage.getItem('Usuario') !== null) {
 
             return true;
 

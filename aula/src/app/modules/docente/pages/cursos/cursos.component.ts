@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { CursoModel } from '../../models/cursoModel';
 import { DocentesService } from '../../services/docentes.service';
 import { ActivatedRoute } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-cursos',
@@ -13,11 +12,11 @@ import { CookieService } from 'ngx-cookie-service';
 export class CursosComponent implements OnInit {
   cursos!: CursoModel[];
   docente!: any;
-  id = parseInt(this.cookie.get('id'));
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
   usuarios: any;
   displayedColumns = ['id_curso,nombre_materia,modulo_materia,nombre_paralelo,docente_curso,dia_horario,hora_horario'];
 
-  constructor(private _docentesService: DocentesService, private router: Router, private activatedRoute: ActivatedRoute, private cookie: CookieService) { }
+  constructor(private _docentesService: DocentesService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 

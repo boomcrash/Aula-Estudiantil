@@ -1,7 +1,6 @@
 import { Component, OnChanges, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { matriculacionService } from './services/matriculacion.service';
-import { CookieService } from 'ngx-cookie-service';
 import { horarioMatriculacion } from '../../models/horarioMatriculacion.model';
 import { CursoHorario } from '../../models/cursoHorario.model';
 import { EstudiantePerfil } from '../../models/estudianteperfil.model';
@@ -39,7 +38,7 @@ export class MatriculacionComponent implements OnChanges {
   seleccionado: number = 0;
   asignaturas: any[] = [];
   asignaturaSeleccionada: string = '';
-  id = this.cookie.get('id');
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
   datosCompletos: EstudiantePerfil | any = null;
   datosActaCalifiacion: ActaCalificacion[] = [];
   materiasReprobadas: any[] = [];
@@ -78,7 +77,6 @@ export class MatriculacionComponent implements OnChanges {
   constructor(
     private _formBuilder: FormBuilder,
     private matriculacionService: matriculacionService,
-    private cookie: CookieService,
     private autentificar: AuthService,
     private acta: ActaService,
     private router: Router,

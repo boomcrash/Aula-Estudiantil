@@ -45,5 +45,8 @@ import { GenerandoModalComponent } from './pages/matriculacion/generando-modal/g
     SharedModule,
     MatriculacionModule,    
   ],
+  exports: [
+    EperfilComponent
+  ],
 })
 export class EstudianteModule { }

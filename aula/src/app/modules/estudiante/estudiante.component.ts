@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { LoginService } from 'src/app/core/services/login.service';
 import { ItemMatricula } from './models/itemmatricula.model';
@@ -11,14 +10,13 @@ import { EPerfilService } from './pages/eperfil/services/eperfil.service';
   styleUrls: ['./estudiante.component.css']
 })
 export class EstudianteComponent implements OnInit {
-  id = this.cookie.get('id');
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
   validarMatricula: boolean = true;
   matricula: ItemMatricula[] = [];
   constructor(
     private loginService: LoginService,
     private ePerfil: EPerfilService,
-    private autentificar: AuthService,
-    private cookie: CookieService
+    private autentificar: AuthService
     ){
 
   }

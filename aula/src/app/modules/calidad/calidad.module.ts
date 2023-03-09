@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CalidadRoutingModule } from './calidad-routing.module';
 import { CalidadComponent } from './calidad.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { CalidadComponent } from './calidad.component';
   ],
   imports: [
     CommonModule,
-    CalidadRoutingModule
+    CalidadRoutingModule,
+    SharedModule
   ]
 })
 export class CalidadModule { }

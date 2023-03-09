@@ -229,7 +229,7 @@ export class DocentesService {
   
   obtenerActa(id: number): Observable<any> {
     const post = {
-      id_curso: id,
+      curso_acta: id,
     };
     const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.getActa}`;
     const httpOptions = {
@@ -238,6 +238,8 @@ export class DocentesService {
         'Access-Control-Allow-Origin': '*'
       })
     }
+    console.log(url)
+    console.log(post)
 
     return this.http.post(url, post, httpOptions);
 

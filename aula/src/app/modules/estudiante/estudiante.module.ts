@@ -19,6 +19,7 @@ import { ParticipantesComponent } from './pages/participantes/participantes.comp
 import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad.component';
 import { MatriculacionModule } from './pages/matriculacion/matriculacion.module';
 import { GenerandoModalComponent } from './pages/matriculacion/generando-modal/generando-modal.component';
+import { RegistrarModalComponent } from './pages/evaluacion-docente/registrar-modal/registrar-modal.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { GenerandoModalComponent } from './pages/matriculacion/generando-modal/g
     AsistenciasComponent,
     ParticipantesComponent,
     VistaActividadComponent,
-    GenerandoModalComponent
+    GenerandoModalComponent,
+    RegistrarModalComponent
   ],
   imports: [
     CommonModule,

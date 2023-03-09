@@ -1,0 +1,31 @@
+
+
+<div class="d-flex container">
+    <div class="pt-5 text-center align.items.justify-content-center mx-auto text-center">
+      <h1 class="lineaTitulo" style="width: fit-content;">Mis Cursos</h1>
+    </div>
+  </div>
+  
+  <div class="d-flex container-fluid justify-content-center pt-4">
+    <div class="row row-cols-md-auto justify-content-center">
+  
+  
+  
+      <div *ngFor="let curso of cursos; let indice=index;">
+  
+        <a role="button" (click)="goCurso(indice)">
+          <div class="card mb-4 box-shadow border-0 rounded-0 mx-2 px-0">
+            <div class="card-body contenedor">
+              <h2 class="card-title  centrado textoTarjeta">{{curso.nombre_materia}}</h2>
+              <h3 class="card-title  centrado mt-5 textoTarjeta">{{curso.nombre_paralelo}}</h3>
+            </div>
+            <div class="card-footer border-0 rounded-0 text-muted">
+            </div>
+          </div>
+        </a>
+  
+  
+  
+      </div>
+    </div>
+  </div>

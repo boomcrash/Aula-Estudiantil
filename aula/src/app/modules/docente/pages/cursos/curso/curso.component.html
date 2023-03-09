@@ -1,0 +1,57 @@
+<div class="container-fluid px-5 pt-4 ">
+    <h4>Mis Cursos / {{curso.nombre_materia}} - {{curso.nombre_paralelo}} / Actividades</h4>
+
+    <div class="d-flex justify-content-between">
+        <div>
+            <h1 class="texto-negrita">{{curso.nombre_materia}} - {{curso.nombre_paralelo}}</h1>
+        </div>
+
+        <mat-icon class="icon-display" type="button"
+            (click)="mostrarContenido = !mostrarContenido">arrow_drop_down</mat-icon>
+
+
+
+    </div>
+
+
+
+    <div class="px-5">
+        <button class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom justify-content-end" (click)="mostrarContenido = !mostrarContenido"
+            style="width: 100%; cursor: default;"></button>
+        <div class="contenido mt-0 pt-0" [class.desplegado]="mostrarContenido">
+            <button type="button"
+                class="btn btn-light btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
+                style="width: 100%;"
+                [ngClass]="{'texto-negrita': opcionSeleccionada === 'actividades', 'btn-light': opcionSeleccionada === 'actividades'}"
+                (click)="seleccionarOpcion('actividades'); goActividades()">
+                <span>Actividades</span>
+            </button>
+            <button type="button"
+                class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
+                style="width: 100%;"
+                [ngClass]="{'texto-negrita': opcionSeleccionada === 'asistencias', 'btn-light': opcionSeleccionada === 'asistencias'}"
+                (click)="seleccionarOpcion('asistencias'); goAsistencias()">
+                <span>Asistencias</span>
+            </button>
+            <button type="button"
+                class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
+                style="width: 100%;"
+                [ngClass]="{'texto-negrita': opcionSeleccionada === 'calificaciones', 'btn-light': opcionSeleccionada === 'calificaciones'}"
+                (click)="seleccionarOpcion('calificaciones'); goCalificaciones()">
+                <span>Calificaciones</span>
+            </button>
+            <button type="button"
+                class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
+                style="width: 100%;"
+                [ngClass]="{'texto-negrita': opcionSeleccionada === 'participantes', 'btn-light': opcionSeleccionada === 'participantes'}"
+                (click)="seleccionarOpcion('participantes'); goParticipantes()">
+                <span>Participantes</span>
+            </button>
+        </div>
+    </div>
+
+
+    <router-outlet></router-outlet>
+
+
+</div>

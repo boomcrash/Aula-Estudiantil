@@ -1,0 +1,187 @@
+<div class="container-fluid px-5 pt-4">
+  <h4>
+    <b
+      >Mis Cursos / {{ curso.nombre_materia }} - {{ curso.nombre_paralelo }} /
+      Actividades</b
+    >
+  </h4>
+
+  <div class="d-flex justify-content-between">
+    <div>
+      <h2 class="texto-negrita">
+        {{ curso.nombre_materia }} - {{ curso.nombre_paralelo }}
+      </h2>
+    </div>
+
+    <mat-icon
+      class="icon-display"
+      type="button"
+      (click)="mostrarContenido = !mostrarContenido"
+      >arrow_drop_down</mat-icon
+    >
+  </div>
+
+  <div class="px-5">
+    <button
+      class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom justify-content-end"
+      style="width: 100%; cursor: default"
+    ></button>
+    <div class="contenido mt-0 pt-0" [class.desplegado]="mostrarContenido">
+      <button
+        type="button"
+        class="btn btn-light btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
+        style="width: 100%"
+        [ngClass]="{
+          'texto-negrita': opcionSeleccionada === 1,
+          'btn-light': opcionSeleccionada === 1
+        }"
+        (click)="seleccionarOpcion(1); onSelectAccion(1)"
+      >
+        <span>Actividades</span>
+      </button>
+      <button
+        type="button"
+        class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
+        style="width: 100%"
+        [ngClass]="{
+          'texto-negrita': opcionSeleccionada === 2,
+          'btn-light': opcionSeleccionada === 2
+        }"
+        (click)="seleccionarOpcion(2); onSelectAccion(2)"
+      >
+        <span>Asistencias</span>
+      </button>
+      <button
+        type="button"
+        class="btn btn-white btn-lg btn-block d-flex rounded-0 border-2 border-bottom align-items-start"
+        style="width: 100%"
+        [ngClass]="{
+          'texto-negrita': opcionSeleccionada === 3,
+          'btn-light': opcionSeleccionada === 3
+        }"
+        (click)="seleccionarOpcion(3); onSelectAccion(3)"
+      >
+        <span>Participantes</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="d-flex row justify-content-start pb-3"></div>
+
+  <div
+    *ngIf="
+      presentarActividadesModel.length != 0 &&
+      aparecerComponente == 1 &&
+      idActividad == 0
+    "
+  >
+    <div class="d-flex container">
+      <div
+        class="pt-5 text-center align.items.justify-content-center mx-auto text-center"
+      >
+        <h1 style="width: fit-content">ACTIVIDADES</h1>
+        <br />
+      </div>
+    </div>
+    <div class="container">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" class="col-md-2">Actividad</th>
+              <th scope="col" class="col-md-2">Estado</th>
+              <th scope="col" class="col-md-2">Vencimiento</th>
+              <th scope="col" class="col-md-2">Calificación</th>
+              <th scope="col" class="col-md-2" style="width: 4%">Ver</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container
+              *ngIf="presentarActividadesModel.length > 0; else noData"
+            >
+              <ng-container
+                *ngFor="let actividades of presentarActividadesModel"
+              >
+                <tr>
+                  <td class="align-middle">
+                    {{ actividades.nombre_actividad }}
+                  </td>
+                  <td
+                    class="align-middle"
+                    [ngClass]="{
+                      NoEnviada: actividades.estado_entrega === 'No Enviada',
+                      Enviada: actividades.estado_entrega === 'Enviada',
+                      Pendiente: actividades.estado_entrega === 'Pendiente'
+                    }"
+                  >
+                    {{ actividades.estado_entrega }}
+                  </td>
+                  <td class="align-middle">
+                    {{ actividades.fechaVencimiento_actividad }}
+                  </td>
+                  <td class="align-middle">
+                    {{ actividades.calificacion_entrega }}
+                  </td>
+                  <td class="align-middle">
+                    <button
+                      mat-icon-button
+                      (click)="verActividad(actividades.id_actividad)"
+                      style="background-color: transparent !important"
+                    >
+                      <mat-icon class="add">remove_red_eye</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+            <ng-template #noData>
+              <tr>
+                <td colspan="6" class="text-center">
+                  No se encontraron resultados
+                </td>
+              </tr>
+            </ng-template>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br />
+  </div>
+
+  <div *ngIf="presentarActividadesModel.length != 0 && aparecerComponente == 2">
+    <div class="d-flex container">
+      <div
+        class="pt-5 text-center align.items.justify-content-center mx-auto text-center"
+      >
+        <h1 style="width: fit-content">ASISTENCIAS</h1>
+        <br />
+      </div>
+    </div>
+    <app-asistencias></app-asistencias>
+    <br />
+  </div>
+</div>
+
+<div *ngIf="presentarActividadesModel.length != 0 && aparecerComponente == 3">
+  <div class="d-flex container">
+    <div
+      class="pt-5 text-center align.items.justify-content-center mx-auto text-center"
+    >
+      <h1 style="width: fit-content">PARTICIPANTES</h1>
+      <br />
+    </div>
+  </div>
+  <app-participantes [curso]="curso"></app-participantes>
+  <br />
+</div>
+
+<div
+  *ngIf="
+    presentarActividadesModel.length != 0 &&
+    aparecerComponente == 1 &&
+    idActividad != 0 &&
+    presentarEdicion
+  "
+>
+  <app-vista-actividad [idActividad]="idActividad"></app-vista-actividad>
+</div>

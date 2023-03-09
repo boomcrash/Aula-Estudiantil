@@ -1,0 +1,131 @@
+.lineaTitulo {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.lineaTitulo::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 50%;
+  height: 4px;
+  background-color: #20BCD1;
+  transform: translateX(-50%);
+}
+
+.mx-10 {
+  margin-left: 20rem;
+  margin-right: 20rem;
+}
+
+
+img{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+
+
+.estudiante{
+  background-color: #1C3B50 !important;
+  color: white!important;
+  width: 45%;
+  height: 339px;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-left: 5%;
+  border-bottom:  30px solid #20BCD1;
+  float: left;
+}
+
+.docente{
+  background-color: #1C3B50 !important;
+  color: white!important;
+  width: 45%;
+  height: 339px;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-left: 5%;
+  border-bottom:  30px solid #20BCD1;
+  float: left;
+}
+
+#botonGuardar {
+  border: 2px solid #20BCD1;
+  background-color: #20BCD1;
+  color: rgb(255, 255, 255);
+}
+
+#botonCancelar {
+  border: 2px solid #20BCD1;
+  background-color: #F0F0F0;
+  color: #20BCD1;
+}
+
+#botonGuardar:hover {
+  border: 2px solid #20BCD1;
+  background-color: #20BCD1;
+}
+
+#botonCancelar:hover {
+  border: 2px solid #20BCD1;
+  color: #20BCD1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.square {
+  background-color: #323D4F;
+
+  width: 250px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.square img {
+  margin-top: 40px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.square p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.footer {
+  background-color: #20BCD1;
+  height: 25px;
+  width: 250px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.textCard {
+  font-weight: bold;
+  color: white;
+}
+
+::ng-deep .mat-step-header, .mat-horizontal-stepper-header-container {
+  pointer-events: none;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #20BCD1;
+  color: #fff;
+}

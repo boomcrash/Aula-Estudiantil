@@ -58,23 +58,22 @@ h1:before {
 a {
     text-decoration: none;
     color: rgb(0, 0, 0);
-
 }
-
+table{
+    width: 40%; 
+}
 th{
     background-color: #192A51 !important;
     color: white;
     text-align: center;
+}
   
-  
-  }
-  
-  tr:nth-child(even) td {
-      background-color: #f2f2f2; /* Color de fondo gris */
-    }
-    table td, table th {
-        text-align: center;
-      }
+tr:nth-child(even) td {
+    background-color: #f2f2f2; /* Color de fondo gris */
+}
+table td, table th {
+    text-align: center;
+}
 .texto-negrita {
     font-weight: bold;
 }
@@ -84,37 +83,18 @@ th{
     height: 40px;
     width: 40px;
 }
-.mat-elevation-z8 {  
-    flex-direction: column;  
-    border-right: 1px solid currentColor;
-    border-left: 1px solid currentColor;
-    text-align: center;
-    width: 500px;
-  }
-  .cuerpo-empresas {
-    display: flex;
-    flex-direction: column;
-    margin-top: 40px;
-  }
-  
-  .contenido-empresas {
-    display: flex;
-    flex-direction: row;  
-    justify-content: space-between;    
-    width: 100%;
-  }
-  .empresa {  
-    width: 500px;  
-    height: 300px;  
-    margin: auto;
-    padding: 20px;  
-    position: relative;
-    overflow: hidden;    
-    height: 50%;
-    text-align: center;
-  }
 
 .falta{
     color: red;
     font-weight: bolder;
 }
+
+.parent-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .container {
+    text-align: center;
+  }

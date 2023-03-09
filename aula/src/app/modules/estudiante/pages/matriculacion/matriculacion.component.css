@@ -69,19 +69,19 @@ tr {
 
 tr:nth-child(even) td {
   background-color: #f2f2f2;
-  
+
   /* Color de fondo gris */
 }
 
-.mat-elevation-z8 {  
-  flex-direction: column;  
+.mat-elevation-z8 {
+  flex-direction: column;
   border-right: 1px solid currentColor;
   border-left: 1px solid currentColor;
   text-align: center;
 }
 
-.mat-elevation-z9 {  
-  flex-direction: column;  
+.mat-elevation-z9 {
+  flex-direction: column;
   border-right: 1px solid currentColor;
   border-left: 1px solid currentColor;
   text-align: center;
@@ -102,15 +102,15 @@ tr:nth-child(even) td {
 }
 
 button {
-
+  font-family: Roboto, sans-serif;
+  padding: 20px !important;
+  width: 150px !important;
   margin-top: 30px;
   margin-left: 10px;
   margin-bottom: 20px;
-  margin-right: 20px;
-  width: 100px;
+  margin-right: 20px;  
   height: 50px;
-  font-size: 20px;
-  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;  
   text-align: center;
   background-color: #20BCD1 !important;
   color: white !important;
@@ -122,75 +122,50 @@ button {
   background-color: white;
   border: 1px solid black;
 }
-  
-    .select{
-      width: 100%;
-      height: 50px;
-      font-size: 20px;
-      margin-bottom: 50px;
-      padding: 5px; 
-      font-family: 'Times New Roman', Times, serif;
-      text-align: left;
-      background-color: F0F0F0 !important;
-      margin-top: 50px;
-  
 
-    }
-    
-    
-    th{
-      background-color: #192A51 !important;
-      color: white;
-      text-align: center;
-    
-    
-    }
-    
-    tr:nth-child(even) td {
-        background-color: #f2f2f2; /* Color de fondo gris */
-      }
-    
-    .mat-elevation-z8 {
-      width: 1000px;
-      flex-direction: column;
-      height: 1050px;
-        border-right: 1px solid currentColor;
-        border-left: 1px solid currentColor;
-        text-align: center;
+.select {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  margin-bottom: 50px;
+  padding: 5px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: left;
+  background-color: F0F0F0 !important;
+  margin-top: 50px;
 
-    
-      }
-      
-      .mat-mdc-row .mat-mdc-cell {
-        border-bottom: 1px solid transparent;
-        border-top: 1px solid transparent;
-        cursor: pointer;
-      }
-      
-      .mat-mdc-row:hover .mat-mdc-cell {
-        border-color: currentColor;
-      }
-      
-      .demo-row-is-clicked {
-        font-weight: bold;
-      }
-       button{
-      
-        margin-top: 30px;
-        margin-left: 10px;
-        margin-bottom: 20px;
-        margin-right: 20px;
-        width: 100px;
-        height: 50px;
-        font-size: 20px;
-        font-family: 'Times New Roman', Times, serif;
-        text-align: center;
-        background-color: #20BCD1 !important;
-        color: white!important;
-      }
-     /*formulario tarjeta*/
 
-.formulario{
+}
+
+
+th {
+  background-color: #192A51 !important;
+  color: white;
+  text-align: center;
+
+
+}
+
+tr:nth-child(even) td {
+  background-color: #f2f2f2;
+  /* Color de fondo gris */
+}
+
+.mat-elevation-z8 {
+  width: 1000px;
+  flex-direction: column;
+  height: 1050px;
+  border-right: 1px solid currentColor;
+  border-left: 1px solid currentColor;
+  text-align: center;
+
+
+}
+
+
+/*formulario tarjeta*/
+
+.formulario {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
@@ -203,7 +178,8 @@ label {
   margin-top: 10px;
 }
 
-input, select {
+input,
+select {
   height: 30px;
   border-radius: 3px;
   border: 1px solid #ccc;
@@ -214,10 +190,12 @@ input, select {
   align-items: center;
 }
 
-input[type="text"], input[type="month"] {
+input[type="text"],
+input[type="month"] {
   width: 100%;
 }
-.title{
+
+.title {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -227,7 +205,7 @@ input[type="text"], input[type="month"] {
 
 /*formulario orden*/
 
-.orden{
+.orden {
   flex-direction: column;
   margin-top: 10px;
   padding: 50px;
@@ -236,7 +214,7 @@ input[type="text"], input[type="month"] {
   text-align: center;
 }
 
-td col-3{
+td col-3 {
 
   background-color: #f0f0f0
 }
@@ -282,7 +260,7 @@ tfoot tr:last-child td {
   border-top: 1px solid #ccc;
 }
 
-.pago{
+.pago {
   display: flex;
   gap: 250px;
   padding: 20px;
@@ -290,7 +268,7 @@ tfoot tr:last-child td {
 
 }
 
-.orden_pago{
+.orden_pago {
 
   display: flex;
   flex-direction: column;
@@ -300,6 +278,7 @@ tfoot tr:last-child td {
   align-items: center;
   text-align: center;
 }
-       
-      
-      
+
+
+
+

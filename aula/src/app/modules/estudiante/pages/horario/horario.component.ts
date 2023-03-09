@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Horario } from '../../models/Horario.model';
 import { horarioService } from './services/horario.service';
-import { CookieService } from 'ngx-cookie-service';
 import { Horario2 } from '../../models/Horario2.model';
 import { AuthService } from 'src/app/core/services/auth.service';
+
 
 @Component({
   selector: 'app-horario',
@@ -17,10 +17,10 @@ export class HorarioComponent {
   dataSource: any = [];
   horario!: Horario[];
   horario2: Horario2[] = [];
-  id = this.cookie.get('id');
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
 
 
-  constructor(private horarioService: horarioService, private cookie: CookieService, private autentificar: AuthService) { }
+  constructor(private horarioService: horarioService, private autentificar: AuthService) { }
 
 
   ngOnInit() {
@@ -106,7 +106,7 @@ export class HorarioComponent {
                 this.horario2[j].horario_ordenado[4].dia_horario = this.horario[i].dia_horario;
                 this.horario2[j].horario_ordenado[4].hora_horario = this.horario[i].hora_horario;
               }
-              if (this.horario[i].dia_horario == "Sabado") {
+              if (this.horario[i].dia_horario == "Sábado") {
                 this.horario2[j].horario_ordenado[5].dia_horario = this.horario[i].dia_horario;
                 this.horario2[j].horario_ordenado[5].hora_horario = this.horario[i].hora_horario;
               }

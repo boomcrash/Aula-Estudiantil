@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { CursoModel } from '../../models/cursoModel';
 import { CursosService } from './services/cursos.service';
 import { ActivatedRoute } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { EstudiantePerfil } from '../../models/estudianteperfil.model';
 
 @Component({
@@ -15,7 +14,7 @@ export class CursosComponent implements OnInit {
   cursos!: CursoModel[];
   datosCompletos!: EstudiantePerfil[];
 
-  id = parseInt(this.cookie.get('id'));
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
   usuarios: any;
   displayedColumns = [
     'id_curso,nombre_materia,modulo_materia,nombre_paralelo,docente_curso,dia_horario,hora_horario',
@@ -24,12 +23,11 @@ export class CursosComponent implements OnInit {
   constructor(
     private cursosService: CursosService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private cookie: CookieService
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.id = parseInt(this.cookie.get('id'));
+    this.id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
     this.cursosService.obtenerDatosEstudiante(this.id).subscribe((data) => {
       this.cursosService
         .obtenerCurso(data.data[0].id_estudiante)

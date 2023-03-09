@@ -14,6 +14,21 @@ export class horarioServiceDocente {
     const post = {
       docente_curso: id
     };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerHorariosporId}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(url, post);
+    return this.http.post(url, post,httpOptions);
+  }  
+
+  obtenerHorariosDocente(id : number): Observable<any> {    
+    const post = {
+      docente_curso: id
+    };
     const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerHorariosporIdDocente}`;    
     const httpOptions = {
       headers: new HttpHeaders({

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CookieService } from 'ngx-cookie-service';
 import { CursoModel } from '../../models/cursoModel';
 import { DocentesService } from '../../services/docentes.service';
 import { GenerandoModalComponent } from './generando-modal/generando-modal.component';
@@ -17,7 +16,7 @@ export class ActaComponent {
   curso!: CursoModel;
   isOpen = false;
   acta = false;
-  id = parseInt(this.cookie.get('id'));
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
   selectedOption = "Seleccionar";
   selectedOption2 = "Curso";
   inputPlaceholder = "Nombre de la actividad";
@@ -27,7 +26,7 @@ export class ActaComponent {
     { value: 2, label: 'Estudiante' },
   ];
 
-  constructor(private modalService: NgbModal, private _docentesService: DocentesService, private route: ActivatedRoute, private cookie: CookieService, private router: Router) { }
+  constructor(private modalService: NgbModal, private _docentesService: DocentesService, private route: ActivatedRoute, private router: Router) { }
 
   
   ngOnInit(): void {
@@ -37,12 +36,19 @@ export class ActaComponent {
         this.cursos = data.data;
       })  
     })
+
+
     
     
   }
 
   openGenerar(): void {
     const modalRef = this.modalService.open(GenerandoModalComponent, { centered: true, size: 'md', backdrop: 'static', keyboard: false });
+    this._docentesService.actualizarActa(this.curso.id_curso).subscribe( data => {
+      this._docentesService.obtenerActa(this.curso.id_curso).subscribe( data => {
+        console.log(data)
+      })  
+    })
     modalRef.componentInstance.curso = this.curso;
     modalRef.closed.subscribe( data => {
       this.acta = true

@@ -1,3 +1,33 @@
+.banner {
+  background-image: url(../../../../assets/imagen/fondo.png);
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  position: relative;
+}
+
+.banner::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+
+
 .contenedor-principal {
   display: flex;
   flex-direction: column;
@@ -67,54 +97,46 @@ h1:before {
   position: relative;
 }
 
-.contenido-encabezado {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  animation: bajar 1.5s ease-out;
-  animation-fill-mode: forwards;
-  padding: 30px;
-}
-
-.contenido-encabezado h1 {
-  font-size: 40pt;
-  margin: 10px;
-  letter-spacing: 2px;
-}
-
-.contenido-encabezado p {
-  text-align: center;
-  margin-top: 60px;
-  font-size: 20pt;
-  color: white;
-}
-
 .button {
   margin: 0 !important;
   align-self: center;
   text-decoration: none;
   margin-top: 30px;
   padding: 15px 25px;
-  background-color: transparent;
+  background-color: #20BCD1;
   color: white;
-  border: 2px solid white;
+  border: white;
+  font-size: 14pt;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.button2 {
+  margin: 0 !important;
+  align-self: center;
+  text-decoration: none;
+  margin-top: 30px;
+  padding: 15px 25px;
+  background-color: #5c5f5f;
+  color: white;
+  border: white;
   font-size: 14pt;
   letter-spacing: 2px;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: white;
-  border: 2px solid white;
-  color: black;
-  transition: 0.5s;
-}
-
-.button:not(hover) {
   background-color: transparent;
   border: 2px solid white;
+  color: white;
+  transition: 0.5s;
+  
+}
+
+
+
+.button:not(hover) {
+  background-color: #20BCD1;
   transition: 0.5s;
 }
 
@@ -178,10 +200,6 @@ a:not(hover) {
 }
 .empresa p{
   text-align: justify;
-}
-.contenido-empresas img{
-  width: 500px;
-  height: 300px;
 }
 
 

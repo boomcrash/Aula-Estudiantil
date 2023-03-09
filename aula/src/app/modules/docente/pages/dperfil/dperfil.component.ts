@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { DocentesService } from '../../services/docentes.service';
 import { DocentePerfilModel } from '../../models/docentePerfilModel';
 import { ContratoDocenteModel } from '../../models/contratoDocenteModel';
@@ -12,7 +11,7 @@ import { DocentePagoModel } from '../../models/docentePagoModel';
   styleUrls: ['./dperfil.component.css'],
 })
 export class DperfilComponent implements OnInit {
-  id = parseInt(this.cookie.get('id'));
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
 
   panelOpenState = false;
   dataSource!: any;
@@ -23,7 +22,6 @@ export class DperfilComponent implements OnInit {
   dataSourceContratoDocente: any;
   dataSourcePagoDelDocente: any;
   constructor(
-    private cookie: CookieService,
     private docenteUser: DocentesService
   ) {}
 
@@ -36,7 +34,7 @@ export class DperfilComponent implements OnInit {
       const docente: DocentePerfilModel = {
         id_usuario: data.data[0].id_usuario,
         nombre_usuario: data.data[0].nombre_usuario,
-        contrasena_usuario: data.data[0].contrasena_usuario,
+        contrasena_usuario: "********",
         rol_usuario: data.data[0].rol_usuario,
         id_docente: data.data[0].id_docente,
         nombres_docente: data.data[0].nombres_docente,
@@ -58,10 +56,12 @@ export class DperfilComponent implements OnInit {
 
   obtenerDatosContrato() {
     // obtener los datos del docente
+    this.docenteUser
+      .obtenerDatosDocente(this.id)
+      .subscribe((data) => (this.dataSourceObtenerDocentePerfil = data.data));
     this.docenteUser.obtenerDocente().subscribe((data) => {
       this.dataSourceObtenerDocente = data.data;
 
-      // buscar el docente correspondiente al id obtenido de la cookie
       const usuario_docente = this.dataSourceObtenerDocente.find(
         (docente) => docente.usuario_docente === this.id
       )?.usuario_docente;
@@ -69,12 +69,12 @@ export class DperfilComponent implements OnInit {
       // obtener el contrato correspondiente al docente
       if (usuario_docente) {
         this.docenteUser
-          .obtenerContratoDocente(usuario_docente)
+          .obtenerContratoDocente(this.dataSourceObtenerDocentePerfil[0].id_docente)
           .subscribe((data) => {
             this.dataSourceObtenerContratoDocente = data.data;
 
             const contrato_docente = this.dataSourceObtenerContratoDocente.find(
-              (contrato) => contrato.docente_contrato === usuario_docente
+              (contrato) => contrato.docente_contrato === this.dataSourceObtenerDocentePerfil[0].id_docente
             );
 
             if (contrato_docente) {

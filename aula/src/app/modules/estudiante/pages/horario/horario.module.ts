@@ -6,12 +6,13 @@ import { HorarioRoutingModule } from './horario-routing.module';
 
 @NgModule({
   declarations: [
+  
   ],
   imports: [
     CommonModule,
     HorarioRoutingModule,
     MatRadioModule,
-
-  ]
+  
+  ],
 })
 export class HorarioModule { }

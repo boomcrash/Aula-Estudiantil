@@ -85,7 +85,7 @@ export class DocentesService {
     const post = {
       docente_contrato
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerContratoDocente}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.obtenerContratoDocente2}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        
@@ -95,7 +95,7 @@ export class DocentesService {
     console.log(url, post);
     return this.http.post(url, post,httpOptions);
   }
-
+  
   obtenerPagoDocente(docente_pagoDocente: number): Observable<any> {    
     const post = {
       docente_pagoDocente
@@ -210,6 +210,37 @@ export class DocentesService {
       })
     }
     return this.http.put(url, body, httpOptions);
+  }
+
+  actualizarActa(id: number): Observable<any> {
+    const body = {
+      curso_acta: id
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.actualizarActa}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    return this.http.put(url, body, httpOptions);
+  }
+
+  
+  obtenerActa(id: number): Observable<any> {
+    const post = {
+      id_curso: id,
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocentes.getActa}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+
+    return this.http.post(url, post, httpOptions);
+
   }
 
 

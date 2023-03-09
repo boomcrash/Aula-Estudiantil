@@ -1,7 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { DatosUser } from '../../interfaces/datosSimplesUser.interface';
 import { AuthService } from '../../services/auth.service';
 import { LoginService } from '../../services/login.service';
@@ -14,32 +13,43 @@ import { LoginComponent } from '../autentificacion/login/login.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  active: boolean = this.loginService.getActive();  
-  user = this.cookie.get('username');
-  rol = this.cookie.get('rol');
-  nombre = '';  
-  estudianteMatriculado = this.cookie.get('alumno');
+  active = false;
+  usuario: DatosUser = {
+    id_usuario: 0,
+    nombre_usuario: '',
+    contrasena_usuario: '',
+    rol_usuario: 0
+  };
+  nombre = '';
+  estudianteMatriculado = Boolean(localStorage.getItem("alumno"));
 
   constructor(private dialog: MatDialog,
     private loginService: LoginService,
-    private cookie: CookieService,
-    private router:Router){
-
+    private router: Router) {
   }
 
-  ngOnInit(): void {        
-    console.log(this.rol,this.estudianteMatriculado)    
-    
+  ngOnInit(): void {
+    this.usuario = JSON.parse(localStorage.getItem('Usuario') || '{}');
+
+
+    if (localStorage.getItem('Usuario') != undefined) {
+      this.active = true;
+    } else {
+      this.active = false;
+    }
+
+    console.log(this.estudianteMatriculado)
   }
-  
+
+
   openDialogSesion(): void {
     this.dialog.open(LoginComponent, { disableClose: true, width: '500px' });
   }
 
   logout() {
-    this.loginService.logout();    
+    this.loginService.logout();
   }
-  
+
   //Docente
 
   irDocente() {
@@ -84,34 +94,34 @@ export class HeaderComponent implements OnInit {
   }
 
   //Usuario
-  irUsuario(){
+  irUsuario() {
     this.router.navigate(['/usuario']);
-  } 
-  irUsuarioCuenta(){
+  }
+  irUsuarioCuenta() {
     this.router.navigate(['/usuario/mi-cuenta']);
-  } 
+  }
 
   //calidad
-  irCalidad(){
+  irCalidad() {
     this.router.navigate(['/calidad']);
   }
-  irCalidadDimension(){
-    this.router.navigate(['/calidad/dimension']);    
+  irCalidadDimension() {
+    this.router.navigate(['/calidad/dimension']);
   }
-  irCalidadNormas(){
-    this.router.navigate(['/calidad/normas-iso']);    
+  irCalidadNormas() {
+    this.router.navigate(['/calidad/normas-iso']);
   }
-  irCalidadGestion(){
-    this.router.navigate(['/calidad/gestion']);    
+  irCalidadGestion() {
+    this.router.navigate(['/calidad/gestion']);
   }
-  irCalidadAseguramiento(){
+  irCalidadAseguramiento() {
     this.router.navigate(['/calidad/aseguramiento']);
   }
-  irCalidadherramientas(){
+  irCalidadherramientas() {
     this.router.navigate(['/calidad/herramientas']);
   }
 
-  
+
 
 }
 

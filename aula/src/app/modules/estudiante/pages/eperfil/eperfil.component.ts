@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { EstudiantePerfil } from '../../models/estudianteperfil.model';
 import { ItemMatricula } from '../../models/itemmatricula.model';
 import { OrdenPago } from '../../models/ordenpago.model';
@@ -14,13 +13,12 @@ import { combineLatest } from 'rxjs';
 })
 export class EperfilComponent {
   panelOpenState = false;
-  id = parseInt(this.cookie.get('id'));
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
   dataSource!: any;
   dataSourceItemMatricula!: ItemMatricula[];
   dataSoruceOrdenPago!: OrdenPago[];
   dataSourceOrdenMatricula: any;
-  constructor(
-    private cookie:CookieService, private estudianteuser: EPerfilService
+  constructor(private estudianteuser: EPerfilService
   ){
   }
   
@@ -36,7 +34,7 @@ export class EperfilComponent {
       const estudiante: EstudiantePerfil = {
         id_usuario: data.data[0].id_usuario,
         nombre_usuario: data.data[0].nombre_usuario,
-        contrasena_usuario: data.data[0].contrasena_usuario,
+        contrasena_usuario: "********",
         rol_usuario: data.data[0].rol_usuario,
         id_estudiante: data.data[0].id_estudiante,
         nombres_estudiante: data.data[0].nombres_estudiante,

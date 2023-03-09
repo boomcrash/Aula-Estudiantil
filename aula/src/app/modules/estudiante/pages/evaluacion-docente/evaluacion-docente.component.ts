@@ -8,6 +8,7 @@ import { ParticipantesService } from '../participantes/servicios/services/partic
 import { ParticipanteModel } from 'src/app/modules/docente/models/participanteModel';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrarModalComponent } from './registrar-modal/registrar-modal.component';
+import { Router } from '@angular/router';
 
 
 
@@ -55,7 +56,7 @@ export class EvaluacionDocenteComponent implements OnInit {
 
   }
 
-  constructor(private cursosService: CursosService, private participantes: ParticipantesService, private modalService: NgbModal,) { }
+  constructor(private cursosService: CursosService, private participantes: ParticipantesService, private modalService: NgbModal, private router: Router) { }
   ngOnInit() {
 
 
@@ -78,6 +79,7 @@ export class EvaluacionDocenteComponent implements OnInit {
     const modalRef = this.modalService.open(RegistrarModalComponent, { centered: true, size: 'md', backdrop: 'static', keyboard: false });
     modalRef.componentInstance.curso = this.curso;
     modalRef.closed.subscribe( data => {
+      this.router.navigate(['/home']);
 
     })
 

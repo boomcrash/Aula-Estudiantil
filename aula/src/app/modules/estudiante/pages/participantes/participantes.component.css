@@ -95,6 +95,8 @@ th{
     text-align: center;
     width: 500px;
     margin-right: 300px;
+    overflow-x: auto;
+
   }
   .cuerpo-empresas {
     display: flex;

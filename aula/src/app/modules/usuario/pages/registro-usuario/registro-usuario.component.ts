@@ -3,6 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { map, Observable } from 'rxjs';
+import { StepperOrientation } from '@angular/cdk/stepper';
+import { BreakpointObserver } from '@angular/cdk/layout';
+
 
 @Component({
   selector: 'app-registro-usuario',
@@ -11,10 +15,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RegistroUsuarioComponent {
  
+  stepperOrientation: Observable<StepperOrientation>;
 
-  
+  constructor(private _formBuilder: FormBuilder,  private router:Router,private snackBar: MatSnackBar, breakpointObserver: BreakpointObserver    ) {
 
-  constructor(private _formBuilder: FormBuilder,  private router:Router,private snackBar: MatSnackBar) {}
+    this.stepperOrientation = breakpointObserver
+    .observe('(min-width: 800px)')
+    .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
+
+  }
 /*ngOnChanges(changes: SimpleChanges): void {
   this.verificar= this.change();
 }*/

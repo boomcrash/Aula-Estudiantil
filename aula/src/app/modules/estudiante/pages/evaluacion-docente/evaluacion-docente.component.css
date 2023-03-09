@@ -66,6 +66,8 @@ th{
     border-right: 1px solid currentColor;
     border-left: 1px solid currentColor;
     margin-top: 100px;
+    overflow-x: auto;
+
 
   }
   
@@ -82,6 +84,7 @@ th{
   .demo-row-is-clicked {
     font-weight: bold;
   }
+
   button{
     margin-top: 30px;
     margin-left: 10px;

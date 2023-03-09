@@ -15,6 +15,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActaCalificacion } from '../../models/actacalificacion.model';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/core/services/login.service';
+import { map, Observable } from 'rxjs';
+import { StepperOrientation } from '@angular/cdk/stepper';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-matriculacion',
@@ -46,9 +49,13 @@ export class MatriculacionComponent implements OnChanges {
   displayedColumns2 = ['accion', 'materia', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5', 'dia_horario6', 'dia_horario7'];
   dataSource: any = [];
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    select : ['', Validators.required],
+    select2 : ['', Validators.required],
 
-  });
+    
+    
+});
+  
   tarjetaForm = new FormGroup({
     secondCtrl: new FormControl('', [Validators.required]),
     numero_tarjeta: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern('^[0-9]*$')]),
@@ -58,6 +65,7 @@ export class MatriculacionComponent implements OnChanges {
   });
   isEditable = true;
   promedio: number = 0;
+  stepperOrientation: Observable<StepperOrientation>;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -65,8 +73,15 @@ export class MatriculacionComponent implements OnChanges {
     private cookie: CookieService,
     private autentificar: AuthService,
     private acta: ActaService,
-    private router: Router
-  ) { }
+    private router: Router,
+    breakpointObserver: BreakpointObserver
+    
+    
+    ) { 
+      this.stepperOrientation = breakpointObserver
+      .observe('(min-width: 800px)')
+      .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));      
+    }
 
 
   ngOnInit() {

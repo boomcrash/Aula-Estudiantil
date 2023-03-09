@@ -1,4 +1,4 @@
-.container {
+.contenedor {
   text-align: center;
   width: 80%;
   display: flex;
@@ -30,24 +30,13 @@ h1:before {
 }
 .nombreDocente{
     font-size: large;
-    text-align: center;
-    margin-top: -60px;
+    text-align: right;
+    margin-top: 20px;
     margin-bottom: 20px;
     font-weight: bolder;
     font-family: Arial, Helvetica, sans-serif;
 }
-.select{
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
-    margin-bottom: 50px;
-    padding: 5px; 
-    font-family: 'Times New Roman', Times, serif;
-    text-align: left;
-    background-color: F0F0F0 !important;
-    margin-top: 50px;
-    margin-right: -100px;
-}
+
 
 
 th{
@@ -65,7 +54,7 @@ th{
     height: 1050px;
     border-right: 1px solid currentColor;
     border-left: 1px solid currentColor;
-    margin-top: 100px;
+    margin-top: 50px;
     overflow-x: auto;
 
 
@@ -98,4 +87,103 @@ th{
     background-color: #20BCD1 !important;
     color: white!important;
   }
+
+  .custom-select {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .select-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 60px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: #f9f9f9;
+  }
+  
+  .select-header .filtrar-por {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .header-left span:first-child {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    margin-right: 10px;
+  }
+  
+  .header-right {
+    margin-left: 10px;
+    flex: 2;
+    text-align: right;
+  }
+  
+  .header-right span {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .options {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: #fff;
+  }
+  
+  .option {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .option:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .arrow-icon {
+    border-style: solid;
+    border-width: 0.25em 0.25em 0 0;
+    content: "";
+    display: inline-block;
+    height: 0.45em;
+    width: 0.45em;
+    margin-right: 10px;
+    transform: rotate(45deg);
+    vertical-align: middle;
+  }
+  
+  .up {
+    transform: rotate(-135deg);
+  }
+  
+  .down {
+    transform: rotate(45deg);
+  }
+  
+  @media (min-width: 768px) {
+    .custom-select {
+      max-width: none;
+    }
+  
+    .custom-input {
+      max-width: none;
+    }
+  }
+  
   

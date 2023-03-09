@@ -61,8 +61,7 @@ export class CalificacionesComponent implements OnInit, OnDestroy {
     this._docentesService.getUpdate().subscribe((value: boolean) => {
       if (value) {
         this._docentesService.obtenerEntregas(this.curso.id_curso).subscribe(data => {
-          this.entregas = data.data
-          console.log(this.entregas)
+          this.entregas = data.data;          
         });
       }
     })
@@ -157,10 +156,9 @@ export class CalificacionesComponent implements OnInit, OnDestroy {
   }
 
   calificarEntrega(actividad: number, estudiante: number, calificacion: number){
-    this._docentesService.calificarEntrega(actividad, estudiante, calificacion).subscribe(data => {
-      console.log(actividad, estudiante, calificacion)
+    this._docentesService.calificarEntrega(actividad, estudiante, calificacion).subscribe(data => {      
       this.editarIndex = null;
-      this._docentesService.sendUpdate(true)
+      this._docentesService.sendUpdate(true);
 
     })
   }

@@ -26,8 +26,7 @@ export class ActaComponent implements OnInit {
 
   ngOnInit() {
     this.actaservice.obtenerEstudianteItemActa(this.id).subscribe(data=>{
-      this.dataSource=data.data;
-      console.log(this.dataSource)
+      this.dataSource=data.data;      
     });
   }
 }

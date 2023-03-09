@@ -24,8 +24,7 @@ export class RegistrarEstudianteComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private router: Router, private _usuariosService: UsuariosService) { }
 
 
-  ngOnInit(): void {
-    console.log(this.usuario, this.contrasena)
+  ngOnInit(): void {    
     this.estudianteForm = this._formBuilder.group({
       nombres_estudiante: ['', Validators.required],
       apellidos_estudiante: ['', Validators.required],
@@ -64,8 +63,7 @@ export class RegistrarEstudianteComponent implements OnInit {
       medio_estudiante: form.value.medio_estudiante,
     };
 
-    this._usuariosService.agregarEstudiante(estudiante).subscribe(data => {
-      console.log(data)
+    this._usuariosService.agregarEstudiante(estudiante).subscribe(data => {      
       this.router.navigate(['/home']);
     });
   }

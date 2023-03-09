@@ -14,8 +14,7 @@ export class UsuariosService {
 
   constructor(private http: HttpClient) { }
 
-  agregarDocente(docente: DocenteModel): Observable<any> {
-    console.log(docente)
+  agregarDocente(docente: DocenteModel): Observable<any> {    
     const post = {
       nombre_usuario: docente.nombre_usuario,
       contrasena_usuario: docente.contrasena_usuario,
@@ -39,14 +38,10 @@ export class UsuariosService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-
-    console.log(post)
-
     return this.http.post(url, post, httpOptions);
   }
 
-  agregarEstudiante(estudiante: EstudianteModel): Observable<any> {
-    console.log(estudiante)
+  agregarEstudiante(estudiante: EstudianteModel): Observable<any> {    
     const post = {
       nombre_usuario: estudiante.nombre_usuario,
       contrasena_usuario: estudiante.contrasena_usuario,
@@ -69,10 +64,7 @@ export class UsuariosService {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(post)
-
-  
+    }  
     return this.http.post(url, post, httpOptions);
   }
   

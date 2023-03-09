@@ -45,8 +45,7 @@ export class ActaComponent {
   openGenerar(): void {
     const modalRef = this.modalService.open(GenerandoModalComponent, { centered: true, size: 'md', backdrop: 'static', keyboard: false });
     this._docentesService.actualizarActa(this.curso.id_curso).subscribe( data => {
-      this._docentesService.obtenerActa(this.curso.id_curso).subscribe( data => {
-        console.log(data)
+      this._docentesService.obtenerActa(this.curso.id_curso).subscribe( data => {        
       })  
     })
     modalRef.componentInstance.curso = this.curso;

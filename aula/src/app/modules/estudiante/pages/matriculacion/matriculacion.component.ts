@@ -93,8 +93,7 @@ export class MatriculacionComponent implements OnChanges {
 
   ngOnInit() {
     const fecha = new Date();
-    this.fechaActual = this.datePipe.transform(fecha, 'yyyy-MM-dd');
-    console.log(this.fechaActual)
+    this.fechaActual = this.datePipe.transform(fecha, 'yyyy-MM-dd');    
     this.matriculacionService.obtenerMatriculas().subscribe(resp =>{
       this.matricula_pagoMatricula = resp.data.length+1;
     });
@@ -103,9 +102,7 @@ export class MatriculacionComponent implements OnChanges {
     this.autentificar.obtenerDatosCompletos(this.id).toPromise().then(resp => {
       this.datosCompletos = resp.data;
       this.promedio = resp.data[0].promedioAnterior_estudiante;
-      console.log(this.promedio)
-      this.acta.obtenerEstudianteItemActa(this.datosCompletos[0].id_estudiante).toPromise().then(respuesta => {
-        console.log(this.datosCompletos[0].id_estudiante)
+      this.acta.obtenerEstudianteItemActa(this.datosCompletos[0].id_estudiante).toPromise().then(respuesta => {        
         this.datosActaCalifiacion = respuesta.data;
         for (let i = 0; i < this.datosActaCalifiacion.length; i++) {
           if (this.datosActaCalifiacion[i].estado_itemActa != 'APROBADO') {
@@ -114,9 +111,7 @@ export class MatriculacionComponent implements OnChanges {
           if (this.datosActaCalifiacion[i].estado_itemActa != 'REPROBADO') {
             this.materiasAprobadas.push(this.datosActaCalifiacion[i].nombre_materia);
           }
-        }
-        console.log(this.materiasReprobadas);
-        console.log(this.datosActaCalifiacion);
+        }        
       }).catch(
         err => {
           console.error(err);
@@ -131,11 +126,9 @@ export class MatriculacionComponent implements OnChanges {
       }
     );
     this.matriculacionService.obtenerHorariosmatricula().subscribe(data => {
-      this.cursoHorario = data.data;
-      console.log(this.cursoHorario)
+      this.cursoHorario = data.data;      
       this.matriculacionService.obtenercurso().subscribe(data => {
-        this.curso = data.data;
-        console.log(this.curso)
+        this.curso = data.data;        
       });
     });
     this.matriculacionService.obtenerParalelo().subscribe(data => {
@@ -151,8 +144,7 @@ export class MatriculacionComponent implements OnChanges {
   onSelect(event: any) {
     this.mostrarHorario = true;
     this.mostrarHorario2 = true;
-    this.seleccionado = Number(event.value);
-    console.log(this.seleccionado);
+    this.seleccionado = Number(event.value);    
     let nombre_materia = ["s"]
     this.matriculacionService.obtenerMaterias().subscribe(data => {
       this.materias = data.data;
@@ -177,8 +169,7 @@ export class MatriculacionComponent implements OnChanges {
         }
         for (let i = 0; i < this.materiasAprobadas.length; i++) {
           for (let j = 0; j < arregloSinRepetidos.length; j++) {
-            if (this.materiasAprobadas[i] == arregloSinRepetidos[j]) {
-              console.log(this.materiasAprobadas[i])
+            if (this.materiasAprobadas[i] == arregloSinRepetidos[j]) {              
               arregloSinRepetidos.splice(j, 1); // Elimina la materia en el índice j
               j--; // Disminuye j para que no se salte la materia siguiente
             }
@@ -194,7 +185,6 @@ export class MatriculacionComponent implements OnChanges {
           this.asignaturas = [];
         }
       }
-      console.log(this.asignaturas)
       if (this.asignaturas.length == 0 && this.seleccionado == 1) {
         if (this.materiasAprobadas.length > 0) {
           this.asignaturas = arregloSinRepetidos;
@@ -217,8 +207,7 @@ export class MatriculacionComponent implements OnChanges {
       this.asignaturaSeleccionada = event.value;
       findElementId = this.materias.find(item => item.nombre_materia === this.asignaturaSeleccionada);
     } else {
-      this.asignaturaSeleccionada = event.materia;
-      console.log(this.asignaturaSeleccionada)
+      this.asignaturaSeleccionada = event.materia;      
       findElementId = this.materias.find(item => item.nombre_materia === this.asignaturaSeleccionada);
     }
 
@@ -248,8 +237,7 @@ export class MatriculacionComponent implements OnChanges {
         }
       }
     }
-
-    console.log(this.curso)
+    
     for (let i = 0; i < arregloSinRepetidos.length; i++) {
       const horarioMatriculacion: horarioMatriculacion = {
         id_curso: arregloSinRepetidos[i],
@@ -291,9 +279,6 @@ export class MatriculacionComponent implements OnChanges {
     }
 
 
-    console.log(this.horarioMatriculacion);
-    console.log(cursoHorarioProvicional);
-
     for (let j = 0; j < this.horarioMatriculacion.length; j++) {
       for (let k = 0; k < cursoHorarioProvicional.length; k++) {
         if (this.horarioMatriculacion[j].id_curso == cursoHorarioProvicional[k].curso_horario) {
@@ -331,8 +316,7 @@ export class MatriculacionComponent implements OnChanges {
 
   }
 
-  add(event: any) {
-    console.log(event)
+  add(event: any) {    
     const horarioMatriculacion: horarioMatriculacion = {
       id_curso: event.id_curso,
       materia: event.materia,
@@ -408,8 +392,7 @@ export class MatriculacionComponent implements OnChanges {
 
 
   delete(event: any) {
-    let materia = event;
-    console.log(materia)
+    let materia = event;    
     for (let i = 0; i < this.horarioMatriculado.length; i++) {
       if (this.horarioMatriculado[i].materia == materia.materia) {
         this.asignaturas.push(materia.materia);
@@ -418,8 +401,6 @@ export class MatriculacionComponent implements OnChanges {
         this.horarioMatriculado = [...this.horarioMatriculado]; // create a new array reference to trigger change detection        
       }
     }
-
-    console.log("hola", this.horarioMatriculacion)
     this.dataSource = new MatTableDataSource<horarioMatriculacion>(this.horarioMatriculacion);
 
 
@@ -431,36 +412,32 @@ export class MatriculacionComponent implements OnChanges {
 
   async finalizar(){
     let id = this.matricula_pagoMatricula;
-    let matricula = this.horarioMatriculado
-    console.log(matricula)
-    await this.matriculacionService.agregarOrdenPagoMatriculas(
-      this.matricula_pagoMatricula,
-      this.nombreModulo,
-      this.horarioMatriculado.length,
-      this.costoTotal,
-      this.descuento,
-      this.totalDescuento)
-      .toPromise().then(respuesta =>{
-      console.log(respuesta)
-    }).catch(err =>{
-      console.error(err);
-    });
+    let matricula = this.horarioMatriculado    
+    // await this.matriculacionService.agregarOrdenPagoMatriculas(
+    //   this.matricula_pagoMatricula,
+    //   this.nombreModulo,
+    //   this.horarioMatriculado.length,
+    //   this.costoTotal,
+    //   this.descuento,
+    //   this.totalDescuento)
+    //   .toPromise().then(respuesta =>{    
+    // }).catch(err =>{
+    //   console.error(err);
+    // });
 
-    await this.matriculacionService.agregarMatricula(
-      this.datosCompletos[0].id_estudiante,
-      this.fechaActual)
-      .toPromise().then(respuesta =>{
-      console.log(respuesta)
-    }).catch(err =>{
-      console.error(err);
-    });
-    for(let i = 0;i<matricula.length;i++){
-      await this.matriculacionService.agregarItemMatriculas(matricula[i].id_curso,id).toPromise().then(respuesta =>{
-        console.log(respuesta)
-      }).catch(err =>{
-        console.error(err);
-      });
-    }    
+    // await this.matriculacionService.agregarMatricula(
+    //   this.datosCompletos[0].id_estudiante,
+    //   this.fechaActual)
+    //   .toPromise().then(respuesta =>{    
+    // }).catch(err =>{
+    //   console.error(err);
+    // });
+    // for(let i = 0;i<matricula.length;i++){
+    //   await this.matriculacionService.agregarItemMatriculas(matricula[i].id_curso,id).toPromise().then(respuesta =>{    
+    //   }).catch(err =>{
+    //     console.error(err);
+    //   });
+    // }    
     const modalRef = this.modalService.open(GenerandoModalComponent, { centered: true, size: 'md', backdrop: 'static', keyboard: false });
   }
 }

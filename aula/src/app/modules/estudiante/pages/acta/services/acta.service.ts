@@ -20,8 +20,7 @@ export class ActaService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url, post);
+    }    
     return this.http.post(url, post,httpOptions);
   }
 }

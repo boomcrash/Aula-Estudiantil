@@ -28,19 +28,14 @@ export class LoginService {
     let existe: boolean;
     let existeComprobar: boolean = false;
     await this.autentificar.verificarUsuarioPassword(user, contrasena).toPromise().then( async resp =>{      
-      existe = resp.data.existe;  
-      console.log(existe);
-      if(existe){
-        console.log(user);  
-        await this.autentificar.obtenerDatosSimplesUsuario(user).toPromise().then( async resp =>{   
-          console.log(resp)  
+      existe = resp.data.existe;        
+      if(existe){        
+        await this.autentificar.obtenerDatosSimplesUsuario(user).toPromise().then( async resp =>{             
           localStorage.setItem('Usuario', JSON.stringify(resp.data[0]));         
-          if(resp.data[0].rol_usuario == 1){
-            console.log('es un estudente')
+          if(resp.data[0].rol_usuario == 1){            
             await this.autentificar.obtenerDatosCompletos(resp.data[0].id_usuario.toString()).toPromise().then( async resp =>{
               await this.ePerfil.obtenerItemMatricula(resp.data[0].id_estudiante).toPromise().then( data =>{
-                this.matricula = data.data;
-                console.log(this.matricula)
+                this.matricula = data.data;                
                 if(this.matricula.length>0){
                   localStorage.setItem('alumno', "true");         
                 }else{                  
@@ -54,8 +49,7 @@ export class LoginService {
                 console.error(err);
               });
             
-          }
-          console.log(JSON.parse(localStorage.getItem("Usuario")!).rol_usuario)
+          }          
         });        
         existeComprobar = true;        
         return true;
@@ -67,8 +61,7 @@ export class LoginService {
         console.error(err);
         return false;
       }
-    ); 
-    console.log(existeComprobar, 'mensaje de prueba')
+    );     
     return existeComprobar;         
   }
 

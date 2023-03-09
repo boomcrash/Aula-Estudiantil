@@ -28,8 +28,7 @@ export class EPerfilService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url, post);
+    }    
     return this.http.post(url, post,httpOptions);
   }
 
@@ -44,8 +43,7 @@ export class EPerfilService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url, post);
+    }    
     return this.http.post(url, post,httpOptions);
   }
 }

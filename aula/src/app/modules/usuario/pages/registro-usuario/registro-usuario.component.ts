@@ -46,8 +46,7 @@ export class RegistroUsuarioComponent implements OnInit {
 
   }
 
-  submitUno() {
-    console.log(this.firstFormGroup.controls["usuario"].value)
+  submitUno() {    
     this.stepper.next();
   }
 

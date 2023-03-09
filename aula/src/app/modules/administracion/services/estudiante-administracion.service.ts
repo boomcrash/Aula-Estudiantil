@@ -32,8 +32,7 @@ export class EstudianteAdministracionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.get(url, httpOptions);
   }
   
@@ -47,8 +46,7 @@ export class EstudianteAdministracionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.post(url, post,httpOptions);
   }
 
@@ -64,8 +62,7 @@ export class EstudianteAdministracionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.post(url, post,httpOptions);
   }
 
@@ -76,8 +73,7 @@ export class EstudianteAdministracionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.get(url, httpOptions);
   }
 }

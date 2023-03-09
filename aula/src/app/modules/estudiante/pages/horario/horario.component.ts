@@ -27,8 +27,7 @@ export class HorarioComponent {
     let id_estudiante: number = 0;
     this.autentificar.obtenerDatosCompletos(this.id).subscribe(resp => {      
       id_estudiante = resp.data[0].id_estudiante;
-      let nombre_materia = ["s"]
-      console.log(id_estudiante,'HOLA')
+      let nombre_materia = ["s"]      
       this.horarioService.obtenerHorarios(id_estudiante).subscribe(data => {
         this.horario = data.data;
         nombre_materia = []
@@ -38,8 +37,7 @@ export class HorarioComponent {
         let arregloSinRepetidos = nombre_materia.filter((valor, indice) => {
           return nombre_materia.indexOf(valor) === indice;
         });
-
-        console.log(arregloSinRepetidos);
+        
         for (let i = 0; i < arregloSinRepetidos.length; i++) {
           const Horario_Ordenado: Horario2 = {
             nombre_materia: arregloSinRepetidos[i],
@@ -118,8 +116,7 @@ export class HorarioComponent {
 
 
           }
-        }
-        console.log(this.horario2);
+        }        
         this.dataSource = new MatTableDataSource<Horario2>(this.horario2);
 
       })

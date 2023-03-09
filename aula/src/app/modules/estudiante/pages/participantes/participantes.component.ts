@@ -25,10 +25,8 @@ export class ParticipantesComponent implements OnInit {
     if (!this.curso) {
       this.curso = history.state.curso;
     }
-    this.participantes.ObtenerParticipantes(this.curso.id_curso).subscribe((data) => {
-      console.log(data);
-      this.listaParticipantes = data.data;
-      console.log(this.listaParticipantes);
+    this.participantes.ObtenerParticipantes(this.curso.id_curso).subscribe((data) => {      
+      this.listaParticipantes = data.data;      
 
     }
 

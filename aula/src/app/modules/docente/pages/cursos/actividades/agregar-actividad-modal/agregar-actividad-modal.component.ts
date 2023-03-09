@@ -49,8 +49,7 @@ export class AgregarActividadModalComponent {
       tipo_actividad: this.actividadForm.controls["tipo_actividad"].value,
     }
 
-    this._docentesService.agregarActividad(actividad).subscribe(data => {
-      console.log(data)
+    this._docentesService.agregarActividad(actividad).subscribe(data => {      
       this._docentesService.sendUpdate(true);
       this.activeModal.close();
     })
@@ -59,8 +58,7 @@ export class AgregarActividadModalComponent {
   get f() { return this.actividadForm.controls; }
 
   convertirFecha(fecha: string): string {
-    var fechaConvertida = this.datePipe.transform(fecha, 'yyyy-MM-dd')!;
-    console.log(fechaConvertida);
+    var fechaConvertida = this.datePipe.transform(fecha, 'yyyy-MM-dd')!;    
     return fechaConvertida!;
   }
 

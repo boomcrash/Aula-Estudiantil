@@ -66,8 +66,7 @@ export class VerDocenteAdministracionComponent implements OnInit {
           if(this.datosDocentes[i].id_docente==this.id){
             this.docente=this.datosDocentes[i]
           }
-        }
-        console.log(this.docente);
+        }        
       }).catch(err =>{
         console.error(err);
       });

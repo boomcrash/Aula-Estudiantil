@@ -47,8 +47,7 @@ export class ActividadesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.curso = history.state.curso;
-    console.log(this.curso)
+    this.curso = history.state.curso;    
     this.obtenerActividades();
     this._docentesService.getUpdate().subscribe((value: boolean) => {
       if(value) {

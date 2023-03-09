@@ -38,8 +38,7 @@ export class AsistenciasComponent {
         this.asistenciasservice
           .obtenerAsistencias(data.data[0].id_estudiante)
           .subscribe((dato) => {
-            this.dataSource.data = dato.data;
-            console.log(this.dataSource);
+            this.dataSource.data = dato.data;            
           });
       });
   }

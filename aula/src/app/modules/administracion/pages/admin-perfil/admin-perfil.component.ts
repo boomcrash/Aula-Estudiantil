@@ -28,8 +28,7 @@ export class AdminPerfilComponent {
           contrasena_usuario: "********", //usuario_admin.contrasena_usuario
           rol_usuario: usuario_admin.rol_usuario,
         }
-        this.dataSource=usuario;
-        console.log(usuario);
+        this.dataSource=usuario;        
       }
     })
   }

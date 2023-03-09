@@ -31,14 +31,11 @@ export class EstudianteComponent implements OnInit {
   this.autentificar.obtenerDatosCompletos(this.id).toPromise().then( resp =>{
     id_estudiante = resp.data[0].id_estudiante;    
     this.ePerfil.obtenerItemMatricula(id_estudiante).toPromise().then( data =>{
-      this.matricula = data.data;
-      console.log(this.matricula)
-      if(this.matricula.length>0){
-        console.log(this.matricula[0].ciclo_matricula)
+      this.matricula = data.data;      
+      if(this.matricula.length>0){        
         if(this.matricula[0].ciclo_matricula == '2023-2024 CI' || this.matricula[0].ciclo_matricula == '2022-2023 CII'){
           this.validarMatricula = false;
-        }  
-        console.log(this.rol)      
+        }             
         
       }else{
         
@@ -49,7 +46,6 @@ export class EstudianteComponent implements OnInit {
       });
     }).catch(err =>{
       console.error(err);
-    });
-    console.log(this.validarMatricula)
+    });    
   }
 }

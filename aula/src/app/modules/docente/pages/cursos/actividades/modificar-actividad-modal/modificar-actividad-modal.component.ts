@@ -62,8 +62,7 @@ export class ModificarActividadModalComponent implements OnInit {
       envios: this.actividad.envios
     }
 
-    this._docentesService.modificarActividad(actividad).subscribe(data => {
-      console.log(data)
+    this._docentesService.modificarActividad(actividad).subscribe(data => {      
       this._docentesService.sendUpdate(true);
       this.activeModal.close();
     })
@@ -71,8 +70,7 @@ export class ModificarActividadModalComponent implements OnInit {
   }
 
   convertirFecha(fecha: string): string {
-    var fechaConvertida = this.datePipe.transform(fecha, 'yyyy-MM-dd')!;
-    console.log(fechaConvertida);
+    var fechaConvertida = this.datePipe.transform(fecha, 'yyyy-MM-dd')!;    
     return fechaConvertida!;
   }
 

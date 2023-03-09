@@ -23,13 +23,11 @@ export class AdministracionComponent implements OnInit{
 
   ngOnInit(): void {
     this.docenteService.obtenerTopDocentes('2022-2023 CI').subscribe(data => {
-      this.datosDocentes=data.data;
-      console.log(this.datosDocentes);
+      this.datosDocentes=data.data;      
     });
 
     this.estudianteService.obtenerTopEstudiantes('2022-2023 CI').subscribe(data => {
-      this.datosEstudiantes=data.data;
-      console.log(this.datosEstudiantes);
+      this.datosEstudiantes=data.data;      
     });
   }
 

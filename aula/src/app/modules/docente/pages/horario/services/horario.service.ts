@@ -20,8 +20,7 @@ export class horarioServiceDocente {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url, post);
+    }    
     return this.http.post(url, post,httpOptions);
   }  
 
@@ -35,8 +34,7 @@ export class horarioServiceDocente {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url, post);
+    }    
     return this.http.post(url, post,httpOptions);
   }  
 }

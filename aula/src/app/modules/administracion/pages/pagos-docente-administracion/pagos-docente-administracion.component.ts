@@ -52,12 +52,10 @@ export class PagosDocenteAdministracionComponent implements OnInit {
   ngOnInit(): void {
     this.docenteService.obtenerPagoDocentes().subscribe(respuesta =>{
       this.datosPagoDocentes = respuesta.data;
-      this.dataSource = new MatTableDataSource<any>(this.datosPagoDocentes);
-      console.log(this.datosPagoDocentes)
+      this.dataSource = new MatTableDataSource<any>(this.datosPagoDocentes);      
 
       this.docenteService.obtenerDocentes().subscribe(respuesta =>{
-        this.datosDocentes=respuesta.data;
-        console.log(this.datosDocentes)
+        this.datosDocentes=respuesta.data;        
       });
 
     });

@@ -25,8 +25,7 @@ export class ActNcEstudianteAdministracionComponent implements OnInit {
 
   ngOnInit(): void {
     this.estudianteService.obtenerEntregasEstudiantes('No enviada', this.data.id_estudiante, this.data.id_curso ).subscribe(data => {
-      this.datosActividades=data.data;
-      console.log(this.datosActividades);
+      this.datosActividades=data.data;      
     });
   }
 

@@ -29,7 +29,7 @@ export class GenerandoModalComponent implements OnInit{
 
   close(){
     this.activeModal.close()
-    // window.open('/estudiante/horario', '_self');    
+    window.open('/home', '_self');    
   }
 
 

@@ -37,8 +37,7 @@ export class AsistenciasComponent {
   ngOnInit(): void {
     this.curso = history.state.curso;
     this._docentesService.obtenerParticipantes(this.curso.id_curso).subscribe(data => {
-      this.participantes = data.data.filter((participante: { rol_participante: string; }) => participante.rol_participante === 'Estudiante');
-      console.log(this.participantes)
+      this.participantes = data.data.filter((participante: { rol_participante: string; }) => participante.rol_participante === 'Estudiante');      
     })
   }
 

@@ -49,7 +49,7 @@ export class EvaluacionDocenteComponent implements OnInit {
 
   promedio() {
     this.resultado = (this.criterio1 + this.criterio2 + this.criterio3 + this.criterio4 + this.criterio5 + this.criterio6 + this.criterio7 + this.criterio8 + this.criterio9 + this.criterio10) / 10;
-    console.log(this.resultado);
+    
 
   }
 
@@ -57,12 +57,10 @@ export class EvaluacionDocenteComponent implements OnInit {
   ngOnInit() {
 
 
-    this.cursosService.obtenerDatosEstudiante(this.id).subscribe((data) => {
-      console.log(data);
+    this.cursosService.obtenerDatosEstudiante(this.id).subscribe((data) => {      
       this.cursosService
         .obtenerCurso(data.data[0].id_estudiante)
-        .subscribe((dato) => {
-          console.log(dato);
+        .subscribe((dato) => {          
           this.curso = dato.data;
         });
 
@@ -81,11 +79,8 @@ export class EvaluacionDocenteComponent implements OnInit {
     this.docente = option.nombre_docente;
 
 
-    this.participantes.ObtenerParticipantes(option.id_curso).subscribe((data) => {
-      console.log(data);
-      this.listaParticipantes = data.data;
-      console.log(this.listaParticipantes);
-
+    this.participantes.ObtenerParticipantes(option.id_curso).subscribe((data) => {    
+      this.listaParticipantes = data.data;      
       this.docente=this.listaParticipantes.filter(participante =>
         participante.rol_participante.includes("Docente")
       )[0].nombrescompletos_participante;

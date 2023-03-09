@@ -23,8 +23,6 @@ export class RegistrarDocenteComponent {
 
 
   ngOnInit(): void {
-    console.log(this.usuario, this.contrasena)
-
     this.docenteForm = this._formBuilder.group({
       nombres_docente: ['', Validators.required],
       apellidos_docente: ['', Validators.required],
@@ -64,8 +62,7 @@ export class RegistrarDocenteComponent {
       promedio_docente: 0,
     };
 
-    this._usuariosService.agregarDocente(docente).subscribe(data => {
-      console.log(data)
+    this._usuariosService.agregarDocente(docente).subscribe(data => {      
       this.router.navigate(['/home']);
     });
   }

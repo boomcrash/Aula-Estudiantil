@@ -33,8 +33,7 @@ export class DocenteAdministracionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.get(url, httpOptions);
   }
 
@@ -45,8 +44,7 @@ export class DocenteAdministracionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.get(url, httpOptions);
   }
 
@@ -60,8 +58,7 @@ export class DocenteAdministracionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.post(url, post,httpOptions);
   }
 

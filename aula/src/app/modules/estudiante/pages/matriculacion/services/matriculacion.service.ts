@@ -17,8 +17,7 @@ export class matriculacionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.get(url, httpOptions);
   }  
 
@@ -29,8 +28,7 @@ export class matriculacionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.get(url, httpOptions);
   }  
 
@@ -41,8 +39,7 @@ export class matriculacionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.get(url, httpOptions);
   }
  obtenerMaterias(): Observable<any> {    
@@ -52,8 +49,7 @@ export class matriculacionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.get(url, httpOptions);
   }
 
@@ -67,8 +63,7 @@ export class matriculacionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url, post);
+    }    
     return this.http.post(url, post,httpOptions);
   }
 
@@ -83,8 +78,7 @@ export class matriculacionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url, post);
+    }    
     return this.http.post(url, post,httpOptions);
   }
 
@@ -99,8 +93,7 @@ export class matriculacionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url, post);
+    }    
     return this.http.post(url, post,httpOptions);
   }
 
@@ -125,8 +118,7 @@ export class matriculacionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url, post);
+    }    
     return this.http.post(url, post,httpOptions);
   }
 
@@ -137,8 +129,7 @@ export class matriculacionService {
         'Content-Type': 'application/json',        
         'Access-Control-Allow-Origin': '*'
       })
-    }
-    console.log(url);
+    }    
     return this.http.get(url, httpOptions);
   }
 }

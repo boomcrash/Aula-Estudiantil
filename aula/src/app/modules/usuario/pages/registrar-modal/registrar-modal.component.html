@@ -7,10 +7,13 @@
             <div *ngIf="cargando" class="spinner"></div>
         </div>
 
-        <h2 class="descripcion" *ngIf="!cargando">VALIDADOS CON EXITO!</h2>
+        <h2 class="descripcion" *ngIf="!cargando && docente==false">VALIDADOS CON EXITO!</h2>
+        <h2 class="descripcion" *ngIf="!cargando && docente==true">REGISTRADO CON EXITO!</h2>
+
         <h2 class="descripcion" *ngIf="cargando">Validando..</h2>
 
-        <p class="descripcion" *ngIf="!cargando">Certificados Validos.</p>
+        <p class="descripcion" *ngIf="!cargando && docente==false">Certificados Validos.</p>
+        <p class="descripcion" *ngIf="!cargando && docente==true">Docente Registrado.</p>
         <p class="descripcion" *ngIf="cargando">Espere un momento por favor...</p>
 
         <p class="mensaje text-muted" *ngIf="cargando">(No salga de esta página)</p>

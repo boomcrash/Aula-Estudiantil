@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,6 +7,7 @@ import { NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./registrar-modal.component.css']
 })
 export class RegistrarModalComponent {
+  @Input() public docente!: boolean;
   isLoading: boolean = false; 
   modalRef: any; 
   redirectTimeout: any; 
@@ -15,9 +16,14 @@ export class RegistrarModalComponent {
   constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
+
+    if(this.docente == true){
       this.cargando = false;
-    }, 5000);
+    }else{
+      setTimeout(() => {
+        this.cargando = false;
+      }, 5000);
+    }
     const modalOptions: NgbModalOptions = {
       backdrop: 'static'
     };

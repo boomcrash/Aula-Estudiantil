@@ -89,6 +89,8 @@ export class RegistrarDocenteComponent {
       this.router.navigate(['/home']);
   
     })
+    modalRef.componentInstance.docente = true;
+
   
   }
 }

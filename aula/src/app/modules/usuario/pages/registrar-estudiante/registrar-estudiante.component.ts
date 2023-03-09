@@ -88,6 +88,7 @@ export class RegistrarEstudianteComponent implements OnInit {
       this.router.navigate(['/home']);
 
     })
+    modalRef.componentInstance.docente = false;
 
   }
 

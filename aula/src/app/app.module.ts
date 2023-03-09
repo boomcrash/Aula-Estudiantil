@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AutenticacionModule } from './core/components/autentificacion/autenticacion.module';
-import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from './core/services/login.service';
 import { LoginGuardian } from './core/components/autentificacion/login/loginGuardian';
 import { DatePipe } from '@angular/common';
@@ -31,7 +30,7 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     AutenticacionModule,
   ],
-  providers: [CookieService, LoginService, LoginGuardian, DatePipe],
+  providers: [LoginService, LoginGuardian, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

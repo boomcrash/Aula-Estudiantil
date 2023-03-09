@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { CookieService } from 'ngx-cookie-service';
 import { AsistenciasModel } from '../../models/asistenciasModel';
 import { EstudiantePerfil } from '../../models/estudianteperfil.model';
 import { AsistenciasService } from './services/asistencias.service';
@@ -14,8 +13,8 @@ export class AsistenciasComponent {
   displayedColumns = ['fecha', 'estado'];
   dataSource!: MatTableDataSource<AsistenciasModel>;
   datosCompletos!: EstudiantePerfil[];
-  //variable para tomar el id de la cookie
-  id = parseInt(this.cookie.get('id'));
+  
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
   //opciones para jacer el filtrado en la tabla
   filterValue = '';
   selectedState = 'Presente';
@@ -28,11 +27,10 @@ export class AsistenciasComponent {
   ];
 
   constructor(
-    private cookie: CookieService,
     private asistenciasservice: AsistenciasService
   ) {}
   ngOnInit() {
-    this.id = parseInt(this.cookie.get('id'));
+    this.id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
     this.dataSource = new MatTableDataSource<AsistenciasModel>();
     this.asistenciasservice
       .obtenerDatosEstudiante(this.id)

@@ -42,5 +42,8 @@ import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad
     MatTableModule,
     SharedModule,
   ],
+  exports: [
+    EperfilComponent
+  ],
 })
 export class EstudianteModule { }

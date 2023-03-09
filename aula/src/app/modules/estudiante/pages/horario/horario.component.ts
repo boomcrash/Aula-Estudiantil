@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Horario } from '../../models/Horario.model';
 import { horarioService } from './services/horario.service';
-import { CookieService } from 'ngx-cookie-service';
 import { Horario2 } from '../../models/Horario2.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -17,10 +16,10 @@ export class HorarioComponent {
   dataSource: any = [];
   horario!: Horario[];
   horario2: Horario2[] = [];
-  id = this.cookie.get('id');
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
 
 
-  constructor(private horarioService: horarioService, private cookie: CookieService, private autentificar: AuthService) { }
+  constructor(private horarioService: horarioService, private autentificar: AuthService) { }
 
 
   ngOnInit() {

@@ -9,7 +9,6 @@ import { DatePipe, Location } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UpdateEntregaModel } from '../../models/updateEntrega';
 import { EstudiantePerfil } from '../../models/estudianteperfil.model';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-vista-actividad',
@@ -28,7 +27,7 @@ export class VistaActividadComponent implements OnInit {
 
   id_curso: number = 0;
   public id_entrega: number = 0;
-  id = parseInt(this.cookie.get('id'));
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
 
 
   public presentar: boolean = true;
@@ -37,7 +36,7 @@ export class VistaActividadComponent implements OnInit {
   datosEntrega: any;
   datosEntregaModificar: any;
   constructor(
-    private router: Router, private cookie: CookieService,
+    private router: Router,
     private actividadService: ActividadesService,private formBuilder: FormBuilder,  private datePipe: DatePipe,
     private location: Location
   ) {

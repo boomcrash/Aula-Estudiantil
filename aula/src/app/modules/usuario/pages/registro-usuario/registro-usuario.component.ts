@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AutenticacionModule } from 'src/app/core/components/autentificacion/autenticacion.module';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { map, Observable } from 'rxjs';
 import { RegistrarDocenteComponent } from '../registrar-docente/registrar-docente.component';
@@ -28,13 +27,13 @@ export class RegistroUsuarioComponent implements OnInit {
   thirdFormGroup!: FormGroup;
   estudianteForm!: FormGroup;
   isEditable = false;
-  id = parseInt(this.cookie.get('id'));
   rol = 0;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar, private _autenticacionModule: AuthService, private cookie: CookieService) { }
+  constructor(private _formBuilder: FormBuilder, private router: Router, private snackBar: MatSnackBar, private _autenticacionModule: AuthService) { }
 
   ngOnInit(): void {
+
     this.firstFormGroup = new FormGroup({
       usuario: new FormControl('', [Validators.required, this.verificarUsuario.bind(this)]),
       contrasena: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)]),

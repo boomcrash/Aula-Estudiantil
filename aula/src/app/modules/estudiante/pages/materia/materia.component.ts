@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { EntregaModel } from '../../models/EntregaModel';
 import { presentarActividadesModel } from '../../models/presentarActividadesModel';
-import { CookieService } from 'ngx-cookie-service';
 import { EstudiantePerfil } from '../../models/estudianteperfil.model';
 
 @Component({
@@ -24,7 +23,7 @@ export class MateriaComponent {
   presentarActividadesModel: presentarActividadesModel[] = [];
   dataSourceObtenerDatosEstudiante!: EstudiantePerfil[];
   id_curso: number = 0;
-  id = parseInt(this.cookie.get('id'));
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
 
   public entregasActividades: any;
   public mostrarContenido = false;
@@ -36,7 +35,6 @@ export class MateriaComponent {
 
   public presentarEdicion: boolean = this.actividadService.presentarEdicion;
   constructor(
-    private cookie: CookieService,
     private http: HttpClient,
     private actividadService: ActividadesService,
     private router: Router

@@ -14,10 +14,12 @@ import { ActaService } from '../acta/services/acta.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActaCalificacion } from '../../models/actacalificacion.model';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/core/services/login.service';
 import { map, Observable } from 'rxjs';
 import { StepperOrientation } from '@angular/cdk/stepper';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { GenerandoModalComponent } from '../matriculacion/generando-modal/generando-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-matriculacion',
@@ -50,7 +52,8 @@ export class MatriculacionComponent implements OnChanges {
   promedio: number = 0;
   totalDescuento: number = 0;
   nombreModulo: string = '';
-
+  fechaActual: string | null= '';
+  matricula_pagoMatricula: number = 0;
 
   displayedColumns = ['accion', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5', 'dia_horario6', 'dia_horario7'];
   displayedColumns2 = ['accion', 'materia', 'paralelo_curso', 'curso_cupo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5', 'dia_horario6', 'dia_horario7'];
@@ -79,17 +82,26 @@ export class MatriculacionComponent implements OnChanges {
     private autentificar: AuthService,
     private acta: ActaService,
     private router: Router,
-    breakpointObserver: BreakpointObserver
-
-
+    breakpointObserver: BreakpointObserver,
+    private modalService: NgbModal,
+    private datePipe: DatePipe
   ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
+      
   }
 
 
   ngOnInit() {
+    const fecha = new Date();
+    this.fechaActual = this.datePipe.transform(fecha, 'yyyy-MM-dd');
+    console.log(this.fechaActual)
+    this.matriculacionService.obtenerMatriculas().subscribe(resp =>{
+      this.matricula_pagoMatricula = resp.data.length+1;
+    });
+
+
     this.autentificar.obtenerDatosCompletos(this.id).toPromise().then(resp => {
       this.datosCompletos = resp.data;
       this.promedio = resp.data[0].promedioAnterior_estudiante;
@@ -122,8 +134,10 @@ export class MatriculacionComponent implements OnChanges {
     );
     this.matriculacionService.obtenerHorariosmatricula().subscribe(data => {
       this.cursoHorario = data.data;
+      console.log(this.cursoHorario)
       this.matriculacionService.obtenercurso().subscribe(data => {
         this.curso = data.data;
+        console.log(this.curso)
       });
     });
     this.matriculacionService.obtenerParalelo().subscribe(data => {
@@ -416,7 +430,36 @@ export class MatriculacionComponent implements OnChanges {
     this.router.navigate(['/estudiante']);
   }
 
-  finalizar(){
+  async finalizar(){
+    await this.matriculacionService.agregarOrdenPagoMatriculas(
+      this.matricula_pagoMatricula,
+      this.nombreModulo,
+      this.horarioMatriculado.length,
+      this.costoTotal,
+      this.descuento,
+      this.totalDescuento)
+      .toPromise().then(respuesta =>{
+      console.log(respuesta)
+    }).catch(err =>{
+      console.error(err);
+    });
 
+    await this.matriculacionService.agregarMatricula(
+      this.datosCompletos[0].id_estudiante,
+      this.fechaActual)
+      .toPromise().then(respuesta =>{
+      console.log(respuesta)
+    }).catch(err =>{
+      console.error(err);
+    });
+
+    await this.matriculacionService.agregarItemMatriculas(0,0).toPromise().then(respuesta =>{
+      console.log(respuesta)
+    }).catch(err =>{
+      console.error(err);
+    });
+
+
+    const modalRef = this.modalService.open(GenerandoModalComponent, { centered: true, size: 'md', backdrop: 'static', keyboard: false });
   }
 }

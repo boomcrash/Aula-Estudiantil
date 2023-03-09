@@ -17,6 +17,8 @@ import { MatriculacionComponent } from './pages/matriculacion/matriculacion.comp
 import { AsistenciasComponent } from './pages/asistencias/asistencias.component';
 import { ParticipantesComponent } from './pages/participantes/participantes.component';
 import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad.component';
+import { MatriculacionModule } from './pages/matriculacion/matriculacion.module';
+import { GenerandoModalComponent } from './pages/matriculacion/generando-modal/generando-modal.component';
 
 
 @NgModule({
@@ -32,7 +34,7 @@ import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad
     AsistenciasComponent,
     ParticipantesComponent,
     VistaActividadComponent,
-  
+    GenerandoModalComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { VistaActividadComponent } from './pages/vista-actividad/vista-actividad
     MatExpansionModule,
     MatTableModule,
     SharedModule,
+    MatriculacionModule,    
   ],
 })
 export class EstudianteModule { }

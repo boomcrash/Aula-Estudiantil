@@ -6,6 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Horario2 } from '../../models/Horario2.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 
+
 @Component({
   selector: 'app-horario',
   templateUrl: './horario.component.html',

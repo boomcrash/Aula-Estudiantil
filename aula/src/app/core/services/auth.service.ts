@@ -26,6 +26,21 @@ export class AuthService {
     return this.http.post(url, post,httpOptions);
   }
 
+  verificarUsuario(nombre_usuario: string): Observable<any> {    
+    const post = {
+      nombre_usuario
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlVerificarUsuario}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(url, post);
+    return this.http.post(url, post,httpOptions);
+  }
+
   obtenerDatosSimplesUsuario(username : string): Observable<any> {        
     const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerUsuariosPorUser}`;        
     return this.http.get(`${url}/${username}`);
@@ -35,4 +50,6 @@ export class AuthService {
     const url = `${environment.urlBAse}${environment.pathUrl.UrlObtenerDatosCompletos}`;         
     return this.http.get(`${url}/${username}`);
   }
+
+
 }

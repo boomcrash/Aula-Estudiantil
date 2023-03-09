@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { HorarioDocente } from '../../interfaces/horarioDocente.interface';
 import { HorarioDocenteTabla } from '../../interfaces/horarioDocenteTabla.interface';
@@ -12,14 +11,13 @@ import { horarioServiceDocente } from './services/horario.service';
   styleUrls: ['./horario.component.css']
 })
 export class HorarioComponent implements OnInit {
-  id = parseInt(this.cookie.get('id'));
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
   horarioDocente: HorarioDocente[] = [];
   horarioDocenteTabla: HorarioDocenteTabla[] = [];
   displayedColumns = ['nombre_materia', 'modulo_materia', 'nombre_paralelo', 'dia_horario1', 'dia_horario2', 'dia_horario3', 'dia_horario4', 'dia_horario5', 'dia_horario6', 'dia_horario7'];
   dataSource: any = [];
   constructor(
     private horarioService: horarioServiceDocente,
-    private cookie: CookieService,
     private autentificar: AuthService) {
 
   }
@@ -29,7 +27,7 @@ export class HorarioComponent implements OnInit {
     let id_docente: number = 0;
     this.autentificar.obtenerDatosCompletos(this.id.toString()).subscribe(resp => {
       id_docente = resp.data[0].id_docente;
-      this.horarioService.obtenerHorarios(id_docente).toPromise().then(resp => {
+      this.horarioService.obtenerHorariosDocente(id_docente).toPromise().then(resp => {
         console.log(resp)
         this.horarioDocente = resp.data;
         id_curso = []
@@ -106,7 +104,7 @@ export class HorarioComponent implements OnInit {
                 this.horarioDocenteTabla[j].horario_ordenado[4].dia_horario = this.horarioDocente[i].dia_horario;
                 this.horarioDocenteTabla[j].horario_ordenado[4].hora_horario = this.horarioDocente[i].hora_horario;
               }
-              if (this.horarioDocente[i].dia_horario == "Sabado") {
+              if (this.horarioDocente[i].dia_horario == "Sábado") {
                 this.horarioDocenteTabla[j].horario_ordenado[5].dia_horario = this.horarioDocente[i].dia_horario;
                 this.horarioDocenteTabla[j].horario_ordenado[5].hora_horario = this.horarioDocente[i].hora_horario;
               }

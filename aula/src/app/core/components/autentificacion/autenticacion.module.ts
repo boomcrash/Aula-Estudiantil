@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { UsuarioModule } from 'src/app/modules/usuario/usuario.module';
-import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   imports: [
@@ -14,6 +13,6 @@ import { CookieService } from 'ngx-cookie-service';
   declarations: [
     LoginComponent,    
   ],
-  providers: [CookieService],
+  providers: [],
 })
 export class AutenticacionModule { }

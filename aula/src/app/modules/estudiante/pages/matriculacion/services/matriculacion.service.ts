@@ -10,10 +10,7 @@ export class matriculacionService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerHorariosmatricula(id : number): Observable<any> {    
-    const get = {
-      id_Horario: id
-    };
+  obtenerHorariosmatricula(): Observable<any> {        
     const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerHorariosmatricula}`;    
     const httpOptions = {
       headers: new HttpHeaders({
@@ -21,7 +18,7 @@ export class matriculacionService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    console.log(url, get);
+    console.log(url);
     return this.http.get(url, httpOptions);
   }  
 
@@ -75,5 +72,73 @@ export class matriculacionService {
     return this.http.post(url, post,httpOptions);
   }
 
+  agregarMatricula(estudiante_matricula: number, fecha_matricula: string | null){
+    const post = {
+      estudiante_matricula,
+      fecha_matricula
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlMatriculacion.urlAgregarMatricula}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(url, post);
+    return this.http.post(url, post,httpOptions);
+  }
 
+  agregarItemMatriculas(matricula_itemMatricula?: number, curso_itemMatricula?: number){
+    const post = {
+      matricula_itemMatricula,
+      curso_itemMatricula
+    };
+    const url = `${environment.urlBAse}${environment.pathUrl.urlMatriculacion.urlAgregarItemMatriculas}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(url, post);
+    return this.http.post(url, post,httpOptions);
+  }
+
+  agregarOrdenPagoMatriculas(
+    matricula_pagoMatricula: number, 
+    item_pagoMatricula: string,
+    cantidad_pagoMatricula: number,
+    subtotal_pagoMatricula: number,
+    descuento_pagoMatricula: number,
+    total_pagoMatricula: number){
+    const post = {
+      matricula_pagoMatricula,
+      item_pagoMatricula,
+      cantidad_pagoMatricula,
+      subtotal_pagoMatricula,
+      descuento_pagoMatricula,
+      total_pagoMatricula
+    };    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlMatriculacion.urlAgregarOrdenPagoMatriculas}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(url, post);
+    return this.http.post(url, post,httpOptions);
+  }
+
+  obtenerMatriculas(): Observable<any> {    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlMatriculacion.urlObtenerOrdenesPago}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',        
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(url);
+    return this.http.get(url, httpOptions);
+  }
 }

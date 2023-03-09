@@ -1,17 +1,19 @@
 
 <div class="container">
-
-  <div class="form-group selectornombre " >
-    <mat-form-field appearance="fill">
-      <mat-label>Filtrar por nombre:</mat-label>
-      <mat-select [(ngModel)]="selected" >
-        <mat-option value="0">Todos</mat-option>
-        <mat-option value="1">Estado</mat-option>
-      </mat-select>
-    </mat-form-field>
+  <div class="row d-flex justify-content-start">
+    <div class="col-4 mx-0 my-2">
+      <div class="custom-input mb-3">
+          <span class="input-label">Buscar:</span>
+          <input type="text" class="input-field input-label-style" placeholder="Nombre Participante" [(ngModel)]="filtro"  (keyup)="filtrar()">
+      </div>
   </div>
+</div>
 
-  <div class="row">
+</div>
+
+<div class="container">
+
+  <div class="row mx-1">
       <!-- Tabla -->
       
       
@@ -29,7 +31,7 @@
         </thead>
         
         <tbody>
-          <ng-container *ngFor="let participantes of listaParticipantes">
+          <ng-container *ngFor="let participantes of (listaParticipantes ? filtrar() : []); let indice = index">
             <tr>
               <td>{{participantes.id_participante}}</td>
               <td>

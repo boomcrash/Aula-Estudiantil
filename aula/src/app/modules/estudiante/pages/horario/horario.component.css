@@ -70,6 +70,8 @@
         margin-top: 100px;
         margin: 30px;
         text-align: center;
+        overflow-x: auto;
+
 
     
       }

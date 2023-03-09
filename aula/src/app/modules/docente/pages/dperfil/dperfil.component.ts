@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { DocentesService } from '../../services/docentes.service';
 import { DocentePerfilModel } from '../../models/docentePerfilModel';
 import { ContratoDocenteModel } from '../../models/contratoDocenteModel';
@@ -12,7 +11,7 @@ import { DocentePagoModel } from '../../models/docentePagoModel';
   styleUrls: ['./dperfil.component.css'],
 })
 export class DperfilComponent implements OnInit {
-  id = parseInt(this.cookie.get('id'));
+  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
 
   panelOpenState = false;
   dataSource!: any;
@@ -23,7 +22,6 @@ export class DperfilComponent implements OnInit {
   dataSourceContratoDocente: any;
   dataSourcePagoDelDocente: any;
   constructor(
-    private cookie: CookieService,
     private docenteUser: DocentesService
   ) {}
 
@@ -64,7 +62,6 @@ export class DperfilComponent implements OnInit {
     this.docenteUser.obtenerDocente().subscribe((data) => {
       this.dataSourceObtenerDocente = data.data;
 
-      // buscar el docente correspondiente al id obtenido de la cookie
       const usuario_docente = this.dataSourceObtenerDocente.find(
         (docente) => docente.usuario_docente === this.id
       )?.usuario_docente;

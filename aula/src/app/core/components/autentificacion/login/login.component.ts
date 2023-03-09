@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterLink } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { LoginService } from 'src/app/core/services/login.service';
 
@@ -16,13 +15,12 @@ import { LoginService } from 'src/app/core/services/login.service';
 })
 export class LoginComponent {
   hide = true;  
-  user = this.cookie.get('username');
-  
+  user = localStorage.getItem('Usuario') ? '' : '';
+    
   constructor(private dialogRef: MatDialogRef<LoginComponent>, 
     private snackbar: MatSnackBar, 
     private loginService: LoginService, private dialog: MatDialog,  
     private autenticar: AuthService,
-    private cookie: CookieService,
     private router: Router
     ) {
   }
@@ -53,6 +51,7 @@ export class LoginComponent {
   }  
 
   registroUsuario(){
+    this.dialogRef.close();  
     this.router.navigate(['usuario/registro-usuario']);
   }
 

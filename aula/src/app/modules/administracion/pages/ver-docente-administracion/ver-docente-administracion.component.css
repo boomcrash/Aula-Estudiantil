@@ -29,3 +29,11 @@ td{
     justify-content: center;
     padding: 40px;
 }
+
+.pagos {
+
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 0px;
+    height: 56px;
+}

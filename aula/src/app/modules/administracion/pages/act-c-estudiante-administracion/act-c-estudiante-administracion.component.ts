@@ -16,7 +16,7 @@ export interface PeriodicElement {
 export class ActCEstudianteAdministracionComponent implements OnInit {
   datosActividad: Actividad[] = [];
 
-  displayedColumns: string[] = ['id', 'actividad'];
+  displayedColumns: string[] = ['actividad'];
   
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { id_estudiante: number, id_curso: number },

@@ -26,6 +26,8 @@ import { ActCEstudianteAdministracionComponent } from './pages/act-c-estudiante-
 import { ActNcEstudianteAdministracionComponent } from './pages/act-nc-estudiante-administracion/act-nc-estudiante-administracion.component';
 import { AdminPerfilComponent } from './pages/admin-perfil/admin-perfil.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { DialogExitoComponent } from './components/dialog-exito/dialog-exito.component';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     VerEstudianteAdministracionComponent,
     ActCEstudianteAdministracionComponent,
     ActNcEstudianteAdministracionComponent,
-    AdminPerfilComponent
+    AdminPerfilComponent,
+    DialogExitoComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +60,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatInputModule,
     MatRadioModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    SharedModule
   ]
 })
 export class AdministracionModule { }

@@ -29,7 +29,7 @@ export class VerEstudianteAdministracionComponent implements OnInit {
   };
   datosMateriasEstudiante: MateriaEstudiante[] = [];
 
-  displayedColumns: string[] = ['id', 'materia', 'paralelo', 'actCumplidas', 'actNoCumplidas'];
+  displayedColumns: string[] = [ 'materia', 'paralelo', 'actCumplidas', 'actNoCumplidas'];
 
   id: number=0;
 

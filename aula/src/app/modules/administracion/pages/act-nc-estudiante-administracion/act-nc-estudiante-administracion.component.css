@@ -10,3 +10,14 @@ td{
 h1{
     font-weight: bold;
 }
+
+table {
+    margin-bottom: 60px;
+}
+
+.pagos {
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 0px;
+    height: 45px;
+}

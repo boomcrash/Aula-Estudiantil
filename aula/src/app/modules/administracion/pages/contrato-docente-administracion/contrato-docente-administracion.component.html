@@ -1,69 +1,61 @@
+<div class="container" style="padding: 40px;">
+  <div style="margin: auto; text-align: center;">
+    <h1 style="font-weight: bold;"> NUEVO CONTRATO </h1>
+    <h2 style="text-align: center;color: rgb(98, 98, 98);">
+      {{nombre_docente}}
+    </h2>
+  </div>
 
+  <div style="font-size: 14px;  ">
+    <form class="formContrato" [formGroup]="formulario">
 
-<div class="container" style="padding: 40px;" >
-    <div style="margin: auto; text-align: center;">
-      <h1 style="font-weight: bold;"> NUEVO CONTRATO </h1>
-      <h2 
-        style="text-align: center; font-size: 30pt; text-transform: uppercase; color: black;">  
-        {{nombre_docente}}
-      </h2>
-    </div>
+      <div style="width: 80%;text-align: center; margin: auto;">
 
-    <div style="font-size: 14px;  "> 
-        <form class="formContrato" [formGroup]="formulario">
+        <br>
+        <label> Nombramiento: </label>
+        <br>
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button style="margin-left: 16px;" value="Si">Si</mat-radio-button>
+          <mat-radio-button style="margin-left: 16px;" value="No">No</mat-radio-button>
+        </mat-radio-group>
+        <br><br>
+        <label> Especialidad a fin: </label>
+        <br><br>
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button style="margin-left: 16px;" value="Si">Si</mat-radio-button>
+          <mat-radio-button style="margin-left: 16px;" value="No">No</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <br><br>
+        <mat-form-field appearance="fill" class="campos-field">
+          <mat-label>Jornada:</mat-label>
+          <mat-select>
+            <mat-option>Seleccione</mat-option>
+            <mat-option *ngFor="let filtro of filtro" [value]="filtro">{{filtro}}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-          <div style="width: 80%;text-align: center; margin: auto;">
-              
-              <br>
-              <label> NOMBRAMIENTO </label>
-              <br>
-              <mat-radio-group aria-label="Select an option">
-                <mat-radio-button style="margin-left: 16px;" value="1">Si</mat-radio-button>
-                <mat-radio-button style="margin-left: 16px;" value="2">No</mat-radio-button>
-              </mat-radio-group>
-              <br>
-              <label> ESPECIALIDAD A FIN </label>
-              <br>
-              <mat-radio-group aria-label="Select an option">
-                <mat-radio-button style="margin-left: 16px;" value="1">Si</mat-radio-button>
-                <mat-radio-button style="margin-left: 16px;" value="2">No</mat-radio-button>
-              </mat-radio-group>
-              <br>
+        <br><br>
+        <mat-form-field appearance="fill" class="campos-field">
+          <mat-label>Tipo:</mat-label>
+          <mat-select>
+            <mat-option>Seleccione</mat-option>
+            <mat-option *ngFor="let tipo of tipo" [value]="tipo">{{tipo}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br><br><br><br>
+      </div>
+      <mat-dialog-actions style="justify-content: center;">
+        <button type="submit" style="background-color: #20BCD1; color: white;" mat-raised-button (click)="enviar()">
+          GUARDAR
+        </button>
 
-              <mat-form-field appearance="fill" class="campos-field">
-                <mat-label>JORNADA:</mat-label>
-                <mat-select>
-                  <mat-option>Seleccione</mat-option>
-                  <mat-option *ngFor="let filtro of filtro" [value]="filtro">{{filtro}}</mat-option>
-                </mat-select>
-              </mat-form-field>
+        <button style="background-color: white; color: #20BCD1; border: 2px solid #20BCD1;" mat-raised-button
+          (click)="cerrar()">
+          CANCELAR
+        </button>
+      </mat-dialog-actions>
+    </form>
 
-              <br>
-              <mat-form-field appearance="fill" class="campos-field">
-                <mat-label>TIPO:</mat-label>
-                <mat-select>
-                  <mat-option>Seleccione</mat-option>
-                  <mat-option *ngFor="let tipo of tipo" [value]="tipo">{{tipo}}</mat-option>
-                </mat-select>
-              </mat-form-field>
-
-          </div>
-          <mat-dialog-actions style="justify-content: center;">
-            <button 
-            type="submit"
-            style="background-color: #20BCD1; color: white;" mat-raised-button 
-            (click)="enviar()">
-            GUARDAR
-            </button>
-
-            <button 
-            style="background-color: white; color: #20BCD1; border: 2px solid #20BCD1;" mat-raised-button 
-            (click)="cerrar()">
-            CANCELAR
-            </button>
-          </mat-dialog-actions>
-        </form>
-      
-    </div>
+  </div>
 </div>
-    

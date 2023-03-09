@@ -22,7 +22,7 @@ export class VerDocenteAdministracionComponent implements OnInit {
   };
   datosMateriasDocente: MateriaDocente[] = [];
 
-  displayedColumns: string[] = ['id', 'materia', 'paralelo', 'evaluo', 'calificacion'];
+  displayedColumns: string[] = [ 'materia', 'paralelo', 'evaluo', 'calificacion'];
 
   id: number=0;
 

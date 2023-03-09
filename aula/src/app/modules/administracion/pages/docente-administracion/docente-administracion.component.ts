@@ -22,6 +22,9 @@ export class DocenteAdministracionComponent implements OnInit {
     tipo_contrato: ''
   };
 
+  selectedFiltro: string = '';
+
+  
   displayedColumns: string[] = ['id', 'cedula', 'nombreCompleto', 'ciclo', 'estado', 'contrato','acciones'];
   id: number=0;
   
@@ -33,12 +36,6 @@ export class DocenteAdministracionComponent implements OnInit {
     'Contrato',
   ];
 
-  opciones: string[] = [
-    'Opcion 1',
-    'Opcion 2',
-    'Opcion 3',
-  ];
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -46,16 +43,22 @@ export class DocenteAdministracionComponent implements OnInit {
     private docenteService:DocenteAdministracionService) {}
 
   ngOnInit(): void {
+    this.cargarDatos();
     
-    this.docenteService.obtenerDocentes().toPromise().then(respuesta =>{
-      this.datosDocentes=respuesta.data;
-      for(let i=0;i<this.datosDocentes.length;i++){
-        if(this.datosDocentes[i].id_docente==this.id){
-          this.docente=this.datosDocentes[i]
+
+    this.selectedFiltro = this.filtro[0];
+  }
+
+  cargarDatos() {
+    this.docenteService.obtenerDocentes().toPromise().then(respuesta => {
+      this.datosDocentes = respuesta.data;
+      for (let i = 0; i < this.datosDocentes.length; i++) {
+        if (this.datosDocentes[i].id_docente == this.id) {
+          this.docente = this.datosDocentes[i]
         }
       }
       console.log(this.docente);
-    }).catch(err =>{
+    }).catch(err => {
       console.error(err);
     });
   }
@@ -65,9 +68,13 @@ export class DocenteAdministracionComponent implements OnInit {
   }
 
   mostrarDialogoContrato(nombre_docente: string, id_docente: number) {
-    this.dialog.open(ContratoDocenteAdministracionComponent,{
+    const dialogRef = this.dialog.open(ContratoDocenteAdministracionComponent,{
       data: {nombre_docente: nombre_docente, id_docente: id_docente},
       width: '700px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.cargarDatos();
     });
   }
 

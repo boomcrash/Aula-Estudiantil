@@ -24,6 +24,8 @@ export class PagosDocenteAdministracionComponent implements OnInit {
   datosPagoDocentes: PagoDocente[] = [];
   datosDocentes: Docente[] = [];
 
+  selectedFiltro: string = '';
+
   displayedColumns: string[] = ['fecha', 'sueldo', 'faltas', 'descuento', 'total', 'cedula', 'nombreCompleto'];
   
   filtro: string[] = [
@@ -54,6 +56,9 @@ export class PagosDocenteAdministracionComponent implements OnInit {
       });
 
     });
+
+    this.selectedFiltro = this.filtro[0];
+
   }
   volver(){
     this.router.navigate(['/administracion/docente-administracion']);

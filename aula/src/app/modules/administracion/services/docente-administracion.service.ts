@@ -82,11 +82,6 @@ export class DocenteAdministracionService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    console.log(contrato)
     return this.http.post(url, body, httpOptions);
   }  
-
-  public sendUpdate(value: boolean): void {
-    this.update.next(value);
-  }
 }

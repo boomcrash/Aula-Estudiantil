@@ -1,4 +1,4 @@
-<div style="border: 5px solid #20BCD1; padding: 40px;">
+<div style=" padding: 60px;">
     <div style="width: 80%; margin: auto; text-align: center; ">
       <h1> ACTIVIDADES NO CUMPLIDAS </h1>
     </div>
@@ -6,11 +6,7 @@
       <div> 
         <table mat-table [dataSource]="datosActividades" class="mat-elevation-z8">
   
-          <!-- Position Column -->
-          <ng-container matColumnDef="id" >
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.id_actividad}} </td>
-          </ng-container>
+     
   
            <!-- Symbol Column -->
            <ng-container matColumnDef="actividad">
@@ -32,6 +28,6 @@
   
     </mat-dialog-content>
     <mat-dialog-actions>
-      <button style="background-color: #20BCD1; color: white;" mat-button (click)="cerrar()">CERRAR</button>
+      <button class="pagos" style=" margin:0 auto; background-color: #20BCD1; color: white;" mat-button (click)="cerrar()">CERRAR</button>
     </mat-dialog-actions>
   </div>

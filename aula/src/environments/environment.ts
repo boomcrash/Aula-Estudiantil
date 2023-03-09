@@ -1,13 +1,13 @@
 export const environment = {
 
-urlBAse: "http://167.71.26.121:3000",
+    urlBAse: "http://167.71.26.121:3000",
     pathUrl: {
-        urlVerificarUsuarioPassword: "/api/v1/usuarios/verifyUserByUserAndPassword",    
-        urlObtenerUsuariosPorUser: "/api/v1/usuarios/getUsersByUserName",    
-        urlObtenerHorariosporId: "/api/v1/horarios/getHorarioEstudiante",    
-        urlObtenerHorariosmatricula:"/api/v1/horarios/getAllHorarios",
-        urlVerificarUsuario: "/api/v1/usuarios/verifyUserByUser",                        
-        urlObtenerHorariosporIdDocente: "/api/v1/horarios/getHorarioDocente",        
+        urlVerificarUsuarioPassword: "/api/v1/usuarios/verifyUserByUserAndPassword",
+        urlObtenerUsuariosPorUser: "/api/v1/usuarios/getUsersByUserName",
+        urlObtenerHorariosporId: "/api/v1/horarios/getHorarioEstudiante",
+        urlObtenerHorariosmatricula: "/api/v1/horarios/getAllHorarios",
+        urlVerificarUsuario: "/api/v1/usuarios/verifyUserByUser",
+        urlObtenerHorariosporIdDocente: "/api/v1/horarios/getHorarioDocente",
         UrlObtenerCursos: "/api/v1/cursos/getCursos",
         UrlObtenerParalelos: "/api/v1/paralelos/getParalelos",
         UrlObtenerMaterias: "/api/v1/materias/getItemMaterias",
@@ -22,7 +22,7 @@ urlBAse: "http://167.71.26.121:3000",
         urlUpdateEntregas: "/api/v1/entregas/updateEntrega",
         urlObtenerEntregaActividad: "/api/v1/actividades/entregaActividad",
         urlObtenerAsistenciasByIdEstudiante: "/api/v1/asistencias/getAsistenciasByIdEstudiante",
-       
+
         urlDocentes: {
             obtenerCursos: "/api/v1/cursos/getCursosDocente",
             obtenerActividades: "/api/v1/actividades/getActividadByCurso",
@@ -38,29 +38,30 @@ urlBAse: "http://167.71.26.121:3000",
             borrarActividad: "/api/v1/actividades/deleteActividad",
             calificarEntrega: "/api/v1/entregas/addCalificacion",
             obtenerContratoDocente2: "/api/v1/contratos/getContratosByIdDocente",
-        },        
             actualizarActa: "/api/v1/actas/addActa",
             getActa: "/api/v1/actas/getActaCurso",
-        },
-
+        },          
         urlObtenerParticipantes: "/api/v1/participantes/getParticipantesByActividadId",
         urlObtenerEstudiantes: "/api/v1/estudiantes/getEstudiantes",
         urlModificarEntrega: "/api/v1/entregas/updateEntrega",
         urlObtenerUsuarios: "/api/v1/usuarios/getUsers",
 
         urlDocenteAdmin: {
-            obtenerTopDocentes:"/api/v1/docentes/getTop5Teacher",
+            obtenerTopDocentes: "/api/v1/docentes/getTop5Teacher",
             obtenerDocentes: "/api/v1/docentes/getAdminDocentes",
             obtenerPagoDocentes: "/api/v1/pagoDocentes/getAdminPagoDocentes",
-            obtenerEvaluacionesDocente: "/api/v1/evaluaciones/getEvaluacionesByDocente", 
-            agregarContratoDocente: "/api/v1/contratos/addContrato",           
+            obtenerEvaluacionesDocente: "/api/v1/evaluaciones/getEvaluacionesByDocente",
+            agregarContratoDocente: "/api/v1/contratos/addContrato",
         },
         urlEstudianteAdmin: {
             obtenerTopEstudiantes: "/api/v1/estudiantes/getTop5Estudiantes",
             obtenerEstudiantes: "/api/v1/estudiantes/getAdminEstudiantes",
             obtenerMateriasEstudiantes: "/api/v1/cursos/getCursosEstudiante",
             obtenerEntregasEstudiantes: "/api/v1/entregas/GetEntregasAdmin",
-        },        
+        },
         urlAgregarDocente: "/api/v1/docentes/addUserAndTeachers",
         urlAgregarEstudiante: "/api/v1/estudiantes/addUserAndStudents",
+    }
+
+
 }

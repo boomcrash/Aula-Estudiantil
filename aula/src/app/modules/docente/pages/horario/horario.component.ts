@@ -29,7 +29,7 @@ export class HorarioComponent implements OnInit {
     let id_docente: number = 0;
     this.autentificar.obtenerDatosCompletos(this.id.toString()).subscribe(resp => {
       id_docente = resp.data[0].id_docente;
-      this.horarioService.obtenerHorarios(id_docente).toPromise().then(resp => {
+      this.horarioService.obtenerHorariosDocente(id_docente).toPromise().then(resp => {
         console.log(resp)
         this.horarioDocente = resp.data;
         id_curso = []

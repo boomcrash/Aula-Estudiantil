@@ -31,7 +31,8 @@
         <div class="invalid-feedback"
           *ngIf="docenteForm.controls['cedula_docente'].invalid && (docenteForm.controls['cedula_docente'].touched || submitted)">
           <div *ngIf="docenteForm.controls['cedula_docente'].hasError('required')">Campo obligatorio.</div>
-          <div *ngIf="docenteForm.controls['cedula_docente'].hasError('pattern')">La cédula debe tener entre 1 y 10 dígitos numéricos.</div>
+          <div *ngIf="docenteForm.controls['cedula_docente'].hasError('pattern')">La cédula debe tener entre 1 y 10
+            dígitos numéricos.</div>
         </div>
       </div>
 
@@ -41,30 +42,20 @@
           [ngClass]="{'is-invalid': docenteForm.controls['fechaNacimiento_docente'].invalid && (docenteForm.controls['fechaNacimiento_docente'].touched || submitted)}">
         <label for="fechaNacimiento_docente">Fecha de nacimiento</label>
         <div class="invalid-feedback"
-          *ngIf="docenteForm.controls['fechaNacimiento_docente'].invalid && (docenteForm.controls['fechaNacimiento_docente'].touched || submitted)">
-          <div *ngIf="docenteForm.controls['fechaNacimiento_docente'].hasError('required')">Campo obligatorio.</div>
-          <div *ngIf="docenteForm.controls['fechaNacimiento_docente'].hasError('pattern')">La fecha debe tener el formato YYYY-MM-DD.</div>
-          <div *ngIf="docenteForm.controls['fechaNacimiento_docente'].hasError('fechaInvalida')">La fecha no es válida.</div>
+          *ngIf="docenteForm.controls['fechaNacimiento_docente'].invalid && (docenteForm.controls['fechaNacimiento_docente'].dirty || docenteForm.controls['fechaNacimiento_docente'].touched || submitted)">
+          <div *ngIf="docenteForm.controls['fechaNacimiento_docente'].hasError('fechaRequerida')">Campo obligatorio.
+          </div>
+          <div
+            *ngIf="docenteForm.controls['fechaNacimiento_docente'].hasError('fechaPatron') && !docenteForm.controls['fechaNacimiento_docente'].hasError('fechaRequerida')">
+            La fecha debe tener el
+            formato YYYY-MM-DD.</div>
+          <div
+            *ngIf="docenteForm.controls['fechaNacimiento_docente'].hasError('fechaInvalida') && !docenteForm.controls['fechaNacimiento_docente'].hasError('fechaRequerida') && !docenteForm.controls['fechaNacimiento_docente'].hasError('fechaPatron')">
+            La fecha no es
+            válida.</div>
         </div>
       </div>
 
-      <div class="form-floating mb-3">
-        <input class="form-control" type="number" formControlName="edad_docente" placeholder="Edad" required
-          [ngClass]="{'is-invalid': docenteForm.controls['edad_docente'].invalid && (docenteForm.controls['edad_docente'].touched || submitted)}">
-        <label for="edad_docente">Edad</label>
-        <div class="invalid-feedback"
-          *ngIf="docenteForm.controls['edad_docente'].invalid && (docenteForm.controls['edad_docente'].touched || submitted)">
-          <div *ngIf="docenteForm.controls['edad_docente'].hasError('required')">Campo obligatorio.</div>
-          <div *ngIf="docenteForm.controls['edad_docente'].hasError('pattern')">El valor ingresado debe ser numérico.</div>
-        </div>
-      </div>
-      
-      
-
-
-
-    </div>
-    <div class="col-md-6">
       <div class="form-floating mb-3">
         <input class="form-control" type="text" formControlName="direccion_docente" placeholder="Dirección" required
           [ngClass]="{'is-invalid': docenteForm.controls['direccion_docente'].invalid && (docenteForm.controls['direccion_docente'].touched || submitted)}">
@@ -75,6 +66,11 @@
         </div>
       </div>
 
+
+    </div>
+    <div class="col-md-6">
+
+
       <div class="form-floating mb-3">
         <input class="form-control" id="telefono_docente" name="telefono_docente" placeholder="Teléfono" required
           type="tel" formControlName="telefono_docente"
@@ -82,12 +78,10 @@
         <label for="telefono_docente">Teléfono</label>
         <div class="invalid-feedback"
           *ngIf="docenteForm.controls['telefono_docente'].invalid && (docenteForm.controls['telefono_docente'].dirty || docenteForm.controls['telefono_docente'].touched || submitted)">
-          <div
-            *ngIf="docenteForm.controls['telefono_docente'].hasError('required')">
+          <div *ngIf="docenteForm.controls['telefono_docente'].hasError('required')">
             Campo obligatorio.
           </div>
-          <div
-            *ngIf="docenteForm.controls['telefono_docente'].hasError('pattern')">
+          <div *ngIf="docenteForm.controls['telefono_docente'].hasError('pattern')">
             El número de teléfono debe contener solo números y tener una longitud máxima de 10 dígitos.
           </div>
         </div>
@@ -99,20 +93,18 @@
         <label for="email_docente">Correo Electrónico</label>
         <div class="invalid-feedback"
           *ngIf="docenteForm.controls['email_docente'].invalid && (docenteForm.controls['email_docente'].dirty || docenteForm.controls['email_docente'].touched || submitted)">
-          <div
-            *ngIf="docenteForm.controls['email_docente'].hasError('required')">
+          <div *ngIf="docenteForm.controls['email_docente'].hasError('required')">
             Campo obligatorio.
           </div>
-          <div
-            *ngIf="docenteForm.controls['email_docente'].hasError('email')">
+          <div *ngIf="docenteForm.controls['email_docente'].hasError('email')">
             El correo electrónico no tiene un formato válido.
           </div>
         </div>
       </div>
 
       <div class="form-floating mb-3">
-        <input class="form-control" id="titulo_docente" name="titulo_docente" placeholder="Titulo" required
-          type="text" formControlName="titulo_docente"
+        <input class="form-control" id="titulo_docente" name="titulo_docente" placeholder="Titulo" required type="text"
+          formControlName="titulo_docente"
           [ngClass]="{'is-invalid': docenteForm.controls['titulo_docente'].invalid && (docenteForm.controls['titulo_docente'].touched || submitted)}">
         <label for="titulo_docente">Titulo</label>
         <div class="invalid-feedback"
@@ -125,7 +117,7 @@
         <select class="form-select" id="nivelEducacion_docente" name="nivelEducacion_docente"
           placeholder="Nivel de Educación" required formControlName="nivelEducacion_docente"
           [ngClass]="{'is-invalid': docenteForm.controls['nivelEducacion_docente'].invalid && (docenteForm.controls['nivelEducacion_docente'].touched || submitted)}">
-          <option value="" disabled selected>Nivel de Educación</option>
+          <option value="" selected>Nivel de Educación</option>
           <option value="3er nivel">3er nivel</option>
           <option value="4to nivel">4to nivel</option>
         </select>
@@ -142,7 +134,7 @@
 
 
   <div class="d-flex justify-content-center mt-1">
-    <button class="btn btn-outline-primary mx-2  rounded-0" id="botonCancelar" matStepperNext matStepperPrevious>
+    <button class="btn btn-outline-primary mx-2  rounded-0" id="botonCancelar" matStepperPrevious>
       Regresar
     </button>
     <button class="btn btn-primary mx-2 rounded-0" id="botonGuardar" type="submit">Registrarse</button>

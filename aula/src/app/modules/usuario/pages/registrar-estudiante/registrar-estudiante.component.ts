@@ -30,9 +30,7 @@ export class RegistrarEstudianteComponent implements OnInit {
       nombres_estudiante: ['', Validators.required],
       apellidos_estudiante: ['', Validators.required],
       cedula_estudiante: ['', [Validators.required, Validators.pattern("^[0-9]{1,10}$")]],
-      fechaNacimiento_estudiante: ['', [Validators.required, Validators.pattern("^\\d{4}-\\d{2}-\\d{2}$"), (control: AbstractControl) => {
-        return fechaValida(control.value) ? null : { fechaInvalida: true };
-      }]],
+      fechaNacimiento_estudiante: ['', [fechaRequerida, fechaPatron, fechaValida]],
       edad_estudiante: ['', [Validators.required, Validators.pattern("^[0-9]+$")]],
       direccion_estudiante: ['', Validators.required],
       telefono_estudiante: ['', [Validators.required, Validators.pattern("^[0-9]{1,10}$")]],
@@ -78,7 +76,16 @@ export class RegistrarEstudianteComponent implements OnInit {
 
 }
 
-function fechaValida(fechaString: string): boolean {
-  const fecha = new Date(fechaString);
-  return fecha instanceof Date && !isNaN(fecha.getTime());
+function fechaRequerida(control: AbstractControl): { [key: string]: boolean } | null {
+  return control.value ? null : { fechaRequerida: true };
+}
+
+function fechaPatron(control: AbstractControl): { [key: string]: boolean } | null {
+  const patron = /^\d{4}-\d{2}-\d{2}$/;
+  return patron.test(control.value) ? null : { fechaPatron: true };
+}
+
+function fechaValida(control: AbstractControl): { [key: string]: boolean } | null {
+  const fecha = new Date(control.value);
+  return fecha instanceof Date && !isNaN(fecha.getTime()) ? null : { fechaInvalida: true };
 }

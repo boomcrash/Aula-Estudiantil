@@ -42,11 +42,11 @@
         <label for="fechaNacimiento_estudiante">Fecha de nacimiento</label>
         <div class="invalid-feedback"
           *ngIf="estudianteForm.controls['fechaNacimiento_estudiante'].invalid && (estudianteForm.controls['fechaNacimiento_estudiante'].dirty || estudianteForm.controls['fechaNacimiento_estudiante'].touched || submitted)">
-          <div *ngIf="estudianteForm.controls['fechaNacimiento_estudiante'].hasError('required')">Campo obligatorio.
+          <div *ngIf="estudianteForm.controls['fechaNacimiento_estudiante'].hasError('fechaRequerida')">Campo obligatorio.
           </div>
-          <div *ngIf="!estudianteForm.controls['fechaNacimiento_estudiante'].hasError('pattern')">La fecha debe tener el
+          <div *ngIf="estudianteForm.controls['fechaNacimiento_estudiante'].hasError('fechaPatron') && !estudianteForm.controls['fechaNacimiento_estudiante'].hasError('fechaRequerida')">La fecha debe tener el
             formato YYYY-MM-DD.</div>
-          <div *ngIf="estudianteForm.controls['fechaNacimiento_estudiante'].hasError('fechaInvalida')">La fecha no es
+          <div *ngIf="estudianteForm.controls['fechaNacimiento_estudiante'].hasError('fechaInvalida') && !estudianteForm.controls['fechaNacimiento_estudiante'].hasError('fechaRequerida') && !estudianteForm.controls['fechaNacimiento_estudiante'].hasError('fechaPatron')">La fecha no es
             válida.</div>
         </div>
       </div>
@@ -137,9 +137,16 @@
     </div>
 
     <div class="form-floating mb-3">
-      <input class="form-control" id="medio_estudiante" name="medio_estudiante" placeholder="Medio" required type="text"
-        formControlName="medio_estudiante"
+      <select class="form-control" id="medio_estudiante" name="medio_estudiante" formControlName="medio_estudiante"
         [ngClass]="{'is-invalid': (estudianteForm.controls['medio_estudiante'].invalid && estudianteForm.controls['medio_estudiante'].touched) || (submitted && estudianteForm.controls['medio_estudiante'].invalid)}">
+        <option value="">Selecciona un medio</option>
+        <option value="1">Radio</option>
+        <option value="2">TV</option>
+        <option value="3">Periódico</option>
+        <option value="4">Volantes</option>
+        <option value="5">WhatsApp</option>
+        <option value="6">Redes Sociales</option>
+      </select>
       <label for="medio_estudiante">Medio</label>
       <div class="invalid-feedback"
         *ngIf="(estudianteForm.controls['medio_estudiante'].invalid && (estudianteForm.controls['medio_estudiante'].dirty || estudianteForm.controls['medio_estudiante'].touched)) || (submitted && estudianteForm.controls['medio_estudiante'].invalid)">

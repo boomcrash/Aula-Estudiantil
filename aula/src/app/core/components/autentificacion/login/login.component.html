@@ -1,15 +1,15 @@
-<div class="contenedor-formulario">
-    <div class="subcontenedor">
+<div class="card">
+    <div class="card-body">
         <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="formulario">  
         
             <h1>Inicio de Sesión</h1>   
     
             <mat-form-field appearance="fill">
-                <mat-label>Ingresa tu email</mat-label>
+                <mat-label>Ingresa tu usuario</mat-label>
                 <input matInput type="email" formControlName="email"/>
-                <mat-error *ngIf="formLogin.controls['email'].hasError('required')">Email es requerido.</mat-error>
-                <mat-error *ngIf="formLogin.controls['email'].hasError('email')">Email no válido.</mat-error>
-                <mat-error *ngIf="formLogin.controls['email'].hasError('maxlength')">Email no puede tener mas de 100 caracteres.</mat-error>
+                <mat-error *ngIf="formLogin.controls['email'].hasError('required')">Usuario es requerido.</mat-error>
+                <mat-error *ngIf="formLogin.controls['email'].hasError('email')">Usuario no válido.</mat-error>
+                <mat-error *ngIf="formLogin.controls['email'].hasError('maxlength')">Usuario no puede tener mas de 100 caracteres.</mat-error>
             </mat-form-field>
     
             <mat-form-field appearance="fill">

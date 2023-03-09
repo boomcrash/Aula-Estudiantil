@@ -16,7 +16,10 @@ export class RegistrarDocenteComponent {
   submitted = false;
   docenteForm!: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private router: Router,  private _usuariosService: UsuariosService) { }
+  constructor(private _formBuilder: FormBuilder, private router: Router,  private _usuariosService: UsuariosService) {
+
+
+   }
 
 
   ngOnInit(): void {
@@ -26,17 +29,14 @@ export class RegistrarDocenteComponent {
       nombres_docente: ['', Validators.required],
       apellidos_docente: ['', Validators.required],
       cedula_docente: ['', [Validators.required, Validators.pattern("^[0-9]{1,10}$")]],
-      fechaNacimiento_docente: ['', [Validators.required, Validators.pattern("^\\d{4}-\\d{2}-\\d{2}$"), (control: AbstractControl) => {
-        return fechaValida(control.value) ? null : { fechaInvalida: true };
-      }]],
-      edad_docente: ['', [Validators.required, Validators.pattern("^[0-9]+$")]],
+      fechaNacimiento_docente: ['', [fechaRequerida, fechaPatron, fechaValida]],
       direccion_docente: ['', Validators.required],
       telefono_docente: ['', [Validators.required, Validators.pattern("^[0-9]{1,10}$")]],
       email_docente: ['', [Validators.required, Validators.email]],
       titulo_docente: ['', Validators.required],
-      nivelEducacion_docente: ['', Validators.required],
-      promedio_docente: ['', [Validators.required, Validators.pattern("^[0-9]+(.[0-9]{1,2})?$")]]
+      nivelEducacion_docente: ['', Validators.required]
     });
+
   }
 
   
@@ -45,6 +45,7 @@ export class RegistrarDocenteComponent {
     if (this.docenteForm.invalid) {
       return;
     }
+
     
     const docente: DocenteModel = {
       nombre_usuario: this.usuario,
@@ -54,7 +55,7 @@ export class RegistrarDocenteComponent {
       apellidos_docente: form.value.apellidos_docente,
       cedula_docente: form.value.cedula_docente,
       fechaNacimiento_docente: form.value.fechaNacimiento_docente,
-      edad_docente: form.value.edad_docente,
+      edad_docente: this.calcularEdad(form.value.fechaNacimiento_docente),
       direccion_docente: form.value.direccion_docente,
       telefono_docente: form.value.telefono_docente,
       email_docente: form.value.email_docente,
@@ -68,9 +69,29 @@ export class RegistrarDocenteComponent {
       this.router.navigate(['/home']);
     });
   }
+  
+  calcularEdad(fechaNacimiento: string): number {
+    const hoy = new Date();
+    const fechaNac = new Date(fechaNacimiento);
+    let edad = hoy.getFullYear() - fechaNac.getFullYear();
+    const mes = hoy.getMonth() - fechaNac.getMonth();
+    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+      edad--;
+    }
+    return edad;
+  }
 }
 
-function fechaValida(fechaString: string): boolean {
-  const fecha = new Date(fechaString);
-  return fecha instanceof Date && !isNaN(fecha.getTime());
+function fechaRequerida(control: AbstractControl): { [key: string]: boolean } | null {
+  return control.value ? null : { fechaRequerida: true };
+}
+
+function fechaPatron(control: AbstractControl): { [key: string]: boolean } | null {
+  const patron = /^\d{4}-\d{2}-\d{2}$/;
+  return patron.test(control.value) ? null : { fechaPatron: true };
+}
+
+function fechaValida(control: AbstractControl): { [key: string]: boolean } | null {
+  const fecha = new Date(control.value);
+  return fecha instanceof Date && !isNaN(fecha.getTime()) ? null : { fechaInvalida: true };
 }

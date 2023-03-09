@@ -33,8 +33,12 @@ export class LoginService {
       if(existe){
         console.log(user);  
         await this.autentificar.obtenerDatosSimplesUsuario(user).toPromise().then( async resp =>{   
-          console.log(resp)  
-          localStorage.setItem('Usuario', JSON.stringify(resp.data[0]));         
+          var usuario = {
+            id_usuario: resp.data[0].id_usuario,
+            nombre_usuario: resp.data[0].nombre_usuario,
+            rol_usuario: resp.data[0].rol_usuario,
+        }
+          localStorage.setItem('Usuario', JSON.stringify(usuario));         
           if(resp.data[0].rol_usuario == 1){
             console.log('es un estudente')
             await this.autentificar.obtenerDatosCompletos(resp.data[0].id_usuario.toString()).toPromise().then( async resp =>{

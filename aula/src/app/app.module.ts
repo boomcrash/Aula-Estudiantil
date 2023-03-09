@@ -13,6 +13,7 @@ import { AutenticacionModule } from './core/components/autentificacion/autentica
 import { LoginService } from './core/services/login.service';
 import { LoginGuardian } from './core/components/autentificacion/login/loginGuardian';
 import { DatePipe } from '@angular/common';
+import { UsuarioModule } from './modules/usuario/usuario.module';
  
 @NgModule({ 
   declarations: [

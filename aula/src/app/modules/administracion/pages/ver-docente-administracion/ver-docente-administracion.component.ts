@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatosUser } from 'src/app/core/interfaces/datosSimplesUser.interface';
 import { Docente } from '../../models/docenteModel';
 import { MateriaDocente } from '../../models/materiaDocenteModel';
 import { DocenteAdministracionService } from '../../services/docente-administracion.service';
@@ -20,6 +21,16 @@ export class VerDocenteAdministracionComponent implements OnInit {
     estado_docente: '',
     tipo_contrato: ''
   };
+
+  active = false;
+  usuario: DatosUser = {
+    id_usuario: 0,
+    nombre_usuario: '',
+    contrasena_usuario: '',
+    rol_usuario: 0
+  };
+  nombre = '';
+  
   datosMateriasDocente: MateriaDocente[] = [];
 
   displayedColumns: string[] = [ 'materia', 'paralelo', 'evaluo', 'calificacion'];
@@ -32,6 +43,17 @@ export class VerDocenteAdministracionComponent implements OnInit {
     private docenteService:DocenteAdministracionService) {}
 
   ngOnInit(): void {
+
+    this.usuario = JSON.parse(localStorage.getItem('Usuario') || '{}');
+
+
+    if (localStorage.getItem('Usuario') != undefined) {
+      this.active = true;
+    } else {
+      this.active = false;
+    }
+
+    
     this.id = Number(this.route.snapshot.queryParamMap.get('id_docente'));
 
     this.docente=history.state.data;

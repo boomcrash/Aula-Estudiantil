@@ -90,6 +90,7 @@ mat-grid-tile {
     justify-content: center;
     gap: 30px;
     min-height: 178px;
+    cursor: pointer;
 }
 
 .central-der{

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Docente } from '../../models/docenteModel';
 import { PagoDocente } from '../../models/pagoDocentesModel';
@@ -39,7 +41,9 @@ export class PagosDocenteAdministracionComponent implements OnInit {
     'Opcion 2',
     'Opcion 3',
   ];
+  txtCedula: FormControl = new FormControl('');
 
+  dataSource: any;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -47,7 +51,8 @@ export class PagosDocenteAdministracionComponent implements OnInit {
 
   ngOnInit(): void {
     this.docenteService.obtenerPagoDocentes().subscribe(respuesta =>{
-      this.datosPagoDocentes=respuesta.data;
+      this.datosPagoDocentes = respuesta.data;
+      this.dataSource = new MatTableDataSource<any>(this.datosPagoDocentes);
       console.log(this.datosPagoDocentes)
 
       this.docenteService.obtenerDocentes().subscribe(respuesta =>{
@@ -60,6 +65,14 @@ export class PagosDocenteAdministracionComponent implements OnInit {
     this.selectedFiltro = this.filtro[0];
 
   }
+
+  filterByCedula() {
+    this.dataSource.filter = this.txtCedula.value.trim().toLowerCase();
+    this.dataSource.filterPredicate = function (data: any, filter: string) {
+      return data.cedula_docente.toLocaleLowerCase().includes(filter);
+    }
+  }
+
   volver(){
     this.router.navigate(['/administracion/docente-administracion']);
   }

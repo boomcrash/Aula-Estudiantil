@@ -20,7 +20,7 @@
 
         <mat-form-field class="campos-field">
           <mat-label>Cedula</mat-label>
-          <input matInput>
+          <input matInput (keyup)="filterByCedula()" [formControl]="txtCedula">
         </mat-form-field>
 
       </div>
@@ -31,7 +31,7 @@
 
 
 
-    <table mat-table [dataSource]="datosPagoDocentes" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <!-- Position Column -->
       <ng-container matColumnDef="fecha">

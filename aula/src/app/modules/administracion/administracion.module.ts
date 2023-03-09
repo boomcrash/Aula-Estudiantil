@@ -28,6 +28,9 @@ import { AdminPerfilComponent } from './pages/admin-perfil/admin-perfil.componen
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DialogExitoComponent } from './components/dialog-exito/dialog-exito.component';
+import { DocenteModule } from '../docente/docente.module';
+import { EstudianteModule } from '../estudiante/estudiante.module';
+import { UsuarioModule } from '../usuario/usuario.module';
 
 
 @NgModule({
@@ -61,9 +64,12 @@ import { DialogExitoComponent } from './components/dialog-exito/dialog-exito.com
     MatRadioModule,
     MatExpansionModule,
     MatTableModule,
-    SharedModule
-  ],
-  exports: [
+    SharedModule,
+    
+    DocenteModule,
+    EstudianteModule
+    
+  ], exports: [
     AdminPerfilComponent
   ]
 })

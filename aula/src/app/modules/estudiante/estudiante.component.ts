@@ -10,8 +10,8 @@ import { EPerfilService } from './pages/eperfil/services/eperfil.service';
   styleUrls: ['./estudiante.component.css']
 })
 export class EstudianteComponent implements OnInit {
-  id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
-  rol = JSON.parse(localStorage.getItem("Usuario")!).rol_usuario;
+  id = JSON.parse(localStorage.getItem("Usuario")!)?.id_usuario;
+  rol = JSON.parse(localStorage.getItem("Usuario")!)?.rol_usuario;
   validarMatricula: boolean = true;
   matricula: ItemMatricula[] = [];
   constructor(

@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DocentesService } from 'src/app/modules/docente/services/docentes.service';
 import { DocenteModel } from '../../models/docenteModel';
 import { UsuariosService } from '../../services/usuarios.service';
+import { RegistrarModalComponent } from '../registrar-modal/registrar-modal.component';
 
 @Component({
   selector: 'app-registrar-docente',
@@ -16,10 +18,10 @@ export class RegistrarDocenteComponent {
   submitted = false;
   docenteForm!: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private router: Router,  private _usuariosService: UsuariosService) {
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _usuariosService: UsuariosService, private modalService: NgbModal) {
 
 
-   }
+  }
 
 
   ngOnInit(): void {
@@ -39,14 +41,14 @@ export class RegistrarDocenteComponent {
 
   }
 
-  
+
   registrarDocente(form: FormGroup) {
     this.submitted = true;
     if (this.docenteForm.invalid) {
       return;
     }
 
-    
+
     const docente: DocenteModel = {
       nombre_usuario: this.usuario,
       contrasena_usuario: this.contrasena,
@@ -65,11 +67,11 @@ export class RegistrarDocenteComponent {
     };
 
     this._usuariosService.agregarDocente(docente).subscribe(data => {
+      this.openGenerar()
       console.log(data)
-      this.router.navigate(['/home']);
     });
   }
-  
+
   calcularEdad(fechaNacimiento: string): number {
     const hoy = new Date();
     const fechaNac = new Date(fechaNacimiento);
@@ -80,7 +82,19 @@ export class RegistrarDocenteComponent {
     }
     return edad;
   }
+
+  openGenerar(): void {
+    const modalRef = this.modalService.open(RegistrarModalComponent, { centered: true, size: 'md', backdrop: 'static', keyboard: false });
+    modalRef.closed.subscribe(data => {
+      this.router.navigate(['/home']);
+  
+    })
+  
+  }
 }
+
+
+
 
 function fechaRequerida(control: AbstractControl): { [key: string]: boolean } | null {
   return control.value ? null : { fechaRequerida: true };

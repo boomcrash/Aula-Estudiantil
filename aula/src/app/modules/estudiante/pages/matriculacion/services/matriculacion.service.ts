@@ -10,10 +10,7 @@ export class matriculacionService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerHorariosmatricula(id : number): Observable<any> {    
-    const get = {
-      id_Horario: id
-    };
+  obtenerHorariosmatricula(): Observable<any> {        
     const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerHorariosmatricula}`;    
     const httpOptions = {
       headers: new HttpHeaders({
@@ -21,7 +18,7 @@ export class matriculacionService {
         'Access-Control-Allow-Origin': '*'
       })
     }
-    console.log(url, get);
+    console.log(url);
     return this.http.get(url, httpOptions);
   }  
 

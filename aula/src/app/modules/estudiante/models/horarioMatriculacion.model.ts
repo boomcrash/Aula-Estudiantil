@@ -1,5 +1,6 @@
 export interface horarioMatriculacion{
-    materia: string;
+    id_curso?: number;
+    materia?: string;
     paralelo_curso: string;
     cupo_curso: number;
     horario_ordenado:Horario_Ordenado[];

@@ -106,7 +106,7 @@ export class HorarioComponent implements OnInit {
                 this.horarioDocenteTabla[j].horario_ordenado[4].dia_horario = this.horarioDocente[i].dia_horario;
                 this.horarioDocenteTabla[j].horario_ordenado[4].hora_horario = this.horarioDocente[i].hora_horario;
               }
-              if (this.horarioDocente[i].dia_horario == "Sabado") {
+              if (this.horarioDocente[i].dia_horario == "Sábado") {
                 this.horarioDocenteTabla[j].horario_ordenado[5].dia_horario = this.horarioDocente[i].dia_horario;
                 this.horarioDocenteTabla[j].horario_ordenado[5].hora_horario = this.horarioDocente[i].hora_horario;
               }

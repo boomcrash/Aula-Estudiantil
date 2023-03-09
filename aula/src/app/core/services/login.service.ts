@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
 })
 export class LoginService {  
   usuario = 'User';
+  promedio = 0;
   datosUsuario: DatosUser[] = [];
   matricula: ItemMatricula[] = [];
   constructor(private cookie: CookieService,

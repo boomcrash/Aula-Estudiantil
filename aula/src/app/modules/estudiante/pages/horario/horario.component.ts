@@ -106,7 +106,7 @@ export class HorarioComponent {
                 this.horario2[j].horario_ordenado[4].dia_horario = this.horario[i].dia_horario;
                 this.horario2[j].horario_ordenado[4].hora_horario = this.horario[i].hora_horario;
               }
-              if (this.horario[i].dia_horario == "Sabado") {
+              if (this.horario[i].dia_horario == "Sábado") {
                 this.horario2[j].horario_ordenado[5].dia_horario = this.horario[i].dia_horario;
                 this.horario2[j].horario_ordenado[5].hora_horario = this.horario[i].hora_horario;
               }

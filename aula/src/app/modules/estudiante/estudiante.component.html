@@ -3,21 +3,21 @@
     <h1 class="mb-4">ESTUDIANTES</h1>
     <h2 class="mb-4">Asegura tu futuro en nuestro Centro de Formación!</h2>
     <p></p>
-    <button
+    <a
       *ngIf="validarMatricula"
       class="button"
       routerLink="/estudiante/matriculacion"
     >
       Matricularme
-    </button>
-    <button
+    </a>
+    <a
       *ngIf="!validarMatricula"
       class="button"
       routerLink="/estudiante"
       style="background-color: rgb(97, 94, 92)"
     >
       Matricularme
-    </button>
+    </a>
   </div>
 </div>
 
@@ -52,7 +52,7 @@
           </div>
         </div>
       </section>
-      <hr>
+      <hr />
       <br />
       <section class="cuerpo-empresas">
         <h1>Función técnica</h1>
@@ -164,32 +164,40 @@
   style="background-color: #0f1a2c"
 >
   <div class="container">
-    <div class="row" style="display: flex;flex-direction: row; justify-content: space-between; text-align: center; ">
+    <div
+      class="row"
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: center;
+      "
+    >
       <div class="col-md-8 text-right">
-        <h4 class="lead text-white" >
+        <h4 class="lead text-white">
           ¿Estás listo para desbloquear todo tu potencial y alcanzar tus metas?
           ¡Inscríbete ahora en nuestra academia y comienza tu camino hacia el
           éxito!
         </h4>
-      </div>        
-        <div class="col-md-4 text-right">
-          <a
-            *ngIf="validarMatricula"
-            class="button"
-            aling="right"
-            routerLink="/estudiante/matriculacion"
-            [ariaDisabled]="false"
-            >Matricularme</a
-          >    
-          <a
-            *ngIf="!validarMatricula"
-            class="button"
-            aling="right"
-            routerLink="#"
-            [ariaDisabled]="false"
-            style="background-color: rgb(97, 94, 92)"
-            >Matricularme</a
-          >        
+      </div>
+      <div class="col-md-4 text-right">
+        <a
+          *ngIf="validarMatricula"
+          class="button"
+          aling="right"
+          routerLink="/estudiante/matriculacion"
+          [ariaDisabled]="false"
+          >Matricularme</a
+        >
+        <a
+          *ngIf="!validarMatricula"
+          class="button"
+          aling="right"
+          routerLink="#"
+          [ariaDisabled]="false"
+          style="background-color: rgb(97, 94, 92)"
+          >Matricularme</a
+        >
       </div>
     </div>
   </div>

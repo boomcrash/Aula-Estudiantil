@@ -96,6 +96,74 @@ h1::after {
     height: 220px;
     padding: auto;
   }
+  .button {
+    margin: 0 !important;
+    align-self: center;
+    text-decoration: none;
+    margin-top: 30px;
+    padding: 15px 25px;
+    background-color: #20BCD1;
+    color: white;
+    border: white;
+    font-size: 14pt;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+  
+  .button2 {
+    margin: 0 !important;
+    align-self: center;
+    text-decoration: none;
+    margin-top: 30px;
+    padding: 15px 25px;
+    background-color: #5c5f5f;
+    color: white;
+    border: white;
+    font-size: 14pt;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    transition: 0.5s;
+    
+  }
+  
+  
+  
+  .button:not(hover) {
+    background-color: #20BCD1;
+    transition: 0.5s;
+  }
+  a {
+    margin: 0 !important;
+    align-self: center;
+    text-decoration: none;
+    margin-top: 30px;
+    padding: 15px 25px;
+    background-color: transparent;
+    color: black;
+    border: 2px solid black;
+    font-size: 14pt;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+  
+  a:hover {
+    background-color: black;
+    border: 2px solid black;
+    color: white;
+    transition: 0.5s;
+  }
+  
+  a:not(hover) {
+    background-color: transparent;
+    border: 2px solid black;
+    transition: 0.5s;
+  }
 
 @media only screen and (min-width:431px ) and (max-width: 768px) {
         .banner {

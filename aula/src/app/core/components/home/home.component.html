@@ -1,89 +1,105 @@
-<!-- ENCABEZADO -->
-<section id="encabezado">
-    <div class="imagen-encabezado"></div>
-    <div class="contenido-encabezado">
-        <h1>CENTRO DE FORMACIÓN ARTESANAL UG</h1>
-        <p>La mejor opción en formación tech!</p>
-        <br>
-        <br>
-        <a class="button" routerLink="/usuario/registro-usuario" class="button" style="padding: 20px;">REGISTRARME</a>
+<div class="banner">
+  <div class="banner-text">
+    <h1>CENTRO DE FORMACIÓN ARTESANAL UG</h1>
+    <p>La mejor opción en formación tech!</p>
+    <br />
+    <br />
+    <a
+      class="button"
+      aling="right"
+      style="padding: 20px"
+      routerLink="/usuario/registro-usuario"
+      [ariaDisabled]="false"
+      >REGISTRARME</a
+    >
+  </div>
+</div>
+<div class="col text-center mx-5">
+  <section class="cuerpo-empresas">
+    <h1>SOBRE NOSOTROS</h1>
+    <div class="contenido-empresas">
+      <div>
+        <img src="./../../../assets/imagen/inicio/nosotros.jpeg" alt="" class="nosotros" style="width: 40%; height: 50%; margin-left: 350px; margin-top: 50px;"/>
+      </div>
+      <div class="empresa">
+        <p>
+          Somos una prestigiosa institución, asociada con la Universidad de
+          Guayaquil, comprometida con la excelencia académica y la formación
+          integral de nuestros estudiantes. Trabajamos en armonía para brindar
+          una educación de calidad, fomentando valores éticos y sociales que
+          contribuyen al desarrollo de la sociedad.
+        </p>
+      </div>
     </div>
-</section>
-<div class="contenedor-principal">
+  </section>
 
-    <section class="cuerpo-empresas">
-        <h1>SOBRE NOSOTROS</h1>
-        <div class="contenido-empresas">
-            <div>
-                <img src="./../../../assets/imagen/prueba.png" alt="">
-            </div>
-            <div class="empresa">
-                <p> Somos una prestigiosa institución, asociada con la Universidad de Guayaquil, comprometida con la
-                    excelencia académica y la formación integral de nuestros estudiantes. Trabajamos en armonía para
-                    brindar una educación de calidad, fomentando valores éticos y sociales que contribuyen al desarrollo
-                    de la sociedad.
-                </p>
-            </div>
-        </div>
-    </section>
+  <section class="cuerpo-empresas">
+    <h1>NUESTRO PROGRAMA</h1>
+    <div class="contenido-empresas">
+      <div class="empresa">
+        <p class="modulotitle">MÓDULO 1</p>
+        <br />
+        <p>Mantenimiento de Computadoras</p>
+        <p>Robótica</p>
+        <p>Desarrollo Web</p>
+        <p>Inglés</p>
+        <p>Cableado Estructurado</p>
+      </div>
+      <div>
+        <img src="./../../../../assets/imagen/inicio/modulo1.png" alt="" class="modulo1" style="width: 50%; height: 50%; margin-right: 350px; margin-top: 100px;"/>
+      </div>
+    </div>
+    <div class="contenido-empresas" style="margin-top: 100px;">
+      <div>
+        <img src="./../../../assets/imagen/inicio/modulo2.png" alt="" class="modulo2" style="width: 50%; height: 60%; margin-left: 350px; margin-top: 100px;"/>
+      </div> 
+      <div class="empresa">
+        <p class="modulotitle">MÓDULO 2</p>
+        <br />
+        <p>Base de Datos</p>
+        <p>BigData</p>
+        <p>Machine Learning</p>
+        <p>Finanzas Básicas</p>
+        <p>Derecho Laboral</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="cuerpo-empresas">
-        <h1>NUESTRO PROGRAMA</h1>
-        <div class="contenido-empresas">
-            <div class="empresa">
-                <p class="modulotitle"> MÓDULO 1 </p><br>
-                <p> Mantenimiento de Computadoras </p>
-                <p> Robótica </p>
-                <p> Desarrollo Web</p>
-                <p> Inglés</p>
-                <p> Cableado Estructurado </p>
+  <section class="precios-empresa">
+    <h1>PRECIOS</h1>
+    <div class="contenedor-precios">
+      <div class="precio1">
+        <p class="modulotitle">
+          MÓDULO 1 <br /><br />
+          $300
+        </p>
+        <br /><br />
+        <div class="raya"></div>
+        <br /><br />
+        <p>5 materias <br /><br />Incluye título artesanal</p>
+      </div>
 
-            </div>
-            <div>
-                <img src="./../../../../assets/imagen/prueba.png" alt="">
-            </div>
-        </div>
-        <div class="contenido-empresas">
-            <div>
-                <img src="./../../../assets/imagen/prueba.png" alt="">
-            </div>
-            <div class="empresa">
-                <p class="modulotitle"> MÓDULO 2 </p><br>
-                <p> Base de Datos </p>
-                <p> BigData</p>
-                <p> Machine Learning</p>
-                <p> Finanzas Básicas</p>
-                <p> Derecho Laboral </p>
+      <div class="precio1">
+        <p class="modulotitle">
+          MÓDULO 2 <br /><br />
+          $400
+        </p>
+        <br /><br />
+        <div class="raya"></div>
+        <br /><br />
+        <p>5 materias <br /><br />Incluye título artesanal</p>
+      </div>
 
-            </div>
-        </div>
-    </section>
-
-    <section class="precios-empresa">
-        <h1>PRECIOS</h1>
-            <div class="contenedor-precios">
-                <div class="precio1"> <p class="modulotitle">MÓDULO 1 <br><br> $300</p> <br><br>
-                    <div class="raya"></div> <br><br>
-                    <p>5 materias <br><br>Incluye título artesanal</p>
-
-                </div>
-
-                <div class="precio1"> <p class="modulotitle">MÓDULO 2 <br><br> $400</p> <br><br>
-                    <div class="raya"></div> <br><br>
-                    <p>5 materias <br><br>Incluye título artesanal</p>
-
-                </div>
-
-                <div class="precio1"> <p class="modulotitle"> MATERIA INDIVIDUAL <br><br> $80 </p> <br><br>
-                    <div class="raya"></div> <br><br>
-                    <p>No incluye <br><br>título artesanal</p>
-
-                </div>
-
-
-            </div>
-
-
-    </section>
-
+      <div class="precio1">
+        <p class="modulotitle">
+          MATERIA INDIVIDUAL <br /><br />
+          $80
+        </p>
+        <br /><br />
+        <div class="raya"></div>
+        <br /><br />
+        <p>No incluye <br /><br />título artesanal</p>
+      </div>
+    </div>
+  </section>
 </div>

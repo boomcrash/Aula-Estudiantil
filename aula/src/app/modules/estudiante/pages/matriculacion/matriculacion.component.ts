@@ -50,10 +50,7 @@ export class MatriculacionComponent implements OnChanges {
   dataSource: any = [];
   firstFormGroup = this._formBuilder.group({
     select : ['', Validators.required],
-    select2 : ['', Validators.required],
-
-    
-    
+    select2 : ['', Validators.required],        
 });
   
   tarjetaForm = new FormGroup({

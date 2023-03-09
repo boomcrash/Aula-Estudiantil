@@ -45,14 +45,17 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container>
+            <ng-container *ngFor="let acta of actas; let indice = index">
                 <tr>
                     <td scope="row" class="text-center align-middle"></td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle text-center"></td>
-                    <td class="align-middle text-center"></td>
+                    <td class="align-middle">{{acta.nombresCompletos_estudiante}}</td>
+                    <td class="align-middle text-center">{{acta.promedioCalificaciones_itemActa}}</td>
+                    <td class="align-middle text-center">{{acta.promedioAsistencias_itemActa}}%</td>
                     <td class="text-center align-middle"><span
-                        class="badge bg-secondary badge-lg rounded-0 px-4">Aprobado</span></td>
+                        class="badge badge-lg rounded-0 px-4"
+                        [ngClass]="{'aprobado': acta.estado_itemActa === 'APROBADO', 'reprobado': acta.estado_itemActa === 'REPROBADO'}">
+                        {{acta.estado_itemActa}}
+                      </span></td>
                 </tr>
             </ng-container>
         </tbody>

@@ -4,16 +4,13 @@
     <h2 class="mb-4">
       Forma parte de nuestro prestigioso Centro <br />de Formación!
     </h2>
-    <button
-      type="submit"
-      id="botonGuardar"
-      class="btn btn-primary mx-1 rounded-0"
-      type="submit"
-      form="addUserForm"
-      (click)="registroUsuario()"
+    <a
+      class="button"
+      aling="right"
+      routerLink="/usuario/registro-usuario"
+      [ariaDisabled]="false"
+      >Quiero ser docente</a
     >
-      Quiero ser docente
-    </button>
   </div>
 </div>
 <div class="container pt-5">
@@ -135,16 +132,13 @@
         </h4>
       </div>
       <div class="col-md-4 text-right">
-        <button
-          type="submit"
-          id="botonGuardar"
-          class="btn btn-primary mx-1 rounded-0"
-          type="submit"
-          form="addUserForm"
-          (click)="registroUsuario()"
+        <a
+          class="button"
+          aling="right"
+          routerLink="/usuario/registro-usuario"
+          [ariaDisabled]="false"
+          >Quiero ser docente</a
         >
-          Quiero ser docente
-        </button>
       </div>
     </div>
   </div>

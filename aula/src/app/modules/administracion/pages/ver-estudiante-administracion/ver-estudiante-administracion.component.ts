@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog} from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Estudiante } from '../../models/estudianteModel';
 import { MateriaEstudiante } from '../../models/materiaEstudianteModel';
 import { EstudianteAdministracionService } from '../../services/estudiante-administracion.service';
@@ -19,7 +19,14 @@ export interface PeriodicElement {
   styleUrls: ['./ver-estudiante-administracion.component.css']
 })
 export class VerEstudianteAdministracionComponent implements OnInit {
-  estudiante!: Estudiante;
+  datosEstudiantes: Estudiante[] = [];
+  estudiante: Estudiante={
+    id_estudiante: 0,
+    cedula_estudiante: '',
+    nombresCompletos_estudiante: '',
+    ultimo_ciclo: '',
+    medio_estudiante: 0
+  };
   datosMateriasEstudiante: MateriaEstudiante[] = [];
 
   displayedColumns: string[] = ['id', 'materia', 'paralelo', 'actCumplidas', 'actNoCumplidas'];
@@ -29,6 +36,7 @@ export class VerEstudianteAdministracionComponent implements OnInit {
   constructor(
     private dialog: MatDialog, 
     private route: ActivatedRoute,
+    private router: Router,
     private estudianteService:EstudianteAdministracionService) {}
 
     ngOnInit(): void {
@@ -38,8 +46,20 @@ export class VerEstudianteAdministracionComponent implements OnInit {
       this.estudiante=history.state.data;
       this.estudianteService.obtenerMateriasEstudiantes(this.id).subscribe(data => {
         this.datosMateriasEstudiante=data.data
-      });
 
+        this.estudianteService.obtenerEstudiantes().toPromise().then(respuesta =>{
+          this.datosEstudiantes=respuesta.data;
+          for(let i=0;i<this.datosEstudiantes.length;i++){
+            if(this.datosEstudiantes[i].id_estudiante==this.id){
+              this.estudiante=this.datosEstudiantes[i]
+            }
+          }
+          console.log(this.estudiante);
+        }).catch(err =>{
+          console.error(err);
+        });
+      });
+      
     }
 
   mostrarDialogoActC(id_curso: number) {
@@ -55,6 +75,11 @@ export class VerEstudianteAdministracionComponent implements OnInit {
       width: '700px'
     });
   }
+
+  volver(){
+    this.router.navigate(['/administracion/estudiante-administracion']);
+  }
+
 }
 
 

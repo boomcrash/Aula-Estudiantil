@@ -4,26 +4,14 @@
   
         <div class="contenidoEstudiante">
             <div>
-                <h1>NOMBRES COMPLETOS DEL ESTUDIANTE</h1>
+                <h2 *ngIf="estudiante.nombresCompletos_estudiante.length>0"
+                  style="text-align: center; font-size: 30pt; text-transform: uppercase;">
+                  {{estudiante.nombresCompletos_estudiante}} 
+                </h2>
             </div>
         
             <div class="vdc" >
                 <h1>VISTA ESTUDIANTE - CUENTA</h1>
-            </div>
-        
-            <div>
-              <p>PROMEDIO FINAL: 4,9</p>
-            </div>
-            <div class="vdh">
-                <mat-form-field appearance="fill" style="width: 100%;text-align: center; margin: auto;">
-                  <mat-label>MATERIAS</mat-label>
-                  <mat-select>
-                    <mat-option value="one">Opcion 1</mat-option>
-                    <mat-option value="two">Opcion 2</mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-                <p>Ciclo: Anterior</p>
             </div>
             <table mat-table [dataSource]="datosMateriasEstudiante" class="mat-elevation-z8">
   
@@ -69,7 +57,12 @@
                 </td>
               </tr>
           </table>
-              <div>
+              <div style="padding: 20px; text-align: center;">
+                <button (click)="volver()" 
+                class="pagos" 
+                style="background-color: #20BCD1; color: white;" mat-raised-button>
+                VOLVER
+                </button>
         </div>        
       </div>
     

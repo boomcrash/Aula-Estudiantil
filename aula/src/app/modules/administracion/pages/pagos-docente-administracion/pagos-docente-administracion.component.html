@@ -3,8 +3,12 @@
       <h1> PAGOS </h1>
     </div>
 
-    <mat-dialog-content>
       <div >
+      <button (click)="volver()" 
+      class="pagos" 
+      style="background-color: #20BCD1; color: white;" mat-raised-button>
+      VOLVER</button>
+
       <mat-form-field appearance="fill">
         <mat-label>Filtrar por:</mat-label>
         <mat-select>
@@ -70,7 +74,4 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
       </div>
-      
-  
-    </mat-dialog-content>
   </div>

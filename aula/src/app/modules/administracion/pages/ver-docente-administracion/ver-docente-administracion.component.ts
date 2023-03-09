@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Docente } from '../../models/docenteModel';
 import { MateriaDocente } from '../../models/materiaDocenteModel';
 import { DocenteAdministracionService } from '../../services/docente-administracion.service';
@@ -27,6 +27,7 @@ export class VerDocenteAdministracionComponent implements OnInit {
   id: number=0;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private docenteService:DocenteAdministracionService) {}
 
@@ -52,5 +53,8 @@ export class VerDocenteAdministracionComponent implements OnInit {
     
   }
 
+  volver(){
+    this.router.navigate(['/administracion/docente-administracion']);
+  }
   
 }

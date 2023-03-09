@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="contenido-tabla">
-    <button (click)="mostrarPagos()" class="pagos" style="background-color: #20BCD1;" mat-raised-button>PAGOS</button>
+    <button (click)="mostrarPagos()" class="pagos" style="background-color: #20BCD1; color: white;" mat-raised-button>PAGOS</button>
 
     <mat-form-field appearance="fill">
         <mat-label>Filtrar por:</mat-label>
@@ -62,7 +62,7 @@
         <!-- Symbol Column -->
         <ng-container matColumnDef="contrato">
             <th mat-header-cell *matHeaderCellDef> Contrato </th>
-            <td style="cursor: pointer;" (click)="mostrarDialogoContrato()" mat-cell *matCellDef="let element"> {{element.tipo_contrato}} </td>
+            <td style="cursor: pointer;" (click)="mostrarDialogoContrato(element.nombresCompletos_docente, element.id_docente)" mat-cell *matCellDef="let element"> {{element.tipo_contrato}} </td>
         </ng-container>
 
         <ng-container matColumnDef="acciones">

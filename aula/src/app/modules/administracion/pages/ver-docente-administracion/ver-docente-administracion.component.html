@@ -4,7 +4,10 @@
   
         <div class="contenidoDocente" >
             <div> 
-                <h2 *ngIf="docente.nombresCompletos_docente.length>0" style="color:black">  {{docente.nombresCompletos_docente}} </h2>
+                <h2 *ngIf="docente.nombresCompletos_docente.length>0" 
+                  style="text-align: center; font-size: 30pt; text-transform: uppercase;">  
+                  {{docente.nombresCompletos_docente}} 
+                </h2>
             </div>
         
             <div class="vdc" >
@@ -17,16 +20,9 @@
                 <h1>VISTA DOCENTE - MI HORARIO</h1>
             </div>
         
-              <mat-form-field appearance="fill" style="width: 100%;text-align: center; margin: auto;">
-                <mat-label>EVALUACION DOCENTE: 81%</mat-label>
-                <mat-select>
-                  <mat-option value="one">Opcion 1</mat-option>
-                  <mat-option value="two">Opcion 2</mat-option>
-                </mat-select>
-              </mat-form-field>
-        
-              <div>
-        </div>
+            <div style="padding: 20px; font-weight: bold; font-size: 20pt; text-align: center;">
+              <mat-label>EVALUACION DOCENTE</mat-label>
+            </div>
       
         <table mat-table [dataSource]="datosMateriasDocente" class="mat-elevation-z8">
   
@@ -63,6 +59,15 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+
+      </div>
+
+      <div style="padding: 20px; text-align: center;">
+        <button (click)="volver()" 
+                class="pagos" 
+                style="background-color: #20BCD1; color: white;" mat-raised-button>
+                VOLVER
+                </button>
       </div>
 
     </mat-dialog-content>

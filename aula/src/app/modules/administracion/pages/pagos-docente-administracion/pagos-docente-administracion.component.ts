@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Docente } from '../../models/docenteModel';
 import { PagoDocente } from '../../models/pagoDocentesModel';
 import { DocenteAdministracionService } from '../../services/docente-administracion.service';
@@ -38,6 +39,8 @@ export class PagosDocenteAdministracionComponent implements OnInit {
   ];
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private docenteService:DocenteAdministracionService) {}
 
   ngOnInit(): void {
@@ -51,5 +54,8 @@ export class PagosDocenteAdministracionComponent implements OnInit {
       });
 
     });
+  }
+  volver(){
+    this.router.navigate(['/administracion/docente-administracion']);
   }
 }

@@ -1,11 +1,11 @@
 export const environment = {
-    urlBAse: "http://167.71.26.121:3000",
+
+urlBAse: "http://167.71.26.121:3000",
     pathUrl: {
-        urlVerificarUsuarioPassword: "/api/v1/usuarios/verifyUserByUserAndPassword",
-        urlObtenerUsuariosPorUser: "/api/v1/usuarios/getUsersByUserName",
-        urlObtenerHorariosporId: "/api/v1/horarios/getHorarioEstudiante",
-        urlObtenerHorariosporIdDocente: "/api/v1/horarios/getHorarioDocente",
-        urlObtenerHorariosmatricula: "/api/v1/horarios/getAllHorarios",
+        urlVerificarUsuarioPassword: "/api/v1/usuarios/verifyUserByUserAndPassword",    
+        urlObtenerUsuariosPorUser: "/api/v1/usuarios/getUsersByUserName",    
+        urlObtenerHorariosporId: "/api/v1/horarios/getHorarioEstudiante",    
+        urlObtenerHorariosmatricula:"/api/v1/horarios/getAllHorarios",
         UrlObtenerCursos: "/api/v1/cursos/getCursos",
         UrlObtenerParalelos: "/api/v1/paralelos/getParalelos",
         UrlObtenerMaterias: "/api/v1/materias/getItemMaterias",
@@ -20,8 +20,7 @@ export const environment = {
         urlUpdateEntregas: "/api/v1/entregas/updateEntrega",
         urlObtenerEntregaActividad: "/api/v1/actividades/entregaActividad",
         urlObtenerAsistenciasByIdEstudiante: "/api/v1/asistencias/getAsistenciasByIdEstudiante",
-
-
+       
         urlDocentes: {
             obtenerCursos: "/api/v1/cursos/getCursosDocente",
             obtenerActividades: "/api/v1/actividades/getActividadByCurso",
@@ -40,7 +39,22 @@ export const environment = {
         },        
         urlObtenerEstudiantes: "/api/v1/estudiantes/getEstudiantes",
         urlModificarEntrega: "/api/v1/entregas/updateEntrega",
+        urlObtenerUsuarios: "/api/v1/usuarios/getUsers",
 
+        urlDocenteAdmin: {
+            obtenerTopDocentes:"/api/v1/docentes/getTop5Teacher",
+            obtenerDocentes: "/api/v1/docentes/getAdminDocentes",
+            obtenerPagoDocentes: "/api/v1/pagoDocentes/getAdminPagoDocentes",
+            obtenerEvaluacionesDocente: "/api/v1/evaluaciones/getEvaluacionesByDocente", 
+            agregarContratoDocente: "/api/v1/contratos/addContrato",           
+        },
+        urlEstudianteAdmin: {
+            obtenerTopEstudiantes: "/api/v1/estudiantes/getTop5Estudiantes",
+            obtenerEstudiantes: "/api/v1/estudiantes/getAdminEstudiantes",
+            obtenerMateriasEstudiantes: "/api/v1/cursos/getCursosEstudiante",
+            obtenerEntregasEstudiantes: "/api/v1/entregas/GetEntregasAdmin",
+        }
+        
     }
 
 }

@@ -14,7 +14,7 @@ export class horarioServiceDocente {
     const post = {
       docente_curso: id
     };
-    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerHorariosporIdDocente}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlObtenerHorariosporId}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        

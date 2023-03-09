@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EstudianteModel } from '../../models/estudianteModel';
 import { UsuariosService } from '../../services/usuarios.service';
+import { RegistrarModalComponent } from '../registrar-modal/registrar-modal.component';
 
 @Component({
   selector: 'app-registrar-estudiante',
@@ -21,7 +23,7 @@ export class RegistrarEstudianteComponent implements OnInit {
     { texto: '4to nivel' },
   ];
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _usuariosService: UsuariosService) { }
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _usuariosService: UsuariosService, private modalService: NgbModal) { }
 
 
   ngOnInit(): void {    
@@ -30,7 +32,6 @@ export class RegistrarEstudianteComponent implements OnInit {
       apellidos_estudiante: ['', Validators.required],
       cedula_estudiante: ['', [Validators.required, Validators.pattern("^[0-9]{1,10}$")]],
       fechaNacimiento_estudiante: ['', [fechaRequerida, fechaPatron, fechaValida]],
-      edad_estudiante: ['', [Validators.required, Validators.pattern("^[0-9]+$")]],
       direccion_estudiante: ['', Validators.required],
       telefono_estudiante: ['', [Validators.required, Validators.pattern("^[0-9]{1,10}$")]],
       email_estudiante: ['', [Validators.required, Validators.email]],
@@ -54,7 +55,7 @@ export class RegistrarEstudianteComponent implements OnInit {
       apellidos_estudiante: form.value.apellidos_estudiante,
       cedula_estudiante: form.value.cedula_estudiante,
       fechaNacimiento_estudiante: form.value.fechaNacimiento_estudiante,
-      edad_estudiante: form.value.edad_estudiante,
+      edad_estudiante: this.calcularEdad(form.value.fechaNacimiento_estudiante),
       direccion_estudiante: form.value.direccion_estudiante,
       telefono_estudiante: form.value.telefono_estudiante,
       email_estudiante: form.value.email_estudiante,
@@ -64,8 +65,29 @@ export class RegistrarEstudianteComponent implements OnInit {
     };
 
     this._usuariosService.agregarEstudiante(estudiante).subscribe(data => {      
-      this.router.navigate(['/home']);
+      this.openGenerar()
     });
+  }
+
+  calcularEdad(fechaNacimiento: string): number {
+    const hoy = new Date();
+    const fechaNac = new Date(fechaNacimiento);
+    let edad = hoy.getFullYear() - fechaNac.getFullYear();
+    const mes = hoy.getMonth() - fechaNac.getMonth();
+    if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+      edad--;
+    }
+    return edad;
+  }
+
+  openGenerar(): void {
+    const modalRef = this.modalService.open(RegistrarModalComponent, { centered: true, size: 'md', backdrop: 'static', keyboard: false });
+    modalRef.closed.subscribe( data => {
+      this.router.navigate(['/home']);
+
+    })
+    modalRef.componentInstance.docente = false;
+
   }
 
 

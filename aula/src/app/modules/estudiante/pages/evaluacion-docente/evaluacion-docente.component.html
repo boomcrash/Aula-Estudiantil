@@ -170,7 +170,7 @@
     <div class="example-button-row">
 
 
-      <button mat-stroked-button (click)="promedio()">Guardar</button>
+      <button [disabled]="!selected" mat-stroked-button (click)="openRegistrar()">Guardar</button>
       <button mat-stroked-button color="primary">Cancelar</button>
 
     </div>

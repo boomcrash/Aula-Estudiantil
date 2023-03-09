@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActaModel } from '../../models/actaModel';
 import { CursoModel } from '../../models/cursoModel';
 import { DocentesService } from '../../services/docentes.service';
 import { GenerandoModalComponent } from './generando-modal/generando-modal.component';
@@ -20,6 +21,7 @@ export class ActaComponent {
   selectedOption = "Seleccionar";
   selectedOption2 = "Curso";
   inputPlaceholder = "Nombre de la actividad";
+  actas!: ActaModel[];
 
   options = [
     { value: 1, label: 'Actividad' },
@@ -32,8 +34,10 @@ export class ActaComponent {
   ngOnInit(): void {
 
     this._docentesService.obtenerIdDocente(this.id).subscribe( docente => {
+      
       this._docentesService.obtenerCursos(docente.data[0].id_docente).subscribe( data => {
         this.cursos = data.data;
+
       })  
     })
 
@@ -45,9 +49,12 @@ export class ActaComponent {
   openGenerar(): void {
     const modalRef = this.modalService.open(GenerandoModalComponent, { centered: true, size: 'md', backdrop: 'static', keyboard: false });
     this._docentesService.actualizarActa(this.curso.id_curso).subscribe( data => {
-      this._docentesService.obtenerActa(this.curso.id_curso).subscribe( data => {        
+      console.log(data)
+      this._docentesService.obtenerActa(this.curso.id_curso).subscribe( data => {
+        this.actas = data.data
       })  
     })
+    
     modalRef.componentInstance.curso = this.curso;
     modalRef.closed.subscribe( data => {
       this.acta = true

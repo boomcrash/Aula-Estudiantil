@@ -239,3 +239,13 @@ th {
     padding-left: 15rem;
     padding-right: 15rem;
   }
+
+  .aprobado {
+  background-color: green;
+  color: white;
+}
+
+.reprobado {
+  background-color: red;
+  color: white;
+}

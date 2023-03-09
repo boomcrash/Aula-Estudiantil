@@ -6,6 +6,8 @@ import { CursosService } from '../cursos/services/cursos.service';
 import { CursoModel } from '../../models/cursoModel';
 import { ParticipantesService } from '../participantes/servicios/services/participantes.service';
 import { ParticipanteModel } from 'src/app/modules/docente/models/participanteModel';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RegistrarModalComponent } from './registrar-modal/registrar-modal.component';
 
 
 
@@ -21,11 +23,11 @@ import { ParticipanteModel } from 'src/app/modules/docente/models/participanteMo
   styleUrls: ['./evaluacion-docente.component.css']
 })
 export class EvaluacionDocenteComponent implements OnInit {
-  selected = '';
   id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
   curso!: CursoModel[];
   docente = '';
   listaParticipantes!: ParticipanteModel[];
+  selected = false;
 
   isOpen = false;
 
@@ -53,7 +55,7 @@ export class EvaluacionDocenteComponent implements OnInit {
 
   }
 
-  constructor(private cursosService: CursosService, private participantes: ParticipantesService) { }
+  constructor(private cursosService: CursosService, private participantes: ParticipantesService, private modalService: NgbModal,) { }
   ngOnInit() {
 
 
@@ -72,10 +74,21 @@ export class EvaluacionDocenteComponent implements OnInit {
     this.isOpen = !this.isOpen;
   }
 
+  openRegistrar(): void {
+    const modalRef = this.modalService.open(RegistrarModalComponent, { centered: true, size: 'md', backdrop: 'static', keyboard: false });
+    modalRef.componentInstance.curso = this.curso;
+    modalRef.closed.subscribe( data => {
+
+    })
+
+  }
+
+
 
   selectOption(option: any) {
     this.selectedOption = option.nombre_materia;
     this.isOpen = false;
+    this.selected = true;
     this.docente = option.nombre_docente;
 
 

@@ -10,6 +10,7 @@ import { RegistrarEstudianteComponent } from './pages/registrar-estudiante/regis
 import { RegistrarDocenteComponent } from './pages/registrar-docente/registrar-docente.component';
 import { DocenteModule } from '../docente/docente.module';
 import { AdministracionModule } from '../administracion/administracion.module';
+import { RegistrarModalComponent } from './pages/registrar-modal/registrar-modal.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AdministracionModule } from '../administracion/administracion.module';
     CambiarContrasenaComponent,
     RegistrarEstudianteComponent,
     RegistrarDocenteComponent,
+    RegistrarModalComponent
   ],
   imports: [
     CommonModule,

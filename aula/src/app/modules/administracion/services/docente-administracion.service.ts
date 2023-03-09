@@ -1,12 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Contrato } from '../models/contrato';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DocenteAdministracionService {
+  private update: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) { }
 
@@ -62,5 +64,29 @@ export class DocenteAdministracionService {
     console.log(url);
     return this.http.post(url, post,httpOptions);
   }
-  
+
+  agregarContratoDocentes(contrato : Contrato): Observable<any> {   
+    const body = {
+      docente_contrato: contrato.docente_contrato,
+      fecha_contrato: contrato.fecha_contrato,
+      nombramiento_contrato: contrato.nombramiento_contrato,
+      especialidad_contrato: contrato.especialidad_contrato,
+      tipo_contrato: contrato.tipo_contrato,
+      jornada_contrato: contrato.jornada_contrato,
+      sueldo_contrato: contrato.sueldo_contrato
+    }; 
+    const url = `${environment.urlBAse}${environment.pathUrl.urlDocenteAdmin.agregarContratoDocente}`;    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    console.log(contrato)
+    return this.http.post(url, body, httpOptions);
+  }  
+
+  public sendUpdate(value: boolean): void {
+    this.update.next(value);
+  }
 }

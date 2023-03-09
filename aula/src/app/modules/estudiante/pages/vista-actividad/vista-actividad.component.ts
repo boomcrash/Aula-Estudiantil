@@ -123,12 +123,13 @@ export class VistaActividadComponent implements OnInit {
       fechaEnvio_entrega: this.presentarActividad[0].fechaEnvio_entrega, // utilizar el valor existente
       fechaModificacion_entrega: this.convertirFecha(new Date().toISOString()), // utilizar el valor actualizado
       archivo_entrega: this.presentarActividad[0].archivo_entrega = archivoSeleccionado, // utilizar el valor nuevo o existente
-      estado_entrega: this.entregaForm.value.estado_entrega, // utilizar el valor existente 
+      estado_entrega: this.presentarActividad[0].archivo_entrega = "Enviada", // utilizar el valor existente 
     }
     console.log(this.datosEntrega)
     console.log(entrega.fechaModificacion_entrega.toString())
     this.datosEntrega.fechaModificacion_entrega = entrega.fechaModificacion_entrega.toString();
     this.datosEntrega.archivo_entrega = entrega.archivo_entrega;
+    this.datosEntrega.estado_entrega  = entrega.estado_entrega;
 
     console.log(entrega)
     

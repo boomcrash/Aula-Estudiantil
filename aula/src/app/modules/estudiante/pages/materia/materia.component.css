@@ -97,7 +97,7 @@ tbody tr:nth-of-type(odd) {
     font-weight: bolder;
 }
 .Pendiente{
-    background-color: yellow;
+    background-color: #DBD700;
     color: white;
     font-weight: bolder;
 }

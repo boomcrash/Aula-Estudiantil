@@ -84,9 +84,9 @@
       </div>
     </div>
     <div class="container">
-      <div class="row">
-        <table class="table table-hover table-bordered px-auto">
-          <thead class="table-dark">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
             <tr>
               <th scope="col" class="col-md-2">Actividad</th>
               <th scope="col" class="col-md-2">Estado</th>
@@ -96,31 +96,51 @@
             </tr>
           </thead>
           <tbody>
-            <ng-container *ngFor="let actividades of presentarActividadesModel">
-              <tr>
-                <td class="align-middle">{{ actividades.nombre_actividad }}</td>
-                <td class="align-middle"
-                  [ngClass]="{
-                    NoEnviada: actividades.estado_entrega === 'No Enviada',
-                    Enviada: actividades.estado_entrega === 'Enviada',
-                    Pendiente: actividades.estado_entrega === 'Pendiente'
-                  }"
-                >
-                  {{ actividades.estado_entrega }}
-                </td>
-                <td class="align-middle">{{ actividades.fechaVencimiento_actividad }}</td>
-                <td class="align-middle">{{ actividades.calificacion_entrega }}</td>
-                <td class="align-middle">
-                  <button
-                    mat-icon-button
-                    (click)="verActividad(actividades.id_actividad)"
-                    style="background-color: transparent !important"
+            <ng-container
+              *ngIf="presentarActividadesModel.length > 0; else noData"
+            >
+              <ng-container
+                *ngFor="let actividades of presentarActividadesModel"
+              >
+                <tr>
+                  <td class="align-middle">
+                    {{ actividades.nombre_actividad }}
+                  </td>
+                  <td
+                    class="align-middle"
+                    [ngClass]="{
+                      NoEnviada: actividades.estado_entrega === 'No Enviada',
+                      Enviada: actividades.estado_entrega === 'Enviada',
+                      Pendiente: actividades.estado_entrega === 'Pendiente'
+                    }"
                   >
-                    <mat-icon class="add">remove_red_eye</mat-icon>
-                  </button>
+                    {{ actividades.estado_entrega }}
+                  </td>
+                  <td class="align-middle">
+                    {{ actividades.fechaVencimiento_actividad }}
+                  </td>
+                  <td class="align-middle">
+                    {{ actividades.calificacion_entrega }}
+                  </td>
+                  <td class="align-middle">
+                    <button
+                      mat-icon-button
+                      (click)="verActividad(actividades.id_actividad)"
+                      style="background-color: transparent !important"
+                    >
+                      <mat-icon class="add">remove_red_eye</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+            <ng-template #noData>
+              <tr>
+                <td colspan="6" class="text-center">
+                  No se encontraron resultados
                 </td>
               </tr>
-            </ng-container>
+            </ng-template>
           </tbody>
         </table>
       </div>
@@ -155,6 +175,13 @@
   <br />
 </div>
 
-<div *ngIf="presentarActividadesModel.length != 0 && aparecerComponente == 1 && idActividad != 0 && presentarEdicion">
+<div
+  *ngIf="
+    presentarActividadesModel.length != 0 &&
+    aparecerComponente == 1 &&
+    idActividad != 0 &&
+    presentarEdicion
+  "
+>
   <app-vista-actividad [idActividad]="idActividad"></app-vista-actividad>
 </div>

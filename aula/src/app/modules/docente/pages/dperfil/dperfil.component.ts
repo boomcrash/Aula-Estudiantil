@@ -36,7 +36,7 @@ export class DperfilComponent implements OnInit {
       const docente: DocentePerfilModel = {
         id_usuario: data.data[0].id_usuario,
         nombre_usuario: data.data[0].nombre_usuario,
-        contrasena_usuario: data.data[0].contrasena_usuario,
+        contrasena_usuario: "********",
         rol_usuario: data.data[0].rol_usuario,
         id_docente: data.data[0].id_docente,
         nombres_docente: data.data[0].nombres_docente,
@@ -58,6 +58,9 @@ export class DperfilComponent implements OnInit {
 
   obtenerDatosContrato() {
     // obtener los datos del docente
+    this.docenteUser
+      .obtenerDatosDocente(this.id)
+      .subscribe((data) => (this.dataSourceObtenerDocentePerfil = data.data));
     this.docenteUser.obtenerDocente().subscribe((data) => {
       this.dataSourceObtenerDocente = data.data;
 
@@ -69,12 +72,12 @@ export class DperfilComponent implements OnInit {
       // obtener el contrato correspondiente al docente
       if (usuario_docente) {
         this.docenteUser
-          .obtenerContratoDocente(usuario_docente)
+          .obtenerContratoDocente(this.dataSourceObtenerDocentePerfil[0].id_docente)
           .subscribe((data) => {
             this.dataSourceObtenerContratoDocente = data.data;
 
             const contrato_docente = this.dataSourceObtenerContratoDocente.find(
-              (contrato) => contrato.docente_contrato === usuario_docente
+              (contrato) => contrato.docente_contrato === this.dataSourceObtenerDocentePerfil[0].id_docente
             );
 
             if (contrato_docente) {

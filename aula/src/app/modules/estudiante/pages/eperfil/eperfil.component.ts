@@ -36,7 +36,7 @@ export class EperfilComponent {
       const estudiante: EstudiantePerfil = {
         id_usuario: data.data[0].id_usuario,
         nombre_usuario: data.data[0].nombre_usuario,
-        contrasena_usuario: data.data[0].contrasena_usuario,
+        contrasena_usuario: "********",
         rol_usuario: data.data[0].rol_usuario,
         id_estudiante: data.data[0].id_estudiante,
         nombres_estudiante: data.data[0].nombres_estudiante,

@@ -11,6 +11,7 @@ import { EPerfilService } from './pages/eperfil/services/eperfil.service';
 })
 export class EstudianteComponent implements OnInit {
   id = JSON.parse(localStorage.getItem("Usuario")!).id_usuario;
+  rol = JSON.parse(localStorage.getItem("Usuario")!).rol_usuario;
   validarMatricula: boolean = true;
   matricula: ItemMatricula[] = [];
   constructor(
@@ -23,6 +24,10 @@ export class EstudianteComponent implements OnInit {
 
  ngOnInit(): void {
   let id_estudiante: number = 0;
+  
+  if(this.rol != 1){    
+    this.validarMatricula = false;
+  }
   this.autentificar.obtenerDatosCompletos(this.id).toPromise().then( resp =>{
     id_estudiante = resp.data[0].id_estudiante;    
     this.ePerfil.obtenerItemMatricula(id_estudiante).toPromise().then( data =>{
@@ -32,7 +37,9 @@ export class EstudianteComponent implements OnInit {
         console.log(this.matricula[0].ciclo_matricula)
         if(this.matricula[0].ciclo_matricula == '2023-2024 CI' || this.matricula[0].ciclo_matricula == '2022-2023 CII'){
           this.validarMatricula = false;
-        }        
+        }  
+        console.log(this.rol)      
+        
       }else{
         
       }

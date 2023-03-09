@@ -14,7 +14,12 @@ import { LoginComponent } from '../autentificacion/login/login.component';
 })
 export class HeaderComponent implements OnInit {
   active = false;
-  usuario!: DatosUser;
+  usuario: DatosUser = {
+    id_usuario: 0,
+    nombre_usuario: '',
+    contrasena_usuario: '',
+    rol_usuario: 0
+  };
   nombre = '';
   estudianteMatriculado = Boolean(localStorage.getItem("alumno"));
 

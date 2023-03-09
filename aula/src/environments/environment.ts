@@ -65,7 +65,7 @@ export const environment = {
         urlMatriculacion: {
             urlAgregarMatricula: "/api/v1/matriculas/addMatricula",
             urlAgregarItemMatriculas: "/api/v1/itemMatriculas/addItemMatriculas",
-            urlAgregarOrdenPagoMatriculas: "/api/v1/ordenPagoMatriculas/ordenPagoMatriculas",
+            urlAgregarOrdenPagoMatriculas: "/api/v1/ordenPagoMatriculas/addOrdenPagoMatriculas",
             urlObtenerOrdenesPago: "/api/v1/ordenPagoMatriculas/getItemOrdenPagoMatriculas",
         }
         

@@ -88,7 +88,7 @@ export class matriculacionService {
     return this.http.post(url, post,httpOptions);
   }
 
-  agregarItemMatriculas(matricula_itemMatricula: number, curso_itemMatricula: number){
+  agregarItemMatriculas(matricula_itemMatricula?: number, curso_itemMatricula?: number){
     const post = {
       matricula_itemMatricula,
       curso_itemMatricula
@@ -119,7 +119,7 @@ export class matriculacionService {
       descuento_pagoMatricula,
       total_pagoMatricula
     };    
-    const url = `${environment.urlBAse}${environment.pathUrl.urlMatriculacion.urlAgregarItemMatriculas}`;    
+    const url = `${environment.urlBAse}${environment.pathUrl.urlMatriculacion.urlAgregarOrdenPagoMatriculas}`;    
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',        

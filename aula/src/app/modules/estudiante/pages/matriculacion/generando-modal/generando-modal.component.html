@@ -1,8 +1,6 @@
 <div class="modal-body" id="myModal">
     <div class="mx-4 mt-5 text-center">
-        <h2 class="descripcion texto-negrita" *ngIf="cargando">Generando Matrícula</h2>
-
-        <p class="descripcion texto-negrita" *ngIf="cargando">{{curso.nombre_materia}} - {{curso.nombre_paralelo}}</p>
+        <h2 class="descripcion texto-negrita" *ngIf="cargando">Generando Matrícula</h2>        
 
         <div class="d-flex justify-content-center my-4">
             <mat-icon *ngIf="!cargando" class="icon-display">check_circle</mat-icon>

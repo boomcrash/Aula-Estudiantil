@@ -334,6 +334,7 @@ export class MatriculacionComponent implements OnChanges {
   add(event: any) {
     console.log(event)
     const horarioMatriculacion: horarioMatriculacion = {
+      id_curso: event.id_curso,
       materia: event.materia,
       paralelo_curso: event.paralelo_curso,
       cupo_curso: event.cupo_curso,
@@ -429,6 +430,9 @@ export class MatriculacionComponent implements OnChanges {
   }
 
   async finalizar(){
+    let id = this.matricula_pagoMatricula;
+    let matricula = this.horarioMatriculado
+    console.log(matricula)
     await this.matriculacionService.agregarOrdenPagoMatriculas(
       this.matricula_pagoMatricula,
       this.nombreModulo,
@@ -450,14 +454,13 @@ export class MatriculacionComponent implements OnChanges {
     }).catch(err =>{
       console.error(err);
     });
-
-    await this.matriculacionService.agregarItemMatriculas(0,0).toPromise().then(respuesta =>{
-      console.log(respuesta)
-    }).catch(err =>{
-      console.error(err);
-    });
-
-
+    for(let i = 0;i<matricula.length;i++){
+      await this.matriculacionService.agregarItemMatriculas(matricula[i].id_curso,id).toPromise().then(respuesta =>{
+        console.log(respuesta)
+      }).catch(err =>{
+        console.error(err);
+      });
+    }    
     const modalRef = this.modalService.open(GenerandoModalComponent, { centered: true, size: 'md', backdrop: 'static', keyboard: false });
   }
 }

@@ -174,10 +174,20 @@
       </div>        
         <div class="col-md-4 text-right">
           <a
+            *ngIf="validarMatricula"
             class="button"
             aling="right"
             routerLink="/estudiante/matriculacion"
             [ariaDisabled]="false"
+            >Matricularme</a
+          >    
+          <a
+            *ngIf="!validarMatricula"
+            class="button"
+            aling="right"
+            routerLink="#"
+            [ariaDisabled]="false"
+            style="background-color: rgb(97, 94, 92)"
             >Matricularme</a
           >        
       </div>
